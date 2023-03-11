@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80AE29BD01AA009393C3 /* RxCocoa */; };
+		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */; };
@@ -52,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */,
+				D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,10 @@
 			dependencies = (
 			);
 			name = RehApp;
+			packageProductDependencies = (
+				D26C80AE29BD01AA009393C3 /* RxCocoa */,
+				D26C80B029BD01AA009393C3 /* RxSwift */,
+			);
 			productName = RehApp;
 			productReference = D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +210,9 @@
 				Base,
 			);
 			mainGroup = D2EFB9C129BCFC97009EA5E5;
+			packageReferences = (
+				D26C80AD29BD01AA009393C3 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = D2EFB9CB29BCFC97009EA5E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -605,6 +616,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D26C80AD29BD01AA009393C3 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D26C80AE29BD01AA009393C3 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D26C80AD29BD01AA009393C3 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D26C80B029BD01AA009393C3 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D26C80AD29BD01AA009393C3 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D2EFB9D629BCFC97009EA5E5 /* RehApp.xcdatamodeld */ = {
