@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80AE29BD01AA009393C3 /* RxCocoa */; };
 		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
+		D26C80B429BD053C009393C3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B329BD053C009393C3 /* UIColor.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D26C80B329BD053C009393C3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D26C80B229BD0524009393C3 /* Visual design */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80B329BD053C009393C3 /* UIColor.swift */,
+			);
+			path = "Visual design";
+			sourceTree = "<group>";
+		};
 		D2EFB9C129BCFC97009EA5E5 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 		D2EFB9CC29BCFC97009EA5E5 /* RehApp */ = {
 			isa = PBXGroup;
 			children = (
+				D26C80B229BD0524009393C3 /* Visual design */,
 				D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */,
 				D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */,
 				D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */,
@@ -281,6 +292,7 @@
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
+				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
