@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "filip-mroz-C3Qs4MbxeKY-unsplash.jpg",
+      "idiom" : "iphone"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

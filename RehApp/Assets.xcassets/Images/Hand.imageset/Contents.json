@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "jorge-rojas-792DVvbiBBo-unsplash.jpg",
+      "idiom" : "iphone"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
