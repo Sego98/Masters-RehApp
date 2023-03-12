@@ -10,6 +10,17 @@
 		D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80AE29BD01AA009393C3 /* RxCocoa */; };
 		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
 		D26C80B429BD053C009393C3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B329BD053C009393C3 /* UIColor.swift */; };
+		D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B929BD0ECA009393C3 /* PickerViewController.swift */; };
+		D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */; };
+		D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BE29BD0F4A009393C3 /* PickerView.swift */; };
+		D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C029BD0F69009393C3 /* PickerSubview.swift */; };
+		D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */; };
+		D26C80C629BD10AD009393C3 /* ListAllItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C529BD10AD009393C3 /* ListAllItemsViewModel.swift */; };
+		D26C80C829BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C729BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift */; };
+		D26C80CB29BD110D009393C3 /* ListAllItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CA29BD110D009393C3 /* ListAllItemsCell.swift */; };
+		D26C80CD29BD112B009393C3 /* ListAllItemsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CC29BD112B009393C3 /* ListAllItemsHeader.swift */; };
+		D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */; };
+		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */; };
@@ -38,6 +49,17 @@
 
 /* Begin PBXFileReference section */
 		D26C80B329BD053C009393C3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D26C80B929BD0ECA009393C3 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		D26C80BE29BD0F4A009393C3 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		D26C80C029BD0F69009393C3 /* PickerSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSubview.swift; sourceTree = "<group>"; };
+		D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsViewController.swift; sourceTree = "<group>"; };
+		D26C80C529BD10AD009393C3 /* ListAllItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsViewModel.swift; sourceTree = "<group>"; };
+		D26C80C729BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsTableViewDataSource.swift; sourceTree = "<group>"; };
+		D26C80CA29BD110D009393C3 /* ListAllItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsCell.swift; sourceTree = "<group>"; };
+		D26C80CC29BD112B009393C3 /* ListAllItemsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsHeader.swift; sourceTree = "<group>"; };
+		D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsView.swift; sourceTree = "<group>"; };
+		D26C80D129BD11CA009393C3 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +108,63 @@
 			path = "Visual design";
 			sourceTree = "<group>";
 		};
+		D26C80B729BD0E83009393C3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80C229BD102B009393C3 /* ListAllItems */,
+				D26C80B829BD0EAE009393C3 /* ItemPicker */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D26C80B829BD0EAE009393C3 /* ItemPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80BD29BD0F39009393C3 /* Views */,
+				D26C80B929BD0ECA009393C3 /* PickerViewController.swift */,
+				D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */,
+			);
+			path = ItemPicker;
+			sourceTree = "<group>";
+		};
+		D26C80BD29BD0F39009393C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80BE29BD0F4A009393C3 /* PickerView.swift */,
+				D26C80C029BD0F69009393C3 /* PickerSubview.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D26C80C229BD102B009393C3 /* ListAllItems */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80C929BD10DD009393C3 /* Views */,
+				D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */,
+				D26C80C529BD10AD009393C3 /* ListAllItemsViewModel.swift */,
+				D26C80C729BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift */,
+			);
+			path = ListAllItems;
+			sourceTree = "<group>";
+		};
+		D26C80C929BD10DD009393C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80CA29BD110D009393C3 /* ListAllItemsCell.swift */,
+				D26C80CC29BD112B009393C3 /* ListAllItemsHeader.swift */,
+				D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D26C80D029BD11AC009393C3 /* Reusable components */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
+			);
+			path = "Reusable components";
+			sourceTree = "<group>";
+		};
 		D2EFB9C129BCFC97009EA5E5 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +191,8 @@
 				D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */,
 				D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */,
 				D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */,
+				D26C80D029BD11AC009393C3 /* Reusable components */,
+				D26C80B729BD0E83009393C3 /* Screens */,
 				D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */,
 				D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */,
 				D2EFB9DE29BCFC99009EA5E5 /* Info.plist */,
@@ -288,11 +369,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
+				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
+				D26C80C829BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift in Sources */,
+				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
+				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
 				D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
+				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
+				D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */,
+				D26C80CD29BD112B009393C3 /* ListAllItemsHeader.swift in Sources */,
+				D26C80C629BD10AD009393C3 /* ListAllItemsViewModel.swift in Sources */,
+				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
+				D26C80CB29BD110D009393C3 /* ListAllItemsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
