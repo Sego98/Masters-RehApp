@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsCell: UITableViewCell {
-
-    static var identifier: String { String(describing: self) }
+final class ListAllItemsCell: UICollectionViewCell {
 
     // MARK: - Properties
 
@@ -42,8 +40,8 @@ final class ListAllItemsCell: UITableViewCell {
 
     // MARK: - Init
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configure()
     }
 
@@ -52,18 +50,20 @@ final class ListAllItemsCell: UITableViewCell {
     }
 
     private func configure() {
-        contentView.addSubview(numberLabel)
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(separatorLine)
+        contentView.addSubviews([
+            numberLabel, descriptionLabel, separatorLine
+        ])
+
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        let guide = contentView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            numberLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20),
-            numberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            numberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            numberLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            numberLabel.centerYAnchor.constraint(equalTo: descriptionLabel.centerYAnchor),
 
-            descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: guide.topAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 24),
+            descriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
             separatorLine.heightAnchor.constraint(equalToConstant: 1),
             separatorLine.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),

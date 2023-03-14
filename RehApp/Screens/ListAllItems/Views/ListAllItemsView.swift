@@ -12,14 +12,38 @@ final class ListAllItemsView: UIView {
 
     // MARK: - Properties
 
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.separatorStyle = .none
-        return tableView
+    private let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: customCollectionViewLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
+
+    private static var customCollectionViewLayout: UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .estimated(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize,
+                                                       repeatingSubitem: item,
+                                                       count: 1)
+        let section = NSCollectionLayoutSection(group: group)
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+
+        // Overal header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(1.0))
+        let headerKind = ListAllItemsHeader.elementKind
+        let headerView = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                     elementKind: headerKind,
+                                                                     alignment: .topLeading)
+        configuration.boundarySupplementaryItems = [headerView]
+        layout.configuration = configuration
+
+        return layout
+    }
 
     private let allItemsButton: LargeButton
 
@@ -36,22 +60,30 @@ final class ListAllItemsView: UIView {
     }
 
     private func configure() {
-        backgroundColor = .systemBackground
+        backgroundColor = .rehAppBackground
 
-        addSubview(tableView)
-        addSubview(allItemsButton)
+        addSubviews([
+            collectionView, allItemsButton
+        ])
 
-        let edgeOffset = CGFloat(24)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 0, trailing: 24)
+        let guide = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: edgeOffset),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -edgeOffset),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            allItemsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 8),
-            allItemsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: edgeOffset),
-            allItemsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -edgeOffset),
+            allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8),
+            allItemsButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            allItemsButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             allItemsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    // MARK: - Public methods
+
+    func getCollectionView() -> UICollectionView {
+        return collectionView
     }
 }

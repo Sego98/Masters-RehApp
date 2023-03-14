@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsHeader: UITableViewHeaderFooterView {
+final class ListAllItemsHeader: UICollectionReusableView {
 
-    static var identifier: String { String(describing: self) }
+    static var elementKind: String { String(describing: self) }
 
     // MARK: - Properties
 
@@ -28,7 +28,7 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
     private let titleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray4
+        view.backgroundColor = .lightPurple
         return view
     }()
 
@@ -54,8 +54,8 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
 
     // MARK: - Init
 
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configure()
     }
 
@@ -64,41 +64,45 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
     }
 
     private func configure() {
-        contentView.backgroundColor = .systemBackground
+        backgroundColor = .rehAppBackground
 
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(titleView)
-        titleView.addSubview(leftTitleLabel)
-        titleView.addSubview(rightTitleLabel)
+        addSubviews([
+            descriptionLabel, titleView
+        ])
 
-        let edgeOffset = CGFloat(8)
+        titleView.addSubviews([
+            leftTitleLabel, rightTitleLabel
+        ])
+
+        titleView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        let titleViewGuide = titleView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: topAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             titleView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
-            titleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            leftTitleLabel.topAnchor.constraint(equalTo: titleView.topAnchor, constant: edgeOffset),
-            leftTitleLabel.leadingAnchor.constraint(equalTo: titleView.leadingAnchor, constant: 4),
-            leftTitleLabel.bottomAnchor.constraint(equalTo: titleView.bottomAnchor, constant: -edgeOffset),
+            leftTitleLabel.topAnchor.constraint(equalTo: titleViewGuide.topAnchor),
+            leftTitleLabel.leadingAnchor.constraint(equalTo: titleViewGuide.leadingAnchor),
+            leftTitleLabel.bottomAnchor.constraint(equalTo: titleViewGuide.bottomAnchor),
 
-            rightTitleLabel.topAnchor.constraint(equalTo: titleView.topAnchor, constant: edgeOffset),
-            rightTitleLabel.leadingAnchor.constraint(equalTo: leftTitleLabel.trailingAnchor, constant: 8),
-            rightTitleLabel.trailingAnchor.constraint(equalTo: titleView.trailingAnchor, constant: -4),
-            rightTitleLabel.bottomAnchor.constraint(equalTo: titleView.bottomAnchor, constant: -edgeOffset)
+            rightTitleLabel.topAnchor.constraint(equalTo: leftTitleLabel.topAnchor),
+            rightTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leftTitleLabel.trailingAnchor, constant: 8),
+            rightTitleLabel.trailingAnchor.constraint(equalTo: titleViewGuide.trailingAnchor),
+            rightTitleLabel.bottomAnchor.constraint(equalTo: leftTitleLabel.bottomAnchor)
         ])
     }
 
     // MARK: - Public methods
 
-    func setParameters(itemVM: ListAllItemsViewModel) {
-        descriptionLabel.text = itemVM.screenDescription
-        leftTitleLabel.text = itemVM.leftHeaderDescription
-        rightTitleLabel.text = itemVM.rightHeaderDescription
+    func setValues(with viewModel: ListAllItemsViewModel) {
+        descriptionLabel.text = viewModel.screenDescription
+        leftTitleLabel.text = viewModel.leftHeaderDescription
+        rightTitleLabel.text = viewModel.rightHeaderDescription
     }
 }

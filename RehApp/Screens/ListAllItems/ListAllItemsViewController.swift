@@ -4,6 +4,7 @@
 //
 //  Created by Petar Ljubotina on 11.03.2023..
 //
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
@@ -14,14 +15,13 @@ final class ListAllItemsViewController: UIViewController {
 
     private let viewModel: ListAllItemsViewModel
     private let listAllItemsView: ListAllItemsView
-    private let dataSource: ListAllItemsTableViewDataSource
+    private var dataSource: ListAllItemsDataSource!
 
     // MARK: - Lifecycle
 
     init(viewModel: ListAllItemsViewModel) {
         self.viewModel = viewModel
         self.listAllItemsView = ListAllItemsView(viewModel: viewModel)
-        self.dataSource = ListAllItemsTableViewDataSource(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,31 +43,33 @@ final class ListAllItemsViewController: UIViewController {
         navigationItem.title = viewModel.screenTitle
         navigationItem.largeTitleDisplayMode = .automatic
 
-        let tableView = listAllItemsView.tableView
-        tableView.register(ListAllItemsHeader.self, forHeaderFooterViewReuseIdentifier: ListAllItemsHeader.identifier)
-        tableView.register(ListAllItemsCell.self, forCellReuseIdentifier: ListAllItemsCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = dataSource
-    }
-}
+        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllItemsCell, ListAllItemsViewModel.ItemViewModel> {cell, indexPath, item in
+            let number = indexPath.item + 1
+            cell.setParameters(number: number, description: item.shortDescription)
+        }
 
-    // MARK: - UITableView delegate
+        let collectionView = listAllItemsView.getCollectionView()
 
-extension ListAllItemsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let identifier = ListAllItemsHeader.identifier
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-        as? ListAllItemsHeader else { return nil }
-        headerView.setParameters(itemVM: viewModel)
-        return headerView
-    }
+        dataSource = ListAllItemsDataSource(collectionView: collectionView,
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ListAllItemsViewModel.ItemViewModel) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: allItemsCellRegistration,
+                                                                for: indexPath,
+                                                                item: item)
+        })
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let exerciseDescription = viewModel.items[indexPath.row].longDescription
-//        let screenTitle = "Vježba broj \(indexPath.row + 1)"
-//        let viewModel = ExerciseDetailsViewModel(screenTitle: screenTitle,
-//                                                 exerciseDescription: exerciseDescription)
-//        let viewController = ExerciseDetailsViewController(viewModel: viewModel)
-//        navigationController?.pushViewController(viewController, animated: true)
+        let headerRegistration = UICollectionView.SupplementaryRegistration<ListAllItemsHeader>(elementKind: ListAllItemsHeader.elementKind) { [weak self] (supplementaryView, _, _) in
+            guard let self = self else { return }
+            supplementaryView.setValues(with: self.viewModel)
+        }
+
+        dataSource.supplementaryViewProvider = { (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            if elementKind == ListAllItemsHeader.elementKind {
+                return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration,
+                                                                             for: indexPath)
+            }
+            return nil
+        }
+
+        dataSource.rebuildSnapshot(items: viewModel.items, animatingDifferences: true)
     }
 }

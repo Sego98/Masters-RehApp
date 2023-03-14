@@ -58,7 +58,8 @@ final class PickerView: UIView {
             stackView.addArrangedSubview(subview)
         }
 
-        let edgeOffset = CGFloat(24)
+        containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 0, trailing: 24)
+        let guide = containerView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -72,10 +73,10 @@ final class PickerView: UIView {
             containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 
-            stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgeOffset),
-            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -edgeOffset),
-            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: guide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 

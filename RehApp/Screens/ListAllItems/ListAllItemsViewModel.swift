@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListAllItemsViewModel {
+struct ListAllItemsViewModel: Hashable, Equatable {
     let screenTitle: String
     let screenDescription: String
     let leftHeaderDescription: String
@@ -15,7 +15,7 @@ struct ListAllItemsViewModel {
     let items: [ItemViewModel]
     let largeButtonTitle: String
 
-    struct ItemViewModel {
+    struct ItemViewModel: Hashable, Equatable {
         let shortDescription: String
         let longDescription: String
     }

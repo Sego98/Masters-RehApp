@@ -27,6 +27,7 @@ final class PickerSubview: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.imageView?.layer.cornerRadius = cornerRadius
         button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.adjustsImageSizeForAccessibilityContentSizeCategory = true
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemGray2.cgColor
         button.layer.cornerRadius = cornerRadius
@@ -55,21 +56,25 @@ final class PickerSubview: UIView {
         titleLabel.text = viewModel.title
         pictureButton.setImage(UIImage(named: viewModel.imageName), for: .normal)
 
-        addSubview(titleLabel)
-        addSubview(pictureButton)
+        addSubviews([
+            titleLabel, pictureButton
+        ])
+
+        directionalLayoutMargins = .zero
+        let guide = layoutMarginsGuide
 
         let imageDimension = CGFloat(200)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: guide.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
+            pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             pictureButton.heightAnchor.constraint(equalToConstant: imageDimension),
             pictureButton.widthAnchor.constraint(equalToConstant: imageDimension),
             pictureButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
-            pictureButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            pictureButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 
