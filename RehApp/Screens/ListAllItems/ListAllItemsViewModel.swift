@@ -20,6 +20,8 @@ struct ListAllItemsViewModel {
         let longDescription: String
     }
 
+    // MARK: - Test data
+
     static var shoulderNoStick: ListAllItemsViewModel {
         let screenTitle = "Vježbe ramena"
         let screenDescription = """

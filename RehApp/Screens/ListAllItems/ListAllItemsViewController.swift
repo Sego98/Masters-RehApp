@@ -10,9 +10,13 @@ import UIKit
 
 final class ListAllItemsViewController: UIViewController {
 
+    // MARK: - Properties
+
     private let viewModel: ListAllItemsViewModel
     private let listAllItemsView: ListAllItemsView
     private let dataSource: ListAllItemsTableViewDataSource
+
+    // MARK: - Lifecycle
 
     init(viewModel: ListAllItemsViewModel) {
         self.viewModel = viewModel
@@ -46,6 +50,8 @@ final class ListAllItemsViewController: UIViewController {
         tableView.dataSource = dataSource
     }
 }
+
+    // MARK: - UITableView delegate
 
 extension ListAllItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

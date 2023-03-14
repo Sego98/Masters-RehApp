@@ -50,8 +50,8 @@ struct PickerViewModel {
 
     static var pickShoulderExerciseType: PickerViewModel {
         let title = "Rame"
-        let noStickSubviewVM = PickerItemViewModel(title: "Bez štapa", imageName: "shoulderNoStick")
-        let stickSubviewVM = PickerItemViewModel(title: "Sa štapom", imageName: "shoulderWithStick")
+        let noStickSubviewVM = PickerItemViewModel(title: "Bez štapa", imageName: "ShoulderNoStick")
+        let stickSubviewVM = PickerItemViewModel(title: "Sa štapom", imageName: "ShoulderWithStick")
         let subviewsVM = [
             PickerItem(viewModel: noStickSubviewVM, nextScreenType: .list(.shoulderNoStick)),
             PickerItem(viewModel: stickSubviewVM, nextScreenType: .list(.shouldersWithStick))

@@ -23,7 +23,6 @@
 		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
-		D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */; };
 		D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D629BCFC97009EA5E5 /* RehApp.xcdatamodeld */; };
 		D2EFB9DA29BCFC99009EA5E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */; };
 		D2EFB9DD29BCFC99009EA5E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */; };
@@ -63,7 +62,6 @@
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D2EFB9D729BCFC97009EA5E5 /* RehApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RehApp.xcdatamodel; sourceTree = "<group>"; };
 		D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2EFB9DC29BCFC99009EA5E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				D26C80B229BD0524009393C3 /* Visual design */,
 				D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */,
 				D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */,
-				D2EFB9D129BCFC97009EA5E5 /* ViewController.swift */,
 				D26C80D029BD11AC009393C3 /* Reusable components */,
 				D26C80B729BD0E83009393C3 /* Screens */,
 				D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */,
@@ -374,7 +371,6 @@
 				D26C80C829BD10C9009393C3 /* ListAllItemsTableViewDataSource.swift in Sources */,
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
-				D2EFB9D229BCFC97009EA5E5 /* ViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
 				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
 				D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */,

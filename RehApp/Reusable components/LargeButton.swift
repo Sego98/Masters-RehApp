@@ -10,7 +10,11 @@ import UIKit
 
 class LargeButton: UIButton {
 
+    // MARK: - Properties
+
     private let title: String
+
+    // MARK: - Init
 
     init(title: String) {
         self.title = title

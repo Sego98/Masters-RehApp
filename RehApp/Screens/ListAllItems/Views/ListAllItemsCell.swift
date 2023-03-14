@@ -9,7 +9,10 @@ import Foundation
 import UIKit
 
 final class ListAllItemsCell: UITableViewCell {
+
     static var identifier: String { String(describing: self) }
+
+    // MARK: - Properties
 
     private let numberLabel: UILabel = {
         let label = UILabel()
@@ -36,6 +39,8 @@ final class ListAllItemsCell: UITableViewCell {
         view.backgroundColor = .label
         return view
     }()
+
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -67,6 +72,8 @@ final class ListAllItemsCell: UITableViewCell {
             separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
+
+    // MARK: - Public methods
 
     func setParameters(number: Int, description: String) {
         numberLabel.text = "\(number)."

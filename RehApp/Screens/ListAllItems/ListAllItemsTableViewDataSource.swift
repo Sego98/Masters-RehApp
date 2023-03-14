@@ -10,12 +10,18 @@ import UIKit
 
 final class ListAllItemsTableViewDataSource: NSObject, UITableViewDataSource {
 
+    // MARK: - Properties
+
     private let viewModel: ListAllItemsViewModel
+
+    // MARK: - Init
 
     init(viewModel: ListAllItemsViewModel) {
         self.viewModel = viewModel
         super.init()
     }
+
+    // MARK: - Delegate methods
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count

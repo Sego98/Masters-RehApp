@@ -10,6 +10,8 @@ import UIKit
 
 final class ListAllItemsView: UIView {
 
+    // MARK: - Properties
+
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,6 +22,8 @@ final class ListAllItemsView: UIView {
     }()
 
     private let allItemsButton: LargeButton
+
+    // MARK: - Init
 
     init(viewModel: ListAllItemsViewModel) {
         self.allItemsButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())

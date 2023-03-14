@@ -12,6 +12,8 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
 
     static var identifier: String { String(describing: self) }
 
+    // MARK: - Properties
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +51,8 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
         label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
+
+    // MARK: - Init
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -89,6 +93,8 @@ final class ListAllItemsHeader: UITableViewHeaderFooterView {
             rightTitleLabel.bottomAnchor.constraint(equalTo: titleView.bottomAnchor, constant: -edgeOffset)
         ])
     }
+
+    // MARK: - Public methods
 
     func setParameters(itemVM: ListAllItemsViewModel) {
         descriptionLabel.text = itemVM.screenDescription
