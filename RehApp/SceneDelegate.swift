@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  RehApp
 //
-//  Created by Akademija on 11.03.2023..
+//  Created by Petar Ljubotina on 11.03.2023..
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let viewController = ViewController()
+        let viewController = PickerViewController(viewModel: .pickPartToRehab)
         let navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
