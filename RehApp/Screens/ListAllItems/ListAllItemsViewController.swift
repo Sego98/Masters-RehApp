@@ -48,6 +48,7 @@ final class ListAllItemsViewController: UIViewController {
             cell.setParameters(number: number, description: item.shortDescription)
         }
 
+        listAllItemsView.setCollectionViewDelegate(self)
         let collectionView = listAllItemsView.getCollectionView()
 
         dataSource = ListAllItemsDataSource(collectionView: collectionView,

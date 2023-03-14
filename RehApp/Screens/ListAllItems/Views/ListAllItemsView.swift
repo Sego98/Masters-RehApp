@@ -86,4 +86,8 @@ final class ListAllItemsView: UIView {
     func getCollectionView() -> UICollectionView {
         return collectionView
     }
+
+    func setCollectionViewDelegate(_ delegate: UICollectionViewDelegate) {
+        collectionView.delegate = delegate
+    }
 }

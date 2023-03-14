@@ -85,4 +85,8 @@ final class ListAllItemsCell: UICollectionViewCell {
         numberLabel.text = "\(number)."
         descriptionLabel.text = description
     }
+
+    func setBackgroundColor(_ color: UIColor) {
+        contentView.backgroundColor = color
+    }
 }

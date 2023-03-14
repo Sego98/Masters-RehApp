@@ -23,6 +23,7 @@
 		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
 		D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F629C0F7B4001E247F /* UIView.swift */; };
 		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
+		D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D629BCFC97009EA5E5 /* RehApp.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 		D26C80D129BD11CA009393C3 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		D2EDA9F629C0F7B4001E247F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllItemsViewController+Navigation.swift"; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				D26C80C929BD10DD009393C3 /* Views */,
 				D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */,
+				D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */,
 				D26C80C529BD10AD009393C3 /* ListAllItemsViewModel.swift */,
 				D26C80C729BD10C9009393C3 /* ListAllItemsDataSource.swift */,
 			);
@@ -397,6 +400,7 @@
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
 				D26C80CB29BD110D009393C3 /* ListAllItemsCell.swift in Sources */,
+				D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
