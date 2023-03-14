@@ -50,14 +50,20 @@ final class ListAllItemsCell: UICollectionViewCell {
     }
 
     private func configure() {
+        contentView.backgroundColor = .rehAppBackground
+
         contentView.addSubviews([
             numberLabel, descriptionLabel, separatorLine
         ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
         let guide = contentView.layoutMarginsGuide
 
+        let separatorBottomConstraint = separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        separatorBottomConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
+            numberLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 24),
             numberLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             numberLabel.centerYAnchor.constraint(equalTo: descriptionLabel.centerYAnchor),
 
@@ -69,7 +75,7 @@ final class ListAllItemsCell: UICollectionViewCell {
             separatorLine.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
             separatorLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             separatorLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            separatorBottomConstraint
         ])
     }
 

@@ -32,7 +32,7 @@ class LargeButton: UIButton {
         setTitle(title, for: .normal)
 
         layer.cornerRadius = 40
-        backgroundColor = .systemGray2
+        backgroundColor = .lightPurple
 
         titleLabel?.font = .preferredFont(forTextStyle: .title2)
 

@@ -22,6 +22,7 @@
 		D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */; };
 		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
 		D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F629C0F7B4001E247F /* UIView.swift */; };
+		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D629BCFC97009EA5E5 /* RehApp.xcdatamodeld */; };
@@ -61,6 +62,7 @@
 		D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsView.swift; sourceTree = "<group>"; };
 		D26C80D129BD11CA009393C3 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		D2EDA9F629C0F7B4001E247F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				D2EDA9F629C0F7B4001E247F /* UIView.swift */,
+				D2EDA9F829C10FE0001E247F /* UIStackView.swift */,
 			);
 			path = "System extensions";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
+				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllItemsDataSource.swift in Sources */,
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,

@@ -32,6 +32,14 @@ final class ListAllItemsHeader: UICollectionReusableView {
         return view
     }()
 
+    private let titleStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
     private let leftTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -70,31 +78,34 @@ final class ListAllItemsHeader: UICollectionReusableView {
             descriptionLabel, titleView
         ])
 
-        titleView.addSubviews([
+        titleView.addSubview(titleStackView)
+        titleStackView.addArrangedSubviews([
             leftTitleLabel, rightTitleLabel
         ])
+
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        let contentGuide = layoutMarginsGuide
 
         titleView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         let titleViewGuide = titleView.layoutMarginsGuide
 
+        let titleStackViewBottomConstraint = titleView.bottomAnchor.constraint(equalTo: contentGuide.bottomAnchor)
+        titleStackViewBottomConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: contentGuide.topAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentGuide.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentGuide.trailingAnchor),
 
             titleView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleView.leadingAnchor.constraint(equalTo: contentGuide.leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: contentGuide.trailingAnchor),
+            titleStackViewBottomConstraint,
 
-            leftTitleLabel.topAnchor.constraint(equalTo: titleViewGuide.topAnchor),
-            leftTitleLabel.leadingAnchor.constraint(equalTo: titleViewGuide.leadingAnchor),
-            leftTitleLabel.bottomAnchor.constraint(equalTo: titleViewGuide.bottomAnchor),
-
-            rightTitleLabel.topAnchor.constraint(equalTo: leftTitleLabel.topAnchor),
-            rightTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leftTitleLabel.trailingAnchor, constant: 8),
-            rightTitleLabel.trailingAnchor.constraint(equalTo: titleViewGuide.trailingAnchor),
-            rightTitleLabel.bottomAnchor.constraint(equalTo: leftTitleLabel.bottomAnchor)
+            titleStackView.topAnchor.constraint(equalTo: titleViewGuide.topAnchor),
+            titleStackView.leadingAnchor.constraint(equalTo: titleViewGuide.leadingAnchor),
+            titleStackView.trailingAnchor.constraint(equalTo: titleViewGuide.trailingAnchor),
+            titleStackView.bottomAnchor.constraint(equalTo: titleViewGuide.bottomAnchor)
         ])
     }
 

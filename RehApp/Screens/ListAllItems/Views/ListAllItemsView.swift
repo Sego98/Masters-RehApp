@@ -16,6 +16,7 @@ final class ListAllItemsView: UIView {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: customCollectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .rehAppBackground
         return collectionView
     }()
 
@@ -28,6 +29,7 @@ final class ListAllItemsView: UIView {
                                                        repeatingSubitem: item,
                                                        count: 1)
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -39,6 +41,7 @@ final class ListAllItemsView: UIView {
         let headerView = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                      elementKind: headerKind,
                                                                      alignment: .topLeading)
+        headerView.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
         configuration.boundarySupplementaryItems = [headerView]
         layout.configuration = configuration
 
@@ -66,17 +69,14 @@ final class ListAllItemsView: UIView {
             collectionView, allItemsButton
         ])
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 0, trailing: 24)
-        let guide = layoutMarginsGuide
-
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8),
-            allItemsButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            allItemsButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            allItemsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            allItemsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             allItemsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
