@@ -13,7 +13,7 @@ final class ListAllItemsViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let viewModel: ListAllItemsViewModel
+    let viewModel: ListAllItemsViewModel
     private let listAllItemsView: ListAllItemsView
     private var dataSource: ListAllItemsDataSource!
 

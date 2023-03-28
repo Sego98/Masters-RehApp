@@ -24,6 +24,11 @@
 		D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F629C0F7B4001E247F /* UIView.swift */; };
 		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
 		D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */; };
+		D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */; };
+		D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */; };
+		D2EDAA0229C3ACF4001E247F /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0129C3ACF4001E247F /* OverlayView.swift */; };
+		D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */; };
+		D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
 		D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9D629BCFC97009EA5E5 /* RehApp.xcdatamodeld */; };
@@ -65,6 +70,11 @@
 		D2EDA9F629C0F7B4001E247F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllItemsViewController+Navigation.swift"; sourceTree = "<group>"; };
+		D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+		D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsView.swift; sourceTree = "<group>"; };
+		D2EDAA0129C3ACF4001E247F /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewModel.swift; sourceTree = "<group>"; };
+		D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsDataSource.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 		D26C80B729BD0E83009393C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D2EDA9FC29C3AC35001E247F /* ExerciseDetails */,
 				D26C80C229BD102B009393C3 /* ListAllItems */,
 				D26C80B829BD0EAE009393C3 /* ItemPicker */,
 			);
@@ -166,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
+				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -177,6 +189,17 @@
 				D2EDA9F829C10FE0001E247F /* UIStackView.swift */,
 			);
 			path = "System extensions";
+			sourceTree = "<group>";
+		};
+		D2EDA9FC29C3AC35001E247F /* ExerciseDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */,
+				D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */,
+				D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */,
+				D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */,
+			);
+			path = ExerciseDetails;
 			sourceTree = "<group>";
 		};
 		D2EFB9C129BCFC97009EA5E5 = {
@@ -383,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
@@ -390,11 +414,15 @@
 				D26C80C829BD10C9009393C3 /* ListAllItemsDataSource.swift in Sources */,
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
+				D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */,
+				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
+				D2EDAA0229C3ACF4001E247F /* OverlayView.swift in Sources */,
 				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
 				D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */,
 				D26C80CD29BD112B009393C3 /* ListAllItemsHeader.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllItemsViewModel.swift in Sources */,
+				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,

@@ -19,4 +19,12 @@ extension ListAllItemsViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ListAllItemsCell else { return }
         cell.setBackgroundColor(.rehAppBackground)
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let description = viewModel.items[indexPath.item].longDescription
+        let exerciseDetailsVM = ExerciseDetailsViewModel(screenTitle: "Vježba broj \(indexPath.item + 1)",
+                                                                exerciseDescription: description)
+        let viewController = ExerciseDetailsViewController(viewModel: exerciseDetailsVM)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
