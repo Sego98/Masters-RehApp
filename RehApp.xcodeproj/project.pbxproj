@@ -21,6 +21,7 @@
 		D26C80CD29BD112B009393C3 /* ListAllItemsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CC29BD112B009393C3 /* ListAllItemsHeader.swift */; };
 		D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */; };
 		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
+		D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */; };
 		D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F629C0F7B4001E247F /* UIView.swift */; };
 		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
 		D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */; };
@@ -67,6 +68,7 @@
 		D26C80CC29BD112B009393C3 /* ListAllItemsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsHeader.swift; sourceTree = "<group>"; };
 		D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsView.swift; sourceTree = "<group>"; };
 		D26C80D129BD11CA009393C3 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppViewController.swift; sourceTree = "<group>"; };
 		D2EDA9F629C0F7B4001E247F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllItemsViewController+Navigation.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
 				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
+				D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
+				D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
 				D26C80CB29BD110D009393C3 /* ListAllItemsCell.swift in Sources */,
 				D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */,

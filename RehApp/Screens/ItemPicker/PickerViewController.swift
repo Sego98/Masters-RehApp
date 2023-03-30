@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PickerViewController: UIViewController {
+final class PickerViewController: RehAppViewController {
 
     // MARK: - Properties
 
@@ -43,18 +43,7 @@ final class PickerViewController: UIViewController {
     }
 
     private func configure() {
-        let navBarAppearence = UINavigationBarAppearance()
-        navBarAppearence.backgroundColor = .burgundy
-        navBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.beige]
-        navBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.beige]
-
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearence
-        navigationController?.navigationBar.standardAppearance = navBarAppearence
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = viewModel.title
-        navigationItem.largeTitleDisplayMode = .always
-
-        navigationController?.navigationBar.tintColor = .burgundy
+        configureNavigationBar(title: viewModel.title)
 
         let buttonActions = makeButtonActions()
         pickerView.setButtonActions(buttonActions)

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsViewController: UIViewController {
+final class ListAllItemsViewController: RehAppViewController {
 
     // MARK: - Properties
 
@@ -39,10 +39,14 @@ final class ListAllItemsViewController: UIViewController {
     }
 
     private func configure() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = viewModel.screenTitle
-        navigationItem.largeTitleDisplayMode = .automatic
+        configureNavigationBar(title: viewModel.screenTitle)
+        configureDataSourceCellRegistrations()
+        configureDataSourceSupplementaryViews()
 
+        dataSource.rebuildSnapshot(items: viewModel.items, animatingDifferences: true)
+    }
+
+    private func configureDataSourceCellRegistrations() {
         let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllItemsCell, ListAllItemsViewModel.ItemViewModel> {cell, indexPath, item in
             let number = indexPath.item + 1
             cell.setParameters(number: number, description: item.shortDescription)
@@ -57,7 +61,9 @@ final class ListAllItemsViewController: UIViewController {
                                                                 for: indexPath,
                                                                 item: item)
         })
+    }
 
+    private func configureDataSourceSupplementaryViews() {
         let headerRegistration = UICollectionView.SupplementaryRegistration<ListAllItemsHeader>(elementKind: ListAllItemsHeader.elementKind) { [weak self] (supplementaryView, _, _) in
             guard let self = self else { return }
             supplementaryView.setValues(with: self.viewModel)
@@ -70,7 +76,5 @@ final class ListAllItemsViewController: UIViewController {
             }
             return nil
         }
-
-        dataSource.rebuildSnapshot(items: viewModel.items, animatingDifferences: true)
     }
 }
