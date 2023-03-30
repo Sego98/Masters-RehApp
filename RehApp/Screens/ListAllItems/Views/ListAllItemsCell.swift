@@ -38,6 +38,14 @@ final class ListAllItemsCell: UICollectionViewCell {
         return view
     }()
 
+    override var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
+        set {
+            contentView.backgroundColor = newValue ? .lightPurple.withAlphaComponent(0.2) : .rehAppBackground
+        }
+    }
     // MARK: - Init
 
     override init(frame: CGRect) {

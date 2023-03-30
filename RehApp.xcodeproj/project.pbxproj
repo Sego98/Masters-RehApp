@@ -22,6 +22,8 @@
 		D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */; };
 		D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80D129BD11CA009393C3 /* LargeButton.swift */; };
 		D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */; };
+		D2ECFBD029D6139D004EAC6E /* StreakCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBCF29D6139D004EAC6E /* StreakCalendarViewController.swift */; };
+		D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBD129D613E9004EAC6E /* StreakCalendarView.swift */; };
 		D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F629C0F7B4001E247F /* UIView.swift */; };
 		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
 		D2EDA9FB29C119D6001E247F /* ListAllItemsViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */; };
@@ -69,6 +71,8 @@
 		D26C80CE29BD1149009393C3 /* ListAllItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsView.swift; sourceTree = "<group>"; };
 		D26C80D129BD11CA009393C3 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppViewController.swift; sourceTree = "<group>"; };
+		D2ECFBCF29D6139D004EAC6E /* StreakCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCalendarViewController.swift; sourceTree = "<group>"; };
+		D2ECFBD129D613E9004EAC6E /* StreakCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCalendarView.swift; sourceTree = "<group>"; };
 		D2EDA9F629C0F7B4001E247F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		D2EDA9FA29C119D6001E247F /* ListAllItemsViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllItemsViewController+Navigation.swift"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		D26C80B729BD0E83009393C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D2ECFBCE29D61388004EAC6E /* StreakCalendar */,
 				D2EDA9FC29C3AC35001E247F /* ExerciseDetails */,
 				D26C80C229BD102B009393C3 /* ListAllItems */,
 				D26C80B829BD0EAE009393C3 /* ItemPicker */,
@@ -183,6 +188,15 @@
 				D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */,
 			);
 			path = "Reusable components";
+			sourceTree = "<group>";
+		};
+		D2ECFBCE29D61388004EAC6E /* StreakCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				D2ECFBCF29D6139D004EAC6E /* StreakCalendarViewController.swift */,
+				D2ECFBD129D613E9004EAC6E /* StreakCalendarView.swift */,
+			);
+			path = StreakCalendar;
 			sourceTree = "<group>";
 		};
 		D2EDA9F529C0F79E001E247F /* System extensions */ = {
@@ -411,6 +425,7 @@
 			files = (
 				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
+				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
@@ -428,6 +443,7 @@
 				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
+				D2ECFBD029D6139D004EAC6E /* StreakCalendarViewController.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
 				D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,

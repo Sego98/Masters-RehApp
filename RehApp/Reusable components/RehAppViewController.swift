@@ -38,9 +38,14 @@ class RehAppViewController: UIViewController {
                                              action: #selector(rightBarButtonTapped))
         rightBarButton.tintColor = .beige
         navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .beige
+
     }
 
     @objc func rightBarButtonTapped(_ sender: UIBarButtonItem) {
-        print("Tapped")
+        let calendarViewController = StreakCalendarViewController()
+
+        present(calendarViewController, animated: true)
     }
 }
