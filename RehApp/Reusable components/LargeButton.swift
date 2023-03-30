@@ -14,6 +14,15 @@ class LargeButton: UIButton {
 
     private let title: String
 
+    override var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
+        set {
+            backgroundColor = newValue ? .lightPurple.withAlphaComponent(0.6) : .lightPurple
+        }
+    }
+
     // MARK: - Init
 
     init(title: String) {
