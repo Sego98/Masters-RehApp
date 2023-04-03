@@ -10,6 +10,7 @@
 		D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */; };
 		D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27C29DB436900EF79E7 /* RemindersViewController.swift */; };
 		D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */; };
+		D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28029DB5EC700EF79E7 /* RemindersView.swift */; };
 		D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80AE29BD01AA009393C3 /* RxCocoa */; };
 		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
 		D26C80B429BD053C009393C3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B329BD053C009393C3 /* UIColor.swift */; };
@@ -64,6 +65,7 @@
 		D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabBarController.swift; sourceTree = "<group>"; };
 		D256B27C29DB436900EF79E7 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppNavigationController.swift; sourceTree = "<group>"; };
+		D256B28029DB5EC700EF79E7 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
 		D26C80B329BD053C009393C3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D26C80B929BD0ECA009393C3 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D256B27C29DB436900EF79E7 /* RemindersViewController.swift */,
+				D256B28029DB5EC700EF79E7 /* RemindersView.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			files = (
 				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
 				D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */,
+				D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */,
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,

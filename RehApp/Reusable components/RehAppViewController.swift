@@ -10,8 +10,11 @@ import UIKit
 
 class RehAppViewController: UIViewController {
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    private let screenTitle: String?
+
+    init(screenTitle: String? = nil) {
+        self.screenTitle = screenTitle
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -22,7 +25,12 @@ class RehAppViewController: UIViewController {
         return .lightContent
     }
 
-    func configureNavigationBar(title: String? = nil) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigationBar()
+    }
+
+    private func configureNavigationBar() {
         let navBarAppearence = UINavigationBarAppearance()
         navBarAppearence.backgroundColor = .burgundy
         navBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
@@ -33,7 +41,7 @@ class RehAppViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = title
+        navigationItem.title = screenTitle
 
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
                                              style: .plain,

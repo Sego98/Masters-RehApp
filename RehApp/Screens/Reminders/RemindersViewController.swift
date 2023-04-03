@@ -8,18 +8,32 @@
 import Foundation
 import UIKit
 
-final class RemindersViewController: UIViewController {
+final class RemindersViewController: RehAppViewController {
+
+    // MARK: - Properties
+
+    private let remindersView = RemindersView()
+
+    // MARK: - Lifecycle
 
     init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init(screenTitle: "Podsjetnici")
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func loadView() {
+        view = remindersView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightPurple
+        configure()
+    }
+    
+    private func configure() {
+        
     }
 }

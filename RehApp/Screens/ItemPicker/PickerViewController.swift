@@ -26,7 +26,7 @@ final class PickerViewController: RehAppViewController {
         }
 
         self.pickerView = PickerView(subviewsVM: subviews)
-        super.init(nibName: nil, bundle: nil)
+        super.init(screenTitle: viewModel.title)
     }
 
     required init?(coder: NSCoder) {
@@ -43,7 +43,6 @@ final class PickerViewController: RehAppViewController {
     }
 
     private func configure() {
-        configureNavigationBar(title: viewModel.title)
 
         let buttonActions = makeButtonActions()
         pickerView.setButtonActions(buttonActions)
