@@ -18,16 +18,19 @@ class RehAppViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     func configureNavigationBar(title: String? = nil) {
         let navBarAppearence = UINavigationBarAppearance()
         navBarAppearence.backgroundColor = .burgundy
-        navBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.beige]
-        navBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.beige]
+        navBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.white]
 
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearence
         navigationController?.navigationBar.standardAppearance = navBarAppearence
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .burgundy
 
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = title
@@ -36,10 +39,10 @@ class RehAppViewController: UIViewController {
                                              style: .plain,
                                              target: self,
                                              action: #selector(rightBarButtonTapped))
-        rightBarButton.tintColor = .beige
+        rightBarButton.tintColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = .beige
+        navigationItem.backBarButtonItem?.tintColor = .white
 
     }
 
