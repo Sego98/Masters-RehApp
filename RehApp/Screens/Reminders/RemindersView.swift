@@ -12,6 +12,12 @@ final class RemindersView: UIView {
 
     // MARK: - Properties
 
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+
     // MARK: - Init
 
     init() {
@@ -25,5 +31,14 @@ final class RemindersView: UIView {
 
     private func configure() {
         backgroundColor = .rehAppBackground
+
+        addSubview(tableView)
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }

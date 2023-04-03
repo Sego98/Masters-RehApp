@@ -13,8 +13,11 @@
 		D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28029DB5EC700EF79E7 /* RemindersView.swift */; };
 		D256B28329DB644F00EF79E7 /* RehAppTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28229DB644F00EF79E7 /* RehAppTabType.swift */; };
 		D256B28729DB66C100EF79E7 /* RehAppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D256B28529DB66C100EF79E7 /* RehAppCoreDataModel.xcdatamodeld */; };
-		D256B28A29DB676C00EF79E7 /* CDReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28829DB676C00EF79E7 /* CDReminder+CoreDataClass.swift */; };
-		D256B28B29DB676C00EF79E7 /* CDReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28929DB676C00EF79E7 /* CDReminder+CoreDataProperties.swift */; };
+		D256B28D29DB6A1000EF79E7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28C29DB6A1000EF79E7 /* UIViewController.swift */; };
+		D256B28F29DB6F2600EF79E7 /* RemindersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B28E29DB6F2600EF79E7 /* RemindersDataSource.swift */; };
+		D256B29129DB6F6C00EF79E7 /* ReminderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B29029DB6F6C00EF79E7 /* ReminderVM.swift */; };
+		D256B29329DB725600EF79E7 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B29229DB725600EF79E7 /* ReminderCell.swift */; };
+		D256B29529DB7AC000EF79E7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B29429DB7AC000EF79E7 /* Formatters.swift */; };
 		D26C80AF29BD01AA009393C3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80AE29BD01AA009393C3 /* RxCocoa */; };
 		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
 		D26C80B429BD053C009393C3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B329BD053C009393C3 /* UIColor.swift */; };
@@ -72,8 +75,11 @@
 		D256B28029DB5EC700EF79E7 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
 		D256B28229DB644F00EF79E7 /* RehAppTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabType.swift; sourceTree = "<group>"; };
 		D256B28629DB66C100EF79E7 /* RehAppCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RehAppCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		D256B28829DB676C00EF79E7 /* CDReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D256B28929DB676C00EF79E7 /* CDReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D256B28C29DB6A1000EF79E7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		D256B28E29DB6F2600EF79E7 /* RemindersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDataSource.swift; sourceTree = "<group>"; };
+		D256B29029DB6F6C00EF79E7 /* ReminderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderVM.swift; sourceTree = "<group>"; };
+		D256B29229DB725600EF79E7 /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		D256B29429DB7AC000EF79E7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		D26C80B329BD053C009393C3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D26C80B929BD0ECA009393C3 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 			children = (
 				D256B27C29DB436900EF79E7 /* RemindersViewController.swift */,
 				D256B28029DB5EC700EF79E7 /* RemindersView.swift */,
+				D256B28E29DB6F2600EF79E7 /* RemindersDataSource.swift */,
+				D256B29029DB6F6C00EF79E7 /* ReminderVM.swift */,
+				D256B29229DB725600EF79E7 /* ReminderCell.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -158,8 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				D256B28529DB66C100EF79E7 /* RehAppCoreDataModel.xcdatamodeld */,
-				D256B28829DB676C00EF79E7 /* CDReminder+CoreDataClass.swift */,
-				D256B28929DB676C00EF79E7 /* CDReminder+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -250,6 +257,7 @@
 			children = (
 				D2EDA9F629C0F7B4001E247F /* UIView.swift */,
 				D2EDA9F829C10FE0001E247F /* UIStackView.swift */,
+				D256B28C29DB6A1000EF79E7 /* UIViewController.swift */,
 			);
 			path = "System extensions";
 			sourceTree = "<group>";
@@ -289,6 +297,7 @@
 			children = (
 				D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */,
 				D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */,
+				D256B29429DB7AC000EF79E7 /* Formatters.swift */,
 				D26C80B229BD0524009393C3 /* Visual design */,
 				D2EDA9F529C0F79E001E247F /* System extensions */,
 				D256B27829DB3F5B00EF79E7 /* Navigation */,
@@ -474,6 +483,7 @@
 				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
 				D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */,
 				D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */,
+				D256B28F29DB6F2600EF79E7 /* RemindersDataSource.swift in Sources */,
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
@@ -481,10 +491,12 @@
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllItemsDataSource.swift in Sources */,
 				D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */,
+				D256B29529DB7AC000EF79E7 /* Formatters.swift in Sources */,
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
+				D256B28D29DB6A1000EF79E7 /* UIViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
 				D2EDAA0229C3ACF4001E247F /* OverlayView.swift in Sources */,
 				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
@@ -495,12 +507,12 @@
 				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D256B28329DB644F00EF79E7 /* RehAppTabType.swift in Sources */,
-				D256B28B29DB676C00EF79E7 /* CDReminder+CoreDataProperties.swift in Sources */,
-				D256B28A29DB676C00EF79E7 /* CDReminder+CoreDataClass.swift in Sources */,
 				D256B28729DB66C100EF79E7 /* RehAppCoreDataModel.xcdatamodeld in Sources */,
+				D256B29129DB6F6C00EF79E7 /* ReminderVM.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2ECFBD029D6139D004EAC6E /* StreakCalendarViewController.swift in Sources */,
 				D2EFB9D829BCFC97009EA5E5 /* RehApp.xcdatamodeld in Sources */,
+				D256B29329DB725600EF79E7 /* ReminderCell.swift in Sources */,
 				D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
 				D26C80CB29BD110D009393C3 /* ListAllItemsCell.swift in Sources */,
