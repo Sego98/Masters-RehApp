@@ -10,10 +10,16 @@ import UIKit
 
 class RehAppViewController: UIViewController {
 
-    private let screenTitle: String?
+    // MARK: - Properties
 
-    init(screenTitle: String? = nil) {
+    private let screenTitle: String?
+    private let type: RehAppTabType
+
+    // MARK: - Lifecycle
+
+    init(screenTitle: String? = nil, type: RehAppTabType = .exercises) {
         self.screenTitle = screenTitle
+        self.type = type
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,15 +49,27 @@ class RehAppViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = screenTitle
 
-        let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(rightBarButtonTapped))
-        rightBarButton.tintColor = .white
-        navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.rightBarButtonItem = makeBarButtonItem(type)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
+    }
 
+    private func makeBarButtonItem(_ type: RehAppTabType) -> UIBarButtonItem? {
+        var barButtonItem: UIBarButtonItem?
+        switch type {
+        case .exercises:
+            barButtonItem = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
+                                   style: .plain,
+                                   target: self,
+                                   action: #selector(rightBarButtonTapped))
+        case .reminders:
+            barButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
+                                   style: .plain,
+                                   target: self,
+                                   action: nil)
+        }
+        barButtonItem?.tintColor = .white
+        return barButtonItem
     }
 
     @objc func rightBarButtonTapped(_ sender: UIBarButtonItem) {

@@ -17,7 +17,7 @@ final class RemindersViewController: RehAppViewController {
     // MARK: - Lifecycle
 
     init() {
-        super.init(screenTitle: "Podsjetnici")
+        super.init(screenTitle: "Podsjetnici", type: .reminders)
     }
 
     required init?(coder: NSCoder) {
@@ -32,8 +32,8 @@ final class RemindersViewController: RehAppViewController {
         super.viewDidLoad()
         configure()
     }
-    
+
     private func configure() {
-        
+
     }
 }

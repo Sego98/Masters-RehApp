@@ -10,38 +10,6 @@ import UIKit
 
 final class RehAppTabBarController: UITabBarController {
 
-    enum RehAppTabType {
-        case picker
-        case reminders
-
-        var title: String {
-            switch self {
-            case .picker:
-                return "Izbornik"
-            case .reminders:
-                return "Podsjetnici"
-            }
-        }
-
-        var unselectedSystemImageName: String {
-            switch self {
-            case .picker:
-                return "menucard"
-            case .reminders:
-                return "clock"
-            }
-        }
-
-        var selectedSystemImageName: String {
-            switch self {
-            case .picker:
-                return "menucard.fill"
-            case .reminders:
-                return "clock.fill"
-            }
-        }
-    }
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -70,7 +38,7 @@ final class RehAppTabBarController: UITabBarController {
     private func configureViewControllers() {
         let pickerVC = PickerViewController(viewModel: .pickPartToRehab)
         let pickerNC = RehAppNavigationController(rootViewController: pickerVC)
-        pickerNC.tabBarItem = makeTabBarItem(.picker)
+        pickerNC.tabBarItem = makeTabBarItem(.exercises)
 
         let remindersVC = RemindersViewController()
         let remindersNC = RehAppNavigationController(rootViewController: remindersVC)
