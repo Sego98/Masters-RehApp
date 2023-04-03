@@ -58,7 +58,7 @@ final class PickerView: UIView {
             stackView.addArrangedSubview(subview)
         }
 
-        containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 0, trailing: 24)
+        containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24)
         let guide = containerView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
