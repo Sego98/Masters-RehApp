@@ -8,14 +8,16 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 final class RemindersViewController: RehAppViewController {
 
     // MARK: - Properties
 
     private let remindersView = RemindersView()
+    private var dataSource: RemindersDataSource?
 
-    private var dataSource: RemindersDataSource!
+//    private let mainViewContext: NSManagedObjectContext
 
     // MARK: - Lifecycle
 
@@ -33,6 +35,7 @@ final class RemindersViewController: RehAppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        createReminder(name: "Test", date: Date())
         configure()
     }
 
@@ -50,6 +53,7 @@ final class RemindersViewController: RehAppViewController {
             return cell
         })
 
+        getAllReminders()
     }
 
     // MARK: - Core data methods
@@ -57,7 +61,11 @@ final class RemindersViewController: RehAppViewController {
     private func getAllReminders() {
         let reminderFetchRequest = CDReminder.fetchRequest()
         do {
-            let _ = try mainViewContext.fetch(reminderFetchRequest)
+            let reminders = try mainViewContext.fetch(reminderFetchRequest)
+            print(reminders.count)
+            guard let dataSource = dataSource else { return }
+            let remindersVM = reminders.compactMap { $0.viewModel }
+            dataSource.rebuildSnapshot(reminders: remindersVM, animatingDifferences: true)
         } catch {
 #if DEBUG
             print(error.localizedDescription)
@@ -69,7 +77,13 @@ final class RemindersViewController: RehAppViewController {
         let reminder = CDReminder(context: mainViewContext)
         reminder.name = name
         reminder.date = date
-        saveMainContext()
+        do {
+            try mainViewContext.save()
+        } catch {
+#if DEBUG
+            print(error.localizedDescription)
+#endif
+        }
     }
 
     private func deleteReminder(_ reminder: CDReminder) {

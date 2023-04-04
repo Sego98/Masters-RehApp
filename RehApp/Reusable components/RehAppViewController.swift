@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class RehAppViewController: UIViewController {
 
@@ -14,6 +15,18 @@ class RehAppViewController: UIViewController {
 
     private let screenTitle: String?
     private let type: RehAppTabType
+
+    let mainViewContext: NSManagedObjectContext = {
+        let container = NSPersistentContainer(name: "RehAppCoreData")
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            if let error = error as NSError? {
+#if DEBUG
+                print(error.localizedDescription)
+#endif
+            }
+        })
+        return container.viewContext
+    }()
 
     // MARK: - Lifecycle
 
