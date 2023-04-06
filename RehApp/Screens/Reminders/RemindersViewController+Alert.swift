@@ -38,8 +38,19 @@ extension RemindersViewController {
     private func makeAlertInputFields(_ alert: UIAlertController,
                                       type: AlertType,
                                       reminder: CDReminder?) -> UIAlertController {
-        let datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: Date())
-        datePicker.delegate = self
+        let datePicker: WheelsDatePicker?
+        switch type {
+        case .newReminder:
+            datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: Date())
+        case .editingReminder:
+            if let reminder = reminder,
+               let date = reminder.date {
+                datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: date)
+            } else {
+                return alert
+            }
+        }
+        datePicker?.delegate = self
 
         for alertTextField in AlertTextFields.allCases {
             switch alertTextField {
