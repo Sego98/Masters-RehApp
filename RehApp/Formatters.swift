@@ -13,7 +13,8 @@ enum Formatters {
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MM dd, hh:mm")
+        formatter.setLocalizedDateFormatFromTemplate("yMMdd jjmm")
         return formatter
     }()
+
 }

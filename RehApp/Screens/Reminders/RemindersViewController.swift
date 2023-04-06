@@ -16,8 +16,14 @@ final class RemindersViewController: RehAppViewController {
 
     private let remindersView = RemindersView()
     private var dataSource: RemindersDataSource?
+    let alert = UIAlertController(title: "Novi podsjetnik",
+                                  message: "Za unos novog podsjetnika unesi njegov naslov i vrijeme",
+                                  preferredStyle: .alert)
 
-//    private let mainViewContext: NSManagedObjectContext
+    enum AlertTextFields: String, CaseIterable {
+        case name = "Unesi naslov"
+        case date = "Unesi datum"
+    }
 
     // MARK: - Lifecycle
 
@@ -36,10 +42,12 @@ final class RemindersViewController: RehAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        createReminder(name: "Test", date: Date())
-        configure()
+        navigationItem.rightBarButtonItem?.action = #selector(plusButtonAction)
+        configureDataSource()
+        getAllReminders()
     }
 
-    private func configure() {
+    private func configureDataSource() {
         remindersView.tableView.register(ReminderCell.self, forCellReuseIdentifier: ReminderCell.identifier)
 
         dataSource = RemindersDataSource(tableView: remindersView.tableView, cellProvider: { tableView, indexPath, item in
@@ -52,60 +60,14 @@ final class RemindersViewController: RehAppViewController {
             cell.setValues(with: item)
             return cell
         })
-
-        getAllReminders()
     }
 
-    // MARK: - Core data methods
-
-    private func getAllReminders() {
-        let reminderFetchRequest = CDReminder.fetchRequest()
-        do {
-            let reminders = try mainViewContext.fetch(reminderFetchRequest)
-            print(reminders.count)
-            guard let dataSource = dataSource else { return }
-            let remindersVM = reminders.compactMap { $0.viewModel }
-            dataSource.rebuildSnapshot(reminders: remindersVM, animatingDifferences: true)
-        } catch {
-#if DEBUG
-            print(error.localizedDescription)
-#endif
-        }
+    @objc private func plusButtonAction() {
+        makeNewReminderAlert()
     }
 
-    private func createReminder(name: String, date: Date) {
-        let reminder = CDReminder(context: mainViewContext)
-        reminder.name = name
-        reminder.date = date
-        do {
-            try mainViewContext.save()
-        } catch {
-#if DEBUG
-            print(error.localizedDescription)
-#endif
-        }
+    func rebuildSnapshot(reminders: [ReminderVM], animatingDifferences: Bool) {
+        dataSource?.rebuildSnapshot(reminders: reminders, animatingDifferences: animatingDifferences)
     }
 
-    private func deleteReminder(_ reminder: CDReminder) {
-        mainViewContext.delete(reminder)
-        saveMainContext()
-    }
-
-    private func updateReminder(_ reminder: CDReminder, newName: String, newDate: Date) {
-        reminder.name = newName
-        reminder.date = newDate
-        saveMainContext()
-    }
-
-    // MARK: - Private helper methods
-
-    private func saveMainContext() {
-        do {
-            try mainViewContext.save()
-        } catch {
-#if DEBUG
-            print(error.localizedDescription)
-#endif
-        }
-    }
 }
