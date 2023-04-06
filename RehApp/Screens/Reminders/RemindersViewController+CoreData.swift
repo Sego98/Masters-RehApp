@@ -16,6 +16,7 @@ extension RemindersViewController {
         let reminderFetchRequest = CDReminder.fetchRequest()
         do {
             let reminders = try mainViewContext.fetch(reminderFetchRequest)
+            allReminders = reminders
             let remindersVM = reminders.compactMap { $0.viewModel }
             rebuildSnapshot(reminders: remindersVM, animatingDifferences: true)
         } catch {
@@ -53,6 +54,7 @@ extension RemindersViewController {
     private func saveMainContext() {
         do {
             try mainViewContext.save()
+            getAllReminders()
         } catch {
 #if DEBUG
             print(error.localizedDescription)

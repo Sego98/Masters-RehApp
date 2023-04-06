@@ -16,14 +16,9 @@ final class RemindersViewController: RehAppViewController {
 
     private let remindersView = RemindersView()
     private var dataSource: RemindersDataSource?
-    let alert = UIAlertController(title: "Novi podsjetnik",
-                                  message: "Za unos novog podsjetnika unesi njegov naslov i vrijeme",
-                                  preferredStyle: .alert)
 
-    enum AlertTextFields: String, CaseIterable {
-        case name = "Unesi naslov"
-        case date = "Unesi datum"
-    }
+    var presentedAlert: UIAlertController?
+    var allReminders = [CDReminder]()
 
     // MARK: - Lifecycle
 
@@ -41,10 +36,14 @@ final class RemindersViewController: RehAppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createReminder(name: "Test", date: Date())
-        navigationItem.rightBarButtonItem?.action = #selector(plusButtonAction)
+        configure()
         configureDataSource()
         getAllReminders()
+    }
+
+    private func configure() {
+        navigationItem.rightBarButtonItem?.action = #selector(plusButtonAction)
+        remindersView.tableView.delegate = self
     }
 
     private func configureDataSource() {
@@ -63,11 +62,20 @@ final class RemindersViewController: RehAppViewController {
     }
 
     @objc private func plusButtonAction() {
-        makeNewReminderAlert()
+        configureReminderAlert(type: .newReminder)
     }
 
     func rebuildSnapshot(reminders: [ReminderVM], animatingDifferences: Bool) {
         dataSource?.rebuildSnapshot(reminders: reminders, animatingDifferences: animatingDifferences)
+    }
+
+}
+
+extension RemindersViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedReminder = allReminders[indexPath.row]
+        print(selectedReminder)
+        configureReminderAlert(type: .editingReminder, reminder: selectedReminder)
     }
 
 }

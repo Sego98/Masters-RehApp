@@ -15,6 +15,8 @@ final class RemindersView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isUserInteractionEnabled = true
+        tableView.separatorStyle = .none
         return tableView
     }()
 

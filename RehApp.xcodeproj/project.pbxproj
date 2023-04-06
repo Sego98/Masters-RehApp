@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */; };
 		D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */; };
 		D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27C29DB436900EF79E7 /* RemindersViewController.swift */; };
 		D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderAlertConfiguration.swift; sourceTree = "<group>"; };
 		D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabBarController.swift; sourceTree = "<group>"; };
 		D256B27C29DB436900EF79E7 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppNavigationController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		D256B27B29DB435300EF79E7 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */,
 				D2DB99BE29DE1E6E0058A70C /* Views */,
 				D256B27C29DB436900EF79E7 /* RemindersViewController.swift */,
 				D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */,
@@ -471,6 +474,7 @@
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
+				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllItemsDataSource.swift in Sources */,
 				D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */,

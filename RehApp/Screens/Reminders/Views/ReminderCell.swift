@@ -24,6 +24,16 @@ final class ReminderCell: UITableViewCell {
         return label
     }()
 
+    override var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
+        set {
+            super.isHighlighted = newValue
+            backgroundColor = newValue ? .rehAppBackground.withAlphaComponent(0.5) : .rehAppBackground
+        }
+    }
+
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
