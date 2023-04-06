@@ -10,7 +10,7 @@ import UIKit
 
 extension RemindersViewController {
 
-    // MARK: - New reminder alert
+    // MARK: - Reminder alert
 
     func configureReminderAlert(type: AlertType, reminder: CDReminder? = nil) {
         let alert = makeAlert(type: type, reminder: reminder)
@@ -30,39 +30,40 @@ extension RemindersViewController {
                                       message: "Za uređivanje podsjetnika unesite novo ime i vrijeme",
                                       preferredStyle: .alert)
         }
-        let alertWithInputFields = makeAlertInputFields(alert, type: type, reminder: reminder)
-        let alertWithActions = makeAlertActions(alert, type: type, reminder: reminder)
-        return alertWithActions
+        makeAlertInputFields(alert, type: type, reminder: reminder)
+        makeAlertActions(alert, type: type, reminder: reminder)
+        return alert
     }
 
     private func makeAlertInputFields(_ alert: UIAlertController,
                                       type: AlertType,
-                                      reminder: CDReminder?) -> UIAlertController {
+                                      reminder: CDReminder?) {
         let datePicker: WheelsDatePicker?
         switch type {
         case .newReminder:
             datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: Date())
         case .editingReminder:
-            if let reminder = reminder,
-               let date = reminder.date {
-                datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: date)
-            } else {
-                return alert
-            }
+            guard let reminder = reminder,
+                  let date = reminder.date else { return }
+            datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: date)
         }
         datePicker?.delegate = self
 
         for alertTextField in AlertTextFields.allCases {
             switch alertTextField {
             case .name:
-                alert.addTextField {
+                alert.addTextField {[weak self] in
+                    guard let self = self else { return }
+                    $0.delegate = self
                     $0.placeholder = alertTextField.rawValue
                     if let reminder = reminder {
                         $0.text = reminder.name
                     }
                 }
             case .date:
-                alert.addTextField {
+                alert.addTextField {[weak self] in
+                    guard let self = self else { return }
+                    $0.delegate = self
                     $0.placeholder = alertTextField.rawValue
                     $0.inputView = datePicker
                     if let reminder = reminder,
@@ -72,12 +73,11 @@ extension RemindersViewController {
                 }
             }
         }
-        return alert
     }
 
     private func makeAlertActions(_ alert: UIAlertController,
                                   type: AlertType,
-                                  reminder: CDReminder?) -> UIAlertController {
+                                  reminder: CDReminder?) {
         let actionTitle: String
         switch type {
         case .newReminder:
@@ -85,9 +85,9 @@ extension RemindersViewController {
         case .editingReminder:
             actionTitle = "Uredi podsjetnik"
         }
-        alert.addAction(UIAlertAction(title: actionTitle,
-                                      style: .default,
-                                      handler: {[weak self] _ in
+        let submitAction = UIAlertAction(title: actionTitle,
+                                         style: .default,
+                                         handler: {[weak self] _ in
             guard let self = self else { return }
             switch type {
             case .newReminder:
@@ -99,15 +99,17 @@ extension RemindersViewController {
             }
             self.presentedAlert = nil
             self.dismiss(animated: true)
-        }))
+        })
+        submitAction.isEnabled = false
+        self.submitAction = submitAction
+        alert.addAction(submitAction)
 
         alert.addAction(UIAlertAction(title: "Odustani",
-                                      style: .cancel,
+                                      style: .destructive,
                                       handler: { [weak self] _ in
             self?.presentedAlert = nil
             self?.dismiss(animated: true)
         }))
-        return alert
     }
 
     private func createNewReminderFromAlert() {
@@ -133,6 +135,17 @@ extension RemindersViewController {
               let date = Formatters.dateFormatter.date(from: dateString) else { return (nil, nil) }
         return (name, date)
     }
+
+    private func enableSubmitButtonIfNeeded() {
+        guard let alert = presentedAlert,
+              let textFields = alert.textFields,
+              let submitAction = submitAction else { return }
+        var shouldEnableSubmitButton = true
+        for textField in textFields where textField.text == "" {
+            shouldEnableSubmitButton = false
+        }
+        submitAction.isEnabled = shouldEnableSubmitButton
+    }
 }
 
 extension RemindersViewController: DateInputDelegate {
@@ -145,4 +158,11 @@ extension RemindersViewController: DateInputDelegate {
         }
     }
 
+}
+
+extension RemindersViewController: UITextFieldDelegate {
+
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        enableSubmitButtonIfNeeded()
+    }
 }

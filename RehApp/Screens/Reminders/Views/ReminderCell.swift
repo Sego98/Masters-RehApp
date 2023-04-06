@@ -24,13 +24,20 @@ final class ReminderCell: UITableViewCell {
         return label
     }()
 
+    private let separatorLine: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
+        return view
+    }()
+
     override var isHighlighted: Bool {
         get {
             return super.isHighlighted
         }
         set {
-            super.isHighlighted = newValue
             backgroundColor = newValue ? .rehAppBackground.withAlphaComponent(0.5) : .rehAppBackground
+            super.isHighlighted = newValue
         }
     }
 
@@ -48,22 +55,29 @@ final class ReminderCell: UITableViewCell {
     private func configure() {
         contentView.backgroundColor = .rehAppBackground
 
-        contentView.addSubview(nameLabel)
+        contentView.addSubviews([
+            nameLabel, separatorLine
+        ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16)
         let guide = contentView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: guide.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+
+            separatorLine.heightAnchor.constraint(equalToConstant: 1),
+            separatorLine.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            separatorLine.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            separatorLine.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 
     // MARK: - Public methods
 
     func setValues(with viewModel: ReminderVM) {
-        nameLabel.text = viewModel.name.appending(Formatters.dateFormatter.string(from: viewModel.date))
+        nameLabel.text = viewModel.name + " " + Formatters.dateFormatter.string(from: viewModel.date)
     }
 }

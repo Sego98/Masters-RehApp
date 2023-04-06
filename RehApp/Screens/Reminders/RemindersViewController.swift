@@ -18,6 +18,7 @@ final class RemindersViewController: RehAppViewController {
     private var dataSource: RemindersDataSource?
 
     var presentedAlert: UIAlertController?
+    var submitAction: UIAlertAction?
     var allReminders = [CDReminder]()
 
     // MARK: - Lifecycle
