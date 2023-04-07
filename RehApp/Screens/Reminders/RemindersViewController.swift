@@ -49,13 +49,14 @@ final class RemindersViewController: RehAppViewController {
     }
 
     private func configureDataSource() {
-        remindersView.tableView.register(ReminderCell.self, forCellReuseIdentifier: ReminderCell.identifier)
+        remindersView.tableView.register(ReminderCell.self,
+                                         forCellReuseIdentifier: ReminderCell.identifier)
 
         dataSource = RemindersDataSource(tableView: remindersView.tableView, cellProvider: { tableView, indexPath, item in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderCell.identifier, for: indexPath) as? ReminderCell else {
                 // Error cell
                 let cell = UITableViewCell()
-                cell.backgroundColor = .red
+                cell.contentView.backgroundColor = .red
                 return cell
             }
             cell.setValues(with: item)
@@ -76,8 +77,22 @@ final class RemindersViewController: RehAppViewController {
 extension RemindersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedReminder = allReminders[indexPath.row]
-        print(selectedReminder)
         configureReminderAlert(type: .editingReminder, reminder: selectedReminder)
     }
 
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "Delete") {[weak self] _, _, _ in
+            guard let self = self else { return }
+            let reminder = self.allReminders[indexPath.row]
+            self.deleteReminder(reminder)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

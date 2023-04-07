@@ -17,6 +17,8 @@ final class RemindersView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isUserInteractionEnabled = true
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .rehAppBackground
+        tableView.rowHeight = UITableView.automaticDimension
         return tableView
     }()
 

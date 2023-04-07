@@ -59,18 +59,18 @@ final class ReminderCell: UITableViewCell {
             nameLabel, separatorLine
         ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16)
-        let guide = contentView.layoutMarginsGuide
+//        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16)
+//        let guide = contentView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: guide.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
             separatorLine.heightAnchor.constraint(equalToConstant: 1),
             separatorLine.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-            separatorLine.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            separatorLine.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            separatorLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            separatorLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
