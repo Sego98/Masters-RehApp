@@ -39,7 +39,8 @@ final class RemindersViewController: RehAppViewController {
         super.viewDidLoad()
         configure()
         configureDataSource()
-        getAllReminders()
+        getAllActiveReminders()
+        deleteAllPastReminders()
     }
 
     private func configure() {
