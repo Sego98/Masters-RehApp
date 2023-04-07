@@ -67,7 +67,7 @@ final class ListAllItemsView: UIView {
             collectionView, allItemsButton
         ])
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24)
         let guide = layoutMarginsGuide
 
         NSLayoutConstraint.activate([

@@ -83,7 +83,7 @@ final class ListAllItemsHeader: UICollectionReusableView {
             leftTitleLabel, rightTitleLabel
         ])
 
-        directionalLayoutMargins = .zero
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         let contentGuide = layoutMarginsGuide
 
         titleView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
