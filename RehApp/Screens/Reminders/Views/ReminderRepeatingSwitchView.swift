@@ -38,24 +38,24 @@ final class ReminderRepeatingSwitchView: UIView {
     }()
 
     // MARK: - Init
-    
+
     init() {
         super.init(frame: .zero)
         configure()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        
+    
         addSubview(stackView)
         stackView.addArrangedSubviews([
             repeatingDescriptionLabel, repeatingSwitch
         ])
-        
+    
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),

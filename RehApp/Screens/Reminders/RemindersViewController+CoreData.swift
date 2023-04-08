@@ -34,7 +34,10 @@ extension RemindersViewController {
     func createReminder(name: String, date: Date) {
         let reminder = CDReminder(context: mainViewContext)
         reminder.name = name
-        reminder.date = date
+        var dateComponents = DateComponents()
+        dateComponents.hour = Calendar.current.component(.hour, from: date)
+        dateComponents.minute = Calendar.current.component(.minute, from: date)
+        reminder.date = Calendar.current.date(from: dateComponents)
         do {
             try mainViewContext.save()
             getAllActiveReminders()
