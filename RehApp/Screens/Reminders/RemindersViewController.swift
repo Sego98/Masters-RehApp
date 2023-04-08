@@ -19,6 +19,7 @@ final class RemindersViewController: RehAppViewController {
 
     var presentedAlert: UIAlertController?
     var submitAction: UIAlertAction?
+    var wheelsTimePicker: WheelsTimePicker?
     var allReminders = [CDReminder]()
 
     // MARK: - Lifecycle
@@ -40,7 +41,6 @@ final class RemindersViewController: RehAppViewController {
         configure()
         configureDataSource()
         getAllActiveReminders()
-//        deleteAllPastReminders()
     }
 
     private func configure() {

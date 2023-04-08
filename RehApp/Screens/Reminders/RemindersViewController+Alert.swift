@@ -38,16 +38,15 @@ extension RemindersViewController {
     private func makeAlertInputFields(_ alert: UIAlertController,
                                       type: ReminderAlertType,
                                       reminder: CDReminder?) {
-        let datePicker: WheelsTimePicker?
         switch type {
         case .newReminder:
-            datePicker = WheelsTimePicker(identifier: "datePicker", initialDate: Date())
+            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker")
         case .editingReminder:
             guard let reminder = reminder,
                   let date = reminder.date else { return }
-            datePicker = WheelsTimePicker(identifier: "datePicker", initialDate: date)
+            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker", reminderSetDate: date)
         }
-        datePicker?.delegate = self
+        wheelsTimePicker?.delegate = self
 
         for alertTextField in ReminderAlertTextFields.allCases {
             switch alertTextField {
@@ -65,7 +64,7 @@ extension RemindersViewController {
                     guard let self = self else { return }
                     $0.delegate = self
                     $0.placeholder = alertTextField.rawValue
-                    $0.inputView = datePicker
+                    $0.inputView = self.wheelsTimePicker
                     if let reminder = reminder,
                        let date = reminder.date {
                         $0.text = Formatters.timeFormatter.string(from: date)
@@ -169,7 +168,10 @@ extension RemindersViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.placeholder == ReminderAlertTextFields.date.rawValue {
             if textField.text == "" {
-                textField.text = Formatters.timeFormatter.string(from: Date())
+                guard let wheelsTimePicker = wheelsTimePicker else { return }
+                let initialDate = Date()
+                textField.text = Formatters.timeFormatter.string(from: initialDate)
+                wheelsTimePicker.setInitialDate(initialDate)
             }
         }
     }

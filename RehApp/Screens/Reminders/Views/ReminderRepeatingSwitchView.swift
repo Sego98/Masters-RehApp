@@ -50,12 +50,12 @@ final class ReminderRepeatingSwitchView: UIView {
 
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-    
+
         addSubview(stackView)
         stackView.addArrangedSubviews([
             repeatingDescriptionLabel, repeatingSwitch
         ])
-    
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),

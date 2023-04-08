@@ -14,7 +14,6 @@ extension RemindersViewController {
 
     func getAllActiveReminders() {
         let reminderFetchRequest = CDReminder.fetchRequest()
-//        reminderFetchRequest.predicate = NSPredicate(format: "date > %@", Date() as NSDate)
         reminderFetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "date", ascending: true),
             NSSortDescriptor(key: "name", ascending: true)
@@ -51,24 +50,6 @@ extension RemindersViewController {
     func deleteReminder(_ reminder: CDReminder) {
         mainViewContext.delete(reminder)
         saveMainContext()
-    }
-
-    func deleteAllPastReminders() {
-        let request = CDReminder.fetchRequest()
-        request.predicate = NSPredicate(format: "date < %@", Date() as NSDate)
-        guard let reminders = try? mainViewContext.fetch(request) else {
-            return
-        }
-        for reminder in reminders {
-            mainViewContext.delete(reminder)
-        }
-        do {
-            try mainViewContext.save()
-        } catch {
-#if DEBUG
-            print(error.localizedDescription)
-#endif
-        }
     }
 
     func updateReminder(_ reminder: CDReminder, newName: String, newDate: Date) {
