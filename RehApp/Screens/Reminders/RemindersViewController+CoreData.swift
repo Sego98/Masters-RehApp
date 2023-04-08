@@ -12,7 +12,7 @@ extension RemindersViewController {
 
     // MARK: - Core data methods
 
-    func getAllActiveReminders() {
+    func getAllReminders() {
         let reminderFetchRequest = CDReminder.fetchRequest()
         reminderFetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "date", ascending: true),
@@ -39,7 +39,7 @@ extension RemindersViewController {
         reminder.date = Calendar.current.date(from: dateComponents)
         do {
             try mainViewContext.save()
-            getAllActiveReminders()
+            getAllReminders()
         } catch {
 #if DEBUG
             print(error.localizedDescription)
@@ -61,7 +61,7 @@ extension RemindersViewController {
     private func saveMainContext() {
         do {
             try mainViewContext.save()
-            getAllActiveReminders()
+            getAllReminders()
         } catch {
 #if DEBUG
             print(error.localizedDescription)

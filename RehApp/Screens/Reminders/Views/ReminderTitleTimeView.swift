@@ -28,6 +28,7 @@ final class ReminderTitleTimeView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(for: .title2, weight: .bold)
         label.textAlignment = .right
+        label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
