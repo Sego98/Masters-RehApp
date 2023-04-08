@@ -9,11 +9,11 @@ import Foundation
 
 enum Formatters {
 
-    // MARK: - Date formatters
+    // MARK: - Time formatters
 
-    static let dateFormatter: DateFormatter = {
+    static let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("yMMdd jjmm")
+        formatter.setLocalizedDateFormatFromTemplate("jjmm")
         return formatter
     }()
 

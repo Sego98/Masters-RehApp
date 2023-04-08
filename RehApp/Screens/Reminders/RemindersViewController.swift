@@ -40,7 +40,7 @@ final class RemindersViewController: RehAppViewController {
         configure()
         configureDataSource()
         getAllActiveReminders()
-        deleteAllPastReminders()
+//        deleteAllPastReminders()
     }
 
     private func configure() {
@@ -92,7 +92,4 @@ extension RemindersViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
 }

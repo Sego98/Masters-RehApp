@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class WheelsDatePicker: UIDatePicker {
+final class WheelsTimePicker: UIDatePicker {
 
     // MARK: - Properties
 
@@ -31,9 +31,8 @@ final class WheelsDatePicker: UIDatePicker {
 
     private func configure() {
         date = initialDate
-        minimumDate = Date()
         preferredDatePickerStyle = .wheels
-        datePickerMode = .dateAndTime
+        datePickerMode = .time
 
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }

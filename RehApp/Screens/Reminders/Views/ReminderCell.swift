@@ -14,14 +14,15 @@ final class ReminderCell: UITableViewCell {
 
     // MARK: - Properties
 
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(forTextStyle: .title2)
-        label.textAlignment = .natural
-        label.numberOfLines = 0
-        return label
+    private let reminderTitleTimeView = ReminderTitleTimeView()
+    private let reminderRepeatingSwitchView = ReminderRepeatingSwitchView()
+
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 8
+        stackView.axis = .vertical
+        return stackView
     }()
 
     private let separatorLine: UIView = {
@@ -56,28 +57,32 @@ final class ReminderCell: UITableViewCell {
         contentView.backgroundColor = .rehAppBackground
 
         contentView.addSubviews([
-            nameLabel, separatorLine
+            stackView, separatorLine
         ])
 
-//        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16)
-//        let guide = contentView.layoutMarginsGuide
+        stackView.addArrangedSubviews([
+            reminderTitleTimeView, reminderRepeatingSwitchView
+        ])
+
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 0, trailing: 16)
+        let guide = contentView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackView.topAnchor.constraint(equalTo: guide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
             separatorLine.heightAnchor.constraint(equalToConstant: 1),
-            separatorLine.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-            separatorLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            separatorLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            separatorLine.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8),
+            separatorLine.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            separatorLine.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            separatorLine.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 
     // MARK: - Public methods
 
     func setValues(with viewModel: ReminderVM) {
-        nameLabel.text = viewModel.name + " " + Formatters.dateFormatter.string(from: viewModel.date)
+        reminderTitleTimeView.setValues(name: viewModel.name, time: viewModel.date)
     }
 }

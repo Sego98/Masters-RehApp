@@ -14,7 +14,7 @@ extension RemindersViewController {
 
     func getAllActiveReminders() {
         let reminderFetchRequest = CDReminder.fetchRequest()
-        reminderFetchRequest.predicate = NSPredicate(format: "date > %@", Date() as NSDate)
+//        reminderFetchRequest.predicate = NSPredicate(format: "date > %@", Date() as NSDate)
         reminderFetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "date", ascending: true),
             NSSortDescriptor(key: "name", ascending: true)

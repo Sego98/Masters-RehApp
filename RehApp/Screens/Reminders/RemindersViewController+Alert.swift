@@ -12,13 +12,13 @@ extension RemindersViewController {
 
     // MARK: - Reminder alert
 
-    func configureReminderAlert(type: AlertType, reminder: CDReminder? = nil) {
+    func configureReminderAlert(type: ReminderAlertType, reminder: CDReminder? = nil) {
         let alert = makeAlert(type: type, reminder: reminder)
         presentedAlert = alert
         present(alert, animated: true)
     }
 
-    private func makeAlert(type: AlertType, reminder: CDReminder?) -> UIAlertController {
+    private func makeAlert(type: ReminderAlertType, reminder: CDReminder?) -> UIAlertController {
         let alert: UIAlertController
         switch type {
         case .newReminder:
@@ -36,20 +36,20 @@ extension RemindersViewController {
     }
 
     private func makeAlertInputFields(_ alert: UIAlertController,
-                                      type: AlertType,
+                                      type: ReminderAlertType,
                                       reminder: CDReminder?) {
-        let datePicker: WheelsDatePicker?
+        let datePicker: WheelsTimePicker?
         switch type {
         case .newReminder:
-            datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: Date())
+            datePicker = WheelsTimePicker(identifier: "datePicker", initialDate: Date())
         case .editingReminder:
             guard let reminder = reminder,
                   let date = reminder.date else { return }
-            datePicker = WheelsDatePicker(identifier: "datePicker", initialDate: date)
+            datePicker = WheelsTimePicker(identifier: "datePicker", initialDate: date)
         }
         datePicker?.delegate = self
 
-        for alertTextField in AlertTextFields.allCases {
+        for alertTextField in ReminderAlertTextFields.allCases {
             switch alertTextField {
             case .name:
                 alert.addTextField {[weak self] in
@@ -68,7 +68,7 @@ extension RemindersViewController {
                     $0.inputView = datePicker
                     if let reminder = reminder,
                        let date = reminder.date {
-                        $0.text = Formatters.dateFormatter.string(from: date)
+                        $0.text = Formatters.timeFormatter.string(from: date)
                     }
                 }
             }
@@ -76,7 +76,7 @@ extension RemindersViewController {
     }
 
     private func makeAlertActions(_ alert: UIAlertController,
-                                  type: AlertType,
+                                  type: ReminderAlertType,
                                   reminder: CDReminder?) {
         let actionTitle: String
         switch type {
@@ -132,7 +132,7 @@ extension RemindersViewController {
         let textFieldTexts = textFields.map { $0.text }
         guard let name = textFieldTexts[0],
               let dateString = textFieldTexts[1],
-              let date = Formatters.dateFormatter.date(from: dateString) else { return (nil, nil) }
+              let date = Formatters.timeFormatter.date(from: dateString) else { return (nil, nil) }
         return (name, date)
     }
 
@@ -154,7 +154,7 @@ extension RemindersViewController: DateInputDelegate {
         if identifier == "datePicker" {
             guard let date = date,
                   let alert = presentedAlert else { return }
-            alert.textFields?[1].text = Formatters.dateFormatter.string(from: date)
+            alert.textFields?[1].text = Formatters.timeFormatter.string(from: date)
         }
     }
 
@@ -164,5 +164,13 @@ extension RemindersViewController: UITextFieldDelegate {
 
     func textFieldDidChangeSelection(_ textField: UITextField) {
         enableSubmitButtonIfNeeded()
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.placeholder == ReminderAlertTextFields.date.rawValue {
+            if textField.text == "" {
+                textField.text = Formatters.timeFormatter.string(from: Date())
+            }
+        }
     }
 }

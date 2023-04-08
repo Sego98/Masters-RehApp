@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum AlertTextFields: String, CaseIterable {
+enum ReminderAlertTextFields: String, CaseIterable {
     case name = "Unesi naslov"
     case date = "Unesi datum"
 }
 
-enum AlertType {
+enum ReminderAlertType {
     case newReminder
     case editingReminder
 }
