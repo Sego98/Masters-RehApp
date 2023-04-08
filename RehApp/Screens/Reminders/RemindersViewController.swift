@@ -40,6 +40,7 @@ final class RemindersViewController: RehAppViewController {
         super.viewDidLoad()
         configure()
         configureDataSource()
+        requestNotificationsAuthorization()
         getAllReminders()
     }
 

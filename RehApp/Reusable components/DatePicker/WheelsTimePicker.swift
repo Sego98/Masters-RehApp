@@ -13,14 +13,14 @@ final class WheelsTimePicker: UIDatePicker {
     // MARK: - Properties
 
     private var identifier: String
-    private var reminderSetDate: Date?
+    private var reminderSetTime: Date?
     weak var delegate: DateInputDelegate?
 
     // MARK: - Init
 
-    init(identifier: String, reminderSetDate: Date? = nil) {
+    init(identifier: String, reminderSetTime: Date? = nil) {
         self.identifier = identifier
-        self.reminderSetDate = reminderSetDate
+        self.reminderSetTime = reminderSetTime
         super.init(frame: .zero)
         configure()
     }
@@ -30,8 +30,8 @@ final class WheelsTimePicker: UIDatePicker {
     }
 
     private func configure() {
-        if let reminderSetDate = reminderSetDate {
-            date = reminderSetDate
+        if let reminderSetTime = reminderSetTime {
+            date = reminderSetTime
         }
         preferredDatePickerStyle = .wheels
         datePickerMode = .time
@@ -47,7 +47,7 @@ final class WheelsTimePicker: UIDatePicker {
 
     // MARK: - Public methods
 
-    func setInitialDate(_ initialDate: Date) {
-        date = initialDate
+    func setInitialTime(_ initialTime: Date) {
+        date = initialTime
     }
 }

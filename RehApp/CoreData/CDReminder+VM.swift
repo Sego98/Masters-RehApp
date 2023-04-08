@@ -11,8 +11,9 @@ import CoreData
 extension CDReminder {
 
     var viewModel: ReminderVM? {
-        guard let name = name,
-              let date = date else { return nil }
-        return ReminderVM(name: name, date: date)
+        guard let id = id,
+              let name = name,
+              let time = time else { return nil }
+        return ReminderVM(id: id, name: name, time: time)
     }
 }

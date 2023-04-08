@@ -43,8 +43,8 @@ extension RemindersViewController {
             wheelsTimePicker = WheelsTimePicker(identifier: "datePicker")
         case .editingReminder:
             guard let reminder = reminder,
-                  let date = reminder.date else { return }
-            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker", reminderSetDate: date)
+                  let time = reminder.time else { return }
+            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker", reminderSetTime: time)
         }
         wheelsTimePicker?.delegate = self
 
@@ -66,8 +66,8 @@ extension RemindersViewController {
                     $0.placeholder = alertTextField.rawValue
                     $0.inputView = self.wheelsTimePicker
                     if let reminder = reminder,
-                       let date = reminder.date {
-                        $0.text = Formatters.timeFormatter.string(from: date)
+                       let time = reminder.time {
+                        $0.text = Formatters.timeFormatter.string(from: time)
                     }
                 }
             }
@@ -90,7 +90,10 @@ extension RemindersViewController {
             guard let self = self else { return }
             switch type {
             case .newReminder:
-                self.createNewReminderFromAlert()
+                let id = UUID()
+                self.createNewReminderFromAlert(id: id)
+                let reminder = self.getReminder(id: id)
+                self.scheduleReminderNotification(with: reminder)
             case .editingReminder:
                 if let reminder = reminder {
                     self.updateReminderFromAlert(reminder: reminder)
@@ -111,28 +114,28 @@ extension RemindersViewController {
         }))
     }
 
-    private func createNewReminderFromAlert() {
-        let (name, date) = getNameAndDateFromAlert()
+    private func createNewReminderFromAlert(id: UUID) {
+        let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
-              let date = date else { return }
-        createReminder(name: name, date: date)
+              let time = time else { return }
+        createReminder(name: name, date: time, id: id)
     }
 
     private func updateReminderFromAlert(reminder: CDReminder) {
-        let (name, date) = getNameAndDateFromAlert()
+        let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
-              let date = date else { return }
-        updateReminder(reminder, newName: name, newDate: date)
+              let time = time else { return }
+        updateReminder(reminder, newName: name, newTime: time)
     }
 
-    private func getNameAndDateFromAlert() -> (String?, Date?) {
+    private func getNameAndTimeFromAlert() -> (String?, Date?) {
         guard let alert = presentedAlert,
               let textFields = alert.textFields else { return (nil, nil) }
         let textFieldTexts = textFields.map { $0.text }
         guard let name = textFieldTexts[0],
-              let dateString = textFieldTexts[1],
-              let date = Formatters.timeFormatter.date(from: dateString) else { return (nil, nil) }
-        return (name, date)
+              let timeString = textFieldTexts[1],
+              let time = Formatters.timeFormatter.date(from: timeString) else { return (nil, nil) }
+        return (name, time)
     }
 
     private func enableSubmitButtonIfNeeded() {
@@ -169,9 +172,9 @@ extension RemindersViewController: UITextFieldDelegate {
         if textField.placeholder == ReminderAlertTextFields.date.rawValue {
             if textField.text == "" {
                 guard let wheelsTimePicker = wheelsTimePicker else { return }
-                let initialDate = Date()
-                textField.text = Formatters.timeFormatter.string(from: initialDate)
-                wheelsTimePicker.setInitialDate(initialDate)
+                let initialTime = Date()
+                textField.text = Formatters.timeFormatter.string(from: initialTime)
+                wheelsTimePicker.setInitialTime(initialTime)
             }
         }
     }
