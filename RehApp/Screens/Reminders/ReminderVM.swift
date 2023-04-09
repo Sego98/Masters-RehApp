@@ -8,6 +8,8 @@
 import Foundation
 
 struct ReminderVM: Hashable, Equatable {
+    let id: UUID
     let name: String
-    let date: Date
+    let time: Date
+    let isRepeating: Bool
 }

@@ -9,7 +9,7 @@ import Foundation
 
 enum ReminderAlertTextFields: String, CaseIterable {
     case name = "Unesi naslov"
-    case date = "Unesi datum"
+    case date = "Unesi vrijeme"
 }
 
 enum ReminderAlertType {

@@ -29,14 +29,6 @@ final class ReminderRepeatingSwitchView: UIView {
         return repeatingSwitch
     }()
 
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 16
-        stackView.axis = .horizontal
-        return stackView
-    }()
-
     // MARK: - Init
 
     init() {
@@ -51,17 +43,28 @@ final class ReminderRepeatingSwitchView: UIView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(stackView)
-        stackView.addArrangedSubviews([
+        addSubviews([
             repeatingDescriptionLabel, repeatingSwitch
         ])
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            repeatingDescriptionLabel.topAnchor.constraint(equalTo: topAnchor),
+            repeatingDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            repeatingDescriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            repeatingSwitch.centerYAnchor.constraint(equalTo: repeatingDescriptionLabel.centerYAnchor),
+            repeatingSwitch.leadingAnchor.constraint(equalTo: repeatingDescriptionLabel.trailingAnchor, constant: 16),
+            repeatingSwitch.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
+    // MARK: - Public methods
+
+    func setSwitchAction(_ action: UIAction) {
+        repeatingSwitch.addAction(action, for: .valueChanged)
+    }
+
+    func setSwitchState(_ state: Bool) {
+        repeatingSwitch.isOn = state
+    }
 }
