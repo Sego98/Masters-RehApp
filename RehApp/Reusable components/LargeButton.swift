@@ -40,13 +40,13 @@ class LargeButton: UIButton {
 
         setTitle(title, for: .normal)
 
-        layer.cornerRadius = 40
+        layer.cornerRadius = 30
         backgroundColor = .lightPurple
 
         titleLabel?.font = .preferredFont(forTextStyle: .title2)
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(greaterThanOrEqualToConstant: 80)
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 60)
         ])
     }
 }

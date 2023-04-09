@@ -22,7 +22,7 @@ final class ListAllItemsViewController: RehAppViewController {
     init(viewModel: ListAllItemsViewModel) {
         self.viewModel = viewModel
         self.listAllItemsView = ListAllItemsView(viewModel: viewModel)
-        super.init(nibName: nil, bundle: nil)
+        super.init(screenTitle: viewModel.screenTitle)
     }
 
     required init?(coder: NSCoder) {
@@ -39,7 +39,6 @@ final class ListAllItemsViewController: RehAppViewController {
     }
 
     private func configure() {
-        configureNavigationBar(title: viewModel.screenTitle)
         configureDataSourceCellRegistrations()
         configureDataSourceSupplementaryViews()
 

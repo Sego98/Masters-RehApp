@@ -32,7 +32,8 @@ final class StreakCalendarView: UIView {
 
     private let testDates = [
         DateComponents(year: 2023, month: 3, day: 3),
-        DateComponents(year: 2023, month: 3, day: 5)
+        DateComponents(year: 2023, month: 4, day: 1),
+        DateComponents(year: 2023, month: 4, day: 2)
     ]
 
     // MARK: - Init
@@ -48,6 +49,13 @@ final class StreakCalendarView: UIView {
 
     private func configure() {
         backgroundColor = .rehAppBackground
+
+        guard let firstDate = Calendar.current.date(from: testDates[0]) else { return }
+        let startDateComponents = Calendar.current.dateComponents([.month, .year], from: firstDate)
+        guard let startDate = Calendar.current.date(from: startDateComponents) else { return }
+
+        calendarView.availableDateRange = DateInterval(start: startDate,
+                                                       end: Date())
 
         addSubviews([
             calendarView, allDaysLabel

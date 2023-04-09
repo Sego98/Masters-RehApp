@@ -10,6 +10,8 @@ import UIKit
 
 final class OverlayView: UIView {
 
+    // MARK: - Properties
+
     let timerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -18,6 +20,9 @@ final class OverlayView: UIView {
         label.font = .systemFont(ofSize: 60)
         return label
     }()
+
+    // MARK: - Init
+
     init() {
         super.init(frame: .zero)
         configure()
