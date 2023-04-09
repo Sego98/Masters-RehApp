@@ -11,4 +11,5 @@ struct ReminderVM: Hashable, Equatable {
     let id: UUID
     let name: String
     let time: Date
+    let isRepeating: Bool
 }

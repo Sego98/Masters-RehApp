@@ -123,7 +123,7 @@ extension RemindersViewController {
         let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
               let time = time else { return }
-        updateReminder(id: reminder.id, newName: name, newTime: time)
+        updateReminder(id: reminder.id, newName: name, newTime: time, rebuildSnapshot: true)
     }
 
     private func getNameAndTimeFromAlert() -> (String?, Date?) {

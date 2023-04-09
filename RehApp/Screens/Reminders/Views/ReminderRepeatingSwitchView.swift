@@ -64,4 +64,7 @@ final class ReminderRepeatingSwitchView: UIView {
         repeatingSwitch.addAction(action, for: .valueChanged)
     }
 
+    func setSwitchState(_ state: Bool) {
+        repeatingSwitch.isOn = state
+    }
 }
