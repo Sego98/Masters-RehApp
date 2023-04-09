@@ -11,6 +11,7 @@
 		D208872329E336540016F407 /* RehAppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872229E336540016F407 /* RehAppCache.swift */; };
 		D208872529E337450016F407 /* RehAppCache+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872429E337450016F407 /* RehAppCache+Container.swift */; };
 		D208872729E33B9A0016F407 /* RehAppCache+Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872629E33B9A0016F407 /* RehAppCache+Reminders.swift */; };
+		D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872929E355CF0016F407 /* RehAppNotifications.swift */; };
 		D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */; };
 		D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */; };
 		D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27C29DB436900EF79E7 /* RemindersViewController.swift */; };
@@ -41,7 +42,6 @@
 		D270278629E1D80400BB8324 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278529E1D80400BB8324 /* UIFont.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
-		D2B3BEE629E20DA20067825C /* RemindersViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BEE529E20DA20067825C /* RemindersViewController+Notifications.swift */; };
 		D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */; };
 		D2DB99C429DF41F80058A70C /* RemindersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB99C329DF41F80058A70C /* RemindersDataSource.swift */; };
 		D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */; };
@@ -77,6 +77,7 @@
 		D208872229E336540016F407 /* RehAppCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppCache.swift; sourceTree = "<group>"; };
 		D208872429E337450016F407 /* RehAppCache+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Container.swift"; sourceTree = "<group>"; };
 		D208872629E33B9A0016F407 /* RehAppCache+Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Reminders.swift"; sourceTree = "<group>"; };
+		D208872929E355CF0016F407 /* RehAppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppNotifications.swift; sourceTree = "<group>"; };
 		D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderAlertConfiguration.swift; sourceTree = "<group>"; };
 		D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabBarController.swift; sourceTree = "<group>"; };
 		D256B27C29DB436900EF79E7 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		D270278529E1D80400BB8324 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
-		D2B3BEE529E20DA20067825C /* RemindersViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemindersViewController+Notifications.swift"; sourceTree = "<group>"; };
 		D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemindersViewController+Alert.swift"; sourceTree = "<group>"; };
 		D2DB99C329DF41F80058A70C /* RemindersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDataSource.swift; sourceTree = "<group>"; };
 		D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +160,14 @@
 			path = RehAppCache;
 			sourceTree = "<group>";
 		};
+		D208872829E355930016F407 /* RehAppNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				D208872929E355CF0016F407 /* RehAppNotifications.swift */,
+			);
+			path = RehAppNotifications;
+			sourceTree = "<group>";
+		};
 		D256B27829DB3F5B00EF79E7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,7 +184,6 @@
 				D2DB99BE29DE1E6E0058A70C /* Views */,
 				D256B27C29DB436900EF79E7 /* RemindersViewController.swift */,
 				D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */,
-				D2B3BEE529E20DA20067825C /* RemindersViewController+Notifications.swift */,
 				D2DB99C329DF41F80058A70C /* RemindersDataSource.swift */,
 				D256B29029DB6F6C00EF79E7 /* ReminderVM.swift */,
 			);
@@ -342,8 +349,9 @@
 				D256B29429DB7AC000EF79E7 /* Formatters.swift */,
 				D26C80B229BD0524009393C3 /* Visual design */,
 				D2EDA9F529C0F79E001E247F /* System extensions */,
-				D256B27829DB3F5B00EF79E7 /* Navigation */,
+				D208872829E355930016F407 /* RehAppNotifications */,
 				D208872129E336240016F407 /* RehAppCache */,
+				D256B27829DB3F5B00EF79E7 /* Navigation */,
 				D26C80D029BD11AC009393C3 /* Reusable components */,
 				D26C80B729BD0E83009393C3 /* Screens */,
 				D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */,
@@ -496,7 +504,6 @@
 				D270278429E1D52100BB8324 /* ReminderRepeatingSwitchView.swift in Sources */,
 				D2DB99C429DF41F80058A70C /* RemindersDataSource.swift in Sources */,
 				D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */,
-				D2B3BEE629E20DA20067825C /* RemindersViewController+Notifications.swift in Sources */,
 				D256B29729DB800B00EF79E7 /* CDReminder+VM.swift in Sources */,
 				D208872029E335080016F407 /* NSManagedObject.swift in Sources */,
 				D208872529E337450016F407 /* RehAppCache+Container.swift in Sources */,
@@ -507,6 +514,7 @@
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
+				D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllItemsDataSource.swift in Sources */,
 				D270278229E1D36800BB8324 /* ReminderTitleTimeView.swift in Sources */,

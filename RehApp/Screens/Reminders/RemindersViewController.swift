@@ -39,8 +39,8 @@ final class RemindersViewController: RehAppViewController {
         super.viewDidLoad()
         configure()
         configureDataSource()
-        requestNotificationsAuthorization()
         rebuildAllRemindersSnapshot(animatingDifferences: true)
+        RehAppNotifications.shared.requestNotificationsAuthorization()
     }
 
     private func configure() {
@@ -87,27 +87,27 @@ final class RemindersViewController: RehAppViewController {
     func createNewReminderAndNotification() {
         let id = UUID()
         createNewReminderFromAlert(id: id)
-        scheduleReminderNotification(with: id)
+        RehAppNotifications.shared.scheduleReminderNotification(with: id)
         rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 
     func updateReminderAndNotification(id: UUID?) {
         guard let id = id else { return }
         updateReminderFromAlert(id: id)
-        scheduleReminderNotification(with: id)
+        RehAppNotifications.shared.scheduleReminderNotification(with: id)
         rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 
     func updateReminderAndNotificationRepeatingState(id: UUID?, _ isRepeating: Bool) {
         guard let id = id else { return }
         RehAppCache.shared.updateReminder(id: id, isRepeating: isRepeating)
-        scheduleReminderNotification(with: id)
+        RehAppNotifications.shared.scheduleReminderNotification(with: id)
     }
 
     func deleteReminderAndNotification(id: UUID?) {
         guard let id = id else { return }
         RehAppCache.shared.deleteReminder(id: id)
-        removeReminderNotification(with: id)
+        RehAppNotifications.shared.removeReminderNotification(with: id)
         rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 

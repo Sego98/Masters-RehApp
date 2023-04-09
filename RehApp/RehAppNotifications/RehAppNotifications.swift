@@ -1,15 +1,18 @@
 //
-//  RemindersViewController+Notifications.swift
+//  RehAppNotifications.swift
 //  RehApp
 //
-//  Created by Akademija on 08.04.2023..
+//  Created by Akademija on 09.04.2023..
 //
 
 import Foundation
-import UIKit
 import UserNotifications
 
-extension RemindersViewController {
+class RehAppNotifications {
+
+    static let shared = RehAppNotifications()
+
+    // MARK: - Methods
 
     func requestNotificationsAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, error in
@@ -44,5 +47,4 @@ extension RemindersViewController {
     func removeReminderNotification(with id: UUID) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id.uuidString])
     }
-
 }
