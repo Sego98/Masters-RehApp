@@ -20,7 +20,6 @@ final class RemindersViewController: RehAppViewController {
     var presentedAlert: UIAlertController?
     var submitAction: UIAlertAction?
     var wheelsTimePicker: WheelsTimePicker?
-    var allReminderIDs = [UUID]()
 
     // MARK: - Lifecycle
 
@@ -41,7 +40,7 @@ final class RemindersViewController: RehAppViewController {
         configure()
         configureDataSource()
         requestNotificationsAuthorization()
-        getAllReminders()
+        rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 
     private func configure() {
@@ -63,16 +62,9 @@ final class RemindersViewController: RehAppViewController {
             cell.setValues(with: item)
             let action = UIAction {[weak self] action in
                 guard let self = self,
-                      let switchSender = action.sender as? UISwitch else { return }
-                print()
-                print("Switch selected \(indexPath.row)")
-                let id = self.allReminderIDs[indexPath.row]
-                self.updateReminder(id: id,
-                                    newName: nil,
-                                    newTime: nil,
-                                    isRepeating: switchSender.isOn,
-                                    rebuildSnapshot: false)
-                self.scheduleReminderNotification(with: id)
+                      let switchSender = action.sender as? UISwitch,
+                let reminder = RehAppCache.shared.getReminder(atIndex: indexPath.row) else { return }
+                self.updateReminderAndNotificationRepeatingState(id: reminder.id, switchSender.isOn)
             }
             cell.setSwitchAction(action)
             return cell
@@ -83,16 +75,48 @@ final class RemindersViewController: RehAppViewController {
         configureReminderAlert(type: .newReminder)
     }
 
-    func rebuildSnapshot(reminders: [ReminderVM], animatingDifferences: Bool) {
-        dataSource?.rebuildSnapshot(reminders: reminders, animatingDifferences: animatingDifferences)
+    func rebuildAllRemindersSnapshot(animatingDifferences: Bool) {
+        guard let allReminders = RehAppCache.shared.getAllReminders() else { return }
+        let reminderVMs = allReminders.compactMap({ $0.viewModel })
+        let reminderIDs = allReminders.compactMap({ $0.id })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.dataSource?.rebuildSnapshot(reminders: reminderVMs, animatingDifferences: animatingDifferences)
+        }
+    }
+
+    func createNewReminderAndNotification() {
+        let id = UUID()
+        createNewReminderFromAlert(id: id)
+        scheduleReminderNotification(with: id)
+        rebuildAllRemindersSnapshot(animatingDifferences: true)
+    }
+
+    func updateReminderAndNotification(id: UUID?) {
+        guard let id = id else { return }
+        updateReminderFromAlert(id: id)
+        scheduleReminderNotification(with: id)
+        rebuildAllRemindersSnapshot(animatingDifferences: true)
+    }
+
+    func updateReminderAndNotificationRepeatingState(id: UUID?, _ isRepeating: Bool) {
+        guard let id = id else { return }
+        RehAppCache.shared.updateReminder(id: id, isRepeating: isRepeating)
+        scheduleReminderNotification(with: id)
+    }
+
+    func deleteReminderAndNotification(id: UUID?) {
+        guard let id = id else { return }
+        RehAppCache.shared.deleteReminder(id: id)
+        removeReminderNotification(with: id)
+        rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 
 }
 
 extension RemindersViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let reminderID = allReminderIDs[indexPath.row]
-        guard let reminder = getReminder(id: reminderID) else { return }
+        guard let reminder = RehAppCache.shared.getReminder(atIndex: indexPath.row) else { return }
         configureReminderAlert(type: .editingReminder, reminder: reminder.viewModel)
     }
 
@@ -101,9 +125,8 @@ extension RemindersViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive,
                                               title: "Obriši") {[weak self] _, _, _ in
             guard let self = self else { return }
-            let reminderID = self.allReminderIDs[indexPath.row]
-            self.deleteReminder(id: reminderID)
-            self.removeReminderNotification(with: reminderID)
+            guard let reminder = RehAppCache.shared.getReminder(atIndex: indexPath.row) else { return }
+            self.deleteReminderAndNotification(id: reminder.id)
         }
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])

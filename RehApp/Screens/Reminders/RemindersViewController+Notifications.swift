@@ -22,7 +22,7 @@ extension RemindersViewController {
     }
 
     func scheduleReminderNotification(with id: UUID) {
-        guard let reminder = getReminder(id: id),
+        guard let reminder = RehAppCache.shared.getReminder(id: id),
               let name = reminder.name,
               let time = reminder.time,
               let id = reminder.id else { return }

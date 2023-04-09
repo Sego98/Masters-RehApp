@@ -10,7 +10,7 @@ import UIKit
 
 extension RemindersViewController {
 
-    // MARK: - Reminder alert
+    // MARK: - Create reminder alert
 
     func configureReminderAlert(type: ReminderAlertType, reminder: ReminderVM? = nil) {
         let alert = makeAlert(type: type, reminder: reminder)
@@ -88,14 +88,9 @@ extension RemindersViewController {
             guard let self = self else { return }
             switch type {
             case .newReminder:
-                let id = UUID()
-                self.createNewReminderFromAlert(id: id)
-                self.scheduleReminderNotification(with: id)
+                self.createNewReminderAndNotification()
             case .editingReminder:
-                if let reminder = reminder {
-                    self.updateReminderFromAlert(reminder: reminder)
-                    self.scheduleReminderNotification(with: reminder.id)
-                }
+                self.updateReminderAndNotification(id: reminder?.id)
             }
             self.presentedAlert = nil
             self.dismiss(animated: true)
@@ -112,18 +107,20 @@ extension RemindersViewController {
         }))
     }
 
-    private func createNewReminderFromAlert(id: UUID) {
+    // MARK: - Reminder alert helper actions
+
+    func createNewReminderFromAlert(id: UUID) {
         let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
               let time = time else { return }
-        createReminder(name: name, time: time, id: id)
+        RehAppCache.shared.createReminder(id: id, name: name, time: time)
     }
 
-    private func updateReminderFromAlert(reminder: ReminderVM) {
+    func updateReminderFromAlert(id: UUID) {
         let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
               let time = time else { return }
-        updateReminder(id: reminder.id, newName: name, newTime: time, rebuildSnapshot: true)
+        RehAppCache.shared.updateReminder(id: id, newName: name, newTime: time)
     }
 
     private func getNameAndTimeFromAlert() -> (String?, Date?) {
