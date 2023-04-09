@@ -30,12 +30,12 @@ extension RemindersViewController {
         }
     }
 
-    func createReminder(name: String, date: Date, id: UUID) {
+    func createReminder(name: String, time: Date, id: UUID) {
         let reminder = CDReminder(context: mainViewContext)
         reminder.name = name
         var dateComponents = DateComponents()
-        dateComponents.hour = Calendar.current.component(.hour, from: date)
-        dateComponents.minute = Calendar.current.component(.minute, from: date)
+        dateComponents.hour = Calendar.current.component(.hour, from: time)
+        dateComponents.minute = Calendar.current.component(.minute, from: time)
         reminder.time = Calendar.current.date(from: dateComponents)
         reminder.id = id
         saveMainContext()
@@ -57,7 +57,10 @@ extension RemindersViewController {
     func updateReminder(id: UUID, newName: String, newTime: Date) {
         guard let reminder = getReminder(id: id) else { return }
         reminder.name = newName
-        reminder.time = newTime
+        var dateComponents = DateComponents()
+        dateComponents.hour = Calendar.current.component(.hour, from: newTime)
+        dateComponents.minute = Calendar.current.component(.minute, from: newTime)
+        reminder.time = Calendar.current.date(from: dateComponents)
         saveMainContext()
     }
 

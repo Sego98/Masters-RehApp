@@ -94,6 +94,7 @@ extension RemindersViewController {
             case .editingReminder:
                 if let reminder = reminder {
                     self.updateReminderFromAlert(reminder: reminder)
+                    self.scheduleReminderNotification(with: reminder.id)
                 }
             }
             self.presentedAlert = nil
@@ -115,7 +116,7 @@ extension RemindersViewController {
         let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
               let time = time else { return }
-        createReminder(name: name, date: time, id: id)
+        createReminder(name: name, time: time, id: id)
     }
 
     private func updateReminderFromAlert(reminder: ReminderVM) {

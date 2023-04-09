@@ -21,8 +21,8 @@ extension RemindersViewController {
         }
     }
 
-    func scheduleReminderNotification(with reminderID: UUID) {
-        guard let reminder = getReminder(id: reminderID),
+    func scheduleReminderNotification(with id: UUID, repeating: Bool = false) {
+        guard let reminder = getReminder(id: id),
               let name = reminder.name,
               let time = reminder.time,
               let id = reminder.id else { return }
@@ -33,7 +33,7 @@ extension RemindersViewController {
         content.body = "Vrijeme je da odradiš svoju zakazanu rehabilitaciju!"
 
         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: repeating)
 
         let request = UNNotificationRequest(identifier: id.uuidString,
                                             content: content,
@@ -41,7 +41,8 @@ extension RemindersViewController {
         UNUserNotificationCenter.current().add(request)
     }
 
-    func removeReminderNotification(with reminderID: UUID) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminderID.uuidString])
+    func removeReminderNotification(with id: UUID) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id.uuidString])
     }
+
 }

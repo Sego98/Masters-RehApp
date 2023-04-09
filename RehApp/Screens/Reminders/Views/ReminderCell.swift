@@ -85,4 +85,8 @@ final class ReminderCell: UITableViewCell {
     func setValues(with viewModel: ReminderVM) {
         reminderTitleTimeView.setValues(name: viewModel.name, time: viewModel.time)
     }
+
+    func setSwitchAction(_ action: UIAction) {
+        reminderRepeatingSwitchView.setSwitchAction(action)
+    }
 }

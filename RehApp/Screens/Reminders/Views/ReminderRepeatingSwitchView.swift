@@ -58,4 +58,10 @@ final class ReminderRepeatingSwitchView: UIView {
         ])
     }
 
+    // MARK: - Public methods
+
+    func setSwitchAction(_ action: UIAction) {
+        repeatingSwitch.addAction(action, for: .valueChanged)
+    }
+
 }

@@ -61,6 +61,13 @@ final class RemindersViewController: RehAppViewController {
                 return cell
             }
             cell.setValues(with: item)
+            let action = UIAction {[weak self] action in
+                guard let self = self,
+                      let switchSender = action.sender as? UISwitch else { return }
+                let id = self.allReminderIDs[indexPath.row]
+                self.scheduleReminderNotification(with: id, repeating: switchSender.isOn)
+            }
+            cell.setSwitchAction(action)
             return cell
         })
     }
