@@ -79,8 +79,8 @@ final class RemindersViewController: RehAppViewController {
         guard let allReminders = RehAppCache.shared.getAllReminders() else { return }
         let reminderVMs = allReminders.compactMap({ $0.viewModel })
         let reminderIDs = allReminders.compactMap({ $0.id })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.dataSource?.rebuildSnapshot(reminders: reminderVMs, animatingDifferences: animatingDifferences)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
+            self?.dataSource?.rebuildSnapshot(reminders: reminderVMs, animatingDifferences: animatingDifferences)
         }
     }
 
