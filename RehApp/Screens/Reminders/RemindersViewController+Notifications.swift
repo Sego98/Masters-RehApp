@@ -12,10 +12,8 @@ import UserNotifications
 extension RemindersViewController {
 
     func requestNotificationsAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
-            if success {
-
-            } else if let error = error {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, error in
+            if let error = error {
 #if DEBUG
                 print(error.localizedDescription)
 #endif
@@ -40,4 +38,5 @@ extension RemindersViewController {
                                             trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
+
 }

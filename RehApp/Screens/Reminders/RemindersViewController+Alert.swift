@@ -12,13 +12,13 @@ extension RemindersViewController {
 
     // MARK: - Reminder alert
 
-    func configureReminderAlert(type: ReminderAlertType, reminder: CDReminder? = nil) {
+    func configureReminderAlert(type: ReminderAlertType, reminder: ReminderVM? = nil) {
         let alert = makeAlert(type: type, reminder: reminder)
         presentedAlert = alert
         present(alert, animated: true)
     }
 
-    private func makeAlert(type: ReminderAlertType, reminder: CDReminder?) -> UIAlertController {
+    private func makeAlert(type: ReminderAlertType, reminder: ReminderVM?) -> UIAlertController {
         let alert: UIAlertController
         switch type {
         case .newReminder:
@@ -37,14 +37,13 @@ extension RemindersViewController {
 
     private func makeAlertInputFields(_ alert: UIAlertController,
                                       type: ReminderAlertType,
-                                      reminder: CDReminder?) {
+                                      reminder: ReminderVM?) {
         switch type {
         case .newReminder:
             wheelsTimePicker = WheelsTimePicker(identifier: "datePicker")
         case .editingReminder:
-            guard let reminder = reminder,
-                  let time = reminder.time else { return }
-            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker", reminderSetTime: time)
+            guard let reminder = reminder else { return }
+            wheelsTimePicker = WheelsTimePicker(identifier: "datePicker", reminderSetTime: reminder.time)
         }
         wheelsTimePicker?.delegate = self
 
@@ -65,9 +64,8 @@ extension RemindersViewController {
                     $0.delegate = self
                     $0.placeholder = alertTextField.rawValue
                     $0.inputView = self.wheelsTimePicker
-                    if let reminder = reminder,
-                       let time = reminder.time {
-                        $0.text = Formatters.timeFormatter.string(from: time)
+                    if let reminder = reminder {
+                        $0.text = Formatters.timeFormatter.string(from: reminder.time)
                     }
                 }
             }
@@ -76,7 +74,7 @@ extension RemindersViewController {
 
     private func makeAlertActions(_ alert: UIAlertController,
                                   type: ReminderAlertType,
-                                  reminder: CDReminder?) {
+                                  reminder: ReminderVM?) {
         let actionTitle: String
         switch type {
         case .newReminder:
@@ -121,11 +119,11 @@ extension RemindersViewController {
         createReminder(name: name, date: time, id: id)
     }
 
-    private func updateReminderFromAlert(reminder: CDReminder) {
+    private func updateReminderFromAlert(reminder: ReminderVM) {
         let (name, time) = getNameAndTimeFromAlert()
         guard let name = name,
               let time = time else { return }
-        updateReminder(reminder, newName: name, newTime: time)
+        updateReminder(id: reminder.id, newName: name, newTime: time)
     }
 
     private func getNameAndTimeFromAlert() -> (String?, Date?) {

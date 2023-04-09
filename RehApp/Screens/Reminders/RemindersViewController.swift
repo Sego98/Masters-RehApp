@@ -20,7 +20,7 @@ final class RemindersViewController: RehAppViewController {
     var presentedAlert: UIAlertController?
     var submitAction: UIAlertAction?
     var wheelsTimePicker: WheelsTimePicker?
-    var allReminders = [CDReminder]()
+    var allReminderIDs = [UUID]()
 
     // MARK: - Lifecycle
 
@@ -77,17 +77,18 @@ final class RemindersViewController: RehAppViewController {
 
 extension RemindersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedReminder = allReminders[indexPath.row]
-        configureReminderAlert(type: .editingReminder, reminder: selectedReminder)
+        let reminderID = allReminderIDs[indexPath.row]
+        guard let reminder = getReminder(id: reminderID) else { return }
+        configureReminderAlert(type: .editingReminder, reminder: reminder.viewModel)
     }
 
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive,
-                                              title: "Delete") {[weak self] _, _, _ in
+                                              title: "Obriši") {[weak self] _, _, _ in
             guard let self = self else { return }
-            let reminder = self.allReminders[indexPath.row]
-            self.deleteReminder(reminder)
+            let reminderID = self.allReminderIDs[indexPath.row]
+            self.deleteReminder(id: reminderID)
         }
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])

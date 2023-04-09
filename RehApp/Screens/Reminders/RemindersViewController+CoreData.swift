@@ -20,7 +20,7 @@ extension RemindersViewController {
         ]
         do {
             let reminders = try mainViewContext.fetch(reminderFetchRequest)
-            allReminders = reminders
+            allReminderIDs = reminders.compactMap({ $0.id })
             let remindersVM = reminders.compactMap { $0.viewModel }
             rebuildSnapshot(reminders: remindersVM, animatingDifferences: true)
         } catch {
@@ -48,12 +48,14 @@ extension RemindersViewController {
         return try? mainViewContext.fetch(request).first
     }
 
-    func deleteReminder(_ reminder: CDReminder) {
+    func deleteReminder(id: UUID) {
+        guard let reminder = getReminder(id: id) else { return }
         mainViewContext.delete(reminder)
         saveMainContext()
     }
 
-    func updateReminder(_ reminder: CDReminder, newName: String, newTime: Date) {
+    func updateReminder(id: UUID, newName: String, newTime: Date) {
+        guard let reminder = getReminder(id: id) else { return }
         reminder.name = newName
         reminder.time = newTime
         saveMainContext()
