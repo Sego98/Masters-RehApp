@@ -21,10 +21,12 @@ extension RemindersViewController {
         }
     }
 
-    func scheduleReminderNotification(with reminder: CDReminder?) {
-        guard let name = reminder?.name,
-              let time = reminder?.time,
-              let id = reminder?.id else { return }
+    func scheduleReminderNotification(with reminderID: UUID) {
+        guard let reminder = getReminder(id: reminderID),
+              let name = reminder.name,
+              let time = reminder.time,
+              let id = reminder.id else { return }
+
         let content = UNMutableNotificationContent()
         content.title = name
         content.sound = .default
@@ -39,4 +41,7 @@ extension RemindersViewController {
         UNUserNotificationCenter.current().add(request)
     }
 
+    func removeReminderNotification(with reminderID: UUID) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminderID.uuidString])
+    }
 }

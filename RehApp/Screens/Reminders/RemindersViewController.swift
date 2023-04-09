@@ -89,6 +89,7 @@ extension RemindersViewController: UITableViewDelegate {
             guard let self = self else { return }
             let reminderID = self.allReminderIDs[indexPath.row]
             self.deleteReminder(id: reminderID)
+            self.removeReminderNotification(with: reminderID)
         }
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])

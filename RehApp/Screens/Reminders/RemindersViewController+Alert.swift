@@ -90,8 +90,7 @@ extension RemindersViewController {
             case .newReminder:
                 let id = UUID()
                 self.createNewReminderFromAlert(id: id)
-                let reminder = self.getReminder(id: id)
-                self.scheduleReminderNotification(with: reminder)
+                self.scheduleReminderNotification(with: id)
             case .editingReminder:
                 if let reminder = reminder {
                     self.updateReminderFromAlert(reminder: reminder)
