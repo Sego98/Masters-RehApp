@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import HealthKit
 
 final class HealthStatisticsView: UIView {
 
@@ -64,7 +65,7 @@ final class HealthStatisticsView: UIView {
 
     // MARK: - Public methods
 
-    func setValues(name: String, height: Int) {
+    func setValues(name: String, height: Double) {
         nameLabel.text = name
         heightView.setValues(key: "Visina", value: String(height))
     }

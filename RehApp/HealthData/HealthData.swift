@@ -35,13 +35,13 @@ class HealthData {
     static func requestHealthAuthorization() {
         guard HKHealthStore.isHealthDataAvailable() else {
 #if DEBUG
-                print("Health data is not available on this device.")
+            print("Health data is not available on this device.")
 #endif
             return
         }
 
         Self.healthStore.requestAuthorization(toShare: Set(HealthData.shareDataTypes),
-                                         read: Set(HealthData.readDataTypes)) { success, error in
+                                              read: Set(HealthData.readDataTypes)) { success, error in
             if success {
 #if DEBUG
                 print("HealthKit authorization has been successful!")
@@ -58,6 +58,31 @@ class HealthData {
 #endif
             }
         }
+    }
+
+    static func getMostRecentQuantitySample(for sampleType: HKSampleType,
+                                            completion: @escaping (HKQuantitySample?, Error?) -> Void) {
+        let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
+                                                    end: Date(),
+                                                    options: .strictEndDate)
+
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let limit = 1
+
+        let query = HKSampleQuery(sampleType: sampleType,
+                                  predicate: predicate,
+                                  limit: limit,
+                                  sortDescriptors: [sortDescriptor]) { (_, samples, error) in
+            DispatchQueue.main.async {
+                guard let samples = samples,
+                      let mostRecentSample = samples.first as? HKQuantitySample else {
+                    completion(nil, error)
+                    return
+                }
+                completion(mostRecentSample, nil)
+            }
+        }
+        Self.healthStore.execute(query)
     }
 
     // MARK: - Helper methods
