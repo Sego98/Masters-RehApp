@@ -12,6 +12,26 @@ final class HealthStatisticsView: UIView {
 
     // MARK: - Properties
 
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
+        label.font = .preferredFont(for: .title1, weight: .bold)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private let heightView = KeyValueView()
+
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        return stackView
+    }()
+
     // MARK: - Init
 
     init() {
@@ -25,5 +45,27 @@ final class HealthStatisticsView: UIView {
 
     private func configure() {
         backgroundColor = .rehAppBackground
+
+        addSubview(stackView)
+        stackView.addArrangedSubviews([
+            nameLabel, heightView
+        ])
+
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        let guide = layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: guide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor)
+        ])
+    }
+
+    // MARK: - Public methods
+
+    func setValues(name: String, height: Int) {
+        nameLabel.text = name
+        heightView.setValues(key: "Visina", value: String(height))
     }
 }

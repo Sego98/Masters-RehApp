@@ -29,7 +29,7 @@ struct PickerViewModel {
     // MARK: - Custom data
 
     static var pickPartToRehab: PickerViewModel {
-        let title = "Odaberi rehabilitaciju"
+        let title = "Rehabilitacija"
         let shoulderSubviewVM = PickerItemViewModel(title: "Rame", imageName: "Shoulder")
         let handSubviewVM = PickerItemViewModel(title: "Šaka", imageName: "Hand")
         let elbowSubview = PickerItemViewModel(title: "Lakat", imageName: "Elbow")

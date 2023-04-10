@@ -30,6 +30,36 @@ class HealthData {
         return typeIdentifiers.compactMap({ getSampleType(for: $0) })
     }
 
+    // MARK: - Public methods
+
+    static func requestHealthAuthorization() {
+        guard HKHealthStore.isHealthDataAvailable() else {
+#if DEBUG
+                print("Health data is not available on this device.")
+#endif
+            return
+        }
+
+        Self.healthStore.requestAuthorization(toShare: Set(HealthData.shareDataTypes),
+                                         read: Set(HealthData.readDataTypes)) { success, error in
+            if success {
+#if DEBUG
+                print("HealthKit authorization has been successful!")
+#endif
+            } else {
+#if DEBUG
+                print("HealthKit authorization was not successful. :(")
+#endif
+            }
+
+            if let error = error {
+#if DEBUG
+                print(error.localizedDescription)
+#endif
+            }
+        }
+    }
+
     // MARK: - Helper methods
 
     private static func getSampleType(for identifier: String) -> HKSampleType? {
