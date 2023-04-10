@@ -44,8 +44,13 @@ final class RehAppTabBarController: UITabBarController {
         let remindersNC = RehAppNavigationController(rootViewController: remindersVC)
         remindersNC.tabBarItem = makeTabBarItem(.reminders)
 
+        let statisticsVC = HealthStatisticsViewController()
+        let statisticsNC = UINavigationController(rootViewController: statisticsVC)
+        statisticsNC.tabBarItem = makeTabBarItem(.statistics)
+
         viewControllers = [
             pickerNC,
+            statisticsNC,
             remindersNC
         ]
     }

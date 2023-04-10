@@ -14,11 +14,11 @@ class RehAppViewController: UIViewController {
     // MARK: - Properties
 
     private let screenTitle: String?
-    private let type: RehAppTabType
+    private let type: RehAppTabType?
 
     // MARK: - Lifecycle
 
-    init(screenTitle: String? = nil, type: RehAppTabType = .exercises) {
+    init(screenTitle: String? = nil, type: RehAppTabType? = nil) {
         self.screenTitle = screenTitle
         self.type = type
         super.init(nibName: nil, bundle: nil)
@@ -50,30 +50,35 @@ class RehAppViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = screenTitle
 
-        navigationItem.rightBarButtonItem = makeBarButtonItem(type)
+        if let type = type {
+            navigationItem.rightBarButtonItem = makeBarButtonItem(type)
+        }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
     }
 
     private func makeBarButtonItem(_ type: RehAppTabType) -> UIBarButtonItem? {
         var barButtonItem: UIBarButtonItem?
+        let exercisingBarButton = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(rightExercisingBarButtonTapped))
         switch type {
         case .exercises:
-            barButtonItem = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
-                                   style: .plain,
-                                   target: self,
-                                   action: #selector(rightBarButtonTapped))
+            barButtonItem = exercisingBarButton
         case .reminders:
             barButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
-                                   style: .plain,
-                                   target: self,
-                                   action: nil)
+                                            style: .plain,
+                                            target: self,
+                                            action: nil)
+        case .statistics:
+            barButtonItem = exercisingBarButton
         }
         barButtonItem?.tintColor = .white
         return barButtonItem
     }
 
-    @objc func rightBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func rightExercisingBarButtonTapped(_ sender: UIBarButtonItem) {
         let calendarViewController = StreakCalendarViewController()
 
         present(calendarViewController, animated: true)

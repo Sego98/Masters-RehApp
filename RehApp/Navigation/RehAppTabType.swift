@@ -10,6 +10,7 @@ import Foundation
 enum RehAppTabType {
     case exercises
     case reminders
+    case statistics
 
     var title: String {
         switch self {
@@ -17,6 +18,8 @@ enum RehAppTabType {
             return "Vježbe"
         case .reminders:
             return "Podsjetnici"
+        case .statistics:
+            return "Statistika"
         }
     }
 
@@ -26,6 +29,8 @@ enum RehAppTabType {
             return "figure.run.square.stack"
         case .reminders:
             return "clock"
+        case .statistics:
+            return "chart.bar.xaxis"
         }
     }
 
@@ -35,6 +40,8 @@ enum RehAppTabType {
             return "figure.run.square.stack.fill"
         case .reminders:
             return "clock.fill"
+        case .statistics:
+            return "chart.bar.xaxis"
         }
     }
 }
