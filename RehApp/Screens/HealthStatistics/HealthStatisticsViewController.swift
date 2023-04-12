@@ -36,7 +36,7 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configure() {
-        HealthData.requestHealthAuthorization()
+        HealthData.shared.requestHealthAuthorization()
 
         setUserName()
         setUserHeightFromHealthData()

@@ -16,7 +16,7 @@ extension HealthStatisticsViewController {
     }
 
     func setUserHeightFromHealthData() {
-        getQuantityValueFromHealth(for: .height, in: .meter()) {[weak self] (height) in
+        getQuantityValueFromHealth(for: .height) {[weak self] (height) in
             guard let self = self else { return }
             guard let height = height else {
                 self.healthStatisticsView.setHeight(nil)
@@ -27,7 +27,7 @@ extension HealthStatisticsViewController {
     }
 
     func setUserMassFromHealthData() {
-        getQuantityValueFromHealth(for: .bodyMass, in: .gram()) { [weak self] (mass) in
+        getQuantityValueFromHealth(for: .bodyMass) { [weak self] (mass) in
             guard let self = self else { return }
             guard let mass = mass else {
                 self.healthStatisticsView.setMass(nil)
@@ -40,9 +40,8 @@ extension HealthStatisticsViewController {
     // MARK: - Helper methods
 
     private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
-                                            in unit: HKUnit,
                                             completion: @escaping (Double?) -> Void) {
-        HealthData.getMostRecentQuantitySample(for: identifier, in: unit) { height, error in
+        HealthData.shared.getMostRecentQuantitySample(for: identifier) { height, error in
             if let error = error {
 #if DEBUG
                 print("No value, \(error.localizedDescription)")
