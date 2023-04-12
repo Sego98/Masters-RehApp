@@ -67,6 +67,8 @@ final class HealthStatisticsView: UIView {
             nameLabel, heightView, massView
         ])
 
+        stackView.setCustomSpacing(32, after: nameLabel)
+
         containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = containerView.layoutMarginsGuide
 

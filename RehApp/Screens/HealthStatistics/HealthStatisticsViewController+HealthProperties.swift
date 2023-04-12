@@ -41,14 +41,16 @@ extension HealthStatisticsViewController {
 
     private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
                                             completion: @escaping (Double?) -> Void) {
-        HealthData.shared.getMostRecentQuantitySample(for: identifier) { height, error in
-            if let error = error {
+        HealthData.shared.fetchMostRecentQuantitySample(for: identifier) { height, error in
+            DispatchQueue.main.async {
+                if let error = error {
 #if DEBUG
-                print("No value, \(error.localizedDescription)")
+                    print("No value, \(error.localizedDescription)")
 #endif
-                completion(nil)
+                    completion(nil)
+                }
+                completion(height)
             }
-            completion(height)
         }
     }
 }

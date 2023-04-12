@@ -36,11 +36,37 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configure() {
-        HealthData.shared.requestHealthAuthorization()
+        requestHealthDataAuthorization()
+        configureUserHealthDataValues()
+    }
 
+    private func requestHealthDataAuthorization() {
+        HealthData.shared.requestHealthAuthorization {[weak self] (success) in
+            guard let self = self else { return }
+            if success {
+                DispatchQueue.main.async {
+                    self.configureUserHealthDataValues()
+                }
+            }
+        }
+    }
+    private func configureUserHealthDataValues() {
         setUserName()
         setUserHeightFromHealthData()
         setUserMassFromHealthData()
-    }
 
+        let now = Date()
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        let endDate = now
+        HealthData.shared.fetchDailyStatistics(identifier: .activeEnergyBurned,
+                                               fromDate: startDate) {  statistics in
+            DispatchQueue.main.async {
+                statistics?.enumerateStatistics(from: startDate, to: endDate, with: { statistics, _ in
+                    let quantity = statistics.sumQuantity()
+                    let value = quantity?.doubleValue(for: .count())
+                    print(quantity)
+                })
+            }
+        }
+    }
 }

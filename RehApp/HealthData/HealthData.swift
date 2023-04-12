@@ -14,36 +14,44 @@ class HealthData {
 
     let healthStore = HKHealthStore()
 
-    var readDataTypes: [HKSampleType] {
-        return Self.allHealthDataTypes
-    }
-
-    var shareDataTypes: [HKSampleType] {
-        return Self.allHealthDataTypes
-    }
-
-    private static var allHealthDataTypes: [HKSampleType] {
-        let typeIdentifiers: [String] = [
+    var readDataTypes: [HKSampleType] = {
+        let identifiers = [
             HKQuantityTypeIdentifier.height.rawValue,
             HKQuantityTypeIdentifier.bodyMass.rawValue,
-            HKQuantityTypeIdentifier.stepCount.rawValue
+            HKQuantityTypeIdentifier.heartRate.rawValue,
+            HKQuantityTypeIdentifier.heartRateRecoveryOneMinute.rawValue,
+            HKQuantityTypeIdentifier.restingHeartRate.rawValue,
+            HKQuantityTypeIdentifier.activeEnergyBurned.rawValue
         ]
 
-        return typeIdentifiers.compactMap({ getSampleType(for: $0) })
-    }
+        return identifiers.compactMap({ getSampleType(for: $0) })
+    }()
+
+    var shareDataTypes: [HKSampleType] = {
+        return []
+    }()
 
     // MARK: - Public methods
 
-    func requestHealthAuthorization() {
+    func requestHealthAuthorization(completion: @escaping (Bool) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
 #if DEBUG
             print("Health data is not available on this device.")
 #endif
+            completion(false)
             return
         }
 
         healthStore.requestAuthorization(toShare: Set(shareDataTypes),
                                          read: Set(readDataTypes)) { success, error in
+            if let error = error {
+                completion(false)
+#if DEBUG
+                print(error.localizedDescription)
+#endif
+                return
+            }
+
             if success {
 #if DEBUG
                 print("HealthKit authorization has been successful!")
@@ -53,17 +61,12 @@ class HealthData {
                 print("HealthKit authorization was not successful. :(")
 #endif
             }
-
-            if let error = error {
-#if DEBUG
-                print(error.localizedDescription)
-#endif
-            }
+            completion(success)
         }
     }
 
-    func getMostRecentQuantitySample(for identifier: HKQuantityTypeIdentifier,
-                                     completion: @escaping (Double?, Error?) -> Void) {
+    func fetchMostRecentQuantitySample(for identifier: HKQuantityTypeIdentifier,
+                                       completion: @escaping (Double?, Error?) -> Void) {
         let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
                                                     end: Date(),
                                                     options: .strictEndDate)
@@ -76,18 +79,42 @@ class HealthData {
                                   predicate: predicate,
                                   limit: limit,
                                   sortDescriptors: [sortDescriptor]) {[weak self] (_, samples, error) in
-            DispatchQueue.main.async {
-                guard let self = self,
-                      let samples = samples,
-                      let mostRecentSample = samples.first as? HKQuantitySample,
-                      let unit = self.getQuantityPreferredUnit(sampleType) else {
-                    completion(nil, error)
-                    return
-                }
-                let sampleValue = mostRecentSample.quantity.doubleValue(for: unit)
-                completion(sampleValue, nil)
+            guard let self = self,
+                  let samples = samples,
+                  let mostRecentSample = samples.first as? HKQuantitySample,
+                  let unit = self.getQuantityPreferredUnit(sampleType) else {
+                completion(nil, error)
+                return
             }
+            let sampleValue = mostRecentSample.quantity.doubleValue(for: unit)
+            completion(sampleValue, nil)
         }
+        healthStore.execute(query)
+    }
+
+    func fetchDailyStatistics(identifier: HKQuantityTypeIdentifier,
+                              fromDate startDate: Date,
+                              completion: @escaping (HKStatisticsCollection?) -> Void ) {
+        let quantitySampleType = HKQuantityType(identifier)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate,
+                                                    end: nil,
+                                                    options: .strictStartDate)
+        let anchorDate = getAnchorDate()
+        let daily = DateComponents(day: 1)
+
+        let query = HKStatisticsCollectionQuery(quantityType: quantitySampleType,
+                                                quantitySamplePredicate: predicate,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: daily)
+
+        query.initialResultsHandler = { _, results, error in
+            guard error == nil else {
+                completion(nil)
+                return
+            }
+            completion(results)
+        }
+
         healthStore.execute(query)
     }
 
@@ -122,5 +149,14 @@ class HealthData {
             }
         }
         return nil
+    }
+
+    private func getAnchorDate() -> Date {
+        var anchorComponents = Calendar.current.dateComponents([.day, .month, .year, .weekday], from: Date())
+        let offset = (7 + (anchorComponents.weekday ?? 0) - 2) % 7
+        anchorComponents.day! -= offset
+        anchorComponents.hour = 3
+
+        return Calendar.current.date(from: anchorComponents)!
     }
 }
