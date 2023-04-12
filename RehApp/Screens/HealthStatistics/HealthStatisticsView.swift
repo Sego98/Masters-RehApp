@@ -61,14 +61,14 @@ final class HealthStatisticsView: UIView {
         backgroundColor = .rehAppBackground
 
         addSubview(scrollView)
-//        scrollView.addSubview(containerView)
-        scrollView.addSubview(stackView)
+        scrollView.addSubview(containerView)
+        containerView.addSubview(stackView)
         stackView.addArrangedSubviews([
             nameLabel, heightView, massView
         ])
 
-        scrollView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        let guide = scrollView.layoutMarginsGuide
+        containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        let guide = containerView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -76,7 +76,12 @@ final class HealthStatisticsView: UIView {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            stackView.widthAnchor.constraint(equalTo: guide.widthAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+
             stackView.topAnchor.constraint(equalTo: guide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),

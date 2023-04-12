@@ -14,7 +14,6 @@ final class HealthStatisticsViewController: RehAppViewController {
     // MARK: - Properties
 
     let healthStatisticsView = HealthStatisticsView()
-    private let healthStore = HealthData.healthStore
 
     // MARK: - Lifecycle
 
