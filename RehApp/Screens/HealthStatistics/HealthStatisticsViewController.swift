@@ -13,7 +13,7 @@ final class HealthStatisticsViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    private let healthStatisticsView = HealthStatisticsView()
+    let healthStatisticsView = HealthStatisticsView()
     private let healthStore = HealthData.healthStore
 
     // MARK: - Lifecycle
@@ -39,18 +39,9 @@ final class HealthStatisticsViewController: RehAppViewController {
     private func configure() {
         HealthData.requestHealthAuthorization()
 
-        let heightType = HKQuantityType(HKQuantityTypeIdentifier.height)
-        HealthData.getMostRecentQuantitySample(for: heightType) { [self] sample, error in
-            guard let sample = sample else {
-                if let error = error {
-                    print("No height, \(error.localizedDescription)")
-                }
-                return
-            }
-            let heightInMeters = sample.quantity.doubleValue(for: .meter())
-            self.healthStatisticsView.setValues(name: "Petar Ljubotina", height: heightInMeters)
-        }
-
+        setUserName()
+        setUserHeightFromHealthData()
+        setUserMassFromHealthData()
     }
 
 }

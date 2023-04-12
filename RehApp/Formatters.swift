@@ -17,4 +17,15 @@ enum Formatters {
         return formatter
     }()
 
+    static let massFormatter: MassFormatter = {
+        let formatter = MassFormatter()
+        formatter.isForPersonMassUse = true
+        return formatter
+    }()
+
+    static let heightFormatter: LengthFormatter = {
+        let formatter = LengthFormatter()
+        formatter.isForPersonHeightUse = true
+        return formatter
+    }()
 }

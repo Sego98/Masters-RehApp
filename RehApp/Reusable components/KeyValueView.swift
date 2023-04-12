@@ -67,8 +67,11 @@ final class KeyValueView: UIView {
 
     // MARK: - Public methods
 
-    func setValues(key: String, value: String) {
+    func setKey(key: String?) {
         keyLabel.text = key
+    }
+
+    func setValue(_ value: String?) {
         valueLabel.text = value
     }
 }

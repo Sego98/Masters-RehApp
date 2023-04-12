@@ -60,8 +60,9 @@ class HealthData {
         }
     }
 
-    static func getMostRecentQuantitySample(for sampleType: HKSampleType,
-                                            completion: @escaping (HKQuantitySample?, Error?) -> Void) {
+    static func getMostRecentQuantitySample(for identifier: HKQuantityTypeIdentifier,
+                                            in unit: HKUnit,
+                                            completion: @escaping (Double?, Error?) -> Void) {
         let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
                                                     end: Date(),
                                                     options: .strictEndDate)
@@ -69,6 +70,7 @@ class HealthData {
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         let limit = 1
 
+        let sampleType = HKQuantityType(identifier)
         let query = HKSampleQuery(sampleType: sampleType,
                                   predicate: predicate,
                                   limit: limit,
@@ -79,7 +81,8 @@ class HealthData {
                     completion(nil, error)
                     return
                 }
-                completion(mostRecentSample, nil)
+                let sampleValue = mostRecentSample.quantity.doubleValue(for: unit)
+                completion(sampleValue, nil)
             }
         }
         Self.healthStore.execute(query)

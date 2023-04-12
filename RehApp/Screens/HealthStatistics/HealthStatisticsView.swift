@@ -13,6 +13,18 @@ final class HealthStatisticsView: UIView {
 
     // MARK: - Properties
 
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +36,7 @@ final class HealthStatisticsView: UIView {
     }()
 
     private let heightView = KeyValueView()
+    private let massView = KeyValueView()
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -47,15 +60,23 @@ final class HealthStatisticsView: UIView {
     private func configure() {
         backgroundColor = .rehAppBackground
 
-        addSubview(stackView)
+        addSubview(scrollView)
+//        scrollView.addSubview(containerView)
+        scrollView.addSubview(stackView)
         stackView.addArrangedSubviews([
-            nameLabel, heightView
+            nameLabel, heightView, massView
         ])
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        let guide = layoutMarginsGuide
+        scrollView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        let guide = scrollView.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+
+            stackView.widthAnchor.constraint(equalTo: guide.widthAnchor),
             stackView.topAnchor.constraint(equalTo: guide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
@@ -65,8 +86,27 @@ final class HealthStatisticsView: UIView {
 
     // MARK: - Public methods
 
-    func setValues(name: String, height: Double) {
+    func setName(_ name: String?) {
         nameLabel.text = name
-        heightView.setValues(key: "Visina", value: String(height))
     }
+
+    func setHeight(_ heightInMeters: Measurement<UnitLength>?) {
+        heightView.setKey(key: "Visina")
+        guard let heightInMeters = heightInMeters else {
+            heightView.setValue(nil)
+            return
+        }
+        heightView.setValue(Formatters.heightFormatter.string(fromMeters: heightInMeters.value))
+    }
+
+    func setMass(_ massInGrams: Measurement<UnitMass>?) {
+        massView.setKey(key: "Masa")
+        guard let massInGrams = massInGrams else {
+            massView.setValue(nil)
+            return
+        }
+        let massInKilograms = massInGrams.converted(to: .kilograms)
+        massView.setValue(Formatters.massFormatter.string(fromKilograms: massInKilograms.value))
+    }
+
 }
