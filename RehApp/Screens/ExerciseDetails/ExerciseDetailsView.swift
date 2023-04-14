@@ -12,36 +12,27 @@ class ExerciseDetailsView: UIView {
 
     // MARK: - Properties
 
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
+    let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: customCollectionViewLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .rehAppBackground
+        return collectionView
     }()
 
-    private let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private static var customCollectionViewLayout: UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .estimated(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-    private let exerciseDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor = .label
-        label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .title3)
-        label.numberOfLines = 0
-        return label
-    }()
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize,
+                                                       repeatingSubitem: item,
+                                                       count: 1)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
 
-    private let exerciseImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .lightPurple
-        return imageView
-    }()
+        return UICollectionViewCompositionalLayout(section: section)
+    }
 
 //    private let chooseNumberOfRepetitionsLabel: UILabel = {
 //        let label = UILabel()
@@ -61,29 +52,13 @@ class ExerciseDetailsView: UIView {
 //        return pickerView
 //    }()
 
-    private let screenDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor = .label
-        label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .title3)
-        label.numberOfLines = 0
-        label.text = """
-        Na slici iznad možete vidjeti kako izgleda vježba dok se izvodi u pravilnom položaju. Za pravilno izvođenje \
-        cijelog pokreta vježbe pogledajte video koji se otvara pritiskom na gumb pri dnu ekrana.
-        """
-        return label
-    }()
-
 //    let overlayView = OverlayView()
 
     private let largeButton = LargeButton(title: "Video vježbe".uppercased())
 
-    private let exerciseDescription: String
+    // MARK: - Init
 
-    init(exerciseDescription: String) {
-        self.exerciseDescription = exerciseDescription
+    init() {
         super.init(frame: .zero)
         configure()
     }
@@ -95,34 +70,26 @@ class ExerciseDetailsView: UIView {
     private func configure() {
         backgroundColor = .rehAppBackground
 
-        exerciseDescriptionLabel.text = exerciseDescription
-        addSubview(scrollView)
-        scrollView.addSubview(containerView)
-        addSubview(largeButton)
-
-        containerView.addSubviews([
-            exerciseDescriptionLabel,
-            exerciseImageView,
-            screenDescriptionLabel
+        addSubviews([
+            collectionView, largeButton
         ])
 
-        containerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 0, trailing: 24)
-        let guide = containerView.layoutMarginsGuide
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24)
+        let guide = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            containerView.widthAnchor.constraint(equalTo: widthAnchor),
-            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            largeButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8),
+            largeButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            largeButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            largeButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+        ])
 
-            exerciseDescriptionLabel.topAnchor.constraint(equalTo: guide.topAnchor),
-            exerciseDescriptionLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            exerciseDescriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+//
+//        NSLayoutConstraint.activate([
 
 //            chooseNumberOfRepetitionsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
 //            chooseNumberOfRepetitionsLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,
@@ -136,21 +103,12 @@ class ExerciseDetailsView: UIView {
 
 //            nextScreenDescriptionLabel.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 8),
 
-            exerciseImageView.topAnchor.constraint(equalTo: exerciseDescriptionLabel.bottomAnchor, constant: 24),
-            exerciseImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 80),
-            exerciseImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -80),
-            exerciseImageView.heightAnchor.constraint(equalTo: exerciseImageView.widthAnchor),
+//
+//            screenDescriptionLabel.topAnchor.constraint(equalTo: exerciseImageView.bottomAnchor, constant: 24),
+//            screenDescriptionLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+//            screenDescriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+//            screenDescriptionLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
 
-            screenDescriptionLabel.topAnchor.constraint(equalTo: exerciseImageView.bottomAnchor, constant: 24),
-            screenDescriptionLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            screenDescriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            screenDescriptionLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
-
-            largeButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 16),
-            largeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            largeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            largeButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
     }
 
 //    func selectMiddleRow(from items: [Int]) {

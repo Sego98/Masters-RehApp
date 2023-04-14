@@ -29,8 +29,8 @@ struct ListAllItemsViewModel: Hashable, Equatable {
         Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje možete raditi bez bilo kakvih pomagala. \
         Klikom odaberite detalje i izvedbu pojedine vježbe ili na dnu odaberite izvedbu svih vježbi.
         """
-        let leftHeaderDescription = "Broj vježbe"
-        let rightHeaderDescription = "Opis vježbe"
+        let leftHeaderDescription = "#"
+        let rightHeaderDescription = "Opis"
         let largeButtonTitle = "Sve vježbe"
         let items = [
             ListItemViewModel(title: "Podizanje ramena",

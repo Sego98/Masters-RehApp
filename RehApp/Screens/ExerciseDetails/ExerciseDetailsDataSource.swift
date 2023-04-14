@@ -8,20 +8,34 @@
 import Foundation
 import UIKit
 
-final class ExerciseDetailsPickerDataSource: NSObject, UIPickerViewDataSource {
+final class ExerciseDetailsDataSource: UICollectionViewDiffableDataSource<Int, ExerciseDetailsViewModel> {
 
-    let numberOfRepetitions: [Int]
+    typealias ExerciseDetailsSnapshot = NSDiffableDataSourceSnapshot<Int, ExerciseDetailsViewModel>
 
-    init(numberOfRepetitions: [Int]) {
-        self.numberOfRepetitions = numberOfRepetitions
-        super.init()
-    }
+    func rebuildSnapshot(viewModel: ExerciseDetailsViewModel, animatingDifferences: Bool) {
+        var snapshot = ExerciseDetailsSnapshot()
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+        snapshot.appendSections([0])
+        snapshot.appendItems([viewModel], toSection: 0)
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return numberOfRepetitions.count
+        apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
+
+// final class ExerciseDetailsPickerDataSource: NSObject, UIPickerViewDataSource {
+//
+//    let numberOfRepetitions: [Int]
+//
+//    init(numberOfRepetitions: [Int]) {
+//        self.numberOfRepetitions = numberOfRepetitions
+//        super.init()
+//    }
+//
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return numberOfRepetitions.count
+//    }
+// }

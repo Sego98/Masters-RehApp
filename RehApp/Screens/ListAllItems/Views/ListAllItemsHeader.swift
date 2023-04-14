@@ -36,7 +36,6 @@ final class ListAllItemsHeader: UICollectionReusableView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
         return stackView
     }()
 
@@ -46,7 +45,9 @@ final class ListAllItemsHeader: UICollectionReusableView {
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(for: .title3, weight: .bold)
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
 
@@ -55,8 +56,8 @@ final class ListAllItemsHeader: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
-        label.textAlignment = .right
-        label.font = .preferredFont(forTextStyle: .body)
+        label.textAlignment = .center
+        label.font = .preferredFont(for: .title3, weight: .bold)
         return label
     }()
 
@@ -83,10 +84,10 @@ final class ListAllItemsHeader: UICollectionReusableView {
             leftTitleLabel, rightTitleLabel
         ])
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 0, trailing: 24)
         let contentGuide = layoutMarginsGuide
 
-        titleView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        titleView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 16)
         let titleViewGuide = titleView.layoutMarginsGuide
 
         let titleStackViewBottomConstraint = titleView.bottomAnchor.constraint(equalTo: contentGuide.bottomAnchor)

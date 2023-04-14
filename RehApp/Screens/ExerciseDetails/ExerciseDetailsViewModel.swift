@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseDetailsViewModel {
+struct ExerciseDetailsViewModel: Hashable, Equatable {
     let screenTitle: String
     let exerciseDescription: String
 }

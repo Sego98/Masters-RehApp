@@ -39,6 +39,8 @@ final class ListAllItemsViewController: RehAppViewController {
     }
 
     private func configure() {
+        listAllItemsView.collectionView.delegate = self
+
         configureDataSourceCellRegistrations()
         configureDataSourceSupplementaryViews()
 
@@ -51,10 +53,7 @@ final class ListAllItemsViewController: RehAppViewController {
             cell.setParameters(number: number, description: item.shortDescription)
         }
 
-        listAllItemsView.setCollectionViewDelegate(self)
-        let collectionView = listAllItemsView.getCollectionView()
-
-        dataSource = ListAllItemsDataSource(collectionView: collectionView,
+        dataSource = ListAllItemsDataSource(collectionView: listAllItemsView.collectionView,
                                             cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ListAllItemsViewModel.ListItemViewModel) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: allItemsCellRegistration,
                                                                 for: indexPath,

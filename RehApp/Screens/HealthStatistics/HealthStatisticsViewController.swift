@@ -63,8 +63,8 @@ final class HealthStatisticsViewController: RehAppViewController {
             DispatchQueue.main.async {
                 statistics?.enumerateStatistics(from: startDate, to: endDate, with: { statistics, _ in
                     let quantity = statistics.sumQuantity()
-                    let value = quantity?.doubleValue(for: .count())
-                    print(quantity)
+//                    let value = quantity?.doubleValue(for: .count())
+                    print(quantity ?? "")
                 })
             }
         }

@@ -12,7 +12,7 @@ final class ListAllItemsView: UIView {
 
     // MARK: - Properties
 
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: customCollectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +29,7 @@ final class ListAllItemsView: UIView {
                                                        repeatingSubitem: item,
                                                        count: 1)
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -72,23 +73,14 @@ final class ListAllItemsView: UIView {
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8),
+            allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16),
             allItemsButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             allItemsButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             allItemsButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 
-    // MARK: - Public methods
-
-    func getCollectionView() -> UICollectionView {
-        return collectionView
-    }
-
-    func setCollectionViewDelegate(_ delegate: UICollectionViewDelegate) {
-        collectionView.delegate = delegate
-    }
 }

@@ -4,6 +4,7 @@
 //
 //  Created by Petar Ljubotina on 16.03.2023..
 //
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
@@ -12,8 +13,8 @@ import RxCocoa
 
 final class ExerciseDetailsViewController: RehAppViewController {
 
-    private let exerciseDetailsView: ExerciseDetailsView
-//    private let pickerDataSource: ExerciseDetailsPickerDataSource
+    private let exerciseDetailsView = ExerciseDetailsView()
+    private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsViewModel
 
 //    private let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -26,7 +27,6 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //        .observe(on: MainScheduler.instance)
 
     init(viewModel: ExerciseDetailsViewModel) {
-        self.exerciseDetailsView = ExerciseDetailsView(exerciseDescription: viewModel.exerciseDescription)
 //        self.pickerDataSource = ExerciseDetailsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
         self.viewModel = viewModel
         super.init(screenTitle: viewModel.screenTitle, type: .exercises)
@@ -55,7 +55,24 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //        pickerView.dataSource = pickerDataSource
 //
 //        exerciseDetailsView.selectMiddleRow(from: numberOfRepetitions)
+        configureDataSourceCellRegistrations()
         exerciseDetailsView.setLargeButtonAction(makeLargeButtonAction())
+
+        dataSource.rebuildSnapshot(viewModel: viewModel,
+                                   animatingDifferences: true)
+    }
+
+    private func configureDataSourceCellRegistrations() {
+        let exerciseDetailsCellRegistration = UICollectionView.CellRegistration<ExerciseDetailsCell, ExerciseDetailsViewModel> {cell, _, item in
+            cell.setExerciseDescription(item.exerciseDescription)
+        }
+
+        dataSource = ExerciseDetailsDataSource(collectionView: exerciseDetailsView.collectionView,
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseDetailsViewModel) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: exerciseDetailsCellRegistration,
+                                                                for: indexPath,
+                                                                item: item)
+        })
     }
 
     private func makeLargeButtonAction() -> UIAction {
@@ -87,8 +104,8 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 }
 
-//extension ExerciseDetailsViewController: UIPickerViewDelegate {
+// extension ExerciseDetailsViewController: UIPickerViewDelegate {
 //    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 //        return String(numberOfRepetitions[row])
 //    }
-//}
+// }
