@@ -11,9 +11,10 @@ import UIKit
 extension ListAllItemsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let title = viewModel.items[indexPath.item].title
         let description = viewModel.items[indexPath.item].longDescription
-        let exerciseDetailsVM = ExerciseDetailsViewModel(screenTitle: "Vježba broj \(indexPath.item + 1)",
-                                                                exerciseDescription: description)
+        let exerciseDetailsVM = ExerciseDetailsViewModel(screenTitle: title,
+                                                         exerciseDescription: description)
         let viewController = ExerciseDetailsViewController(viewModel: exerciseDetailsVM)
         navigationController?.pushViewController(viewController, animated: true)
     }

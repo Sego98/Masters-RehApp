@@ -12,10 +12,11 @@ struct ListAllItemsViewModel: Hashable, Equatable {
     let screenDescription: String
     let leftHeaderDescription: String
     let rightHeaderDescription: String
-    let items: [ItemViewModel]
+    let items: [ListItemViewModel]
     let largeButtonTitle: String
 
-    struct ItemViewModel: Hashable, Equatable {
+    struct ListItemViewModel: Hashable, Equatable {
+        let title: String
         let shortDescription: String
         let longDescription: String
     }
@@ -32,40 +33,47 @@ struct ListAllItemsViewModel: Hashable, Equatable {
         let rightHeaderDescription = "Opis vježbe"
         let largeButtonTitle = "Sve vježbe"
         let items = [
-            ItemViewModel(shortDescription: "Podizanje ramena prema gore",
-                          longDescription: """
+            ListItemViewModel(title: "Podizanje ramena",
+                              shortDescription: "Podizanje ramena prema gore",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramena lagano podižu \
                           prema gore. Kada se dođe u gornju poziciju, potrebno je zadržati položaj dvije sekunde.
                           """),
-            ItemViewModel(shortDescription: "Kruženje ramenima prema naprijed",
-                          longDescription: """
+            ListItemViewModel(title: "Kruženje ramenima",
+                              shortDescription: "Kruženje ramenima prema naprijed",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano \
                           kruži. Ramenima kružite prema naprijed uz lagano zadržavanje u gornjem položaju.
                           """),
-            ItemViewModel(shortDescription: "Kruženje ramenima prema nazad",
-                          longDescription: """
+            ListItemViewModel(title: "Kruženje ramenima",
+                              shortDescription: "Kruženje ramenima prema nazad",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano \
                           kruži. Ramenima kružite prema nazad uz lagano zadržavanje u gornjem položaju.
                           """),
-            ItemViewModel(shortDescription: "Širenje ruku od tijela",
-                          longDescription: """
+            ListItemViewModel(title: "Širenje ruku",
+                              shortDescription: "Širenje ruku od tijela",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
                           podižu od tijela i skupljaju iznad glave. Potom se ruke vraćaju istim putem nazad.
                           """),
-            ItemViewModel(shortDescription: "Podizanje ruku i spajanje ispred sebe",
-                          longDescription: """
+            ListItemViewModel(title: "Podizanje ruku",
+                              shortDescription: "Podizanje ruku i spajanje ispred sebe",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
                           podižu od tijela sve dok ne budu u istoj ravnini. Zatim se ruke rotiraju tako da se \
                           zajedno skupe ispred prsa. Nakon toga se vraćaju tako da prvo dođu ispružene u istu \
                           ravninu i potom se spuštaju uz tijelo.
                           """),
-            ItemViewModel(shortDescription: "Istezanje ruku prema nazad",
-                          longDescription: """
+            ListItemViewModel(title: "Istezanje ruku",
+                              shortDescription: "Istezanje ruku prema nazad",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
                           lagano podižu i spajaju iza leđa. Cilj je istezati ramena tako da se lopatice spajaju.
                           """),
-            ItemViewModel(shortDescription: "Istezanje ruku prema naprijed",
-                          longDescription: """
+            ListItemViewModel(title: "Istezanje ruku",
+                              shortDescription: "Istezanje ruku prema naprijed",
+                              longDescription: """
                           Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ruke ispruže \
                           ispred prsa i prsti isprepletu. U tom pložaju potrebno je ruke istegnuti prema naprijed. \
                           Nakon istezanje ruke se tako spojene podižu iznad glave.
@@ -89,20 +97,23 @@ struct ListAllItemsViewModel: Hashable, Equatable {
         let rightHeaderDescription = "Opis vježbe"
         let largeButtonTitle = "Sve vježbe"
         let items = [
-            ItemViewModel(shortDescription: "Primiti štap u širini ramena",
-                          longDescription: """
+            ListItemViewModel(title: "Podizanje štapa",
+                              shortDescription: "Primiti štap u širini ramena",
+                              longDescription: """
                           Primite štap s opuštenim ispruženim rukama u širini ramena. Štap podižite prema gore \
                           koliko god je moguće. Cilj vježbe je da se štap može spustiti na vrat iza glava, ali \
                           to se ne smije forsirati!
                           """),
-            ItemViewModel(shortDescription: "Primiti štap na krajevima",
-                          longDescription: """
+            ListItemViewModel(title: "Podizanje štapa",
+                              shortDescription: "Primiti štap na krajevima",
+                              longDescription: """
                           Primite štap s opuštenim ispruženim rukama na krajevima. Štap podižite prema gore \
                           koliko god je moguće. Cilj vježbe je da se štap može spustiti na vrat iza glava, ali \
                           to se ne smije forsirati!
                           """),
-            ItemViewModel(shortDescription: "Primiti štap u visini ramena i povlačiti prema bradi",
-                          longDescription: """
+            ListItemViewModel(title: "Povlačenje štapa",
+                              shortDescription: "Primiti štap u visini ramena i povlačiti prema bradi",
+                              longDescription: """
                           Primite štap s ispruženim rukama u visini ramena. Štap držite u tom položaju i privlačite \
                           ga prema bradi. Lakat i rame cijelo vrijeme ostaju u istoj visini.
                           """)

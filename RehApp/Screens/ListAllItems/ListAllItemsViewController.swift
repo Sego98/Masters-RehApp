@@ -46,7 +46,7 @@ final class ListAllItemsViewController: RehAppViewController {
     }
 
     private func configureDataSourceCellRegistrations() {
-        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllItemsCell, ListAllItemsViewModel.ItemViewModel> {cell, indexPath, item in
+        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllItemsCell, ListAllItemsViewModel.ListItemViewModel> {cell, indexPath, item in
             let number = indexPath.item + 1
             cell.setParameters(number: number, description: item.shortDescription)
         }
@@ -55,7 +55,7 @@ final class ListAllItemsViewController: RehAppViewController {
         let collectionView = listAllItemsView.getCollectionView()
 
         dataSource = ListAllItemsDataSource(collectionView: collectionView,
-                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ListAllItemsViewModel.ItemViewModel) -> UICollectionViewCell? in
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ListAllItemsViewModel.ListItemViewModel) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: allItemsCellRegistration,
                                                                 for: indexPath,
                                                                 item: item)

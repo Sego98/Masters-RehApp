@@ -10,27 +10,26 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class ExerciseDetailsViewController: UIViewController {
+final class ExerciseDetailsViewController: RehAppViewController {
 
     private let exerciseDetailsView: ExerciseDetailsView
-    private let pickerDataSource: ExerciseDetailsPickerDataSource
+//    private let pickerDataSource: ExerciseDetailsPickerDataSource
     private let viewModel: ExerciseDetailsViewModel
 
-    private let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+//    private let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    private let disposeBag = DisposeBag()
+//    private let disposeBag = DisposeBag()
 
-    private let countdownTimer = Observable<Int>
-        .interval(.seconds(1), scheduler: MainScheduler.instance)
-        .take(3)
-        .observe(on: MainScheduler.instance)
+//    private let countdownTimer = Observable<Int>
+//        .interval(.seconds(1), scheduler: MainScheduler.instance)
+//        .take(3)
+//        .observe(on: MainScheduler.instance)
 
     init(viewModel: ExerciseDetailsViewModel) {
         self.exerciseDetailsView = ExerciseDetailsView(exerciseDescription: viewModel.exerciseDescription)
-        self.pickerDataSource = ExerciseDetailsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
+//        self.pickerDataSource = ExerciseDetailsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
         self.viewModel = viewModel
-
-        super.init(nibName: nil, bundle: nil)
+        super.init(screenTitle: viewModel.screenTitle, type: .exercises)
     }
 
     required init?(coder: NSCoder) {
@@ -47,9 +46,9 @@ final class ExerciseDetailsViewController: UIViewController {
     }
 
     private func configure() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = viewModel.screenTitle
-        navigationItem.largeTitleDisplayMode = .automatic
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationItem.title = viewModel.screenTitle
+//        navigationItem.largeTitleDisplayMode = .automatic
 
 //        let pickerView = exerciseDetailsView.pickerView
 //        pickerView.delegate = self
@@ -88,8 +87,8 @@ final class ExerciseDetailsViewController: UIViewController {
     }
 }
 
-extension ExerciseDetailsViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(numberOfRepetitions[row])
-    }
-}
+//extension ExerciseDetailsViewController: UIPickerViewDelegate {
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return String(numberOfRepetitions[row])
+//    }
+//}
