@@ -76,7 +76,12 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func makeLargeButtonAction() -> UIAction {
-        return UIAction { _ in
+        return UIAction {[weak self] _ in
+            guard let self = self else { return }
+            let viewController = WebModalViewController(url: viewModel.videoURL,
+                                                        screenTitle: viewModel.screenTitle)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            present(navigationController, animated: true)
 //            guard let self = self else { return }
 //            self.exerciseDetailsView.activateOverlayView()
 //            let overlayView = self.exerciseDetailsView.overlayView

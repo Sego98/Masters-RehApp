@@ -48,6 +48,8 @@
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
+		D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */; };
+		D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */; };
 		D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */; };
 		D2DB99C429DF41F80058A70C /* RemindersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB99C329DF41F80058A70C /* RemindersDataSource.swift */; };
 		D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */; };
@@ -119,6 +121,8 @@
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
+		D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModalViewController.swift; sourceTree = "<group>"; };
+		D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModalView.swift; sourceTree = "<group>"; };
 		D2DB99C129DF413C0058A70C /* RemindersViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemindersViewController+Alert.swift"; sourceTree = "<group>"; };
 		D2DB99C329DF41F80058A70C /* RemindersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDataSource.swift; sourceTree = "<group>"; };
 		D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 		D26C80D029BD11AC009393C3 /* Reusable components */ = {
 			isa = PBXGroup;
 			children = (
+				D2B5C5C229E9C52F00C16EF8 /* WebView */,
 				D2B11D7A29DF4B1E00AD9195 /* DatePicker */,
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
 				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
@@ -312,6 +317,15 @@
 				D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */,
 			);
 			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		D2B5C5C229E9C52F00C16EF8 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */,
+				D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		D2DB99BE29DE1E6E0058A70C /* Views */ = {
@@ -558,6 +572,7 @@
 				D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */,
 				D256B29529DB7AC000EF79E7 /* Formatters.swift in Sources */,
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
+				D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */,
 				D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */,
 				D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
@@ -575,6 +590,7 @@
 				D208873229E46AEE0016F407 /* HealthData.swift in Sources */,
 				D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */,
 				D208872329E336540016F407 /* RehAppCache.swift in Sources */,
+				D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */,
 				D208873529E49E990016F407 /* KeyValueView.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllItemsViewModel.swift in Sources */,
 				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
