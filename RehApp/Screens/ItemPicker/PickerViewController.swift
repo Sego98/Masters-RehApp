@@ -26,7 +26,7 @@ final class PickerViewController: RehAppViewController {
         }
 
         self.pickerView = PickerView(subviewsVM: subviews)
-        super.init(screenTitle: viewModel.title)
+        super.init(screenTitle: viewModel.title, type: .exercises)
     }
 
     required init?(coder: NSCoder) {

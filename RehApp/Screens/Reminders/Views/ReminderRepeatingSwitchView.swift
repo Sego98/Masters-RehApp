@@ -19,7 +19,7 @@ final class ReminderRepeatingSwitchView: UIView {
         label.font = .preferredFont(forTextStyle: .title2)
         label.textAlignment = .natural
         label.numberOfLines = 0
-        label.text = "Ponavljanje svaki dan:"
+        label.text = "Ponavljanje svaki dan"
         return label
     }()
 

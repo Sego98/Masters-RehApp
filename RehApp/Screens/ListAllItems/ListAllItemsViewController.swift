@@ -22,7 +22,7 @@ final class ListAllItemsViewController: RehAppViewController {
     init(viewModel: ListAllItemsViewModel) {
         self.viewModel = viewModel
         self.listAllItemsView = ListAllItemsView(viewModel: viewModel)
-        super.init(screenTitle: viewModel.screenTitle)
+        super.init(screenTitle: viewModel.screenTitle, type: .exercises)
     }
 
     required init?(coder: NSCoder) {

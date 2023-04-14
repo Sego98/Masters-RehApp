@@ -12,7 +12,12 @@
 		D208872529E337450016F407 /* RehAppCache+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872429E337450016F407 /* RehAppCache+Container.swift */; };
 		D208872729E33B9A0016F407 /* RehAppCache+Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872629E33B9A0016F407 /* RehAppCache+Reminders.swift */; };
 		D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872929E355CF0016F407 /* RehAppNotifications.swift */; };
+		D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872C29E359CD0016F407 /* HealthStatisticsViewController.swift */; };
+		D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872E29E455BD0016F407 /* HealthStatisticsView.swift */; };
+		D208873229E46AEE0016F407 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208873129E46AEE0016F407 /* HealthData.swift */; };
+		D208873529E49E990016F407 /* KeyValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208873429E49E990016F407 /* KeyValueView.swift */; };
 		D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */; };
+		D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */; };
 		D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */; };
 		D256B27D29DB436900EF79E7 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27C29DB436900EF79E7 /* RemindersViewController.swift */; };
 		D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */; };
@@ -78,7 +83,13 @@
 		D208872429E337450016F407 /* RehAppCache+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Container.swift"; sourceTree = "<group>"; };
 		D208872629E33B9A0016F407 /* RehAppCache+Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Reminders.swift"; sourceTree = "<group>"; };
 		D208872929E355CF0016F407 /* RehAppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppNotifications.swift; sourceTree = "<group>"; };
+		D208872C29E359CD0016F407 /* HealthStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsViewController.swift; sourceTree = "<group>"; };
+		D208872E29E455BD0016F407 /* HealthStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsView.swift; sourceTree = "<group>"; };
+		D208873129E46AEE0016F407 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
+		D208873329E47D650016F407 /* RehApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RehApp.entitlements; sourceTree = "<group>"; };
+		D208873429E49E990016F407 /* KeyValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueView.swift; sourceTree = "<group>"; };
 		D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderAlertConfiguration.swift; sourceTree = "<group>"; };
+		D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthStatisticsViewController+HealthProperties.swift"; sourceTree = "<group>"; };
 		D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabBarController.swift; sourceTree = "<group>"; };
 		D256B27C29DB436900EF79E7 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppNavigationController.swift; sourceTree = "<group>"; };
@@ -168,6 +179,24 @@
 			path = RehAppNotifications;
 			sourceTree = "<group>";
 		};
+		D208872B29E359B20016F407 /* HealthStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				D208872C29E359CD0016F407 /* HealthStatisticsViewController.swift */,
+				D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */,
+				D208872E29E455BD0016F407 /* HealthStatisticsView.swift */,
+			);
+			path = HealthStatistics;
+			sourceTree = "<group>";
+		};
+		D208873029E46A900016F407 /* HealthData */ = {
+			isa = PBXGroup;
+			children = (
+				D208873129E46AEE0016F407 /* HealthData.swift */,
+			);
+			path = HealthData;
+			sourceTree = "<group>";
+		};
 		D256B27829DB3F5B00EF79E7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +239,7 @@
 		D26C80B729BD0E83009393C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D208872B29E359B20016F407 /* HealthStatistics */,
 				D256B27B29DB435300EF79E7 /* Reminders */,
 				D2ECFBCE29D61388004EAC6E /* StreakCalendar */,
 				D2EDA9FC29C3AC35001E247F /* ExerciseDetails */,
@@ -268,6 +298,7 @@
 				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
 				D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */,
 				D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */,
+				D208873429E49E990016F407 /* KeyValueView.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -344,6 +375,7 @@
 		D2EFB9CC29BCFC97009EA5E5 /* RehApp */ = {
 			isa = PBXGroup;
 			children = (
+				D208873329E47D650016F407 /* RehApp.entitlements */,
 				D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */,
 				D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */,
 				D256B29429DB7AC000EF79E7 /* Formatters.swift */,
@@ -351,6 +383,7 @@
 				D2EDA9F529C0F79E001E247F /* System extensions */,
 				D208872829E355930016F407 /* RehAppNotifications */,
 				D208872129E336240016F407 /* RehAppCache */,
+				D208873029E46A900016F407 /* HealthData */,
 				D256B27829DB3F5B00EF79E7 /* Navigation */,
 				D26C80D029BD11AC009393C3 /* Reusable components */,
 				D26C80B729BD0E83009393C3 /* Screens */,
@@ -512,6 +545,7 @@
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D270278629E1D80400BB8324 /* UIFont.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllItemsView.swift in Sources */,
+				D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
 				D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */,
@@ -523,6 +557,7 @@
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
 				D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
+				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
@@ -533,7 +568,10 @@
 				D26C80CD29BD112B009393C3 /* ListAllItemsHeader.swift in Sources */,
 				D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */,
 				D256B2A429DCD0EA00EF79E7 /* RehAppCache.xcdatamodeld in Sources */,
+				D208873229E46AEE0016F407 /* HealthData.swift in Sources */,
+				D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */,
 				D208872329E336540016F407 /* RehAppCache.swift in Sources */,
+				D208873529E49E990016F407 /* KeyValueView.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllItemsViewModel.swift in Sources */,
 				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
@@ -699,9 +737,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RehApp/RehApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z6F8AA842;
+				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -729,9 +768,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RehApp/RehApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z6F8AA842;
+				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
