@@ -18,7 +18,7 @@ struct PickerViewModel {
 
     enum NextScreenType {
         case picker(PickerViewModel?)
-        case list(ListAllItemsViewModel?)
+        case list(ListAllExercisesVM?)
     }
 
     struct PickerItemViewModel {

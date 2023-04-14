@@ -1,5 +1,5 @@
 //
-//  ListAllItemsView.swift
+//  ListAllExercisesView.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsView: UIView {
+final class ListAllExercisesView: UIView {
 
     // MARK: - Properties
 
@@ -37,7 +37,7 @@ final class ListAllItemsView: UIView {
         // Overal header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(1.0))
-        let headerKind = ListAllItemsHeader.elementKind
+        let headerKind = ListAllExercisesHeader.elementKind
         let headerView = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                      elementKind: headerKind,
                                                                      alignment: .topLeading)
@@ -51,7 +51,7 @@ final class ListAllItemsView: UIView {
 
     // MARK: - Init
 
-    init(viewModel: ListAllItemsViewModel) {
+    init(viewModel: ListAllExercisesVM) {
         self.allItemsButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())
         super.init(frame: .zero)
         configure()

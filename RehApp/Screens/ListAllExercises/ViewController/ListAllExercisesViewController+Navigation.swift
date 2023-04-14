@@ -1,5 +1,5 @@
 //
-//  ListAllItemsViewController+Navigation.swift
+//  ListAllExercisesViewController+Navigation.swift
 //  RehApp
 //
 //  Created by Akademija on 14.03.2023..
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension ListAllItemsViewController: UICollectionViewDelegate {
+extension ListAllExercisesViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = viewModel.items[indexPath.item]

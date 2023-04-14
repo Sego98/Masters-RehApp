@@ -1,5 +1,5 @@
 //
-//  ListAllItemsViewController.swift
+//  ListAllExercisesViewController.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsViewController: RehAppViewController {
+final class ListAllExercisesViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    let viewModel: ListAllItemsViewModel
-    private let listAllItemsView: ListAllItemsView
-    private var dataSource: ListAllItemsDataSource!
+    let viewModel: ListAllExercisesVM
+    private let listAllItemsView: ListAllExercisesView
+    private var dataSource: ListAllExercisesDataSource!
 
     // MARK: - Lifecycle
 
-    init(viewModel: ListAllItemsViewModel) {
+    init(viewModel: ListAllExercisesVM) {
         self.viewModel = viewModel
-        self.listAllItemsView = ListAllItemsView(viewModel: viewModel)
+        self.listAllItemsView = ListAllExercisesView(viewModel: viewModel)
         super.init(screenTitle: viewModel.screenTitle, type: .exercises)
     }
 
@@ -48,13 +48,13 @@ final class ListAllItemsViewController: RehAppViewController {
     }
 
     private func configureDataSourceCellRegistrations() {
-        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllItemsCell, ListAllItemsViewModel.ListItemViewModel> {cell, indexPath, item in
+        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllExercisesCell, ExerciseListItemVM> {cell, indexPath, item in
             let number = indexPath.item + 1
             cell.setParameters(number: number, description: item.shortDescription)
         }
 
-        dataSource = ListAllItemsDataSource(collectionView: listAllItemsView.collectionView,
-                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ListAllItemsViewModel.ListItemViewModel) -> UICollectionViewCell? in
+        dataSource = ListAllExercisesDataSource(collectionView: listAllItemsView.collectionView,
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseListItemVM) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: allItemsCellRegistration,
                                                                 for: indexPath,
                                                                 item: item)
@@ -62,13 +62,13 @@ final class ListAllItemsViewController: RehAppViewController {
     }
 
     private func configureDataSourceSupplementaryViews() {
-        let headerRegistration = UICollectionView.SupplementaryRegistration<ListAllItemsHeader>(elementKind: ListAllItemsHeader.elementKind) { [weak self] (supplementaryView, _, _) in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<ListAllExercisesHeader>(elementKind: ListAllExercisesHeader.elementKind) { [weak self] (supplementaryView, _, _) in
             guard let self = self else { return }
             supplementaryView.setValues(with: self.viewModel)
         }
 
         dataSource.supplementaryViewProvider = { (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
-            if elementKind == ListAllItemsHeader.elementKind {
+            if elementKind == ListAllExercisesHeader.elementKind {
                 return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration,
                                                                              for: indexPath)
             }

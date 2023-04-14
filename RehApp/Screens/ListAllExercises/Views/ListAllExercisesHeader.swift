@@ -1,5 +1,5 @@
 //
-//  ListAllItemsHeader.swift
+//  ListAllExercisesHeader.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsHeader: UICollectionReusableView {
+final class ListAllExercisesHeader: UICollectionReusableView {
 
     static var elementKind: String { String(describing: self) }
 
@@ -112,7 +112,7 @@ final class ListAllItemsHeader: UICollectionReusableView {
 
     // MARK: - Public methods
 
-    func setValues(with viewModel: ListAllItemsViewModel) {
+    func setValues(with viewModel: ListAllExercisesVM) {
         descriptionLabel.text = viewModel.screenDescription
         leftTitleLabel.text = viewModel.leftHeaderDescription
         rightTitleLabel.text = viewModel.rightHeaderDescription

@@ -1,5 +1,5 @@
 //
-//  ListAllItemsCell.swift
+//  ListAllExercisesCell.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsCell: UICollectionViewCell {
+final class ListAllExercisesCell: UICollectionViewCell {
 
     // MARK: - Properties
 

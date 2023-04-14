@@ -67,7 +67,7 @@ final class PickerViewController: RehAppViewController {
                     actions.append(nil)
                     continue
                 }
-                viewController = ListAllItemsViewController(viewModel: listAllViewModel)
+                viewController = ListAllExercisesViewController(viewModel: listAllViewModel)
             }
 
             let action = makePushVCAction(with: viewController)
