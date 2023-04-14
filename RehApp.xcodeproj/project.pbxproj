@@ -740,7 +740,7 @@
 				CODE_SIGN_ENTITLEMENTS = RehApp/RehApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z6F8AA842;
+				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -771,7 +771,7 @@
 				CODE_SIGN_ENTITLEMENTS = RehApp/RehApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7Z6F8AA842;
+				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
