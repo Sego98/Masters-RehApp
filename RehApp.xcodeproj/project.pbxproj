@@ -300,7 +300,7 @@
 		D26C80D029BD11AC009393C3 /* Reusable components */ = {
 			isa = PBXGroup;
 			children = (
-				D2B5C5C229E9C52F00C16EF8 /* WebView */,
+				D2B5C5C229E9C52F00C16EF8 /* WebViewModal */,
 				D2B11D7A29DF4B1E00AD9195 /* DatePicker */,
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
 				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
@@ -320,13 +320,13 @@
 			path = DatePicker;
 			sourceTree = "<group>";
 		};
-		D2B5C5C229E9C52F00C16EF8 /* WebView */ = {
+		D2B5C5C229E9C52F00C16EF8 /* WebViewModal */ = {
 			isa = PBXGroup;
 			children = (
 				D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */,
 				D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */,
 			);
-			path = WebView;
+			path = WebViewModal;
 			sourceTree = "<group>";
 		};
 		D2B5C5DC29E9DC5C00C16EF8 /* ViewController */ = {

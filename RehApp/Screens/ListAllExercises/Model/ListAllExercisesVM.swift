@@ -20,7 +20,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
                   leftHeaderDescription: String = "#",
                   rightHeaderDescription: String = "Opis",
                   items: [ExerciseListItemVM],
-                  largeButtonTitle: String = "Sve vježbe") {
+                  largeButtonTitle: String = "Broj ponavljanja") {
         self.screenTitle = screenTitle
         self.screenDescription = screenDescription
         self.leftHeaderDescription = leftHeaderDescription
@@ -35,7 +35,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
         let screenTitle = "Vježbe ramena"
         let screenDescription = """
         Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje možete raditi bez bilo kakvih pomagala. \
-        Klikom odaberite detalje i izvedbu pojedine vježbe ili na dnu odaberite izvedbu svih vježbi.
+        Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
         """
 
         let items: [ExerciseListItemVM] = [
@@ -59,7 +59,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
         let screenTitle = "Vježbe ramena"
         let screenDescription = """
         Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje morate raditi sa štapom ili nekim sličnim \
-        predmetom. Klikom odaberite detalje i izvedbu pojedine vježbe ili na dnu odaberite izvedbu svih vježbi.
+        predmetom. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
         """
 
         let items: [ExerciseListItemVM]  = [
