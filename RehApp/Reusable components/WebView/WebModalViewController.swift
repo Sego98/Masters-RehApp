@@ -42,9 +42,7 @@ final class WebModalViewController: UIViewController {
         configureNavigationBar()
 
         guard let url = url else {
-#if DEBUG
-            print("Invalid URL")
-#endif
+            webModalView.showNoValidURLMessage()
             return
         }
 
@@ -54,7 +52,7 @@ final class WebModalViewController: UIViewController {
     }
 
     private func configureNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Odustani",
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(dismissAction))
@@ -72,7 +70,7 @@ extension WebModalViewController: WKNavigationDelegate {
         webModalView.stopAnimating()
 
         navigationItem.leftBarButtonItem = nil
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Završi",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(dismissAction))

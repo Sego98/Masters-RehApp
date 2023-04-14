@@ -29,6 +29,7 @@ final class WebModalView: UIView {
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.allowsBackForwardNavigationGestures = false
         webView.allowsLinkPreview = false
+        webView.alpha = 0
 
         return webView
     }()
@@ -37,6 +38,18 @@ final class WebModalView: UIView {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
+    }()
+
+    private let noValidURLLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Nažalost, ne možemo pronaći traženu stranicu 😕"
+        label.textAlignment = .center
+        label.font = .preferredFont(forTextStyle: .title1)
+        label.textColor = .red
+        label.numberOfLines = 0
+        label.alpha = 0
+        return label
     }()
 
     // MARK: - Init
@@ -53,7 +66,8 @@ final class WebModalView: UIView {
     private func configure() {
         backgroundColor = .white
         addSubviews([
-            webView, activityIndicator
+            webView, activityIndicator,
+            noValidURLLabel
         ])
 
         NSLayoutConstraint.activate([
@@ -63,14 +77,19 @@ final class WebModalView: UIView {
             webView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            noValidURLLabel.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            noValidURLLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            noValidURLLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            noValidURLLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            noValidURLLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 
     // MARK: - Public methods
 
     func startAnimating() {
-        webView.alpha = 0
         activityIndicator.startAnimating()
     }
 
@@ -82,4 +101,10 @@ final class WebModalView: UIView {
         }
     }
 
+    func showNoValidURLMessage() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            noValidURLLabel.alpha = 1
+        }
+    }
 }
