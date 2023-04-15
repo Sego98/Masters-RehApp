@@ -10,7 +10,7 @@ import UIKit
 
 final class StreakCalendarView: UIView {
 
-    // MARK: - Proeprties
+    // MARK: - Properties
 
     private let calendarView: UICalendarView = {
         let calendarView = UICalendarView()
@@ -66,7 +66,7 @@ final class StreakCalendarView: UIView {
         dateSelection.selectedDates = testDates
         calendarView.selectionBehavior = dateSelection
 
-        allDaysLabel.text = "🔥 Broj odrađenih dana: \(testDates.count)"
+        allDaysLabel.text = "🔥 Ukupan broj dana: \(testDates.count)"
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide
@@ -85,6 +85,7 @@ final class StreakCalendarView: UIView {
 }
 
 extension StreakCalendarView: UICalendarSelectionMultiDateDelegate {
+
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
         selection.selectedDates = testDates
     }

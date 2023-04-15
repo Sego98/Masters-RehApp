@@ -47,12 +47,12 @@ final class ListAllExercisesView: UIView {
         return layout
     }
 
-    private let allItemsButton: LargeButton
+    private let largeButton: LargeButton
 
     // MARK: - Init
 
     init(viewModel: ListAllExercisesVM) {
-        self.allItemsButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())
+        self.largeButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())
         super.init(frame: .zero)
         configure()
     }
@@ -65,7 +65,7 @@ final class ListAllExercisesView: UIView {
         backgroundColor = .rehAppBackground
 
         addSubviews([
-            collectionView, allItemsButton
+            collectionView, largeButton
         ])
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24)
@@ -76,11 +76,16 @@ final class ListAllExercisesView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16),
-            allItemsButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            allItemsButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            allItemsButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+            largeButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16),
+            largeButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            largeButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            largeButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 
+    // MARK: - Public methods
+
+    func setLargeButtonAction(_ action: UIAction) {
+        largeButton.addAction(action, for: .touchUpInside)
+    }
 }

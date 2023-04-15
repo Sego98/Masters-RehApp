@@ -56,7 +56,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //
 //        exerciseDetailsView.selectMiddleRow(from: numberOfRepetitions)
         configureDataSourceCellRegistrations()
-        exerciseDetailsView.setLargeButtonAction(makeLargeButtonAction())
+        configureProperties()
 
         dataSource.rebuildSnapshot(viewModel: viewModel,
                                    animatingDifferences: true)
@@ -75,13 +75,19 @@ final class ExerciseDetailsViewController: RehAppViewController {
         })
     }
 
-    private func makeLargeButtonAction() -> UIAction {
-        return UIAction {[weak self] _ in
+    private func configureProperties() {
+        let action = UIAction { [weak self] _ in
             guard let self = self else { return }
             let viewController = WebModalViewController(url: viewModel.videoURL,
                                                         screenTitle: viewModel.screenTitle)
             let navigationController = UINavigationController(rootViewController: viewController)
             present(navigationController, animated: true)
+        }
+        exerciseDetailsView.setLargeButtonAction(action)
+    }
+
+    private func makeLargeButtonAction() -> UIAction {
+        return UIAction { _ in
 //            guard let self = self else { return }
 //            self.exerciseDetailsView.activateOverlayView()
 //            let overlayView = self.exerciseDetailsView.overlayView

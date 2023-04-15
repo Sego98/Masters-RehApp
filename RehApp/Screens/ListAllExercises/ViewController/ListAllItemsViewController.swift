@@ -39,10 +39,9 @@ final class ListAllExercisesViewController: RehAppViewController {
     }
 
     private func configure() {
-        listAllItemsView.collectionView.delegate = self
-
         configureDataSourceCellRegistrations()
         configureDataSourceSupplementaryViews()
+        configureProperties()
 
         dataSource.rebuildSnapshot(items: viewModel.items, animatingDifferences: true)
     }
@@ -74,5 +73,17 @@ final class ListAllExercisesViewController: RehAppViewController {
             }
             return nil
         }
+    }
+
+    private func configureProperties() {
+        listAllItemsView.collectionView.delegate = self
+
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            let viewController = NumberOfRepetitionsViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+
+        listAllItemsView.setLargeButtonAction(action)
     }
 }
