@@ -20,6 +20,8 @@ final class DefaultView: UIView {
         return collectionView
     }()
 
+    let overlayTimerView = OverlayTimerView()
+
     private let largeButton: LargeButton
 
     // MARK: - Init
@@ -61,4 +63,23 @@ final class DefaultView: UIView {
     func setLargeButtonAction(_ action: UIAction) {
         largeButton.addAction(action, for: .touchUpInside)
     }
+
+    func activateOverlayTimer() {
+        overlayTimerView.timerLabel.text = "3"
+        addSubview(overlayTimerView)
+        largeButton.isEnabled = false
+
+        NSLayoutConstraint.activate([
+            overlayTimerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            overlayTimerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            overlayTimerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            overlayTimerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+
+    func deactivateOverlayTimer() {
+        overlayTimerView.removeFromSuperview()
+        largeButton.isEnabled = true
+    }
+
 }

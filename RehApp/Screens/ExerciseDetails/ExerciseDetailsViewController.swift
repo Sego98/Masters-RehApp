@@ -13,17 +13,14 @@ import RxCocoa
 
 final class ExerciseDetailsViewController: RehAppViewController {
 
+    // MARK: - Properties
+
     private let exerciseDetailsView: DefaultView
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsViewModel
     private let showDetailsVideo: Bool
 
-//    private let disposeBag = DisposeBag()
-
-//    private let countdownTimer = Observable<Int>
-//        .interval(.seconds(1), scheduler: MainScheduler.instance)
-//        .take(3)
-//        .observe(on: MainScheduler.instance)
+    // MARK: - Lifecycle
 
     init(viewModel: ExerciseDetailsViewModel, showDetailsVideo: Bool) {
         self.viewModel = viewModel
@@ -71,18 +68,13 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configureLargeButtonAction() {
-        let action: UIAction
         if showDetailsVideo {
-            action = UIAction { [weak self] _ in
+            let action = UIAction { [weak self] _ in
                 guard let self = self else { return }
                 presentWebModal()
             }
-        } else {
-            action = UIAction { _ in
-
-            }
+            setLargeButtonAction(action)
         }
-        exerciseDetailsView.setLargeButtonAction(action)
     }
 
     private func presentWebModal() {
@@ -90,24 +82,6 @@ final class ExerciseDetailsViewController: RehAppViewController {
                                                     screenTitle: viewModel.screenTitle)
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true)
-    }
-
-    private func makeLargeButtonAction() -> UIAction {
-        return UIAction { _ in
-//            guard let self = self else { return }
-//            self.exerciseDetailsView.activateOverlayView()
-//            let overlayView = self.exerciseDetailsView.overlayView
-//
-//            self.countdownTimer
-//                .map { "\(2 - $0)"}
-//                .bind(to: overlayView.timerLabel.rx.text)
-//                .disposed(by: self.disposeBag)
-//
-//            self.countdownTimer
-//                .subscribe(onCompleted: {
-//                    self.actionWhenTimerFinished()
-//            }).disposed(by: self.disposeBag)
-        }
     }
 
     private func actionWhenTimerFinished() {
@@ -119,4 +93,23 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //        navigationController?.pushViewController(viewController, animated: true)
 //        exerciseDetailsView.deactivateOverlayView()
     }
+
+    // MARK: - Public methods
+
+    func setLargeButtonAction(_ action: UIAction) {
+        exerciseDetailsView.setLargeButtonAction(action)
+    }
+
+    func startTimer() {
+        exerciseDetailsView.activateOverlayTimer()
+    }
+
+    func timerDidFinish() {
+        exerciseDetailsView.deactivateOverlayTimer()
+    }
+
+    func getOverlayTimerLabel() -> UILabel {
+        return exerciseDetailsView.overlayTimerView.timerLabel
+    }
+
 }

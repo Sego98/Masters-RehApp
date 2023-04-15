@@ -65,8 +65,7 @@
 		D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9F829C10FE0001E247F /* UIStackView.swift */; };
 		D2EDA9FB29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift */; };
 		D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */; };
-		D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */; };
-		D2EDAA0229C3ACF4001E247F /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0129C3ACF4001E247F /* OverlayView.swift */; };
+		D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */; };
 		D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */; };
 		D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
@@ -149,8 +148,7 @@
 		D2EDA9F829C10FE0001E247F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		D2EDA9FA29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllExercisesViewController+Navigation.swift"; sourceTree = "<group>"; };
 		D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
-		D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsView.swift; sourceTree = "<group>"; };
-		D2EDAA0129C3ACF4001E247F /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayTimerView.swift; sourceTree = "<group>"; };
 		D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewModel.swift; sourceTree = "<group>"; };
 		D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsDataSource.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,10 +312,11 @@
 		D26C80D029BD11AC009393C3 /* Reusable components */ = {
 			isa = PBXGroup;
 			children = (
+				D2F19C7429EB47810020A295 /* OverlayTimer */,
 				D2B5C5C229E9C52F00C16EF8 /* WebViewModal */,
 				D2B11D7A29DF4B1E00AD9195 /* DatePicker */,
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
-				D2EDAA0129C3ACF4001E247F /* OverlayView.swift */,
+				D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */,
 				D2ECFBCC29D60D58004EAC6E /* RehAppViewController.swift */,
 				D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */,
 				D208873429E49E990016F407 /* KeyValueView.swift */,
@@ -365,7 +364,6 @@
 		D2B5C5E029E9E35B00C16EF8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D2EDA9FF29C3AC9E001E247F /* ExerciseDetailsView.swift */,
 				D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */,
 			);
 			name = Views;
@@ -498,6 +496,13 @@
 				D2B5C5E829EAE16500C16EF8 /* UICollectionViewLayout.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D2F19C7429EB47810020A295 /* OverlayTimer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OverlayTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -669,7 +674,7 @@
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
-				D2EDAA0229C3ACF4001E247F /* OverlayView.swift in Sources */,
+				D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */,
 				D2B5C5EB29EAE3E000C16EF8 /* NumberOfRepetitionsCollectionViewDataSource.swift in Sources */,
 				D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */,
 				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
@@ -684,7 +689,6 @@
 				D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */,
 				D208873529E49E990016F407 /* KeyValueView.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllExercisesVM.swift in Sources */,
-				D2EDAA0029C3AC9E001E247F /* ExerciseDetailsView.swift in Sources */,
 				D2B5C5E529EAD83E00C16EF8 /* DefaultView.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D256B28329DB644F00EF79E7 /* RehAppTabType.swift in Sources */,

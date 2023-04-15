@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RehAppExercisesFlowCoordinator {
 
@@ -17,6 +19,14 @@ class RehAppExercisesFlowCoordinator {
     private let animated: Bool
 
     private let selectedIndex: Int
+    private var currentExerciseDetailsVC: ExerciseDetailsViewController?
+
+    private let disposeBag = DisposeBag()
+
+    private let countdownTimer = Observable<Int>
+        .interval(.seconds(1), scheduler: MainScheduler.instance)
+        .take(3)
+        .observe(on: MainScheduler.instance)
 
     // MARK: - Init
 
@@ -48,6 +58,31 @@ class RehAppExercisesFlowCoordinator {
         let viewModel = exerciseViewModels[selectedIndex]
         let viewController = ExerciseDetailsViewController(viewModel: viewModel,
                                                            showDetailsVideo: false)
+        let action = UIAction { _ in
+            self.startOverlayTimer()
+        }
+        viewController.setLargeButtonAction(action)
+        currentExerciseDetailsVC = viewController
         show(viewController)
+    }
+
+    private func startOverlayTimer() {
+        guard let viewController = currentExerciseDetailsVC else {
+            fatalError("No exercise details viewController")
+        }
+        viewController.startTimer()
+
+        let timerLabel = viewController.getOverlayTimerLabel()
+
+        countdownTimer
+            .map { "\(2 - $0)"}
+            .bind(to: timerLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        countdownTimer
+            .subscribe(onCompleted: {
+                viewController.timerDidFinish()
+                print("Successssssssss")
+            }).disposed(by: disposeBag)
     }
 }
