@@ -13,9 +13,10 @@ import RxCocoa
 
 final class ExerciseDetailsViewController: RehAppViewController {
 
-    private let exerciseDetailsView = DefaultView(largeButtonTitle: "Video vježbe".uppercased())
+    private let exerciseDetailsView: DefaultView
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsViewModel
+    private let showDetailsVideo: Bool
 
 //    private let disposeBag = DisposeBag()
 
@@ -24,9 +25,14 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //        .take(3)
 //        .observe(on: MainScheduler.instance)
 
-    init(viewModel: ExerciseDetailsViewModel) {
-//        self.pickerDataSource = ExerciseDetailsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
+    init(viewModel: ExerciseDetailsViewModel, showDetailsVideo: Bool) {
         self.viewModel = viewModel
+        self.showDetailsVideo = showDetailsVideo
+        if showDetailsVideo {
+            exerciseDetailsView = DefaultView(largeButtonTitle: "Video vježbe".uppercased())
+        } else {
+            exerciseDetailsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
+        }
         super.init(screenTitle: viewModel.screenTitle, type: .exercises)
     }
 
@@ -44,13 +50,8 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configure() {
-//        let pickerView = exerciseDetailsView.pickerView
-//        pickerView.delegate = self
-//        pickerView.dataSource = pickerDataSource
-//
-//        exerciseDetailsView.selectMiddleRow(from: numberOfRepetitions)
         configureDataSourceCellRegistrations()
-        configureProperties()
+        configureLargeButtonAction()
 
         dataSource.rebuildSnapshot(viewModel: viewModel,
                                    animatingDifferences: true)
@@ -69,15 +70,26 @@ final class ExerciseDetailsViewController: RehAppViewController {
         })
     }
 
-    private func configureProperties() {
-        let action = UIAction { [weak self] _ in
-            guard let self = self else { return }
-            let viewController = WebModalViewController(url: viewModel.videoURL,
-                                                        screenTitle: viewModel.screenTitle)
-            let navigationController = UINavigationController(rootViewController: viewController)
-            present(navigationController, animated: true)
+    private func configureLargeButtonAction() {
+        let action: UIAction
+        if showDetailsVideo {
+            action = UIAction { [weak self] _ in
+                guard let self = self else { return }
+                presentWebModal()
+            }
+        } else {
+            action = UIAction { _ in
+
+            }
         }
         exerciseDetailsView.setLargeButtonAction(action)
+    }
+
+    private func presentWebModal() {
+        let viewController = WebModalViewController(url: viewModel.videoURL,
+                                                    screenTitle: viewModel.screenTitle)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true)
     }
 
     private func makeLargeButtonAction() -> UIAction {

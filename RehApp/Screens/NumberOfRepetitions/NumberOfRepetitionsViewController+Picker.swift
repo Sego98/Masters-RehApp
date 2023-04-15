@@ -16,7 +16,7 @@ extension NumberOfRepetitionsViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let numberSelected = numberOfRepetitions[row]
-        print(numberSelected)
+        UserDefaults.standard.set(numberSelected, forKey: GlobalSettings.numberOfRepetitionsSelectedKey)
     }
 
 }

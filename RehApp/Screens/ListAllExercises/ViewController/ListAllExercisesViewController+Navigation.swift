@@ -18,7 +18,8 @@ extension ListAllExercisesViewController: UICollectionViewDelegate {
         let exerciseDetailsVM = ExerciseDetailsViewModel(screenTitle: title,
                                                          exerciseDescription: description,
                                                          videoURL: url)
-        let viewController = ExerciseDetailsViewController(viewModel: exerciseDetailsVM)
+        let viewController = ExerciseDetailsViewController(viewModel: exerciseDetailsVM,
+                                                           showDetailsVideo: true)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

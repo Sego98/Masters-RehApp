@@ -46,6 +46,7 @@ final class ListAllExercisesCell: UICollectionViewCell {
             contentView.backgroundColor = newValue ? .lightPurple.withAlphaComponent(0.2) : .rehAppBackground
         }
     }
+
     // MARK: - Init
 
     override init(frame: CGRect) {
