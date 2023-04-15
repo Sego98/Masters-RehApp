@@ -4,11 +4,12 @@
 //
 //  Created by Akademija on 15.04.2023..
 //
+// swiftlint:disable type_name
 
 import Foundation
 import UIKit
 
-final class NumberOfRepetitionsDataSource: UICollectionViewDiffableDataSource<Int, Int> {
+final class NumberOfRepetitionsCollectionViewDataSource: UICollectionViewDiffableDataSource<Int, Int> {
 
     typealias NumberOfRepetitionsSnapshot = NSDiffableDataSourceSnapshot<Int, Int>
 

@@ -23,6 +23,12 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
         return label
     }()
 
+    private let pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        return pickerView
+    }()
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +59,8 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
 
     private func configure() {
         contentView.addSubviews([
-            titleLabel, descriptionLabel
+            titleLabel, pickerView,
+            descriptionLabel
         ])
 
         contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
@@ -67,10 +74,33 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            pickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            pickerView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            pickerView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+
+            descriptionLabel.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             bottomConstraint
         ])
+    }
+
+    // MARK: - Public methods
+
+    func setPickerViewDataSource(_ dataSource: UIPickerViewDataSource) {
+        pickerView.dataSource = dataSource
+    }
+
+    func setPickerViewDelegate(_ delegate: UIPickerViewDelegate) {
+        pickerView.delegate = delegate
+    }
+
+    func selectPickerMiddleItem() {
+        guard pickerView.numberOfRows(inComponent: 0) > 0 else { return }
+        let numberOfItems = Double(pickerView.numberOfRows(inComponent: 0))
+        let selectedIndex = Int((numberOfItems / 2.0).rounded() - 1)
+        pickerView.selectRow(selectedIndex,
+                             inComponent: 0,
+                             animated: true)
     }
 }

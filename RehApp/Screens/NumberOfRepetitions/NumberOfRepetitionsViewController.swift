@@ -14,11 +14,15 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     // MARK: - Properties
 
     private let numberOfRepetitionsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
-    private var dataSource: NumberOfRepetitionsDataSource!
+    private var collectionViewDataSource: NumberOfRepetitionsCollectionViewDataSource!
+    private let pickerDataSource: NumberOfRepetitionsPickerDataSource
+
+    let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     // MARK: - Lifecycle
 
     init() {
+        pickerDataSource = NumberOfRepetitionsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
         super.init(screenTitle: "Broj ponavljanja", type: .exercises)
     }
 
@@ -39,14 +43,18 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
         configureDataSourceCellRegistrations()
         configureProperties()
 
-        dataSource.rebuildSnapshot(animatingDifferences: true)
+        collectionViewDataSource.rebuildSnapshot(animatingDifferences: true)
     }
 
     private func configureDataSourceCellRegistrations() {
-        let numberOfRepetitionsCellRegistration = UICollectionView.CellRegistration<NumberOfRepetitionsCell, Int> {_, _, _ in
+        let numberOfRepetitionsCellRegistration = UICollectionView.CellRegistration<NumberOfRepetitionsCell, Int> { [weak self] (cell, _, _) in
+            guard let self = self else { return }
+            cell.setPickerViewDataSource(pickerDataSource)
+            cell.setPickerViewDelegate(self)
+            cell.selectPickerMiddleItem()
         }
 
-        dataSource = NumberOfRepetitionsDataSource(collectionView: numberOfRepetitionsView.collectionView,
+        collectionViewDataSource = NumberOfRepetitionsCollectionViewDataSource(collectionView: numberOfRepetitionsView.collectionView,
                                             cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: numberOfRepetitionsCellRegistration,
                                                                 for: indexPath,

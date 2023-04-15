@@ -17,8 +17,6 @@ final class ExerciseDetailsViewController: RehAppViewController {
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsViewModel
 
-//    private let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
-
 //    private let disposeBag = DisposeBag()
 
 //    private let countdownTimer = Observable<Int>
@@ -46,10 +44,6 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configure() {
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationItem.title = viewModel.screenTitle
-//        navigationItem.largeTitleDisplayMode = .automatic
-
 //        let pickerView = exerciseDetailsView.pickerView
 //        pickerView.delegate = self
 //        pickerView.dataSource = pickerDataSource
@@ -114,9 +108,3 @@ final class ExerciseDetailsViewController: RehAppViewController {
 //        exerciseDetailsView.deactivateOverlayView()
     }
 }
-
-// extension ExerciseDetailsViewController: UIPickerViewDelegate {
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return String(numberOfRepetitions[row])
-//    }
-// }
