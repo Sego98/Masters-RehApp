@@ -20,7 +20,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
                   leftHeaderDescription: String = "#",
                   rightHeaderDescription: String = "Opis",
                   items: [ExerciseListItemVM],
-                  largeButtonTitle: String = "Broj ponavljanja") {
+                  largeButtonTitle: String = "Nastavi") {
         self.screenTitle = screenTitle
         self.screenDescription = screenDescription
         self.leftHeaderDescription = leftHeaderDescription

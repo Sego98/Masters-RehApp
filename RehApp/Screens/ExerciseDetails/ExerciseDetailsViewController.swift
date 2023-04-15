@@ -13,7 +13,7 @@ import RxCocoa
 
 final class ExerciseDetailsViewController: RehAppViewController {
 
-    private let exerciseDetailsView = ExerciseDetailsView()
+    private let exerciseDetailsView = DefaultView(largeButtonTitle: "Video vježbe".uppercased())
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsViewModel
 

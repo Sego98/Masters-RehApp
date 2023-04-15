@@ -4,6 +4,7 @@
 //
 //  Created by Akademija on 15.04.2023..
 //
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
@@ -12,7 +13,8 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    private let numberOfRepetitionsView = NumberOfRepetitionsView()
+    private let numberOfRepetitionsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
+    private var dataSource: NumberOfRepetitionsDataSource!
 
     // MARK: - Lifecycle
 
@@ -34,6 +36,29 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     }
 
     private func configure() {
+        configureDataSourceCellRegistrations()
+        configureProperties()
 
+        dataSource.rebuildSnapshot(animatingDifferences: true)
     }
+
+    private func configureDataSourceCellRegistrations() {
+        let numberOfRepetitionsCellRegistration = UICollectionView.CellRegistration<NumberOfRepetitionsCell, Int> {_, _, _ in
+        }
+
+        dataSource = NumberOfRepetitionsDataSource(collectionView: numberOfRepetitionsView.collectionView,
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: numberOfRepetitionsCellRegistration,
+                                                                for: indexPath,
+                                                                item: item)
+        })
+    }
+
+    private func configureProperties() {
+        let action = UIAction { _ in
+
+        }
+        numberOfRepetitionsView.setLargeButtonAction(action)
+    }
+
 }

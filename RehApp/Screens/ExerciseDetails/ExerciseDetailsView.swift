@@ -14,25 +14,11 @@ class ExerciseDetailsView: UIView {
 
     let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: customCollectionViewLayout)
+                                              collectionViewLayout: .defaultLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .rehAppBackground
         return collectionView
     }()
-
-    private static var customCollectionViewLayout: UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .estimated(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize,
-                                                       repeatingSubitem: item,
-                                                       count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
-
-        return UICollectionViewCompositionalLayout(section: section)
-    }
 
 //    private let chooseNumberOfRepetitionsLabel: UILabel = {
 //        let label = UILabel()

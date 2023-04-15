@@ -32,6 +32,7 @@ final class ExerciseDetailsCell: UICollectionViewCell {
     }()
 
     // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configure()
