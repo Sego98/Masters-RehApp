@@ -77,6 +77,8 @@
 		D2F19C6829EAF0FC0020A295 /* NumberOfRepetitionsPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C6729EAF0FC0020A295 /* NumberOfRepetitionsPickerDataSource.swift */; };
 		D2F19C6B29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C6A29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift */; };
 		D2F19C6F29EB1F6F0020A295 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C6E29EB1F6F0020A295 /* GlobalSettings.swift */; };
+		D2F19C7129EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7029EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift */; };
+		D2F19C7329EB421F0020A295 /* ExerciseDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,8 @@
 		D2F19C6729EAF0FC0020A295 /* NumberOfRepetitionsPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfRepetitionsPickerDataSource.swift; sourceTree = "<group>"; };
 		D2F19C6A29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberOfRepetitionsViewController+Picker.swift"; sourceTree = "<group>"; };
 		D2F19C6E29EB1F6F0020A295 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
+		D2F19C7029EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppExercisesFlowCoordinator.swift; sourceTree = "<group>"; };
+		D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 			children = (
 				D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */,
 				D256B28229DB644F00EF79E7 /* RehAppTabType.swift */,
+				D2F19C7029EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 		D2EDA9FC29C3AC35001E247F /* ExerciseDetails */ = {
 			isa = PBXGroup;
 			children = (
+				D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */,
 				D2B5C5E029E9E35B00C16EF8 /* Views */,
 				D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */,
 				D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */,
@@ -625,10 +631,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
+				D2F19C7329EB421F0020A295 /* ExerciseDetailsDelegate.swift in Sources */,
 				D2F19C6829EAF0FC0020A295 /* NumberOfRepetitionsPickerDataSource.swift in Sources */,
 				D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */,
 				D270278429E1D52100BB8324 /* ReminderRepeatingSwitchView.swift in Sources */,
 				D2B5C5E329EAD7EC00C16EF8 /* NumberOfRepetitionsViewController.swift in Sources */,
+				D2F19C7129EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift in Sources */,
 				D2F19C6B29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift in Sources */,
 				D2DB99C429DF41F80058A70C /* RemindersDataSource.swift in Sources */,
 				D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */,

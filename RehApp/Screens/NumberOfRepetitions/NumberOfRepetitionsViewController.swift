@@ -17,6 +17,8 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     private var collectionViewDataSource: NumberOfRepetitionsCollectionViewDataSource!
     private let pickerDataSource: NumberOfRepetitionsPickerDataSource
 
+    weak var exerciseDetailsDelegate: ExerciseDetailsDelegate?
+
     let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     // MARK: - Lifecycle
@@ -63,8 +65,11 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     }
 
     private func configureProperties() {
-        let action = UIAction { _ in
-
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            let exerciseViewModels = exerciseDetailsDelegate?.makeExerciseDetailsViewModels() ?? []
+            _ = RehAppExercisesFlowCoordinator(exerciseViewModels: exerciseViewModels,
+                                               navigationController: navigationController)
         }
         numberOfRepetitionsView.setLargeButtonAction(action)
     }

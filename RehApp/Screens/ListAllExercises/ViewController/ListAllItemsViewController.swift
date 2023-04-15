@@ -81,9 +81,21 @@ final class ListAllExercisesViewController: RehAppViewController {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
             let viewController = NumberOfRepetitionsViewController()
+            viewController.exerciseDetailsDelegate = self
             navigationController?.pushViewController(viewController, animated: true)
         }
 
         listAllItemsView.setLargeButtonAction(action)
     }
+}
+
+extension ListAllExercisesViewController: ExerciseDetailsDelegate {
+
+    func makeExerciseDetailsViewModels() -> [ExerciseDetailsViewModel] {
+        let exerciseDetailsViewModels = viewModel.items.map({ ExerciseDetailsViewModel(screenTitle: $0.title,
+                                                                                       exerciseDescription: $0.longDescription,
+                                                                                       videoURL: nil)})
+        return exerciseDetailsViewModels
+    }
+
 }
