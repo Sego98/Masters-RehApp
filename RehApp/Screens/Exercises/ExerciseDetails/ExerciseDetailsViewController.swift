@@ -15,7 +15,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    private let exerciseDetailsView: DefaultView
+    private let exerciseDetailsView: DefaultCollectionViewWithLargeButton
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsVM
     private let showDetailsVideo: Bool
@@ -26,9 +26,9 @@ final class ExerciseDetailsViewController: RehAppViewController {
         self.viewModel = viewModel
         self.showDetailsVideo = showDetailsVideo
         if showDetailsVideo {
-            exerciseDetailsView = DefaultView(largeButtonTitle: "Video vježbe".uppercased())
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Video vježbe".uppercased())
         } else {
-            exerciseDetailsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Nastavi".uppercased())
         }
         super.init(screenTitle: viewModel.title, type: .exercises)
     }

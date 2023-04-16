@@ -80,9 +80,17 @@ class RehAppExercisesFlowCoordinator {
             .disposed(by: disposeBag)
 
         countdownTimer
-            .subscribe(onCompleted: {
+            .subscribe(onCompleted: {[weak self] in
+                guard let self = self else { return }
                 viewController.timerDidFinish()
+                showExerciseCounterScreen()
                 print("Successssssssss")
             }).disposed(by: disposeBag)
+    }
+
+    private func showExerciseCounterScreen() {
+        let viewModel = exerciseViewModels[selectedIndex]
+        let viewController = ExerciseCounterViewController(exerciseVM: viewModel)
+        show(viewController)
     }
 }

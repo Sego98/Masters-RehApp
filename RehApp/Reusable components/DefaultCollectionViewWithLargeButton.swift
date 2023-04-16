@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class DefaultView: UIView {
+final class DefaultCollectionViewWithLargeButton: UIView {
 
     // MARK: - Properties
 

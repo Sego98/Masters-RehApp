@@ -13,7 +13,7 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    private let numberOfRepetitionsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
+    private let numberOfRepetitionsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Nastavi".uppercased())
     private var collectionViewDataSource: NumberOfRepetitionsCollectionViewDataSource!
     private let pickerDataSource: NumberOfRepetitionsPickerDataSource
     private let exerciseVMs: [ExerciseDetailsVM]
