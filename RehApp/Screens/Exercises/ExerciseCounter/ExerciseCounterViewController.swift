@@ -23,10 +23,13 @@ final class ExerciseCounterViewController: RehAppViewController {
     private let exerciseCounter: Observable<Int>
     private let disposeBag = DisposeBag()
 
+    private let completion: () -> Void
+
     // MARK: - Lifecycle
 
-    init(exerciseVM: ExerciseDetailsVM) {
+    init(exerciseVM: ExerciseDetailsVM, completion: @escaping () -> Void) {
         self.exerciseVM = exerciseVM
+        self.completion = completion
         exerciseCounter = Observable<Int>
             .interval(.seconds(Int(exerciseVM.oneRepetitionTime)), scheduler: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
@@ -47,8 +50,8 @@ final class ExerciseCounterViewController: RehAppViewController {
     }
 
     private func configure() {
+        disableGoingBackwards()
         configureDataSourceCellRegistrations()
-        configureCounter()
 
         dataSource.rebuildSnapshot(viewModel: exerciseVM,
                                    animatingDifferences: true)
@@ -96,8 +99,9 @@ final class ExerciseCounterViewController: RehAppViewController {
                 if number < numberOfRepetitions {
                     makeProgressAnimation()
                 }
-            }, onCompleted: {
-                print("Succeeeeeeesssssss")
+            }, onCompleted: { [weak self] in
+                guard let self = self else { return }
+                completion()
             })
             .disposed(by: disposeBag)
     }

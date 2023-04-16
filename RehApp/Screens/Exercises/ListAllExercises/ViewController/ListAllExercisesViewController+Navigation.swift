@@ -12,7 +12,7 @@ extension ListAllExercisesViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewController = ExerciseDetailsViewController(viewModel: viewModel.exercises[indexPath.item],
-                                                           showDetailsVideo: true)
+                                                           isExercisingInProgress: false)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

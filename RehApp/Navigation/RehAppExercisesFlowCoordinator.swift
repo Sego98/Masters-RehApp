@@ -18,7 +18,7 @@ class RehAppExercisesFlowCoordinator {
     private let navigationController: UINavigationController?
     private let animated: Bool
 
-    private let selectedIndex: Int
+    private var selectedIndex: Int
     private var currentExerciseDetailsVC: ExerciseDetailsViewController?
 
     private let disposeBag = DisposeBag()
@@ -57,7 +57,7 @@ class RehAppExercisesFlowCoordinator {
         }
         let viewModel = exerciseViewModels[selectedIndex]
         let viewController = ExerciseDetailsViewController(viewModel: viewModel,
-                                                           showDetailsVideo: false)
+                                                           isExercisingInProgress: true)
         let action = UIAction { _ in
             self.startOverlayTimer()
         }
@@ -81,7 +81,7 @@ class RehAppExercisesFlowCoordinator {
             .disposed(by: disposeBag)
 
         countdownTimer
-            .subscribe(onCompleted: {[weak self] in
+            .subscribe(onCompleted: { [weak self] in
                 guard let self = self else { return }
                 viewController.timerDidFinish()
                 showExerciseCounterScreen()
@@ -90,7 +90,45 @@ class RehAppExercisesFlowCoordinator {
 
     private func showExerciseCounterScreen() {
         let viewModel = exerciseViewModels[selectedIndex]
-        let viewController = ExerciseCounterViewController(exerciseVM: viewModel)
+        let viewController = ExerciseCounterViewController(exerciseVM: viewModel) { [weak self] in
+            guard let self = self else { return }
+            showFinishAlert()
+        }
         show(viewController)
+    }
+
+    private func showFinishAlert() {
+        let numberOfRemainingExercises = exerciseViewModels.count - selectedIndex - 1
+
+        let message: String
+        let alertAction: UIAlertAction
+        if selectedIndex < exerciseViewModels.count - 1 {
+            selectedIndex += 1
+            message = """
+            Uspješno si odradio i ovu vježbu. Uzmi kratki predah i nastavi dalje. \
+            \n\n⏳ Broj preostalih vježbi: \(numberOfRemainingExercises)
+            """
+            alertAction = UIAlertAction(title: "Nastavi",
+                                        style: .default,
+                                        handler: { [weak self] _ in
+                guard let self = self else { return }
+                showExerciseDetailsScreen()
+            })
+        } else {
+            message = "Još jedan dan kada si odradio sve vježbe. Sada je vrijeme da se zasluženo odmoriš! 🏆"
+            alertAction = UIAlertAction(title: "Završi",
+                                        style: .default,
+                                        handler: { [weak self] _ in
+                guard let self = self else { return }
+                navigationController?.popToRootViewController(animated: true)
+            })
+        }
+
+        let alert = UIAlertController(title: "Bravo!",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(alertAction)
+
+        navigationController?.present(alert, animated: true)
     }
 }

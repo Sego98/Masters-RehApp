@@ -95,12 +95,13 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
         pickerView.delegate = delegate
     }
 
-    func selectPickerMiddleItem() {
+    func selectPickerMiddleItem(completion: (Int) -> Void) {
         guard pickerView.numberOfRows(inComponent: 0) > 0 else { return }
         let numberOfItems = Double(pickerView.numberOfRows(inComponent: 0))
         let selectedIndex = Int((numberOfItems / 2.0).rounded() - 1)
         pickerView.selectRow(selectedIndex,
                              inComponent: 0,
                              animated: true)
+        completion(selectedIndex)
     }
 }

@@ -17,7 +17,7 @@ struct ExerciseDetailsVM: Hashable, Equatable {
     private static let mockOneRepetitionTime: TimeInterval = 2
     private static let mockURL = URL(string: "https://www.youtube.com/watch?v=t99KH0TR-J4")
 
-    // MARK: - Shoulder without stick exercises
+    // MARK: - Shoulder exercises without stick 
 
     static let shoulderExerciseWithoutStick1: ExerciseDetailsVM = {
         return ExerciseDetailsVM(title: "Podizanje ramena",

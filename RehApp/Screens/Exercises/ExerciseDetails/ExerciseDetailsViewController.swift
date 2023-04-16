@@ -18,17 +18,17 @@ final class ExerciseDetailsViewController: RehAppViewController {
     private let exerciseDetailsView: DefaultCollectionViewWithLargeButton
     private var dataSource: ExerciseDetailsDataSource!
     private let viewModel: ExerciseDetailsVM
-    private let showDetailsVideo: Bool
+    private let isExercisingInProgress: Bool
 
     // MARK: - Lifecycle
 
-    init(viewModel: ExerciseDetailsVM, showDetailsVideo: Bool) {
+    init(viewModel: ExerciseDetailsVM, isExercisingInProgress: Bool) {
         self.viewModel = viewModel
-        self.showDetailsVideo = showDetailsVideo
-        if showDetailsVideo {
-            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Video vježbe".uppercased())
-        } else {
+        self.isExercisingInProgress = isExercisingInProgress
+        if isExercisingInProgress {
             exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Pokreni".uppercased())
+        } else {
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Video vježbe".uppercased())
         }
         super.init(screenTitle: viewModel.title, type: .exercises)
     }
@@ -47,6 +47,10 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configure() {
+        if isExercisingInProgress {
+            disableGoingBackwards()
+        }
+
         configureDataSourceCellRegistrations()
         configureLargeButtonAction()
 
@@ -68,7 +72,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configureLargeButtonAction() {
-        if showDetailsVideo {
+        if !isExercisingInProgress {
             let action = UIAction { [weak self] _ in
                 guard let self = self else { return }
                 presentWebModal()

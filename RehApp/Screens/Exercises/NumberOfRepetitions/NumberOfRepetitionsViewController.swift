@@ -53,11 +53,14 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
             guard let self = self else { return }
             cell.setPickerViewDataSource(pickerDataSource)
             cell.setPickerViewDelegate(self)
-            cell.selectPickerMiddleItem()
+            cell.selectPickerMiddleItem { selectedIndex in
+                let selectedItem = self.numberOfRepetitions[selectedIndex]
+                UserDefaults.standard.set(selectedItem, forKey: GlobalSettings.numberOfRepetitionsSelectedKey)
+            }
         }
 
         collectionViewDataSource = NumberOfRepetitionsCollectionViewDataSource(collectionView: numberOfRepetitionsView.collectionView,
-                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
+                                                                               cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: numberOfRepetitionsCellRegistration,
                                                                 for: indexPath,
                                                                 item: item)
