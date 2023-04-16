@@ -114,6 +114,7 @@ class RehAppExercisesFlowCoordinator {
                 guard let self = self else { return }
                 showExerciseDetailsScreen()
             })
+            SoundPlayer.shared.playSound(.singleExerciseFinished)
         } else {
             message = "Još jedan dan kada si odradio sve vježbe. Sada je vrijeme da se zasluženo odmoriš! 🏆"
             alertAction = UIAlertAction(title: "Završi",
@@ -122,6 +123,7 @@ class RehAppExercisesFlowCoordinator {
                 guard let self = self else { return }
                 navigationController?.popToRootViewController(animated: true)
             })
+            SoundPlayer.shared.playSound(.allExercisesFinished)
         }
 
         let alert = UIAlertController(title: "Bravo!",

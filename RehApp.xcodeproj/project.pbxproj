@@ -81,6 +81,9 @@
 		D2F19C7E29EC24F10020A295 /* ExerciseCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7D29EC24F10020A295 /* ExerciseCounterCell.swift */; };
 		D2F19C8029EC3BE30020A295 /* ExerciseCounterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7F29EC3BE30020A295 /* ExerciseCounterDataSource.swift */; };
 		D2F19C8229EC3F320020A295 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8129EC3F320020A295 /* CircularProgressBarView.swift */; };
+		D2F19C8429EC6C210020A295 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8329EC6C210020A295 /* SoundPlayer.swift */; };
+		D2F19C8729EC6C9E0020A295 /* SingleExerciseFinished.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2F19C8629EC6C9E0020A295 /* SingleExerciseFinished.mp3 */; };
+		D2F19C8929EC6CC30020A295 /* AllExercisesFinished.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +173,9 @@
 		D2F19C7D29EC24F10020A295 /* ExerciseCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCounterCell.swift; sourceTree = "<group>"; };
 		D2F19C7F29EC3BE30020A295 /* ExerciseCounterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCounterDataSource.swift; sourceTree = "<group>"; };
 		D2F19C8129EC3F320020A295 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		D2F19C8329EC6C210020A295 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		D2F19C8629EC6C9E0020A295 /* SingleExerciseFinished.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SingleExerciseFinished.mp3; sourceTree = "<group>"; };
+		D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AllExercisesFinished.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +331,7 @@
 				D256B27E29DB55C500EF79E7 /* RehAppNavigationController.swift */,
 				D208873429E49E990016F407 /* KeyValueView.swift */,
 				D2B5C5E429EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift */,
+				D2F19C8329EC6C210020A295 /* SoundPlayer.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -440,6 +447,7 @@
 				D208873029E46A900016F407 /* HealthData */,
 				D256B27829DB3F5B00EF79E7 /* Navigation */,
 				D26C80D029BD11AC009393C3 /* Reusable components */,
+				D2F19C8529EC6C8C0020A295 /* Sounds */,
 				D26C80B729BD0E83009393C3 /* Screens */,
 				D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */,
 				D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */,
@@ -512,6 +520,15 @@
 				D2F19C8129EC3F320020A295 /* CircularProgressBarView.swift */,
 			);
 			path = ExerciseCounter;
+			sourceTree = "<group>";
+		};
+		D2F19C8529EC6C8C0020A295 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C8629EC6C9E0020A295 /* SingleExerciseFinished.mp3 */,
+				D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,6 +622,8 @@
 			files = (
 				D2EFB9DD29BCFC99009EA5E5 /* LaunchScreen.storyboard in Resources */,
 				D2EFB9DA29BCFC99009EA5E5 /* Assets.xcassets in Resources */,
+				D2F19C8929EC6CC30020A295 /* AllExercisesFinished.mp3 in Resources */,
+				D2F19C8729EC6C9E0020A295 /* SingleExerciseFinished.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +713,7 @@
 				D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */,
 				D26C80CD29BD112B009393C3 /* ListAllExercisesHeader.swift in Sources */,
 				D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */,
+				D2F19C8429EC6C210020A295 /* SoundPlayer.swift in Sources */,
 				D256B2A429DCD0EA00EF79E7 /* RehAppCache.xcdatamodeld in Sources */,
 				D208873229E46AEE0016F407 /* HealthData.swift in Sources */,
 				D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */,
