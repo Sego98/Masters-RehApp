@@ -61,6 +61,7 @@ class RehAppExercisesFlowCoordinator {
         let action = UIAction { _ in
             self.startOverlayTimer()
         }
+
         viewController.setLargeButtonAction(action)
         currentExerciseDetailsVC = viewController
         show(viewController)
@@ -84,7 +85,6 @@ class RehAppExercisesFlowCoordinator {
                 guard let self = self else { return }
                 viewController.timerDidFinish()
                 showExerciseCounterScreen()
-                print("Successssssssss")
             }).disposed(by: disposeBag)
     }
 

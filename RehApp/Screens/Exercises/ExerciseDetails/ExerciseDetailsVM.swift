@@ -13,7 +13,7 @@ struct ExerciseDetailsVM: Hashable, Equatable {
     let longDescription: String
     let oneRepetitionTime: TimeInterval
     let videoURL: URL?
-    
+
     private static let mockOneRepetitionTime: TimeInterval = 2
     private static let mockURL = URL(string: "https://www.youtube.com/watch?v=t99KH0TR-J4")
 
@@ -135,5 +135,5 @@ struct ExerciseDetailsVM: Hashable, Equatable {
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
-    
+
 }

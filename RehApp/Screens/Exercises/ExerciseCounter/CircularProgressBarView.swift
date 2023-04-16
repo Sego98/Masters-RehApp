@@ -74,7 +74,7 @@ final class CircularProgressBarView: UIView {
     }
 
     private func configure() {
-        backgroundColor = .systemBackground
+        backgroundColor = .rehAppBackground
         translatesAutoresizingMaskIntoConstraints = false
         circleLayer.lineWidth = barWidth
         progressLayer.lineWidth = barWidth

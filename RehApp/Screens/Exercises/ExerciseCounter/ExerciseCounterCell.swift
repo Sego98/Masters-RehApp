@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class ExerciseCounterCell: UICollectionViewCell {
-    
+
     // MARK: - Properties
 
     private let exerciseImageView: UIImageView = {
@@ -49,35 +49,42 @@ final class ExerciseCounterCell: UICollectionViewCell {
             exerciseImageView, maxRepetitionsLabel,
             progressBarView
         ])
-        
-        contentView.directionalLayoutMargins = .zero
+
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         let guide = contentView.layoutMarginsGuide
-        
+
         let bottomConstraint = progressBarView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
-        
+
         NSLayoutConstraint.activate([
             exerciseImageView.heightAnchor.constraint(equalToConstant: 200),
             exerciseImageView.widthAnchor.constraint(equalTo: exerciseImageView.heightAnchor),
             exerciseImageView.topAnchor.constraint(equalTo: guide.topAnchor),
             exerciseImageView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
-            
+
             maxRepetitionsLabel.topAnchor.constraint(equalTo: exerciseImageView.bottomAnchor, constant: 32),
             maxRepetitionsLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             maxRepetitionsLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            
+
             progressBarView.topAnchor.constraint(equalTo: maxRepetitionsLabel.bottomAnchor, constant: 32),
             progressBarView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
             bottomConstraint
         ])
     }
-    
+
     // MARK: - Public methods
 
     func setValues(with viewModel: ExerciseDetailsVM) {
-        // TODO: configure image
+        // notaTODO: configure image
         let maxRepetitions = UserDefaults.standard.integer(forKey: GlobalSettings.numberOfRepetitionsSelectedKey)
         maxRepetitionsLabel.text = "🏋🏽 Broj ponavljanja: \(maxRepetitions)"
-        progressBarView.progressAnimation(duration: viewModel.oneRepetitionTime)
+    }
+
+    func makeProgressAnimation(_ duration: TimeInterval) {
+        progressBarView.progressAnimation(duration: duration)
+    }
+
+    func makeCounterLabel() -> UILabel {
+        return progressBarView.counterLabel
     }
 }

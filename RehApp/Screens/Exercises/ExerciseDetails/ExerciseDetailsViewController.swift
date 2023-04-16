@@ -28,7 +28,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
         if showDetailsVideo {
             exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Video vježbe".uppercased())
         } else {
-            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Nastavi".uppercased())
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Pokreni".uppercased())
         }
         super.init(screenTitle: viewModel.title, type: .exercises)
     }
@@ -82,16 +82,6 @@ final class ExerciseDetailsViewController: RehAppViewController {
                                                     screenTitle: viewModel.title)
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true)
-    }
-
-    private func actionWhenTimerFinished() {
-//        let selectedIndex = exerciseDetailsView.pickerView.selectedRow(inComponent: 0)
-//        let viewModel = ExerciseCounterViewModel(screenTitle: viewModel.screenTitle,
-//                                                 exerciseDescription: viewModel.exerciseDescription,
-//                                                 numberOfRepetitions: numberOfRepetitions[selectedIndex])
-//        let viewController = ExerciseCounterViewController(viewModel: viewModel)
-//        navigationController?.pushViewController(viewController, animated: true)
-//        exerciseDetailsView.deactivateOverlayView()
     }
 
     // MARK: - Public methods

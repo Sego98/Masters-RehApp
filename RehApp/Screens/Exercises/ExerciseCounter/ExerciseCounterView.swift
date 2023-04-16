@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 final class ExerciseCounterView: UIView {
-    
+
     // MARK: - Properties
-    
+
     let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: .defaultLayout)
@@ -21,7 +21,7 @@ final class ExerciseCounterView: UIView {
     }()
 
     // MARK: - Init
-    
+
     init() {
         super.init(frame: .zero)
         configure()
