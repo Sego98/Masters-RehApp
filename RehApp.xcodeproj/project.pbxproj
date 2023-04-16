@@ -891,6 +891,8 @@
 				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "App will share data with HealthKit";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App will update data in HealthKit";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -922,6 +924,8 @@
 				DEVELOPMENT_TEAM = 39FY827X3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RehApp/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "App will share data with HealthKit";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App will update data in HealthKit";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
