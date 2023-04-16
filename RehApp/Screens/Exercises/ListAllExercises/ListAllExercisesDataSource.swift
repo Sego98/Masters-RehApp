@@ -1,5 +1,5 @@
 //
-//  ListAllItemsTableViewDataSource.swift
+//  ListAllExercisesDataSource.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsDataSource: UICollectionViewDiffableDataSource<Int, ListAllItemsViewModel.ItemViewModel> {
+final class ListAllExercisesDataSource: UICollectionViewDiffableDataSource<Int, ExerciseDetailsVM> {
 
-    typealias ListAllItemsSnapshot = NSDiffableDataSourceSnapshot<Int, ListAllItemsViewModel.ItemViewModel>
+    typealias ListAllItemsSnapshot = NSDiffableDataSourceSnapshot<Int, ExerciseDetailsVM>
 
-    func rebuildSnapshot(items: [ListAllItemsViewModel.ItemViewModel], animatingDifferences: Bool) {
+    func rebuildSnapshot(items: [ExerciseDetailsVM], animatingDifferences: Bool) {
         var snapshot = ListAllItemsSnapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(items, toSection: 0)

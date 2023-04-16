@@ -1,14 +1,14 @@
 //
-//  ExerciseDetailsDataSource.swift
+//  NumberOfRepetitionsPickerDataSource.swift
 //  RehApp
 //
-//  Created by Akademija on 16.03.2023..
+//  Created by Akademija on 15.04.2023..
 //
 
 import Foundation
 import UIKit
 
-final class ExerciseDetailsPickerDataSource: NSObject, UIPickerViewDataSource {
+final class NumberOfRepetitionsPickerDataSource: NSObject, UIPickerViewDataSource {
 
     let numberOfRepetitions: [Int]
 

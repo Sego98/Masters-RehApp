@@ -1,5 +1,5 @@
 //
-//  ListAllItemsView.swift
+//  ListAllExercisesView.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-final class ListAllItemsView: UIView {
+final class ListAllExercisesView: UIView {
 
     // MARK: - Properties
 
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: customCollectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +29,7 @@ final class ListAllItemsView: UIView {
                                                        repeatingSubitem: item,
                                                        count: 1)
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -36,7 +37,7 @@ final class ListAllItemsView: UIView {
         // Overal header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(1.0))
-        let headerKind = ListAllItemsHeader.elementKind
+        let headerKind = ListAllExercisesHeader.elementKind
         let headerView = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                      elementKind: headerKind,
                                                                      alignment: .topLeading)
@@ -46,12 +47,12 @@ final class ListAllItemsView: UIView {
         return layout
     }
 
-    private let allItemsButton: LargeButton
+    private let largeButton: LargeButton
 
     // MARK: - Init
 
-    init(viewModel: ListAllItemsViewModel) {
-        self.allItemsButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())
+    init(viewModel: ListAllExercisesVM) {
+        self.largeButton = LargeButton(title: viewModel.largeButtonTitle.uppercased())
         super.init(frame: .zero)
         configure()
     }
@@ -64,7 +65,7 @@ final class ListAllItemsView: UIView {
         backgroundColor = .rehAppBackground
 
         addSubviews([
-            collectionView, allItemsButton
+            collectionView, largeButton
         ])
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24)
@@ -72,23 +73,19 @@ final class ListAllItemsView: UIView {
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            allItemsButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8),
-            allItemsButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            allItemsButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            allItemsButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+            largeButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16),
+            largeButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            largeButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            largeButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
     }
 
     // MARK: - Public methods
 
-    func getCollectionView() -> UICollectionView {
-        return collectionView
-    }
-
-    func setCollectionViewDelegate(_ delegate: UICollectionViewDelegate) {
-        collectionView.delegate = delegate
+    func setLargeButtonAction(_ action: UIAction) {
+        largeButton.addAction(action, for: .touchUpInside)
     }
 }

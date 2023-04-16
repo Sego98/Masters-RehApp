@@ -29,6 +29,7 @@ final class StreakCalendarViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         configure()
     }
 

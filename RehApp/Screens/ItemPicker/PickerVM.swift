@@ -7,33 +7,33 @@
 
 import Foundation
 
-struct PickerViewModel {
+struct PickerVM {
     let title: String
     let subviews: [PickerItem]
 
     struct PickerItem {
-        let viewModel: PickerItemViewModel
+        let viewModel: PickerItemVM
         let nextScreenType: NextScreenType
     }
 
     enum NextScreenType {
-        case picker(PickerViewModel?)
-        case list(ListAllItemsViewModel?)
+        case picker(PickerVM?)
+        case list(ListAllExercisesVM?)
     }
 
-    struct PickerItemViewModel {
+    struct PickerItemVM {
         let title: String
         let imageName: String
     }
 
     // MARK: - Custom data
 
-    static var pickPartToRehab: PickerViewModel {
+    static var pickPartToRehab: PickerVM {
         let title = "Rehabilitacija"
-        let shoulderSubviewVM = PickerItemViewModel(title: "Rame", imageName: "Shoulder")
-        let handSubviewVM = PickerItemViewModel(title: "Šaka", imageName: "Hand")
-        let elbowSubview = PickerItemViewModel(title: "Lakat", imageName: "Elbow")
-        let kneeSubview = PickerItemViewModel(title: "Koljeno", imageName: "Knee")
+        let shoulderSubviewVM = PickerItemVM(title: "Rame", imageName: "Shoulder")
+        let handSubviewVM = PickerItemVM(title: "Šaka", imageName: "Hand")
+        let elbowSubview = PickerItemVM(title: "Lakat", imageName: "Elbow")
+        let kneeSubview = PickerItemVM(title: "Koljeno", imageName: "Knee")
 
         let subviews = [
             PickerItem(viewModel: shoulderSubviewVM,
@@ -45,17 +45,17 @@ struct PickerViewModel {
             PickerItem(viewModel: kneeSubview,
                        nextScreenType: .list(nil))
         ]
-        return PickerViewModel(title: title, subviews: subviews)
+        return PickerVM(title: title, subviews: subviews)
     }
 
-    static var pickShoulderExerciseType: PickerViewModel {
+    static var pickShoulderExerciseType: PickerVM {
         let title = "Rame"
-        let noStickSubviewVM = PickerItemViewModel(title: "Bez štapa", imageName: "ShoulderNoStick")
-        let stickSubviewVM = PickerItemViewModel(title: "Sa štapom", imageName: "ShoulderWithStick")
+        let noStickSubviewVM = PickerItemVM(title: "Bez štapa", imageName: "ShoulderNoStick")
+        let stickSubviewVM = PickerItemVM(title: "Sa štapom", imageName: "ShoulderWithStick")
         let subviewsVM = [
             PickerItem(viewModel: noStickSubviewVM, nextScreenType: .list(.shoulderNoStick)),
             PickerItem(viewModel: stickSubviewVM, nextScreenType: .list(.shouldersWithStick))
         ]
-        return PickerViewModel(title: title, subviews: subviewsVM)
+        return PickerVM(title: title, subviews: subviewsVM)
     }
 }

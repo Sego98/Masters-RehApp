@@ -32,11 +32,11 @@ final class PickerView: UIView {
         return stackView
     }()
 
-    private let subviewsVM: [PickerViewModel.PickerItemViewModel]
+    private let subviewsVM: [PickerVM.PickerItemVM]
 
     // MARK: - Init
 
-    init(subviewsVM: [PickerViewModel.PickerItemViewModel]) {
+    init(subviewsVM: [PickerVM.PickerItemVM]) {
         self.subviewsVM = subviewsVM
         super.init(frame: .zero)
         configure()

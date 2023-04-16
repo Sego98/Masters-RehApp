@@ -10,7 +10,7 @@ import UIKit
 
 final class StreakCalendarView: UIView {
 
-    // MARK: - Proeprties
+    // MARK: - Properties
 
     private let calendarView: UICalendarView = {
         let calendarView = UICalendarView()
@@ -24,16 +24,17 @@ final class StreakCalendarView: UIView {
     private let allDaysLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .title2)
+        label.font = .preferredFont(for: .title2, weight: .bold)
         label.textAlignment = .natural
         label.numberOfLines = 0
         return label
     }()
 
     private let testDates = [
-        DateComponents(year: 2023, month: 3, day: 3),
         DateComponents(year: 2023, month: 4, day: 1),
-        DateComponents(year: 2023, month: 4, day: 2)
+        DateComponents(year: 2023, month: 4, day: 2),
+        DateComponents(year: 2023, month: 4, day: 5),
+        DateComponents(year: 2023, month: 4, day: 6)
     ]
 
     // MARK: - Init
@@ -65,7 +66,7 @@ final class StreakCalendarView: UIView {
         dateSelection.selectedDates = testDates
         calendarView.selectionBehavior = dateSelection
 
-        allDaysLabel.text = "Ukupan broj odrađenih dana: \(testDates.count)"
+        allDaysLabel.text = "🔥 Ukupan broj dana: \(testDates.count)"
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide
@@ -84,6 +85,7 @@ final class StreakCalendarView: UIView {
 }
 
 extension StreakCalendarView: UICalendarSelectionMultiDateDelegate {
+
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
         selection.selectedDates = testDates
     }

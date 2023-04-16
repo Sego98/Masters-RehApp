@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class OverlayView: UIView {
+final class OverlayTimerView: UIView {
 
     // MARK: - Properties
 

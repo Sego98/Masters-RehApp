@@ -43,6 +43,7 @@ class RehAppViewController: UIViewController {
         navBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.white]
 
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearence
         navigationController?.navigationBar.standardAppearance = navBarAppearence
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,13 +52,13 @@ class RehAppViewController: UIViewController {
         navigationItem.title = screenTitle
 
         if let type = type {
-            navigationItem.rightBarButtonItem = makeBarButtonItem(type)
+            navigationItem.rightBarButtonItem = makeRightBarButtonItem(type)
         }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
     }
 
-    private func makeBarButtonItem(_ type: RehAppTabType) -> UIBarButtonItem? {
+    private func makeRightBarButtonItem(_ type: RehAppTabType) -> UIBarButtonItem? {
         var barButtonItem: UIBarButtonItem?
         let exercisingBarButton = UIBarButtonItem(image: UIImage(systemName: "figure.strengthtraining.functional"),
                                                   style: .plain,
@@ -82,5 +83,12 @@ class RehAppViewController: UIViewController {
         let calendarViewController = StreakCalendarViewController()
 
         present(calendarViewController, animated: true)
+    }
+
+    // MARK: - Public methods
+
+    func disableGoingBackwards() {
+        navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 }
