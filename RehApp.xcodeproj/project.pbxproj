@@ -32,7 +32,7 @@
 		D26C80B129BD01AA009393C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D26C80B029BD01AA009393C3 /* RxSwift */; };
 		D26C80B429BD053C009393C3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B329BD053C009393C3 /* UIColor.swift */; };
 		D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B929BD0ECA009393C3 /* PickerViewController.swift */; };
-		D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */; };
+		D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BB29BD0EF2009393C3 /* PickerVM.swift */; };
 		D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BE29BD0F4A009393C3 /* PickerView.swift */; };
 		D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C029BD0F69009393C3 /* PickerSubview.swift */; };
 		D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */; };
@@ -50,7 +50,6 @@
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
 		D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */; };
 		D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */; };
-		D2B5C5DF29E9DC9800C16EF8 /* ExerciseListItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5DE29E9DC9800C16EF8 /* ExerciseListItemVM.swift */; };
 		D2B5C5E329EAD7EC00C16EF8 /* NumberOfRepetitionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5E229EAD7EC00C16EF8 /* NumberOfRepetitionsViewController.swift */; };
 		D2B5C5E529EAD83E00C16EF8 /* DefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5E429EAD83E00C16EF8 /* DefaultView.swift */; };
 		D2B5C5E729EADCC000C16EF8 /* NumberOfRepetitionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5E629EADCC000C16EF8 /* NumberOfRepetitionsCell.swift */; };
@@ -66,7 +65,7 @@
 		D2EDA9FB29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FA29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift */; };
 		D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */; };
 		D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */; };
-		D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */; };
+		D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0329C3AD65001E247F /* ExerciseDetailsVM.swift */; };
 		D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */; };
 		D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */; };
 		D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */; };
@@ -77,7 +76,7 @@
 		D2F19C6B29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C6A29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift */; };
 		D2F19C6F29EB1F6F0020A295 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C6E29EB1F6F0020A295 /* GlobalSettings.swift */; };
 		D2F19C7129EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7029EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift */; };
-		D2F19C7329EB421F0020A295 /* ExerciseDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */; };
+		D2F19C7A29EB4FC00020A295 /* ExerciseCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C7929EB4FC00020A295 /* ExerciseCounterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +114,7 @@
 		D256B29D29DB84D100EF79E7 /* RehAppCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RehAppCoreData.xcdatamodel; sourceTree = "<group>"; };
 		D26C80B329BD053C009393C3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D26C80B929BD0ECA009393C3 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
-		D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		D26C80BB29BD0EF2009393C3 /* PickerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVM.swift; sourceTree = "<group>"; };
 		D26C80BE29BD0F4A009393C3 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		D26C80C029BD0F69009393C3 /* PickerSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSubview.swift; sourceTree = "<group>"; };
 		D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +132,6 @@
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
 		D2B5C5C329E9C55000C16EF8 /* WebModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModalViewController.swift; sourceTree = "<group>"; };
 		D2B5C5C529E9C61C00C16EF8 /* WebModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModalView.swift; sourceTree = "<group>"; };
-		D2B5C5DE29E9DC9800C16EF8 /* ExerciseListItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListItemVM.swift; sourceTree = "<group>"; };
 		D2B5C5E229EAD7EC00C16EF8 /* NumberOfRepetitionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfRepetitionsViewController.swift; sourceTree = "<group>"; };
 		D2B5C5E429EAD83E00C16EF8 /* DefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultView.swift; sourceTree = "<group>"; };
 		D2B5C5E629EADCC000C16EF8 /* NumberOfRepetitionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfRepetitionsCell.swift; sourceTree = "<group>"; };
@@ -149,7 +147,7 @@
 		D2EDA9FA29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListAllExercisesViewController+Navigation.swift"; sourceTree = "<group>"; };
 		D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
 		D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayTimerView.swift; sourceTree = "<group>"; };
-		D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewModel.swift; sourceTree = "<group>"; };
+		D2EDAA0329C3AD65001E247F /* ExerciseDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsVM.swift; sourceTree = "<group>"; };
 		D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsDataSource.swift; sourceTree = "<group>"; };
 		D2EFB9CA29BCFC97009EA5E5 /* RehApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,7 +161,7 @@
 		D2F19C6A29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberOfRepetitionsViewController+Picker.swift"; sourceTree = "<group>"; };
 		D2F19C6E29EB1F6F0020A295 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		D2F19C7029EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppExercisesFlowCoordinator.swift; sourceTree = "<group>"; };
-		D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsDelegate.swift; sourceTree = "<group>"; };
+		D2F19C7929EB4FC00020A295 /* ExerciseCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCounterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,12 +256,10 @@
 		D26C80B729BD0E83009393C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D2B5C5E129EAD7D100C16EF8 /* NumberOfRepetitions */,
+				D2F19C7729EB4DC90020A295 /* Exercises */,
 				D208872B29E359B20016F407 /* HealthStatistics */,
 				D256B27B29DB435300EF79E7 /* Reminders */,
 				D2ECFBCE29D61388004EAC6E /* StreakCalendar */,
-				D2EDA9FC29C3AC35001E247F /* ExerciseDetails */,
-				D26C80C229BD102B009393C3 /* ListAllExercises */,
 				D26C80B829BD0EAE009393C3 /* ItemPicker */,
 			);
 			path = Screens;
@@ -274,7 +270,7 @@
 			children = (
 				D26C80BD29BD0F39009393C3 /* Views */,
 				D26C80B929BD0ECA009393C3 /* PickerViewController.swift */,
-				D26C80BB29BD0EF2009393C3 /* PickerViewModel.swift */,
+				D26C80BB29BD0EF2009393C3 /* PickerVM.swift */,
 			);
 			path = ItemPicker;
 			sourceTree = "<group>";
@@ -291,10 +287,10 @@
 		D26C80C229BD102B009393C3 /* ListAllExercises */ = {
 			isa = PBXGroup;
 			children = (
-				D2B5C5DD29E9DC6900C16EF8 /* Model */,
 				D26C80C929BD10DD009393C3 /* Views */,
 				D2B5C5DC29E9DC5C00C16EF8 /* ViewController */,
 				D26C80C729BD10C9009393C3 /* ListAllExercisesDataSource.swift */,
+				D26C80C529BD10AD009393C3 /* ListAllExercisesVM.swift */,
 			);
 			path = ListAllExercises;
 			sourceTree = "<group>";
@@ -352,23 +348,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		D2B5C5DD29E9DC6900C16EF8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D26C80C529BD10AD009393C3 /* ListAllExercisesVM.swift */,
-				D2B5C5DE29E9DC9800C16EF8 /* ExerciseListItemVM.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D2B5C5E029E9E35B00C16EF8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		D2B5C5E129EAD7D100C16EF8 /* NumberOfRepetitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,11 +392,10 @@
 		D2EDA9FC29C3AC35001E247F /* ExerciseDetails */ = {
 			isa = PBXGroup;
 			children = (
-				D2F19C7229EB421F0020A295 /* ExerciseDetailsDelegate.swift */,
-				D2B5C5E029E9E35B00C16EF8 /* Views */,
-				D2EDAA0329C3AD65001E247F /* ExerciseDetailsViewModel.swift */,
-				D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */,
 				D2EDA9FD29C3AC6B001E247F /* ExerciseDetailsViewController.swift */,
+				D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */,
+				D2EDAA0329C3AD65001E247F /* ExerciseDetailsVM.swift */,
+				D2EDAA0529C3ADA0001E247F /* ExerciseDetailsDataSource.swift */,
 			);
 			path = ExerciseDetails;
 			sourceTree = "<group>";
@@ -503,6 +481,25 @@
 			children = (
 			);
 			path = OverlayTimer;
+			sourceTree = "<group>";
+		};
+		D2F19C7729EB4DC90020A295 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C7829EB4FAA0020A295 /* ExerciseCounter */,
+				D26C80C229BD102B009393C3 /* ListAllExercises */,
+				D2EDA9FC29C3AC35001E247F /* ExerciseDetails */,
+				D2B5C5E129EAD7D100C16EF8 /* NumberOfRepetitions */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		D2F19C7829EB4FAA0020A295 /* ExerciseCounter */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C7929EB4FC00020A295 /* ExerciseCounterViewController.swift */,
+			);
+			path = ExerciseCounter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,10 +633,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EDAA0629C3ADA0001E247F /* ExerciseDetailsDataSource.swift in Sources */,
-				D2F19C7329EB421F0020A295 /* ExerciseDetailsDelegate.swift in Sources */,
 				D2F19C6829EAF0FC0020A295 /* NumberOfRepetitionsPickerDataSource.swift in Sources */,
 				D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */,
 				D270278429E1D52100BB8324 /* ReminderRepeatingSwitchView.swift in Sources */,
+				D2F19C7A29EB4FC00020A295 /* ExerciseCounterViewController.swift in Sources */,
 				D2B5C5E329EAD7EC00C16EF8 /* NumberOfRepetitionsViewController.swift in Sources */,
 				D2F19C7129EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift in Sources */,
 				D2F19C6B29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift in Sources */,
@@ -658,7 +655,6 @@
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
 				D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */,
-				D2B5C5DF29E9DC9800C16EF8 /* ExerciseListItemVM.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllExercisesDataSource.swift in Sources */,
 				D270278229E1D36800BB8324 /* ReminderTitleTimeView.swift in Sources */,
@@ -669,9 +665,9 @@
 				D2B5C5E929EAE16500C16EF8 /* UICollectionViewLayout.swift in Sources */,
 				D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */,
 				D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */,
-				D26C80BC29BD0EF2009393C3 /* PickerViewModel.swift in Sources */,
+				D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */,
 				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
-				D2EDAA0429C3AD65001E247F /* ExerciseDetailsViewModel.swift in Sources */,
+				D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
 				D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */,

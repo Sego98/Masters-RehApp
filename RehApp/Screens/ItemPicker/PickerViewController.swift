@@ -13,14 +13,14 @@ final class PickerViewController: RehAppViewController {
 
     private let pickerView: PickerView
 
-    private let viewModel: PickerViewModel
+    private let viewModel: PickerVM
 
     // MARK: - Lifecycle
 
-    init(viewModel: PickerViewModel) {
+    init(viewModel: PickerVM) {
         self.viewModel = viewModel
 
-        var subviews = [PickerViewModel.PickerItemViewModel]()
+        var subviews = [PickerVM.PickerItemVM]()
         for subview in viewModel.subviews {
             subviews.append(subview.viewModel)
         }

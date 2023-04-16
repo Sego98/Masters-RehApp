@@ -34,11 +34,11 @@ final class PickerSubview: UIView {
         return button
     }()
 
-    private let viewModel: PickerViewModel.PickerItemViewModel
+    private let viewModel: PickerVM.PickerItemVM
 
     // MARK: - Init
 
-    init(viewModel: PickerViewModel.PickerItemViewModel) {
+    init(viewModel: PickerVM.PickerItemVM) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         configure()

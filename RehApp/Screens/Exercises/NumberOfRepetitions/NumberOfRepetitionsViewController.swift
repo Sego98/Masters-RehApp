@@ -16,14 +16,14 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     private let numberOfRepetitionsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
     private var collectionViewDataSource: NumberOfRepetitionsCollectionViewDataSource!
     private let pickerDataSource: NumberOfRepetitionsPickerDataSource
-
-    weak var exerciseDetailsDelegate: ExerciseDetailsDelegate?
+    private let exerciseVMs: [ExerciseDetailsVM]
 
     let numberOfRepetitions = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     // MARK: - Lifecycle
 
-    init() {
+    init(exerciseVMs: [ExerciseDetailsVM]) {
+        self.exerciseVMs = exerciseVMs
         pickerDataSource = NumberOfRepetitionsPickerDataSource(numberOfRepetitions: numberOfRepetitions)
         super.init(screenTitle: "Broj ponavljanja", type: .exercises)
     }
@@ -67,8 +67,7 @@ final class NumberOfRepetitionsViewController: RehAppViewController {
     private func configureProperties() {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            let exerciseViewModels = exerciseDetailsDelegate?.makeExerciseDetailsViewModels() ?? []
-            _ = RehAppExercisesFlowCoordinator(exerciseViewModels: exerciseViewModels,
+            _ = RehAppExercisesFlowCoordinator(exerciseViewModels: exerciseVMs,
                                                navigationController: navigationController)
         }
         numberOfRepetitionsView.setLargeButtonAction(action)

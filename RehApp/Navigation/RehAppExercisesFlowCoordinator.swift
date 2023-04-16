@@ -14,7 +14,7 @@ class RehAppExercisesFlowCoordinator {
 
     // MARK: - Properties
 
-    private let exerciseViewModels: [ExerciseDetailsViewModel]
+    private let exerciseViewModels: [ExerciseDetailsVM]
     private let navigationController: UINavigationController?
     private let animated: Bool
 
@@ -30,7 +30,7 @@ class RehAppExercisesFlowCoordinator {
 
     // MARK: - Init
 
-    init(exerciseViewModels: [ExerciseDetailsViewModel],
+    init(exerciseViewModels: [ExerciseDetailsVM],
          navigationController: UINavigationController?,
          animated: Bool = true) {
         self.exerciseViewModels = exerciseViewModels

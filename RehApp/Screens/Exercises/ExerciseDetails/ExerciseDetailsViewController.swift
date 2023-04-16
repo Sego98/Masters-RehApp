@@ -17,12 +17,12 @@ final class ExerciseDetailsViewController: RehAppViewController {
 
     private let exerciseDetailsView: DefaultView
     private var dataSource: ExerciseDetailsDataSource!
-    private let viewModel: ExerciseDetailsViewModel
+    private let viewModel: ExerciseDetailsVM
     private let showDetailsVideo: Bool
 
     // MARK: - Lifecycle
 
-    init(viewModel: ExerciseDetailsViewModel, showDetailsVideo: Bool) {
+    init(viewModel: ExerciseDetailsVM, showDetailsVideo: Bool) {
         self.viewModel = viewModel
         self.showDetailsVideo = showDetailsVideo
         if showDetailsVideo {
@@ -30,7 +30,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
         } else {
             exerciseDetailsView = DefaultView(largeButtonTitle: "Nastavi".uppercased())
         }
-        super.init(screenTitle: viewModel.screenTitle, type: .exercises)
+        super.init(screenTitle: viewModel.title, type: .exercises)
     }
 
     required init?(coder: NSCoder) {
@@ -55,12 +55,12 @@ final class ExerciseDetailsViewController: RehAppViewController {
     }
 
     private func configureDataSourceCellRegistrations() {
-        let exerciseDetailsCellRegistration = UICollectionView.CellRegistration<ExerciseDetailsCell, ExerciseDetailsViewModel> {cell, _, item in
-            cell.setExerciseDescription(item.exerciseDescription)
+        let exerciseDetailsCellRegistration = UICollectionView.CellRegistration<ExerciseDetailsCell, ExerciseDetailsVM> {cell, _, item in
+            cell.setExerciseDescription(item.longDescription)
         }
 
         dataSource = ExerciseDetailsDataSource(collectionView: exerciseDetailsView.collectionView,
-                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseDetailsViewModel) -> UICollectionViewCell? in
+                                               cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseDetailsVM) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: exerciseDetailsCellRegistration,
                                                                 for: indexPath,
                                                                 item: item)
@@ -79,7 +79,7 @@ final class ExerciseDetailsViewController: RehAppViewController {
 
     private func presentWebModal() {
         let viewController = WebModalViewController(url: viewModel.videoURL,
-                                                    screenTitle: viewModel.screenTitle)
+                                                    screenTitle: viewModel.title)
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true)
     }

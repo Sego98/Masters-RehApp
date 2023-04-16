@@ -12,20 +12,20 @@ struct ListAllExercisesVM: Hashable, Equatable {
     let screenDescription: String
     let leftHeaderDescription: String
     let rightHeaderDescription: String
-    let items: [ExerciseListItemVM]
+    let exercises: [ExerciseDetailsVM]
     let largeButtonTitle: String
 
     internal init(screenTitle: String,
                   screenDescription: String,
                   leftHeaderDescription: String = "#",
                   rightHeaderDescription: String = "Opis",
-                  items: [ExerciseListItemVM],
+                  exercises: [ExerciseDetailsVM],
                   largeButtonTitle: String = "Nastavi") {
         self.screenTitle = screenTitle
         self.screenDescription = screenDescription
         self.leftHeaderDescription = leftHeaderDescription
         self.rightHeaderDescription = rightHeaderDescription
-        self.items = items
+        self.exercises = exercises
         self.largeButtonTitle = largeButtonTitle
     }
 
@@ -38,7 +38,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
         Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
         """
 
-        let items: [ExerciseListItemVM] = [
+        let exercises: [ExerciseDetailsVM] = [
             .shoulderExerciseWithoutStick1,
             .shoulderExerciseWithoutStick2,
             .shoulderExerciseWithoutStick3,
@@ -50,7 +50,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
 
         return ListAllExercisesVM(screenTitle: screenTitle,
                                   screenDescription: screenDescription,
-                                  items: items)
+                                  exercises: exercises)
     }
 
     // MARK: - Shoulder exercises with a stick
@@ -62,7 +62,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
         predmetom. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
         """
 
-        let items: [ExerciseListItemVM]  = [
+        let exercises: [ExerciseDetailsVM]  = [
             .shoulderExerciseWithStick1,
             .shoulderExerciseWithStick2,
             .shoulderExerciseWithStick3
@@ -70,6 +70,6 @@ struct ListAllExercisesVM: Hashable, Equatable {
 
         return ListAllExercisesVM(screenTitle: screenTitle,
                                   screenDescription: screenDescription,
-                                  items: items)
+                                  exercises: exercises)
     }
 }

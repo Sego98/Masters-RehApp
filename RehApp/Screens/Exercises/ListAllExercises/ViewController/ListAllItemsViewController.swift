@@ -43,17 +43,17 @@ final class ListAllExercisesViewController: RehAppViewController {
         configureDataSourceSupplementaryViews()
         configureProperties()
 
-        dataSource.rebuildSnapshot(items: viewModel.items, animatingDifferences: true)
+        dataSource.rebuildSnapshot(items: viewModel.exercises, animatingDifferences: true)
     }
 
     private func configureDataSourceCellRegistrations() {
-        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllExercisesCell, ExerciseListItemVM> {cell, indexPath, item in
+        let allItemsCellRegistration = UICollectionView.CellRegistration<ListAllExercisesCell, ExerciseDetailsVM> {cell, indexPath, item in
             let number = indexPath.item + 1
             cell.setParameters(number: number, description: item.shortDescription)
         }
 
         dataSource = ListAllExercisesDataSource(collectionView: listAllItemsView.collectionView,
-                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseListItemVM) -> UICollectionViewCell? in
+                                            cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: ExerciseDetailsVM) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: allItemsCellRegistration,
                                                                 for: indexPath,
                                                                 item: item)
@@ -80,22 +80,10 @@ final class ListAllExercisesViewController: RehAppViewController {
 
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            let viewController = NumberOfRepetitionsViewController()
-            viewController.exerciseDetailsDelegate = self
+            let viewController = NumberOfRepetitionsViewController(exerciseVMs: viewModel.exercises)
             navigationController?.pushViewController(viewController, animated: true)
         }
 
         listAllItemsView.setLargeButtonAction(action)
     }
-}
-
-extension ListAllExercisesViewController: ExerciseDetailsDelegate {
-
-    func makeExerciseDetailsViewModels() -> [ExerciseDetailsViewModel] {
-        let exerciseDetailsViewModels = viewModel.items.map({ ExerciseDetailsViewModel(screenTitle: $0.title,
-                                                                                       exerciseDescription: $0.longDescription,
-                                                                                       videoURL: nil)})
-        return exerciseDetailsViewModels
-    }
-
 }

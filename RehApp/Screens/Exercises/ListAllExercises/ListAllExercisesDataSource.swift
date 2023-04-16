@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-final class ListAllExercisesDataSource: UICollectionViewDiffableDataSource<Int, ExerciseListItemVM> {
+final class ListAllExercisesDataSource: UICollectionViewDiffableDataSource<Int, ExerciseDetailsVM> {
 
-    typealias ListAllItemsSnapshot = NSDiffableDataSourceSnapshot<Int, ExerciseListItemVM>
+    typealias ListAllItemsSnapshot = NSDiffableDataSourceSnapshot<Int, ExerciseDetailsVM>
 
-    func rebuildSnapshot(items: [ExerciseListItemVM], animatingDifferences: Bool) {
+    func rebuildSnapshot(items: [ExerciseDetailsVM], animatingDifferences: Bool) {
         var snapshot = ListAllItemsSnapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(items, toSection: 0)
