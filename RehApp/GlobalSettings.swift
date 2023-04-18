@@ -12,4 +12,5 @@ enum GlobalSettings {
     // MARK: - User defaults keys
 
     static let numberOfRepetitionsSelectedKey = "numberOfRepetitionsSelected"
+
 }
