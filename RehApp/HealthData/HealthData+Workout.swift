@@ -64,4 +64,32 @@ extension HealthData {
             }
         }
     }
+
+    func getWorkouts(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+        let workoutPredicate = HKQuery.predicateForWorkouts(with: .other)
+        let sourcePredicate = HKQuery.predicateForObjects(from: .default())
+
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            workoutPredicate,
+            sourcePredicate
+        ])
+
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate,
+                                              ascending: true)
+
+        let query = HKSampleQuery(sampleType: .workoutType(),
+                                  predicate: compoundPredicate,
+                                  limit: 0,
+                                  sortDescriptors: [sortDescriptor]) { _, samples, error in
+            guard let samples = samples as? [HKWorkout],
+                  error == nil else {
+                completion(nil, error)
+                return
+            }
+
+            completion(samples, nil)
+        }
+
+        healthStore.execute(query)
+    }
 }
