@@ -84,6 +84,8 @@
 		D2F19C8429EC6C210020A295 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8329EC6C210020A295 /* SoundPlayer.swift */; };
 		D2F19C8729EC6C9E0020A295 /* SingleExerciseFinished.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2F19C8629EC6C9E0020A295 /* SingleExerciseFinished.mp3 */; };
 		D2F19C8929EC6CC30020A295 /* AllExercisesFinished.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */; };
+		D2F19C8B29EF3A340020A295 /* RehabilitationWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */; };
+		D2F19C8D29EF40FC0020A295 /* HealthData+Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +178,8 @@
 		D2F19C8329EC6C210020A295 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		D2F19C8629EC6C9E0020A295 /* SingleExerciseFinished.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SingleExerciseFinished.mp3; sourceTree = "<group>"; };
 		D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AllExercisesFinished.mp3; sourceTree = "<group>"; };
+		D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehabilitationWorkout.swift; sourceTree = "<group>"; };
+		D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthData+Workout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				D208873129E46AEE0016F407 /* HealthData.swift */,
+				D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */,
+				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
 			);
 			path = HealthData;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 				D2F19C6F29EB1F6F0020A295 /* GlobalSettings.swift in Sources */,
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D270278629E1D80400BB8324 /* UIFont.swift in Sources */,
+				D2F19C8B29EF3A340020A295 /* RehabilitationWorkout.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllExercisesView.swift in Sources */,
 				D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
@@ -703,6 +710,7 @@
 				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
+				D2F19C8D29EF40FC0020A295 /* HealthData+Workout.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
 				D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */,
 				D2B5C5EB29EAE3E000C16EF8 /* NumberOfRepetitionsCollectionViewDataSource.swift in Sources */,
