@@ -40,6 +40,15 @@ final class PickerViewController: RehAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+
+        HealthData.shared.saveWorkout(.workout1) { success, error in
+            if success {
+                print("Saved successfully")
+            } else {
+                print("Failed to save")
+                print(error as Any)
+            }
+        }
     }
 
     private func configure() {

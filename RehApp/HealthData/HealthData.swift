@@ -15,20 +15,25 @@ class HealthData {
     let healthStore = HKHealthStore()
 
     var readDataTypes: [HKSampleType] = {
+        guard let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else { return [] }
+
         let identifiers = [
-            HKQuantityTypeIdentifier.height.rawValue,
-            HKQuantityTypeIdentifier.bodyMass.rawValue,
-            HKQuantityTypeIdentifier.heartRate.rawValue,
-            HKQuantityTypeIdentifier.heartRateRecoveryOneMinute.rawValue,
-            HKQuantityTypeIdentifier.restingHeartRate.rawValue,
-            HKQuantityTypeIdentifier.activeEnergyBurned.rawValue
+            activeEnergy,
+            HKObjectType.workoutType()
         ]
 
-        return identifiers.compactMap({ getSampleType(for: $0) })
+        return identifiers
     }()
 
     var shareDataTypes: [HKSampleType] = {
-        return []
+        guard let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else { return [] }
+
+        let identifiers = [
+            activeEnergy,
+            HKObjectType.workoutType()
+        ]
+
+        return identifiers
     }()
 
     // MARK: - Public methods
