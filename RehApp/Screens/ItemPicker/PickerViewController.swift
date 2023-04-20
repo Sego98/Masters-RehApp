@@ -52,14 +52,6 @@ final class PickerViewController: RehAppViewController {
             print(workouts.last?.metadata as Any)
         }
 
-//        HealthData.shared.saveWorkout(.workout1) { success, error in
-//            if success {
-//                print("Saved successfully")
-//            } else {
-//                print("Failed to save")
-//                print(error as Any)
-//            }
-//        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

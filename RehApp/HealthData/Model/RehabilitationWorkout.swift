@@ -24,6 +24,10 @@ struct RehabilitationWorkout {
         return totalCalories
     }
 
+    var averageHeartRate: Int {
+        return Int.random(in: 105...125)
+    }
+
     // MARK: - Test workouts
 
     static let workout1: RehabilitationWorkout = {

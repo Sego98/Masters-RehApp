@@ -19,29 +19,20 @@ extension HealthData {
                                        configuration: workoutConfiguration,
                                        device: .local())
 
-        builder.beginCollection(withStart: rehabilitation.start) { success, error in
+        builder.beginCollection(withStart: rehabilitation.start) { [weak self] (success, error) in
+            guard let self = self else { return }
             guard success else {
                 completion(false, error)
                 return
             }
 
-            guard let quantityType = HKQuantityType.quantityType(
-              forIdentifier: .activeEnergyBurned) else {
-              completion(false, nil)
-              return
+            guard let activitySample = makeQuantitySample(sampleType: .activeEnergy, rehabilitation: rehabilitation),
+                  let heartRateSample = makeQuantitySample(sampleType: .heartRate, rehabilitation: rehabilitation) else {
+                completion(false, nil)
+                return
             }
 
-            let unit = HKUnit.kilocalorie()
-            let totalEnergyBurned = rehabilitation.totalEnergyBurned
-            let quantity = HKQuantity(unit: unit,
-                                      doubleValue: totalEnergyBurned)
-
-            let sample = HKCumulativeQuantitySample(type: quantityType,
-                                                    quantity: quantity,
-                                                    start: rehabilitation.start,
-                                                    end: rehabilitation.end)
-
-            builder.add([sample]) { success, error in
+            builder.add([activitySample, heartRateSample]) { success, error in
                 guard success else {
                     completion(false, error)
                     return
@@ -91,5 +82,34 @@ extension HealthData {
         }
 
         healthStore.execute(query)
+    }
+
+    private func makeQuantitySample(sampleType: WorkoutQuantitySample, rehabilitation: RehabilitationWorkout) -> HKCumulativeQuantitySample? {
+        let identifier: HKQuantityTypeIdentifier
+        let unit: HKUnit
+        let value: Double
+        
+        switch sampleType {
+        case .activeEnergy:
+            identifier = .activeEnergyBurned
+            unit = .kilocalorie()
+            value = rehabilitation.totalEnergyBurned
+        case .heartRate:
+            identifier = .heartRate
+            unit = .count().unitDivided(by: .minute())
+            value = Double(rehabilitation.averageHeartRate)
+        }
+    
+        guard let quantityType = HKQuantityType.quantityType(forIdentifier: identifier) else {
+            return nil
+        }
+
+        let quantity = HKQuantity(unit: unit,
+                                  doubleValue: value)
+
+        return HKCumulativeQuantitySample(type: quantityType,
+                                          quantity: quantity,
+                                          start: rehabilitation.start,
+                                          end: rehabilitation.end)
     }
 }
