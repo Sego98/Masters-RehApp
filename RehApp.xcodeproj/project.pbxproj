@@ -234,9 +234,9 @@
 		D208873029E46A900016F407 /* HealthData */ = {
 			isa = PBXGroup;
 			children = (
+				D2F19C9029F09CAC0020A295 /* Model */,
 				D208873129E46AEE0016F407 /* HealthData.swift */,
 				D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */,
-				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
 			);
 			path = HealthData;
 			sourceTree = "<group>";
@@ -535,6 +535,14 @@
 				D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D2F19C9029F09CAC0020A295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

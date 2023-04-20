@@ -49,6 +49,7 @@ final class PickerViewController: RehAppViewController {
             }
             print("Successful getting")
             print("Got \(workouts.count) workouts")
+            print(workouts.last?.metadata as Any)
         }
 
 //        HealthData.shared.saveWorkout(.workout1) { success, error in
@@ -59,6 +60,22 @@ final class PickerViewController: RehAppViewController {
 //                print(error as Any)
 //            }
 //        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HealthData.shared.requestHealthAuthorization {[weak self] (success) in
+            guard let self = self else { return }
+            if success {
+#if DEBUG
+                    print("HealthKit authorization has been successful!")
+#endif
+                } else {
+#if DEBUG
+                    print("Health failed to authorize.")
+#endif
+            }
+        }
     }
 
     private func configure() {

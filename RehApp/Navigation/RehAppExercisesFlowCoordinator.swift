@@ -28,6 +28,8 @@ class RehAppExercisesFlowCoordinator {
         .take(3)
         .observe(on: MainScheduler.instance)
 
+    private let startTime: Date
+
     // MARK: - Init
 
     init(exerciseViewModels: [ExerciseDetailsVM],
@@ -37,6 +39,7 @@ class RehAppExercisesFlowCoordinator {
         self.navigationController = navigationController
         self.animated = animated
         selectedIndex = 0
+        startTime = Date()
 
         showFirstScreen()
     }
@@ -124,6 +127,19 @@ class RehAppExercisesFlowCoordinator {
                 navigationController?.popToRootViewController(animated: true)
             })
             SoundPlayer.shared.playSound(.allExercisesFinished)
+            let endTime = Date()
+            let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
+            HealthData.shared.saveWorkout(rehabilitation) { success, error in
+                if success {
+#if DEBUG
+                    print("Workout saved successfully")
+#endif
+                } else {
+#if DEBUG
+                    print("Workout failed to save with error \(error?.localizedDescription as Any)")
+#endif
+                }
+            }
         }
 
         let alert = UIAlertController(title: "Bravo!",
