@@ -65,6 +65,12 @@ class RehAppExercisesFlowCoordinator {
             self.startOverlayTimer()
         }
 
+        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "stop.circle"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(stopButtonAction))
+
+        viewController.setLeftBarButton(leftBarButton)
         viewController.setLargeButtonAction(action)
         currentExerciseDetailsVC = viewController
         show(viewController)
@@ -95,12 +101,12 @@ class RehAppExercisesFlowCoordinator {
         let viewModel = exerciseViewModels[selectedIndex]
         let viewController = ExerciseCounterViewController(exerciseVM: viewModel) { [weak self] in
             guard let self = self else { return }
-            showFinishAlert()
+            showFinishRehabilitationAlert()
         }
         show(viewController)
     }
 
-    private func showFinishAlert() {
+    private func showFinishRehabilitationAlert() {
         let numberOfRemainingExercises = exerciseViewModels.count - selectedIndex - 1
 
         let message: String
@@ -127,26 +133,74 @@ class RehAppExercisesFlowCoordinator {
                 navigationController?.popToRootViewController(animated: true)
             })
             SoundPlayer.shared.playSound(.allExercisesFinished)
-            let endTime = Date()
-            let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
-            HealthData.shared.saveRehabilitation(rehabilitation) { success, error in
-                if success {
-#if DEBUG
-                    print("Workout saved successfully")
-#endif
-                } else {
-#if DEBUG
-                    print("Workout failed to save with error \(error?.localizedDescription as Any)")
-#endif
-                }
-            }
+            saveRehabilitation()
         }
 
-        let alert = UIAlertController(title: "Bravo!",
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(alertAction)
+        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
 
         navigationController?.present(alert, animated: true)
     }
+
+    func showFinishButtonAlert() {
+        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.dismiss(animated: true)
+        }
+        let finishAndDontSaveAction = UIAlertAction(title: "Završi bez spremanja rehabilitacije",
+                                                    style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.popToRootViewController(animated: true)
+        }
+        let finishAndSaveAction = UIAlertAction(title: "Završi i spremi rehabilitaciju",
+                                                style: .cancel) { [weak self] _ in
+            guard let self = self else { return }
+            saveRehabilitation()
+            navigationController?.popToRootViewController(animated: true)
+        }
+        let alertActions = [dismissAction, finishAndDontSaveAction, finishAndSaveAction]
+
+        let alert = makeAlert(title: "Završi",
+                              message: "Jesi li siguran da želiš završiti svoju rehabilitaciju?",
+                              preferredStyle: .alert,
+                              actions: alertActions)
+
+        navigationController?.present(alert, animated: true)
+    }
+
+    // MARK: - Helper methods
+
+    private func saveRehabilitation() {
+        let endTime = Date()
+        let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
+        HealthData.shared.saveRehabilitation(rehabilitation) { success, error in
+            if success {
+#if DEBUG
+                print("💾 Workout saved successfully")
+#endif
+            } else {
+#if DEBUG
+                print("❌ Workout failed to save with error \(error?.localizedDescription as Any)")
+#endif
+            }
+        }
+    }
+
+    private func makeAlert(title: String,
+                           message: String,
+                           preferredStyle: UIAlertController.Style,
+                           actions: [UIAlertAction]) -> UIAlertController {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: preferredStyle)
+        actions.forEach {
+            alert.addAction($0)
+        }
+
+        return alert
+    }
+
+    @objc func stopButtonAction() {
+        showFinishButtonAlert()
+    }
+
 }

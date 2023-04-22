@@ -94,6 +94,11 @@ final class ExerciseDetailsViewController: RehAppViewController {
         exerciseDetailsView.setLargeButtonAction(action)
     }
 
+    func setLeftBarButton(_ barButton: UIBarButtonItem) {
+        barButton.tintColor = .white
+        navigationItem.leftBarButtonItem = barButton
+    }
+
     func startTimer() {
         exerciseDetailsView.activateOverlayTimer()
     }
