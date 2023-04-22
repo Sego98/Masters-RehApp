@@ -35,8 +35,8 @@ final class HealthStatisticsView: UIView {
         return label
     }()
 
-    private let heightView = KeyValueView()
-    private let massView = KeyValueView()
+//    private let heightView = KeyValueView()
+//    private let massView = KeyValueView()
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -64,7 +64,7 @@ final class HealthStatisticsView: UIView {
         scrollView.addSubview(containerView)
         containerView.addSubview(stackView)
         stackView.addArrangedSubviews([
-            nameLabel, heightView, massView
+            nameLabel
         ])
 
         stackView.setCustomSpacing(32, after: nameLabel)
@@ -97,23 +97,23 @@ final class HealthStatisticsView: UIView {
         nameLabel.text = name
     }
 
-    func setHeight(_ heightInMeters: Measurement<UnitLength>?) {
-        heightView.setKey(key: "Visina")
-        guard let heightInMeters = heightInMeters else {
-            heightView.setValue(nil)
-            return
-        }
-        heightView.setValue(Formatters.heightFormatter.string(fromMeters: heightInMeters.value))
-    }
+//    func setHeight(_ heightInMeters: Measurement<UnitLength>?) {
+//        heightView.setKey(key: "Visina")
+//        guard let heightInMeters = heightInMeters else {
+//            heightView.setValue(nil)
+//            return
+//        }
+//        heightView.setValue(Formatters.heightFormatter.string(fromMeters: heightInMeters.value))
+//    }
 
-    func setMass(_ massInGrams: Measurement<UnitMass>?) {
-        massView.setKey(key: "Masa")
-        guard let massInGrams = massInGrams else {
-            massView.setValue(nil)
-            return
-        }
-        let massInKilograms = massInGrams.converted(to: .kilograms)
-        massView.setValue(Formatters.massFormatter.string(fromKilograms: massInKilograms.value))
-    }
+//    func setMass(_ massInGrams: Measurement<UnitMass>?) {
+//        massView.setKey(key: "Masa")
+//        guard let massInGrams = massInGrams else {
+//            massView.setValue(nil)
+//            return
+//        }
+//        let massInKilograms = massInGrams.converted(to: .kilograms)
+//        massView.setValue(Formatters.massFormatter.string(fromKilograms: massInKilograms.value))
+//    }
 
 }

@@ -40,24 +40,11 @@ final class PickerViewController: RehAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
-        HealthData.shared.getWorkouts { workouts, error in
-            guard let workouts = workouts else {
-                print("Failed to get workouts")
-                print(error?.localizedDescription as Any)
-                return
-            }
-            print("Successful getting")
-            print("Got \(workouts.count) workouts")
-            print(workouts.last?.metadata as Any)
-        }
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        HealthData.shared.requestHealthAuthorization {[weak self] (success) in
-            guard let self = self else { return }
+        HealthData.shared.requestHealthAuthorization { (success) in
             if success {
 #if DEBUG
                     print("HealthKit authorization has been successful!")

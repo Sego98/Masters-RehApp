@@ -16,8 +16,10 @@ class HealthData {
 
     private static var dataTypes: [HKSampleType] {
         guard let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned),
-              let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate) else { return []
+              let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate) else {
+            return []
         }
+
         return [
             activeEnergy,
             heartRate,
@@ -33,17 +35,12 @@ class HealthData {
         return HealthData.dataTypes
     }()
 
-    enum WorkoutQuantitySample {
-        case activeEnergy
-        case heartRate
-    }
-
-    // MARK: - Public methods
+    // MARK: - Request authorization
 
     func requestHealthAuthorization(completion: @escaping (Bool) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
 #if DEBUG
-            print("Health data is not available on this device.")
+            print("⛔️ Health data is not available on this device.")
 #endif
             completion(false)
             return
@@ -54,72 +51,84 @@ class HealthData {
             if let error = error {
                 completion(false)
 #if DEBUG
-                print(error.localizedDescription)
+                print("❌ Authorization failed with error: \(error.localizedDescription)")
 #endif
                 return
             }
 
             if success {
 #if DEBUG
-                print("HealthKit authorization has been successful!")
+                print("✅ HealthKit authorization has been successful!")
 #endif
             } else {
 #if DEBUG
-                print("HealthKit authorization was not successful. :(")
+                print("❌ HealthKit authorization was not successful. :(")
 #endif
             }
             completion(success)
         }
     }
 
+    // MARK: - Fetch health data
+
     func fetchMostRecentQuantitySample(for identifier: HKQuantityTypeIdentifier,
                                        completion: @escaping (Double?, Error?) -> Void) {
-        let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
+        let sampleType = HKQuantityType(identifier)
+
+        let samplePredicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
                                                     end: Date(),
                                                     options: .strictEndDate)
+        let sourcePredicate = HKQuery.predicateForObjects(from: .default())
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            samplePredicate, sourcePredicate
+        ])
 
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         let limit = 1
 
-        let sampleType = HKQuantityType(identifier)
         let query = HKSampleQuery(sampleType: sampleType,
                                   predicate: predicate,
                                   limit: limit,
-                                  sortDescriptors: [sortDescriptor]) {[weak self] (_, samples, error) in
-            guard let self = self,
-                  let samples = samples,
+                                  sortDescriptors: [sortDescriptor]) { (_, samples, error) in
+            guard let samples = samples,
                   let mostRecentSample = samples.first as? HKQuantitySample,
-                  let unit = self.getQuantityPreferredUnit(sampleType) else {
+                  let unit = HKUnit.preferredUnit(identifier) else {
                 completion(nil, error)
                 return
             }
             let sampleValue = mostRecentSample.quantity.doubleValue(for: unit)
             completion(sampleValue, nil)
         }
+
         healthStore.execute(query)
     }
 
     func fetchDailyStatistics(identifier: HKQuantityTypeIdentifier,
                               fromDate startDate: Date,
-                              completion: @escaping (HKStatisticsCollection?) -> Void ) {
-        let quantitySampleType = HKQuantityType(identifier)
-        let predicate = HKQuery.predicateForSamples(withStart: startDate,
-                                                    end: nil,
-                                                    options: .strictStartDate)
-        let anchorDate = getAnchorDate()
+                              completion: @escaping (HKStatisticsCollection?, Error?) -> Void ) {
+        let startOfDay = Calendar.current.startOfDay(for: startDate)
+        let samplesPredicate = HKQuery.predicateForSamples(withStart: startOfDay,
+                                                           end: nil,
+                                                           options: .strictStartDate)
+        let sourcePredicate = HKQuery.predicateForObjects(from: .default())
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [samplesPredicate, sourcePredicate])
+
         let daily = DateComponents(day: 1)
+
+        let quantitySampleType = HKQuantityType(identifier)
 
         let query = HKStatisticsCollectionQuery(quantityType: quantitySampleType,
                                                 quantitySamplePredicate: predicate,
-                                                anchorDate: anchorDate,
+                                                options: .preferredOptions(identifier),
+                                                anchorDate: startOfDay,
                                                 intervalComponents: daily)
 
         query.initialResultsHandler = { _, results, error in
             guard error == nil else {
-                completion(nil)
+                completion(nil, error)
                 return
             }
-            completion(results)
+            completion(results, nil)
         }
 
         healthStore.execute(query)
@@ -127,43 +136,18 @@ class HealthData {
 
     // MARK: - Helper methods
 
-    private static func getSampleType(for identifier: String) -> HKSampleType? {
-        let quantityTypeIdentifier = HKQuantityTypeIdentifier(rawValue: identifier)
-        if let quantityType = HKQuantityType.quantityType(forIdentifier: quantityTypeIdentifier) {
-            return quantityType
-        }
+//    private static func makeSampleType(for identifier: String) -> HKSampleType? {
+//        let quantityTypeIdentifier = HKQuantityTypeIdentifier(rawValue: identifier)
+//        if let quantityType = HKQuantityType.quantityType(forIdentifier: quantityTypeIdentifier) {
+//            return quantityType
+//        }
+//
+//        let categoryTypeIdentifier = HKCategoryTypeIdentifier(rawValue: identifier)
+//        if let categoryType = HKCategoryType.categoryType(forIdentifier: categoryTypeIdentifier) {
+//            return categoryType
+//        }
+//
+//        return nil
+//    }
 
-        let categoryTypeIdentifier = HKCategoryTypeIdentifier(rawValue: identifier)
-        if let categoryType = HKCategoryType.categoryType(forIdentifier: categoryTypeIdentifier) {
-            return categoryType
-        }
-
-        return nil
-    }
-
-    private func getQuantityPreferredUnit(_ sampleType: HKSampleType) -> HKUnit? {
-
-        if sampleType is HKQuantityType {
-            let quantityIdentifier = HKQuantityTypeIdentifier(rawValue: sampleType.identifier)
-
-            switch quantityIdentifier {
-            case .height:
-                return .meter()
-            case .bodyMass:
-                return .gram()
-            default:
-                return nil
-            }
-        }
-        return nil
-    }
-
-    private func getAnchorDate() -> Date {
-        var anchorComponents = Calendar.current.dateComponents([.day, .month, .year, .weekday], from: Date())
-        let offset = (7 + (anchorComponents.weekday ?? 0) - 2) % 7
-        anchorComponents.day! -= offset
-        anchorComponents.hour = 3
-
-        return Calendar.current.date(from: anchorComponents)!
-    }
 }

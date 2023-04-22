@@ -37,7 +37,7 @@ final class HealthStatisticsViewController: RehAppViewController {
 
     private func configure() {
         requestHealthDataAuthorization()
-        configureUserHealthDataValues()
+//        configureUserHealthDataValues()
     }
 
     private func requestHealthDataAuthorization() {
@@ -50,23 +50,53 @@ final class HealthStatisticsViewController: RehAppViewController {
             }
         }
     }
+
     private func configureUserHealthDataValues() {
         setUserName()
-        setUserHeightFromHealthData()
-        setUserMassFromHealthData()
+//        getAllRehabilitationWorkouts()
+        HealthData.shared.fetchMostRecentQuantitySample(for: .activeEnergyBurned) { energy, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+
+            print("Energy: \(energy ?? -1)")
+        }
+
+        HealthData.shared.fetchMostRecentQuantitySample(for: .heartRate) { heartRate, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+
+            print("Heart rate: \(heartRate ?? -1)")
+        }
 
         let now = Date()
-        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: now)!
-        let endDate = now
+        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -6, to: now)!
         HealthData.shared.fetchDailyStatistics(identifier: .activeEnergyBurned,
-                                               fromDate: startDate) {  statistics in
-            DispatchQueue.main.async {
-                statistics?.enumerateStatistics(from: startDate, to: endDate, with: { statistics, _ in
-                    let quantity = statistics.sumQuantity()
-//                    let value = quantity?.doubleValue(for: .count())
-                    print(quantity ?? "")
-                })
+                                               fromDate: sevenDaysAgo) { statisticsCollection, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
             }
+            print()
+            statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
+                print(statistics.sumQuantity() as Any)
+            })
+        }
+
+        HealthData.shared.fetchDailyStatistics(identifier: .heartRate,
+                                               fromDate: sevenDaysAgo) { statisticsCollection, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            print()
+            statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
+                print(statistics.averageQuantity() as Any)
+            })
         }
     }
+
 }

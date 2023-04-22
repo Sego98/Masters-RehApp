@@ -10,8 +10,9 @@ import HealthKit
 
 extension HealthData {
 
-    func saveWorkout(_ rehabilitation: RehabilitationWorkout,
-                     completion: @escaping (Bool, Error?) -> Void) {
+    /// Method to save a rehabilitation to health data
+    func saveRehabilitation(_ rehabilitation: RehabilitationWorkout,
+                            completion: @escaping (Bool, Error?) -> Void) {
         let workoutConfiguration = HKWorkoutConfiguration()
         workoutConfiguration.activityType = .other
 
@@ -26,8 +27,10 @@ extension HealthData {
                 return
             }
 
-            guard let activitySample = makeQuantitySample(sampleType: .activeEnergy, rehabilitation: rehabilitation),
-                  let heartRateSample = makeQuantitySample(sampleType: .heartRate, rehabilitation: rehabilitation) else {
+            guard let activitySample = makeRehabQuantitySample(identifier: .activeEnergyBurned,
+                                                               rehabilitation: rehabilitation),
+            let heartRateSample = makeRehabQuantitySample(identifier: .heartRate,
+                                                          rehabilitation: rehabilitation) else {
                 completion(false, nil)
                 return
             }
@@ -56,7 +59,8 @@ extension HealthData {
         }
     }
 
-    func getWorkouts(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+    /// Method to fetch all rehabilitations from health data
+    func fetchAllRehabilitations(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .other)
         let sourcePredicate = HKQuery.predicateForObjects(from: .default())
 
@@ -84,23 +88,35 @@ extension HealthData {
         healthStore.execute(query)
     }
 
-    private func makeQuantitySample(sampleType: WorkoutQuantitySample, rehabilitation: RehabilitationWorkout) -> HKCumulativeQuantitySample? {
-        let identifier: HKQuantityTypeIdentifier
-        let unit: HKUnit
+    // MARK: - Helper methods
+
+    private func makeRehabQuantitySample(identifier: HKQuantityTypeIdentifier,
+                                         rehabilitation: RehabilitationWorkout) -> HKCumulativeQuantitySample? {
         let value: Double
-        
-        switch sampleType {
-        case .activeEnergy:
-            identifier = .activeEnergyBurned
-            unit = .kilocalorie()
+
+        switch identifier {
+        case .activeEnergyBurned:
             value = rehabilitation.totalEnergyBurned
         case .heartRate:
-            identifier = .heartRate
-            unit = .count().unitDivided(by: .minute())
             value = Double(rehabilitation.averageHeartRate)
+        default:
+#if DEBUG
+            print("🆔 There is no value for selected identifier")
+#endif
+            return nil
         }
-    
+
         guard let quantityType = HKQuantityType.quantityType(forIdentifier: identifier) else {
+#if DEBUG
+            print("🔴 There is no valid quantityType")
+#endif
+            return nil
+        }
+
+        guard let unit = HKUnit.preferredUnit(identifier) else {
+#if DEBUG
+            print("📏 There is no valid unit")
+#endif
             return nil
         }
 

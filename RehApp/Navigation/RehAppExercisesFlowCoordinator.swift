@@ -129,7 +129,7 @@ class RehAppExercisesFlowCoordinator {
             SoundPlayer.shared.playSound(.allExercisesFinished)
             let endTime = Date()
             let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
-            HealthData.shared.saveWorkout(rehabilitation) { success, error in
+            HealthData.shared.saveRehabilitation(rehabilitation) { success, error in
                 if success {
 #if DEBUG
                     print("Workout saved successfully")

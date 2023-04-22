@@ -15,25 +15,10 @@ extension HealthStatisticsViewController {
         healthStatisticsView.setName("Petar Ljubotina")
     }
 
-    func setUserHeightFromHealthData() {
-        getQuantityValueFromHealth(for: .height) {[weak self] (height) in
-            guard let self = self else { return }
-            guard let height = height else {
-                self.healthStatisticsView.setHeight(nil)
-                return
-            }
-            self.healthStatisticsView.setHeight(Measurement(value: height, unit: .meters))
-        }
-    }
-
-    func setUserMassFromHealthData() {
-        getQuantityValueFromHealth(for: .bodyMass) { [weak self] (mass) in
-            guard let self = self else { return }
-            guard let mass = mass else {
-                self.healthStatisticsView.setMass(nil)
-                return
-            }
-            self.healthStatisticsView.setMass(Measurement(value: mass, unit: .grams))
+    func getAllRehabilitationWorkouts() {
+        HealthData.shared.fetchAllRehabilitations { workouts, error in
+            guard let workouts = workouts,
+                  error == nil else { return }
         }
     }
 
