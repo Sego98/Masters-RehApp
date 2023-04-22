@@ -13,6 +13,13 @@ extension HealthData {
     /// Method to save a rehabilitation to health data
     func saveRehabilitation(_ rehabilitation: RehabilitationWorkout,
                             completion: @escaping (Bool, Error?) -> Void) {
+        guard rehabilitation.duration > 60 else {
+#if DEBUG
+            print("⛔️ Didn't save the workout because it isn't valid. It needs to last at least 1 min.")
+#endif
+            return
+        }
+
         let workoutConfiguration = HKWorkoutConfiguration()
         workoutConfiguration.activityType = .other
 
