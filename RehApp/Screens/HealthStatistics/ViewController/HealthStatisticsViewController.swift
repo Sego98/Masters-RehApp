@@ -4,16 +4,19 @@
 //
 //  Created by Akademija on 09.04.2023..
 //
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
+import SwiftUI
 import HealthKit
 
 final class HealthStatisticsViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    let healthStatisticsView = HealthStatisticsView()
+    private let healthStatisticsView = HealthStatisticsView()
+    private var dataSource: HealthStatisticsDataSource?
 
     // MARK: - Lifecycle
 
@@ -37,6 +40,14 @@ final class HealthStatisticsViewController: RehAppViewController {
 
     private func configure() {
         requestHealthDataAuthorization()
+        configureDataSourceCellRegistrations()
+
+        guard let dataSource = dataSource else { return }
+
+        let averageHeartRate = [123, 134, 113, 125, 145, 98, 104]
+        let heartRates = averageHeartRate.map({ HeartRate(value: $0) })
+        let sections: [HealthStatisticsSection] = [.averageHeartRate(heartRates)]
+        dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
 //        configureUserHealthDataValues()
     }
 
@@ -52,7 +63,7 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configureUserHealthDataValues() {
-        setUserName()
+//        setUserName()
 //        getAllRehabilitationWorkouts()
         HealthData.shared.fetchMostRecentQuantitySample(for: .activeEnergyBurned) { energy, error in
             guard error == nil else {
@@ -82,7 +93,7 @@ final class HealthStatisticsViewController: RehAppViewController {
             }
             print()
             statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
-                print(statistics.sumQuantity() as Any)
+                print(statistics.sumQuantity()?.doubleValue(for: .preferredUnit(.activeEnergyBurned)!) as Any)
             })
         }
 
@@ -94,9 +105,23 @@ final class HealthStatisticsViewController: RehAppViewController {
             }
             print()
             statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
-                print(statistics.averageQuantity() as Any)
+                print(statistics.averageQuantity()?.doubleValue(for: .preferredUnit(.heartRate)!) as Any)
             })
         }
     }
 
+    private func configureDataSourceCellRegistrations() {
+        let averageHeartRateCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
+            guard let heartRates = item.averageHeartRates else { return }
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                AverageHeartRateCellView(heartRates: heartRates)
+            })
+        }
+
+        dataSource = HealthStatisticsDataSource(collectionView: healthStatisticsView.collectionView, cellProvider: { collectionView, indexPath, item in
+            return collectionView.dequeueConfiguredReusableCell(using: averageHeartRateCellRegistration,
+                                                                for: indexPath,
+                                                                item: item)
+        })
+    }
 }

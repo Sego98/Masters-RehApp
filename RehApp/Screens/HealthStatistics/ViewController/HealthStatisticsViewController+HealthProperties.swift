@@ -11,14 +11,14 @@ import HealthKit
 
 extension HealthStatisticsViewController {
 
-    func setUserName() {
-        healthStatisticsView.setName("Petar Ljubotina")
-    }
+//    func setUserName() {
+//        healthStatisticsView.setName("Petar Ljubotina")
+//    }
 
     func getAllRehabilitationWorkouts() {
         HealthData.shared.fetchAllRehabilitations { workouts, error in
-            guard let workouts = workouts,
-                  error == nil else { return }
+//            guard let workouts = workouts,
+//                  error == nil else { return }
         }
     }
 
