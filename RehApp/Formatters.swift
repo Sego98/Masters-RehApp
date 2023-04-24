@@ -17,15 +17,13 @@ enum Formatters {
         return formatter
     }()
 
-    static let massFormatter: MassFormatter = {
-        let formatter = MassFormatter()
-        formatter.isForPersonMassUse = true
-        return formatter
-    }()
+    // MARK: - Number formatters
 
-    static let heightFormatter: LengthFormatter = {
-        let formatter = LengthFormatter()
-        formatter.isForPersonHeightUse = true
+    static let doubleFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 0
         return formatter
     }()
 }

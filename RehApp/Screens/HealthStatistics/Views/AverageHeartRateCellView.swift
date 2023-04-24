@@ -12,8 +12,8 @@ import Charts
 struct AverageHeartRateCellView: View {
     var heartRates: [HeartRateVM]
 
-    var averageHeartRate: Int {
-        return heartRates.reduce(0) { $0 + $1.value } / heartRates.count
+    var averageHeartRate: Double {
+        return Double(heartRates.reduce(0) { $0 + $1.value } / heartRates.count)
     }
 
     var minHeartRateYValue: Int {
@@ -34,21 +34,7 @@ struct AverageHeartRateCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            Text("Otkucaji srca")
-                .foregroundColor(.primary)
-                .font(.title)
-                .fontWeight(.bold)
-            Spacer()
-            HStack {
-                Text("Prosječna vrijednost:")
-                    .foregroundStyle(.primary)
-                    .font(.title3)
-                Spacer()
-                Text("\(averageHeartRate) o/min")
-                    .foregroundStyle(.secondary)
-                    .font(.body)
-                    .fontWeight(.bold)
-            }
+            GraphHeaderView(title: "Otkucaji srca", averageValue: averageHeartRate, unit: "o/min")
             Chart {
                 ForEach(heartRates) { heartRate in
                     LineMark(
