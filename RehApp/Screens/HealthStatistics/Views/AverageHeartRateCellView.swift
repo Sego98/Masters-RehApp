@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 struct AverageHeartRateCellView: View {
-    var heartRates: [HeartRate]
+    var heartRates: [HeartRateVM]
 
     var averageHeartRate: Int {
         return heartRates.reduce(0) { $0 + $1.value } / heartRates.count

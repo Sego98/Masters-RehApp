@@ -91,8 +91,9 @@
 		D2F19C9729F5BD5E0020A295 /* HealthStatisticsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */; };
 		D2F19C9929F5BDBA0020A295 /* HealthStatisticsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */; };
 		D2F19C9D29F5C2010020A295 /* AverageHeartRateCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */; };
-		D2F19CA029F5CD5D0020A295 /* HeartRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9F29F5CD5D0020A295 /* HeartRateModel.swift */; };
+		D2F19CA029F5CD5D0020A295 /* HeartRateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */; };
 		D2F19CA329F5D3070020A295 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19CA229F5D3070020A295 /* Color.swift */; };
+		D2F19CA529F6F4420020A295 /* AverageEnergyBurnedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19CA429F6F4420020A295 /* AverageEnergyBurnedVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,8 +193,9 @@
 		D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsDataSource.swift; sourceTree = "<group>"; };
 		D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsSection.swift; sourceTree = "<group>"; };
 		D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageHeartRateCellView.swift; sourceTree = "<group>"; };
-		D2F19C9F29F5CD5D0020A295 /* HeartRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateModel.swift; sourceTree = "<group>"; };
+		D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateVM.swift; sourceTree = "<group>"; };
 		D2F19CA229F5D3070020A295 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D2F19CA429F6F4420020A295 /* AverageEnergyBurnedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageEnergyBurnedVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,6 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
+				D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */,
+				D2F19CA429F6F4420020A295 /* AverageEnergyBurnedVM.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,7 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */,
-				D2F19C9F29F5CD5D0020A295 /* HeartRateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -777,13 +780,14 @@
 				D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */,
 				D2B5C5E929EAE16500C16EF8 /* UICollectionViewLayout.swift in Sources */,
 				D2F19C9229F4783A0020A295 /* HKUnit.swift in Sources */,
-				D2F19CA029F5CD5D0020A295 /* HeartRateModel.swift in Sources */,
+				D2F19CA029F5CD5D0020A295 /* HeartRateVM.swift in Sources */,
 				D2F19C7E29EC24F10020A295 /* ExerciseCounterCell.swift in Sources */,
 				D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */,
 				D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */,
 				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */,
+				D2F19CA529F6F4420020A295 /* AverageEnergyBurnedVM.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2F19C8D29EF40FC0020A295 /* HealthData+Workout.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,

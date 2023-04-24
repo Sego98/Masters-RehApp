@@ -11,14 +11,56 @@ import HealthKit
 
 extension HealthStatisticsViewController {
 
-//    func setUserName() {
-//        healthStatisticsView.setName("Petar Ljubotina")
-//    }
+    func fetchAllRehabilitationWorkouts(from date: Date) {
+        HealthData.shared.fetchAllRehabilitations(fromDate: date) { [weak self] (rehabilitations, error) in
+            guard let self = self,
+                  let rehabilitations = rehabilitations,
+                  error == nil else {
+#if DEBUG
+                print("❌ Rehabilitations failed to fetch with error \(error?.localizedDescription ?? "")")
+#endif
+                return
+            }
+            let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
+            self.rehabilitations = rehabilitationVMs
+            configureChartsIfPossible()
+        }
+    }
 
-    func getAllRehabilitationWorkouts() {
-        HealthData.shared.fetchAllRehabilitations { workouts, error in
-//            guard let workouts = workouts,
-//                  error == nil else { return }
+    func fetchAverageQuantitiesForRehabilitations(identifier: HKQuantityTypeIdentifier,
+                                                  from date: Date) {
+        HealthData.shared.fetchDailyStatistics(identifier: identifier,
+                                               from: date) {  (statisticsCollection, error) in
+            guard error == nil else {
+#if DEBUG
+                print("❌ Quantities for rehabilitations failed to fetch with error \(error!.localizedDescription)")
+#endif
+                return
+            }
+
+            guard let unit = HKUnit.preferredUnit(identifier) else {
+#if DEBUG
+                print("❌ There is no defined unit for the identifier \(identifier)")
+#endif
+                return
+            }
+
+            statisticsCollection?.enumerateStatistics(from: date, to: Date(), with: { [weak self] (statistics, _) in
+                guard let self = self else { return }
+                switch identifier {
+                case .heartRate:
+                    if let value = statistics.averageQuantity()?.doubleValue(for: unit) {
+                        averageHeartRates.append(HeartRateVM(value: Int(value)))
+                    }
+                case .activeEnergyBurned:
+                    if let value = statistics.sumQuantity()?.doubleValue(for: unit) {
+                        energiesBurned.append(AverageEnergyBurnedVM(value: value))
+                    }
+                default:
+                    return
+                }
+                configureChartsIfPossible()
+            })
         }
     }
 
@@ -30,7 +72,7 @@ extension HealthStatisticsViewController {
             DispatchQueue.main.async {
                 if let error = error {
 #if DEBUG
-                    print("No value, \(error.localizedDescription)")
+                    print("No quantity value, \(error.localizedDescription)")
 #endif
                     completion(nil)
                 }

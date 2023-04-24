@@ -58,6 +58,23 @@ final class PickerViewController: RehAppViewController {
     }
 
     private func configure() {
+//        let workouts: [RehabilitationWorkout] = [
+//            .workout1,
+//            .workout2,
+//            .workout3,
+//            .workout4,
+//            .workout5,
+//            .workout6
+//        ]
+//        for workout in workouts {
+//            HealthData.shared.saveRehabilitation(workout) { success, _ in
+//                if success {
+//                    print("Saved")
+//                } else {
+//                    print("Fail to save")
+//                }
+//            }
+//        }
 
         let buttonActions = makeButtonActions()
         pickerView.setButtonActions(buttonActions)

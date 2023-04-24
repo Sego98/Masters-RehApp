@@ -8,16 +8,34 @@
 import Foundation
 
 enum HealthStatisticsSection: Equatable, Hashable {
-    case averageHeartRate([HeartRate])
-    case activeEnergy
-    case duration
+    case averageHeartRate([HeartRateVM])
+    case activeEnergy([AverageEnergyBurnedVM])
+    case duration([Double])
 
     // MARK: - Computed stored properties
 
-    var averageHeartRates: [HeartRate]? {
+    var averageHeartRates: [HeartRateVM]? {
         switch self {
         case .averageHeartRate(let viewModel):
             return viewModel
+        default:
+            return nil
+        }
+    }
+
+    var activeEnergiesBurned: [AverageEnergyBurnedVM]? {
+        switch self {
+        case .activeEnergy(let viewModel):
+            return viewModel
+        default:
+            return nil
+        }
+    }
+
+    var durations: [Double]? {
+        switch self {
+        case .duration(let durations):
+            return durations
         default:
             return nil
         }

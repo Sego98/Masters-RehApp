@@ -104,7 +104,7 @@ class HealthData {
     }
 
     func fetchDailyStatistics(identifier: HKQuantityTypeIdentifier,
-                              fromDate startDate: Date,
+                              from startDate: Date,
                               completion: @escaping (HKStatisticsCollection?, Error?) -> Void ) {
         let startOfDay = Calendar.current.startOfDay(for: startDate)
         let samplesPredicate = HKQuery.predicateForSamples(withStart: startOfDay,

@@ -18,6 +18,10 @@ final class HealthStatisticsViewController: RehAppViewController {
     private let healthStatisticsView = HealthStatisticsView()
     private var dataSource: HealthStatisticsDataSource?
 
+    var rehabilitations = [RehabilitationWorkout]()
+    var averageHeartRates = [HeartRateVM]()
+    var energiesBurned = [AverageEnergyBurnedVM]()
+
     // MARK: - Lifecycle
 
     init() {
@@ -41,14 +45,6 @@ final class HealthStatisticsViewController: RehAppViewController {
     private func configure() {
         requestHealthDataAuthorization()
         configureDataSourceCellRegistrations()
-
-        guard let dataSource = dataSource else { return }
-
-        let averageHeartRate = [123, 134, 113, 125, 145, 98, 104]
-        let heartRates = averageHeartRate.map({ HeartRate(value: $0) })
-        let sections: [HealthStatisticsSection] = [.averageHeartRate(heartRates)]
-        dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
-//        configureUserHealthDataValues()
     }
 
     private func requestHealthDataAuthorization() {
@@ -63,51 +59,11 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configureUserHealthDataValues() {
-//        setUserName()
-//        getAllRehabilitationWorkouts()
-        HealthData.shared.fetchMostRecentQuantitySample(for: .activeEnergyBurned) { energy, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-
-            print("Energy: \(energy ?? -1)")
-        }
-
-        HealthData.shared.fetchMostRecentQuantitySample(for: .heartRate) { heartRate, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-
-            print("Heart rate: \(heartRate ?? -1)")
-        }
-
         let now = Date()
-        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -6, to: now)!
-        HealthData.shared.fetchDailyStatistics(identifier: .activeEnergyBurned,
-                                               fromDate: sevenDaysAgo) { statisticsCollection, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            print()
-            statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
-                print(statistics.sumQuantity()?.doubleValue(for: .preferredUnit(.activeEnergyBurned)!) as Any)
-            })
-        }
-
-        HealthData.shared.fetchDailyStatistics(identifier: .heartRate,
-                                               fromDate: sevenDaysAgo) { statisticsCollection, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            print()
-            statisticsCollection?.enumerateStatistics(from: sevenDaysAgo, to: now, with: { statistics, _ in
-                print(statistics.averageQuantity()?.doubleValue(for: .preferredUnit(.heartRate)!) as Any)
-            })
-        }
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -6), to: now)!
+        fetchAllRehabilitationWorkouts(from: startDate)
+        fetchAverageQuantitiesForRehabilitations(identifier: .heartRate, from: startDate)
+        fetchAverageQuantitiesForRehabilitations(identifier: .activeEnergyBurned, from: startDate)
     }
 
     private func configureDataSourceCellRegistrations() {
@@ -124,4 +80,17 @@ final class HealthStatisticsViewController: RehAppViewController {
                                                                 item: item)
         })
     }
+
+    func configureChartsIfPossible() {
+        if rehabilitations.isEmpty == false,
+           averageHeartRates.count == rehabilitations.count,
+           energiesBurned.count == rehabilitations.count {
+            let sections: [HealthStatisticsSection] = [
+                .averageHeartRate(averageHeartRates)
+            ]
+            guard let dataSource = dataSource else { return }
+            dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+        }
+    }
+
 }
