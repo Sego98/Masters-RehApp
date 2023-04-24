@@ -50,7 +50,7 @@ extension HealthStatisticsViewController {
                 switch identifier {
                 case .heartRate:
                     if let value = statistics.averageQuantity()?.doubleValue(for: unit) {
-                        averageHeartRates.append(HeartRateVM(value: Int(value)))
+                        averageHeartRates.append(HeartRateVM(value: Int(value), dayBegin: statistics.startDate))
                     }
                 case .activeEnergyBurned:
                     if let value = statistics.sumQuantity()?.doubleValue(for: unit) {
@@ -66,18 +66,18 @@ extension HealthStatisticsViewController {
 
     // MARK: - Helper methods
 
-    private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
-                                            completion: @escaping (Double?) -> Void) {
-        HealthData.shared.fetchMostRecentQuantitySample(for: identifier) { height, error in
-            DispatchQueue.main.async {
-                if let error = error {
-#if DEBUG
-                    print("No quantity value, \(error.localizedDescription)")
-#endif
-                    completion(nil)
-                }
-                completion(height)
-            }
-        }
-    }
+//    private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
+//                                            completion: @escaping (Double?) -> Void) {
+//        HealthData.shared.fetchMostRecentQuantitySample(for: identifier) { height, error in
+//            DispatchQueue.main.async {
+//                if let error = error {
+// #if DEBUG
+//                    print("No quantity value, \(error.localizedDescription)")
+// #endif
+//                    completion(nil)
+//                }
+//                completion(height)
+//            }
+//        }
+//    }
 }

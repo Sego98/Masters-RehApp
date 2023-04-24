@@ -345,8 +345,8 @@
 		D26C80D029BD11AC009393C3 /* Reusable components */ = {
 			isa = PBXGroup;
 			children = (
-				D2F19C7429EB47810020A295 /* OverlayTimer */,
 				D2B5C5C229E9C52F00C16EF8 /* WebViewModal */,
+				D2F19C7429EB47810020A295 /* OverlayTimer */,
 				D2B11D7A29DF4B1E00AD9195 /* DatePicker */,
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
 				D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */,

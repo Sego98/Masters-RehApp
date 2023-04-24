@@ -16,30 +16,67 @@ struct AverageHeartRateCellView: View {
         return heartRates.reduce(0) { $0 + $1.value } / heartRates.count
     }
 
+    var minHeartRateYValue: Int {
+        let minHeartRate = heartRates.min {
+            $0.value < $1.value
+        }?.value
+        guard let minHeartRate = minHeartRate else { return 0 }
+        return minHeartRate - 30
+    }
+
+    var maxHeartRateYValue: Int {
+        let maxHeartRate = heartRates.min {
+            $0.value > $1.value
+        }?.value
+        guard let maxHeartRate = maxHeartRate else { return 0 }
+        return maxHeartRate + 30
+    }
+
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, content: {
+            Text("Otkucaji srca")
+                .foregroundColor(.primary)
+                .font(.title)
+                .fontWeight(.bold)
+            Spacer()
             HStack {
                 Text("Prosječna vrijednost:")
                     .foregroundStyle(.primary)
                     .font(.title3)
                 Spacer()
-                Text("\(averageHeartRate)")
+                Text("\(averageHeartRate) o/min")
                     .foregroundStyle(.secondary)
                     .font(.body)
+                    .fontWeight(.bold)
             }
             Chart {
                 ForEach(heartRates) { heartRate in
                     LineMark(
-                        x: .value("Name", heartRate.name),
+                        x: .value("Day", heartRate.dayBegin, unit: .day),
                         y: .value("Heart rate", heartRate.value)
                     )
                     .foregroundStyle(Color.burgundy)
+                    PointMark(
+                        x: .value("Day", heartRate.dayBegin, unit: .day),
+                        y: .value("Heart rate", heartRate.value)
+                    )
+                    .foregroundStyle(Color.teal)
+                }
+                .interpolationMethod(.catmullRom)
+            }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .day)) { _ in
+                    AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
                 }
             }
-            .chartYAxisLabel(position: .trailing, alignment: .leading, spacing: 8) {
-                Text("BPM")
+            .chartYAxis {
+                AxisMarks(position: .leading)
+            }
+            .chartYAxisLabel(position: .leading, alignment: .leadingLastTextBaseline, spacing: 8) {
+                Text("o/min")
                     .font(.footnote)
             }
-        }
+            .chartYScale(domain: minHeartRateYValue...maxHeartRateYValue)
+        })
     }
 }
