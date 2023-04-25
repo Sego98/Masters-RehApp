@@ -49,13 +49,14 @@ final class HealthStatisticsViewController: RehAppViewController {
         configure()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         clearAllValues()
         requestHealthDataAuthorization()
     }
 
     private func configure() {
+        healthStatisticsView.startSpinner()
         configureCollectionView()
         configureDataSourceCellRegistrations()
         configureDataSourceSupplementaryViews()
@@ -170,11 +171,16 @@ final class HealthStatisticsViewController: RehAppViewController {
            timesOfDay.isEmpty == false,
            didSetAverageHeartRates,
            didSetEnergiesBurned {
-            makeSections()
-            guard let dataSource = dataSource else { return }
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+            let newSections = makeSections()
+            if newSections != sections {
+                sections = newSections
+                guard let dataSource = dataSource else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    healthStatisticsView.startSpinner()
+                    dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+                    healthStatisticsView.stopSpinner()
+                }
             }
         }
     }
@@ -192,8 +198,8 @@ final class HealthStatisticsViewController: RehAppViewController {
         energiesBurned = []
     }
 
-    private func makeSections() {
-        sections = [
+    private func makeSections() -> [HealthStatisticsSection] {
+        return [
             .averageHeartRate(averageHeartRates),
             .activeEnergy(energiesBurned),
             .duration(durations),
