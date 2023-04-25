@@ -21,6 +21,7 @@ final class HealthStatisticsViewController: RehAppViewController {
     private var sections = [HealthStatisticsSection]()
 
     var durations = [WorkoutDurationVM]()
+    var timesOfDay = [TimeOfDayVM]()
     var averageHeartRates = [HeartRateVM]()
     var energiesBurned = [EnergyBurnedVM]()
 
@@ -44,8 +45,11 @@ final class HealthStatisticsViewController: RehAppViewController {
         configure()
     }
 
-    private func configure() {
+    override func viewDidAppear(_ animated: Bool) {
         requestHealthDataAuthorization()
+    }
+
+    private func configure() {
         configureDataSourceCellRegistrations()
     }
 
@@ -90,6 +94,13 @@ final class HealthStatisticsViewController: RehAppViewController {
             })
         }
 
+        let timesOfDayCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
+            guard let timesOfDay = item.timesOfDay else { return }
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                TimeOfDayCellView(timesOfDay: timesOfDay)
+            })
+        }
+
         dataSource = HealthStatisticsDataSource(collectionView: healthStatisticsView.collectionView, cellProvider: { collectionView, indexPath, item in
             let section = self.sections[indexPath.section]
             switch section {
@@ -105,12 +116,17 @@ final class HealthStatisticsViewController: RehAppViewController {
                 return collectionView.dequeueConfiguredReusableCell(using: durationsCellRegistration,
                                                                     for: indexPath,
                                                                     item: item)
+            case .timesOfDayRehabilitation:
+                return collectionView.dequeueConfiguredReusableCell(using: timesOfDayCellRegistration,
+                                                                    for: indexPath,
+                                                                    item: item)
             }
         })
     }
 
     func configureChartsIfPossible() {
         if durations.isEmpty == false,
+           timesOfDay.isEmpty == false,
            averageHeartRates.count == durations.count,
            energiesBurned.count == durations.count {
             makeSections()
@@ -123,7 +139,8 @@ final class HealthStatisticsViewController: RehAppViewController {
         sections = [
             .averageHeartRate(averageHeartRates),
             .activeEnergy(energiesBurned),
-            .duration(durations)
+            .duration(durations),
+            .timesOfDayRehabilitation(timesOfDay)
         ]
     }
 }

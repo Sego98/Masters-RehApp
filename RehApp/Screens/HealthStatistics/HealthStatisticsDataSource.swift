@@ -19,6 +19,7 @@ final class HealthStatisticsDataSource: UICollectionViewDiffableDataSource<Healt
         for section in sections {
             snapshot.appendSections([section])
             snapshot.appendItems([section], toSection: section)
+            snapshot.reloadItems([section])
         }
 
         apply(snapshot, animatingDifferences: animateDifferences)

@@ -11,6 +11,7 @@ enum HealthStatisticsSection: Equatable, Hashable {
     case averageHeartRate([HeartRateVM])
     case activeEnergy([EnergyBurnedVM])
     case duration([WorkoutDurationVM])
+    case timesOfDayRehabilitation([TimeOfDayVM])
 
     // MARK: - Computed stored properties
 
@@ -41,4 +42,12 @@ enum HealthStatisticsSection: Equatable, Hashable {
         }
     }
 
+    var timesOfDay: [TimeOfDayVM]? {
+        switch self {
+        case .timesOfDayRehabilitation(let viewModel):
+            return viewModel
+        default:
+            return nil
+        }
+    }
 }

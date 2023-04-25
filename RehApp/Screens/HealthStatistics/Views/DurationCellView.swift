@@ -16,13 +16,6 @@ struct DurationCellView: View {
         return durations.reduce(0.0) { $0 + $1.valueMinutes } / Double(durations.count)
     }
 
-    var minDurationYValue: Double {
-        let durationValues = durations.map { $0.valueMinutes }
-        let minDuration = durationValues.min()
-        guard let minDuration = minDuration else { return 0.0 }
-        return minDuration - 30
-    }
-
     var maxDurationYValue: Double {
         let durationValues = durations.map { $0.valueMinutes }
         let maxDuration = durationValues.max()
@@ -60,7 +53,7 @@ struct DurationCellView: View {
                 Text("min")
                     .font(.footnote)
             }
-            .chartYScale(domain: minDurationYValue...maxDurationYValue)
+            .chartYScale(domain: 0...maxDurationYValue)
         })
     }
 }

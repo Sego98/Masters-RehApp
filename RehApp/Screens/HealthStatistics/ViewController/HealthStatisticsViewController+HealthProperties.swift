@@ -21,10 +21,7 @@ extension HealthStatisticsViewController {
 #endif
                 return
             }
-            let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
-            let durations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
-                                                                      dayBegin: $0.start)})
-            self.durations = durations
+            makeViewModels(from: rehabilitations)
             configureChartsIfPossible()
         }
     }
@@ -67,6 +64,27 @@ extension HealthStatisticsViewController {
     }
 
     // MARK: - Helper methods
+
+    private func makeViewModels(from rehabilitations: [HKWorkout]) {
+        let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
+        let durations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
+                                                                  dayBegin: $0.start)})
+        self.durations = durations
+        
+        var morningExercises = 0
+        var afternoonExercises = 0
+        for rehabilitationVM in rehabilitationVMs {
+            if Calendar.current.component(.hour, from: rehabilitationVM.start) < 12 {
+                morningExercises += 1
+            } else {
+                afternoonExercises += 1
+            }
+        }
+        timesOfDay = [
+            TimeOfDayVM(numberOfTimesExercised: morningExercises, timeOfDay: .morning),
+            TimeOfDayVM(numberOfTimesExercised: afternoonExercises, timeOfDay: .afternoon)
+        ]
+    }
 
 //    private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
 //                                            completion: @escaping (Double?) -> Void) {

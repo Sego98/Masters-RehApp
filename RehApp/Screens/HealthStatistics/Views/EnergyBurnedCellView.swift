@@ -43,7 +43,7 @@ struct EnergyBurnedCellView: View {
             .chartYAxis {
                 AxisMarks(position: .leading)
             }
-            .chartYAxisLabel(position: .leading, alignment: .leadingLastTextBaseline, spacing: 8) {
+            .chartYAxisLabel(position: .leading, alignment: .leadingFirstTextBaseline, spacing: 8) {
                 Text("kcal")
                     .font(.footnote)
             }
