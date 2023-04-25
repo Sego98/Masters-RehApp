@@ -16,13 +16,11 @@ struct TimeOfDayVM: Identifiable, Hashable, Equatable {
 
     let numberOfTimesExercised: Int
     let timeOfDay: TimeOfDay
-//    let id: UUID
 
     var id: Int { numberOfTimesExercised }
 
     internal init(numberOfTimesExercised: Int, timeOfDay: TimeOfDayVM.TimeOfDay) {
         self.numberOfTimesExercised = numberOfTimesExercised
         self.timeOfDay = timeOfDay
-//        self.id = id
     }
 }

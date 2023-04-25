@@ -13,7 +13,8 @@ struct DurationCellView: View {
     var durations: [WorkoutDurationVM]
 
     var averageDuration: Double {
-        return durations.reduce(0.0) { $0 + $1.valueMinutes } / Double(durations.count)
+        let elementsWithValues = durations.filter({ $0.valueMinutes > 0 })
+        return durations.reduce(0.0) { $0 + $1.valueMinutes } / Double(elementsWithValues.count)
     }
 
     var maxDurationYValue: Double {

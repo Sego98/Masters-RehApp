@@ -10,13 +10,11 @@ import Foundation
 struct WorkoutDurationVM: Identifiable, Hashable, Equatable {
     let valueMinutes: Double
     let dayBegin: Date
-//    let id: UUID
 
     var id: Double { valueMinutes }
 
     internal init(valueMinutes: Double, dayBegin: Date) {
         self.valueMinutes = valueMinutes
         self.dayBegin = dayBegin
-//        self.id = id
     }
 }

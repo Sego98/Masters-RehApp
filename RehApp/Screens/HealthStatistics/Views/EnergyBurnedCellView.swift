@@ -13,7 +13,8 @@ struct EnergyBurnedCellView: View {
     var energiesBurned: [EnergyBurnedVM]
 
     var averageEnergyBurned: Double {
-        return energiesBurned.reduce(0.0) { $0 + $1.value } / Double(energiesBurned.count)
+        let elementsWithValues = energiesBurned.filter({ $0.value > 0 })
+        return energiesBurned.reduce(0.0) { $0 + $1.value } / Double(elementsWithValues.count)
     }
 
     var maxHeartRateYValue: Double {
