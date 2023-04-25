@@ -69,11 +69,12 @@ extension HealthData {
     /// Method to fetch all rehabilitations from health data
     func fetchAllRehabilitations(fromDate startDate: Date, completion: @escaping ([HKWorkout]?, Error?) -> Void) {
         let startOfDay = Calendar.current.startOfDay(for: startDate)
+        let now = Date()
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .other)
         let sourcePredicate = HKQuery.predicateForObjects(from: .default())
         let samplesPredicate = HKQuery.predicateForSamples(withStart: startOfDay,
-                                                           end: nil,
-                                                           options: .strictStartDate)
+                                                           end: now,
+                                                           options: [.strictStartDate, .strictEndDate])
 
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             workoutPredicate,

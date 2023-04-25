@@ -107,9 +107,10 @@ class HealthData {
                               from startDate: Date,
                               completion: @escaping (HKStatisticsCollection?, Error?) -> Void ) {
         let startOfDay = Calendar.current.startOfDay(for: startDate)
+        let today = Date()
         let samplesPredicate = HKQuery.predicateForSamples(withStart: startOfDay,
-                                                           end: nil,
-                                                           options: .strictStartDate)
+                                                           end: today,
+                                                           options: [.strictStartDate, .strictEndDate])
         let sourcePredicate = HKQuery.predicateForObjects(from: .default())
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [samplesPredicate, sourcePredicate])
 

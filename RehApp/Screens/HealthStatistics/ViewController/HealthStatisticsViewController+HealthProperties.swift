@@ -54,7 +54,7 @@ extension HealthStatisticsViewController {
                     }
                 case .activeEnergyBurned:
                     if let value = statistics.sumQuantity()?.doubleValue(for: unit) {
-                        energiesBurned.append(AverageEnergyBurnedVM(value: value))
+                        energiesBurned.append(EnergyBurnedVM(value: value, dayBegin: statistics.startDate))
                     }
                 default:
                     return

@@ -9,7 +9,7 @@ import Foundation
 
 enum HealthStatisticsSection: Equatable, Hashable {
     case averageHeartRate([HeartRateVM])
-    case activeEnergy([AverageEnergyBurnedVM])
+    case activeEnergy([EnergyBurnedVM])
     case duration([Double])
 
     // MARK: - Computed stored properties
@@ -23,7 +23,7 @@ enum HealthStatisticsSection: Equatable, Hashable {
         }
     }
 
-    var activeEnergiesBurned: [AverageEnergyBurnedVM]? {
+    var activeEnergiesBurned: [EnergyBurnedVM]? {
         switch self {
         case .activeEnergy(let viewModel):
             return viewModel

@@ -11,6 +11,7 @@ import Charts
 
 struct AverageHeartRateCellView: View {
     var heartRates: [HeartRateVM]
+    let sevenDaysAgo = Calendar.current.date(byAdding: DateComponents(day: -6), to: Date())
 
     var averageHeartRate: Double {
         return Double(heartRates.reduce(0) { $0 + $1.value } / heartRates.count)

@@ -9,12 +9,12 @@ import Foundation
 
 struct EnergyBurnedVM: Identifiable, Hashable, Equatable {
     let value: Double
+    let dayBegin: Date
     let id: UUID
 
-    var name: String { id.uuidString }
-
-    internal init(value: Double, id: UUID = UUID()) {
+    internal init(value: Double, dayBegin: Date, id: UUID = UUID()) {
         self.value = value
+        self.dayBegin = dayBegin
         self.id = id
     }
 }
