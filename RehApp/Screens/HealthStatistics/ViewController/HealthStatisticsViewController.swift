@@ -20,6 +20,7 @@ final class HealthStatisticsViewController: RehAppViewController {
 
     private var sections = [HealthStatisticsSection]()
 
+    var rehabilitations = [RehabilitationWorkout]()
     var durations = [WorkoutDurationVM]()
     var timesOfDay = [TimeOfDayVM]()
     var averageHeartRates = [HeartRateVM]()
@@ -125,9 +126,13 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     func configureChartsIfPossible() {
+        print(durations.count)
+        print(rehabilitations.count)
+        print(averageHeartRates.count)
+        print(energiesBurned.count)
         if durations.isEmpty == false,
            timesOfDay.isEmpty == false,
-           averageHeartRates.count == durations.count,
+           averageHeartRates.count == rehabilitations.count,
            energiesBurned.count == durations.count {
             makeSections()
             guard let dataSource = dataSource else { return }

@@ -21,7 +21,7 @@ extension HealthStatisticsViewController {
 #endif
                 return
             }
-            makeViewModels(from: rehabilitations)
+            makeViewModels(from: rehabilitations, startDate: date)
             configureChartsIfPossible()
         }
     }
@@ -54,6 +54,8 @@ extension HealthStatisticsViewController {
                 case .activeEnergyBurned:
                     if let value = statistics.sumQuantity()?.doubleValue(for: unit) {
                         energiesBurned.append(EnergyBurnedVM(value: value, dayBegin: statistics.startDate))
+                    } else {
+                        energiesBurned.append(EnergyBurnedVM(value: 0.0, dayBegin: statistics.startDate))
                     }
                 default:
                     return
@@ -65,12 +67,24 @@ extension HealthStatisticsViewController {
 
     // MARK: - Helper methods
 
-    private func makeViewModels(from rehabilitations: [HKWorkout]) {
+    private func makeViewModels(from rehabilitations: [HKWorkout], startDate: Date) {
         let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
-        let durations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
+        var rehabDurations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
                                                                   dayBegin: $0.start)})
-        self.durations = durations
-        
+        let now = Date()
+        let rehabStartDateComponents = rehabDurations.map({ Calendar.current.dateComponents([.year, .month, .day],
+                                                                                            from: $0.dayBegin)
+        })
+        var date = startDate
+
+        while date < now {
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+            if rehabStartDateComponents.contains(dateComponents) == false {
+                rehabDurations.append(WorkoutDurationVM(valueMinutes: 0.0, dayBegin: date))
+            }
+            date = Calendar.current.date(byAdding: DateComponents(day: 1), to: date)!
+        }
+
         var morningExercises = 0
         var afternoonExercises = 0
         for rehabilitationVM in rehabilitationVMs {
@@ -80,24 +94,16 @@ extension HealthStatisticsViewController {
                 afternoonExercises += 1
             }
         }
+
+        self.rehabilitations = rehabilitationVMs
+
+        durations = rehabDurations.sorted(by: {
+            $0.dayBegin < $1.dayBegin
+        })
+
         timesOfDay = [
             TimeOfDayVM(numberOfTimesExercised: morningExercises, timeOfDay: .morning),
             TimeOfDayVM(numberOfTimesExercised: afternoonExercises, timeOfDay: .afternoon)
         ]
     }
-
-//    private func getQuantityValueFromHealth(for identifier: HKQuantityTypeIdentifier,
-//                                            completion: @escaping (Double?) -> Void) {
-//        HealthData.shared.fetchMostRecentQuantitySample(for: identifier) { height, error in
-//            DispatchQueue.main.async {
-//                if let error = error {
-// #if DEBUG
-//                    print("No quantity value, \(error.localizedDescription)")
-// #endif
-//                    completion(nil)
-//                }
-//                completion(height)
-//            }
-//        }
-//    }
 }
