@@ -19,7 +19,8 @@ final class HealthStatisticsViewController: RehAppViewController {
     private var dataSource: HealthStatisticsDataSource?
 
     private var sections = [HealthStatisticsSection]()
-    var rehabilitations = [RehabilitationWorkout]()
+
+    var durations = [WorkoutDurationVM]()
     var averageHeartRates = [HeartRateVM]()
     var energiesBurned = [EnergyBurnedVM]()
 
@@ -82,6 +83,13 @@ final class HealthStatisticsViewController: RehAppViewController {
             })
         }
 
+        let durationsCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
+            guard let durations = item.durations else { return }
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                DurationCellView(durations: durations)
+            })
+        }
+
         dataSource = HealthStatisticsDataSource(collectionView: healthStatisticsView.collectionView, cellProvider: { collectionView, indexPath, item in
             let section = self.sections[indexPath.section]
             switch section {
@@ -93,16 +101,18 @@ final class HealthStatisticsViewController: RehAppViewController {
                 return collectionView.dequeueConfiguredReusableCell(using: activeEnergyBurnedCellRegistration,
                                                                     for: indexPath,
                                                                     item: item)
-            default:
-                return nil
+            case .duration:
+                return collectionView.dequeueConfiguredReusableCell(using: durationsCellRegistration,
+                                                                    for: indexPath,
+                                                                    item: item)
             }
         })
     }
 
     func configureChartsIfPossible() {
-        if rehabilitations.isEmpty == false,
-           averageHeartRates.count == rehabilitations.count,
-           energiesBurned.count == rehabilitations.count {
+        if durations.isEmpty == false,
+           averageHeartRates.count == durations.count,
+           energiesBurned.count == durations.count {
             makeSections()
             guard let dataSource = dataSource else { return }
             dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
@@ -112,7 +122,8 @@ final class HealthStatisticsViewController: RehAppViewController {
     private func makeSections() {
         sections = [
             .averageHeartRate(averageHeartRates),
-            .activeEnergy(energiesBurned)
+            .activeEnergy(energiesBurned),
+            .duration(durations)
         ]
     }
 }

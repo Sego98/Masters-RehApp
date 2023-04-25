@@ -10,7 +10,7 @@ import Foundation
 enum HealthStatisticsSection: Equatable, Hashable {
     case averageHeartRate([HeartRateVM])
     case activeEnergy([EnergyBurnedVM])
-    case duration([Double])
+    case duration([WorkoutDurationVM])
 
     // MARK: - Computed stored properties
 
@@ -32,7 +32,7 @@ enum HealthStatisticsSection: Equatable, Hashable {
         }
     }
 
-    var durations: [Double]? {
+    var durations: [WorkoutDurationVM]? {
         switch self {
         case .duration(let durations):
             return durations

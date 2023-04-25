@@ -22,7 +22,9 @@ extension HealthStatisticsViewController {
                 return
             }
             let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
-            self.rehabilitations = rehabilitationVMs
+            let durations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
+                                                                      dayBegin: $0.start)})
+            self.durations = durations
             configureChartsIfPossible()
         }
     }

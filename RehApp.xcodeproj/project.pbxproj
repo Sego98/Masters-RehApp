@@ -47,6 +47,8 @@
 		D270278229E1D36800BB8324 /* ReminderTitleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278129E1D36800BB8324 /* ReminderTitleTimeView.swift */; };
 		D270278429E1D52100BB8324 /* ReminderRepeatingSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278329E1D52100BB8324 /* ReminderRepeatingSwitchView.swift */; };
 		D270278629E1D80400BB8324 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278529E1D80400BB8324 /* UIFont.swift */; };
+		D27A49FC29F82C360016CFE4 /* DurationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FB29F82C360016CFE4 /* DurationCellView.swift */; };
+		D27A49FE29F82F5C0016CFE4 /* WorkoutDurationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -148,6 +150,8 @@
 		D270278129E1D36800BB8324 /* ReminderTitleTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTitleTimeView.swift; sourceTree = "<group>"; };
 		D270278329E1D52100BB8324 /* ReminderRepeatingSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepeatingSwitchView.swift; sourceTree = "<group>"; };
 		D270278529E1D80400BB8324 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		D27A49FB29F82C360016CFE4 /* DurationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationCellView.swift; sourceTree = "<group>"; };
+		D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDurationVM.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -565,6 +569,7 @@
 				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
 				D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */,
 				D2F19CA429F6F4420020A295 /* EnergyBurnedVM.swift */,
+				D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */,
 				D217A2E329F727D200330F53 /* GraphHeaderView.swift */,
 				D217A2E529F7480400330F53 /* EnergyBurnedCellView.swift */,
+				D27A49FB29F82C360016CFE4 /* DurationCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -769,6 +775,7 @@
 				D270278629E1D80400BB8324 /* UIFont.swift in Sources */,
 				D2F19C8B29EF3A340020A295 /* RehabilitationWorkout.swift in Sources */,
 				D2F19C9729F5BD5E0020A295 /* HealthStatisticsDataSource.swift in Sources */,
+				D27A49FC29F82C360016CFE4 /* DurationCellView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllExercisesView.swift in Sources */,
 				D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
@@ -792,6 +799,7 @@
 				D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */,
 				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
+				D27A49FE29F82F5C0016CFE4 /* WorkoutDurationVM.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */,
 				D2F19CA529F6F4420020A295 /* EnergyBurnedVM.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,

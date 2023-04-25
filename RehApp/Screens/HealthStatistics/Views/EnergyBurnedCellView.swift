@@ -25,7 +25,7 @@ struct EnergyBurnedCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "Potrošena energija", averageValue: averageEnergyBurned, unit: "kcal")
+            GraphHeaderView(title: "⚡️ Potrošena energija", averageValue: averageEnergyBurned, unit: "kcal")
             Chart {
                 ForEach(energiesBurned) { energyBurned in
                     BarMark(

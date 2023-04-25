@@ -17,7 +17,7 @@ struct GraphHeaderView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .foregroundColor(.primary)
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
             HStack {
                 Text("Prosječna vrijednost:")

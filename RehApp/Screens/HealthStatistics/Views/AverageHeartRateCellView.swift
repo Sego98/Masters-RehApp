@@ -35,7 +35,7 @@ struct AverageHeartRateCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "Otkucaji srca", averageValue: averageHeartRate, unit: "o/min")
+            GraphHeaderView(title: "❤️ Otkucaji srca", averageValue: averageHeartRate, unit: "o/min")
             Chart {
                 ForEach(heartRates) { heartRate in
                     LineMark(
@@ -47,7 +47,7 @@ struct AverageHeartRateCellView: View {
                         x: .value("Day", heartRate.dayBegin, unit: .day),
                         y: .value("Heart rate", heartRate.value)
                     )
-                    .foregroundStyle(Color.teal)
+                    .foregroundStyle(Color.orange)
                 }
                 .interpolationMethod(.catmullRom)
             }
