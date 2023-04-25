@@ -51,6 +51,7 @@
 		D27A49FE29F82F5C0016CFE4 /* WorkoutDurationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */; };
 		D27A4A0029F836D70016CFE4 /* TimeOfDayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */; };
 		D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */; };
+		D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -156,6 +157,7 @@
 		D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDurationVM.swift; sourceTree = "<group>"; };
 		D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayVM.swift; sourceTree = "<group>"; };
 		D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCellView.swift; sourceTree = "<group>"; };
+		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				D208873429E49E990016F407 /* KeyValueView.swift */,
 				D2B5C5E429EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift */,
 				D2F19C8329EC6C210020A295 /* SoundPlayer.swift */,
+				D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				D208872329E336540016F407 /* RehAppCache.swift in Sources */,
 				D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */,
 				D208873529E49E990016F407 /* KeyValueView.swift in Sources */,
+				D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllExercisesVM.swift in Sources */,
 				D2B5C5E529EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,

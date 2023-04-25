@@ -51,7 +51,9 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configure() {
+        configureCollectionView()
         configureDataSourceCellRegistrations()
+        configureDataSourceSupplementaryViews()
     }
 
     private func requestHealthDataAuthorization() {
@@ -125,11 +127,42 @@ final class HealthStatisticsViewController: RehAppViewController {
         })
     }
 
+    private func configureDataSourceSupplementaryViews() {
+        let headerRegistration = UICollectionView.SupplementaryRegistration<CollectionViewTitleHeader>(elementKind: CollectionViewTitleHeader.elementKind) { supplementaryView, _, _ in
+            supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+        }
+
+        guard let dataSource = dataSource else { return }
+        dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration,
+                                                                         for: indexPath)
+        }
+    }
+
+    private func configureCollectionView() {
+        let collectionView = healthStatisticsView.collectionView
+
+        guard let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewCompositionalLayout else {
+            return
+        }
+
+        let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(1.0))
+        let headerKind = CollectionViewTitleHeader.elementKind
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                 elementKind: headerKind,
+                                                                 alignment: .topLeading)
+        layoutConfiguration.boundarySupplementaryItems = [header]
+
+        layoutConfiguration.interSectionSpacing = 16
+
+        collectionViewLayout.configuration = layoutConfiguration
+    }
+
+    // MARK: - Internal methods
+
     func configureChartsIfPossible() {
-        print(durations.count)
-        print(rehabilitations.count)
-        print(averageHeartRates.count)
-        print(energiesBurned.count)
         if durations.isEmpty == false,
            timesOfDay.isEmpty == false,
            averageHeartRates.count == rehabilitations.count,
@@ -139,6 +172,8 @@ final class HealthStatisticsViewController: RehAppViewController {
             dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
         }
     }
+
+    // MARK: - Private helper methods
 
     private func makeSections() {
         sections = [

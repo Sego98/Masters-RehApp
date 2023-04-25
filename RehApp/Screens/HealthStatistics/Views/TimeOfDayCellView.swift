@@ -27,12 +27,12 @@ struct TimeOfDayCellView: View {
         } else if morningExercises < afternoonExercises {
             return """
             Više voliš vježbati poslije podne. Pokušaj se ustati ranije i odraditi rehabilitaciju kada imaš više \
-            enerije,  vidjet ćeš da ćeš se bolje osjećati.
+            energije, bolje ćeš se osjećati.
             """
         } else {
             return """
             Tebi je potpuno svejedno u koje doba dana vježbaš. Svejedno, pokušaj više trenirati ujutro jer tada \
-            imaš najviše energije.
+            imaš više energije.
             """
         }
     }
@@ -53,7 +53,7 @@ struct TimeOfDayCellView: View {
                         x: .value("Time of day", timeOfDayVM.timeOfDay.rawValue),
                         y: .value("Quantity", timeOfDayVM.numberOfTimesExercised)
                     )
-                    .foregroundStyle(Color.lightPurple)
+                    .foregroundStyle(Color.orange)
                 }
             }
             .chartXAxis {

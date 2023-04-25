@@ -32,12 +32,12 @@ struct DurationCellView: View {
                         x: .value("Day", duration.dayBegin, unit: .day),
                         y: .value("Duration", duration.valueMinutes)
                     )
-                    .foregroundStyle(Color.lightPurple)
+                    .foregroundStyle(Color.burgundy)
                     PointMark(
                         x: .value("Day", duration.dayBegin, unit: .day),
                         y: .value("Duration", duration.valueMinutes)
                     )
-                    .foregroundStyle(Color.mint)
+                    .foregroundStyle(Color.orange)
                 }
                 .interpolationMethod(.cardinal)
             }

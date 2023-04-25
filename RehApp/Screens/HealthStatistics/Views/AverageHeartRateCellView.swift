@@ -47,7 +47,7 @@ struct AverageHeartRateCellView: View {
                         x: .value("Day", heartRate.dayBegin, unit: .day),
                         y: .value("Heart rate", heartRate.value)
                     )
-                    .foregroundStyle(Color.orange)
+                    .foregroundStyle(Color.blue)
                 }
                 .interpolationMethod(.catmullRom)
             }

@@ -20,7 +20,7 @@ extension UICollectionViewLayout {
                                                        repeatingSubitem: item,
                                                        count: 1)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
 
         return UICollectionViewCompositionalLayout(section: section)
     }
