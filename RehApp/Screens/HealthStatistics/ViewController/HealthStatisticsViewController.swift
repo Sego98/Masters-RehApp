@@ -20,6 +20,9 @@ final class HealthStatisticsViewController: RehAppViewController {
 
     private var sections = [HealthStatisticsSection]()
 
+    var didSetAverageHeartRates = false
+    var didSetEnergiesBurned = false
+
     var rehabilitations = [RehabilitationWorkout]()
     var durations = [WorkoutDurationVM]()
     var timesOfDay = [TimeOfDayVM]()
@@ -46,7 +49,9 @@ final class HealthStatisticsViewController: RehAppViewController {
         configure()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        clearAllValues()
         requestHealthDataAuthorization()
     }
 
@@ -60,9 +65,7 @@ final class HealthStatisticsViewController: RehAppViewController {
         HealthData.shared.requestHealthAuthorization {[weak self] (success) in
             guard let self = self else { return }
             if success {
-                DispatchQueue.main.async {
-                    self.configureUserHealthDataValues()
-                }
+                configureUserHealthDataValues()
             }
         }
     }
@@ -165,15 +168,29 @@ final class HealthStatisticsViewController: RehAppViewController {
     func configureChartsIfPossible() {
         if durations.isEmpty == false,
            timesOfDay.isEmpty == false,
-           averageHeartRates.count == rehabilitations.count,
-           energiesBurned.count == durations.count {
+           didSetAverageHeartRates,
+           didSetEnergiesBurned {
             makeSections()
             guard let dataSource = dataSource else { return }
-            dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+            }
         }
     }
 
     // MARK: - Private helper methods
+
+    private func clearAllValues() {
+        didSetAverageHeartRates = false
+        didSetEnergiesBurned = false
+
+        rehabilitations = []
+        durations = []
+        timesOfDay = []
+        averageHeartRates = []
+        energiesBurned = []
+    }
 
     private func makeSections() {
         sections = [

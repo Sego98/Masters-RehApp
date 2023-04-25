@@ -29,7 +29,7 @@ extension HealthStatisticsViewController {
     func fetchAverageQuantitiesForRehabilitations(identifier: HKQuantityTypeIdentifier,
                                                   from date: Date) {
         HealthData.shared.fetchDailyStatistics(identifier: identifier,
-                                               from: date) {  (statisticsCollection, error) in
+                                               from: date) { [weak self] (statisticsCollection, error) in
             guard error == nil else {
 #if DEBUG
                 print("❌ Quantities for rehabilitations failed to fetch with error \(error!.localizedDescription)")
@@ -44,28 +44,56 @@ extension HealthStatisticsViewController {
                 return
             }
 
-            statisticsCollection?.enumerateStatistics(from: date, to: Date(), with: { [weak self] (statistics, _) in
-                guard let self = self else { return }
+            guard let self = self,
+                  let numberOfElements = makeNumberOfElements(from: statisticsCollection,
+                                                              identifier: identifier) else {
+                return
+            }
+
+            statisticsCollection?.enumerateStatistics(from: date, to: Date(), with: { (statistics, _) in
                 switch identifier {
                 case .heartRate:
                     if let value = statistics.averageQuantity()?.doubleValue(for: unit) {
-                        averageHeartRates.append(HeartRateVM(value: Int(value), dayBegin: statistics.startDate))
+                        self.averageHeartRates.append(HeartRateVM(value: Int(value), dayBegin: statistics.startDate))
                     }
+
+                    if self.averageHeartRates.count == numberOfElements {
+                        self.didSetAverageHeartRates = true
+                    }
+
                 case .activeEnergyBurned:
                     if let value = statistics.sumQuantity()?.doubleValue(for: unit) {
-                        energiesBurned.append(EnergyBurnedVM(value: value, dayBegin: statistics.startDate))
+                        self.energiesBurned.append(EnergyBurnedVM(value: value, dayBegin: statistics.startDate))
                     } else {
-                        energiesBurned.append(EnergyBurnedVM(value: 0.0, dayBegin: statistics.startDate))
+                        self.energiesBurned.append(EnergyBurnedVM(value: 0.0, dayBegin: statistics.startDate))
                     }
+
+                    if self.energiesBurned.count == numberOfElements {
+                        self.didSetEnergiesBurned = true
+                    }
+
                 default:
                     return
                 }
-                configureChartsIfPossible()
+                self.configureChartsIfPossible()
             })
         }
     }
 
     // MARK: - Helper methods
+
+    private func makeNumberOfElements(from statisticsCollection: HKStatisticsCollection?,
+                                      identifier: HKQuantityTypeIdentifier) -> Int? {
+        guard let statisticsCollection = statisticsCollection else { return nil }
+        switch identifier {
+        case .heartRate:
+            return statisticsCollection.statistics().compactMap({ $0.averageQuantity() }).count
+        case .activeEnergyBurned:
+            return statisticsCollection.statistics().map({ $0.sumQuantity() }).count
+        default:
+            return nil
+        }
+    }
 
     private func makeViewModels(from rehabilitations: [HKWorkout], startDate: Date) {
         let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
