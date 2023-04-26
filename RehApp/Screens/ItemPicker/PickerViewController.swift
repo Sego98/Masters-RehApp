@@ -15,6 +15,13 @@ final class PickerViewController: RehAppViewController {
 
     private let viewModel: PickerVM
 
+    private let testDates = [
+        DateComponents(year: 2023, month: 4, day: 13),
+        DateComponents(year: 2023, month: 4, day: 14),
+        DateComponents(year: 2023, month: 4, day: 17),
+        DateComponents(year: 2023, month: 4, day: 19)
+    ]
+
     // MARK: - Lifecycle
 
     init(viewModel: PickerVM) {
@@ -44,17 +51,7 @@ final class PickerViewController: RehAppViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        HealthData.shared.requestHealthAuthorization { (success) in
-            if success {
-#if DEBUG
-                    print("HealthKit authorization has been successful!")
-#endif
-                } else {
-#if DEBUG
-                    print("Health failed to authorize.")
-#endif
-            }
-        }
+        HealthData.shared.requestHealthAuthorization { _ in }
     }
 
     private func configure() {
@@ -74,6 +71,11 @@ final class PickerViewController: RehAppViewController {
 //                    print("Fail to save")
 //                }
 //            }
+//        }
+
+//        for dateComponent in testDates {
+//            let date = Calendar.current.date(from: dateComponent)!
+//            RehAppCache.shared.createCalendarItem(date: date)
 //        }
 
         let buttonActions = makeButtonActions()

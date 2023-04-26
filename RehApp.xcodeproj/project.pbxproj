@@ -52,6 +52,7 @@
 		D27A4A0029F836D70016CFE4 /* TimeOfDayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */; };
 		D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */; };
 		D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */; };
+		D27A4A0A29F9A23A0016CFE4 /* RehAppCache+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -158,6 +159,7 @@
 		D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayVM.swift; sourceTree = "<group>"; };
 		D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCellView.swift; sourceTree = "<group>"; };
 		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
+		D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Calendar.swift"; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				D208872229E336540016F407 /* RehAppCache.swift */,
 				D208872429E337450016F407 /* RehAppCache+Container.swift */,
 				D208872629E33B9A0016F407 /* RehAppCache+Reminders.swift */,
+				D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */,
 			);
 			path = RehAppCache;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				D256B29329DB725600EF79E7 /* ReminderCell.swift in Sources */,
 				D2ECFBCD29D60D58004EAC6E /* RehAppViewController.swift in Sources */,
 				D26C80B429BD053C009393C3 /* UIColor.swift in Sources */,
+				D27A4A0A29F9A23A0016CFE4 /* RehAppCache+Calendar.swift in Sources */,
 				D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */,
 				D26C80CB29BD110D009393C3 /* ListAllExercisesCell.swift in Sources */,
 				D2EDA9FB29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift in Sources */,

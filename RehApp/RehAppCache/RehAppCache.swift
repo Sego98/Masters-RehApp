@@ -21,4 +21,14 @@ class RehAppCache {
         container = RehAppCache.makeContainer(inMemory: inMemory)
         mainViewContext = container.viewContext
     }
+
+    func saveMainContext() {
+        do {
+            try mainViewContext.save()
+        } catch {
+#if DEBUG
+            print(error.localizedDescription)
+#endif
+        }
+    }
 }
