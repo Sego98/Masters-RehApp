@@ -40,7 +40,7 @@ struct ListAllExercisesVM: Hashable, Equatable {
 
         let exercises: [ExerciseDetailsVM] = [
             .shoulderExerciseWithoutStick1,
-            .shoulderExerciseWithoutStick2,
+            .shoulderExerciseWithoutStick2
 //            .shoulderExerciseWithoutStick3,
 //            .shoulderExerciseWithoutStick4,
 //            .shoulderExerciseWithoutStick5,

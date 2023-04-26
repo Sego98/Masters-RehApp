@@ -42,7 +42,39 @@ final class PickerViewController: RehAppViewController {
         configure()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HealthData.shared.requestHealthAuthorization { (success) in
+            if success {
+#if DEBUG
+                    print("HealthKit authorization has been successful!")
+#endif
+                } else {
+#if DEBUG
+                    print("Health failed to authorize.")
+#endif
+            }
+        }
+    }
+
     private func configure() {
+//        let workouts: [RehabilitationWorkout] = [
+//            .workout1,
+//            .workout2,
+//            .workout3,
+//            .workout4,
+//            .workout5,
+//            .workout6
+//        ]
+//        for workout in workouts {
+//            HealthData.shared.saveRehabilitation(workout) { success, _ in
+//                if success {
+//                    print("Saved")
+//                } else {
+//                    print("Fail to save")
+//                }
+//            }
+//        }
 
         let buttonActions = makeButtonActions()
         pickerView.setButtonActions(buttonActions)

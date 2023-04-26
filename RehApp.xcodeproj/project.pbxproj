@@ -16,6 +16,8 @@
 		D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208872E29E455BD0016F407 /* HealthStatisticsView.swift */; };
 		D208873229E46AEE0016F407 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208873129E46AEE0016F407 /* HealthData.swift */; };
 		D208873529E49E990016F407 /* KeyValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208873429E49E990016F407 /* KeyValueView.swift */; };
+		D217A2E429F727D200330F53 /* GraphHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217A2E329F727D200330F53 /* GraphHeaderView.swift */; };
+		D217A2E629F7480400330F53 /* EnergyBurnedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217A2E529F7480400330F53 /* EnergyBurnedCellView.swift */; };
 		D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */; };
 		D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */; };
 		D256B27A29DB401700EF79E7 /* RehAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */; };
@@ -45,6 +47,11 @@
 		D270278229E1D36800BB8324 /* ReminderTitleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278129E1D36800BB8324 /* ReminderTitleTimeView.swift */; };
 		D270278429E1D52100BB8324 /* ReminderRepeatingSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278329E1D52100BB8324 /* ReminderRepeatingSwitchView.swift */; };
 		D270278629E1D80400BB8324 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270278529E1D80400BB8324 /* UIFont.swift */; };
+		D27A49FC29F82C360016CFE4 /* DurationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FB29F82C360016CFE4 /* DurationCellView.swift */; };
+		D27A49FE29F82F5C0016CFE4 /* WorkoutDurationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */; };
+		D27A4A0029F836D70016CFE4 /* TimeOfDayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */; };
+		D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */; };
+		D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -86,6 +93,14 @@
 		D2F19C8929EC6CC30020A295 /* AllExercisesFinished.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */; };
 		D2F19C8B29EF3A340020A295 /* RehabilitationWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */; };
 		D2F19C8D29EF40FC0020A295 /* HealthData+Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */; };
+		D2F19C9229F4783A0020A295 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9129F4783A0020A295 /* HKUnit.swift */; };
+		D2F19C9529F487D00020A295 /* HKStatisticsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9429F487D00020A295 /* HKStatisticsOption.swift */; };
+		D2F19C9729F5BD5E0020A295 /* HealthStatisticsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */; };
+		D2F19C9929F5BDBA0020A295 /* HealthStatisticsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */; };
+		D2F19C9D29F5C2010020A295 /* AverageHeartRateCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */; };
+		D2F19CA029F5CD5D0020A295 /* HeartRateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */; };
+		D2F19CA329F5D3070020A295 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19CA229F5D3070020A295 /* Color.swift */; };
+		D2F19CA529F6F4420020A295 /* EnergyBurnedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F19CA429F6F4420020A295 /* EnergyBurnedVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +124,8 @@
 		D208873129E46AEE0016F407 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		D208873329E47D650016F407 /* RehApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RehApp.entitlements; sourceTree = "<group>"; };
 		D208873429E49E990016F407 /* KeyValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueView.swift; sourceTree = "<group>"; };
+		D217A2E329F727D200330F53 /* GraphHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphHeaderView.swift; sourceTree = "<group>"; };
+		D217A2E529F7480400330F53 /* EnergyBurnedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBurnedCellView.swift; sourceTree = "<group>"; };
 		D21EB01E29DF64C10057938B /* ReminderAlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderAlertConfiguration.swift; sourceTree = "<group>"; };
 		D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthStatisticsViewController+HealthProperties.swift"; sourceTree = "<group>"; };
 		D256B27929DB401700EF79E7 /* RehAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTabBarController.swift; sourceTree = "<group>"; };
@@ -136,6 +153,11 @@
 		D270278129E1D36800BB8324 /* ReminderTitleTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTitleTimeView.swift; sourceTree = "<group>"; };
 		D270278329E1D52100BB8324 /* ReminderRepeatingSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepeatingSwitchView.swift; sourceTree = "<group>"; };
 		D270278529E1D80400BB8324 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		D27A49FB29F82C360016CFE4 /* DurationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationCellView.swift; sourceTree = "<group>"; };
+		D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDurationVM.swift; sourceTree = "<group>"; };
+		D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayVM.swift; sourceTree = "<group>"; };
+		D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCellView.swift; sourceTree = "<group>"; };
+		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -180,6 +202,14 @@
 		D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AllExercisesFinished.mp3; sourceTree = "<group>"; };
 		D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehabilitationWorkout.swift; sourceTree = "<group>"; };
 		D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthData+Workout.swift"; sourceTree = "<group>"; };
+		D2F19C9129F4783A0020A295 /* HKUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
+		D2F19C9429F487D00020A295 /* HKStatisticsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKStatisticsOption.swift; sourceTree = "<group>"; };
+		D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsDataSource.swift; sourceTree = "<group>"; };
+		D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsSection.swift; sourceTree = "<group>"; };
+		D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageHeartRateCellView.swift; sourceTree = "<group>"; };
+		D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateVM.swift; sourceTree = "<group>"; };
+		D2F19CA229F5D3070020A295 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D2F19CA429F6F4420020A295 /* EnergyBurnedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBurnedVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +254,10 @@
 		D208872B29E359B20016F407 /* HealthStatistics */ = {
 			isa = PBXGroup;
 			children = (
-				D208872C29E359CD0016F407 /* HealthStatisticsViewController.swift */,
-				D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */,
-				D208872E29E455BD0016F407 /* HealthStatisticsView.swift */,
+				D2F19C9E29F5CCEC0020A295 /* Model */,
+				D2F19C9B29F5C1D70020A295 /* ViewController */,
+				D2F19C9A29F5C1CA0020A295 /* Views */,
+				D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */,
 			);
 			path = HealthStatistics;
 			sourceTree = "<group>";
@@ -234,9 +265,9 @@
 		D208873029E46A900016F407 /* HealthData */ = {
 			isa = PBXGroup;
 			children = (
+				D2F19C9029F09CAC0020A295 /* Model */,
 				D208873129E46AEE0016F407 /* HealthData.swift */,
 				D2F19C8C29EF40FC0020A295 /* HealthData+Workout.swift */,
-				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
 			);
 			path = HealthData;
 			sourceTree = "<group>";
@@ -328,8 +359,8 @@
 		D26C80D029BD11AC009393C3 /* Reusable components */ = {
 			isa = PBXGroup;
 			children = (
-				D2F19C7429EB47810020A295 /* OverlayTimer */,
 				D2B5C5C229E9C52F00C16EF8 /* WebViewModal */,
+				D2F19C7429EB47810020A295 /* OverlayTimer */,
 				D2B11D7A29DF4B1E00AD9195 /* DatePicker */,
 				D26C80D129BD11CA009393C3 /* LargeButton.swift */,
 				D2EDAA0129C3ACF4001E247F /* OverlayTimerView.swift */,
@@ -338,6 +369,7 @@
 				D208873429E49E990016F407 /* KeyValueView.swift */,
 				D2B5C5E429EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift */,
 				D2F19C8329EC6C210020A295 /* SoundPlayer.swift */,
+				D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */,
 			);
 			path = "Reusable components";
 			sourceTree = "<group>";
@@ -402,8 +434,9 @@
 		D2EDA9F529C0F79E001E247F /* System extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D2F19CA129F5D2F70020A295 /* Color */,
+				D2F19C9329F487A00020A295 /* HealthKit */,
 				D2F19C6D29EB1D540020A295 /* Views */,
-				D26C80B329BD053C009393C3 /* UIColor.swift */,
 				D270278529E1D80400BB8324 /* UIFont.swift */,
 				D208871F29E335080016F407 /* NSManagedObject.swift */,
 			);
@@ -535,6 +568,66 @@
 				D2F19C8829EC6CC30020A295 /* AllExercisesFinished.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D2F19C9029F09CAC0020A295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C8A29EF3A340020A295 /* RehabilitationWorkout.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2F19C9329F487A00020A295 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C9129F4783A0020A295 /* HKUnit.swift */,
+				D2F19C9429F487D00020A295 /* HKStatisticsOption.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		D2F19C9A29F5C1CA0020A295 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D208872E29E455BD0016F407 /* HealthStatisticsView.swift */,
+				D217A2E329F727D200330F53 /* GraphHeaderView.swift */,
+				D2F19C9C29F5C2010020A295 /* AverageHeartRateCellView.swift */,
+				D217A2E529F7480400330F53 /* EnergyBurnedCellView.swift */,
+				D27A49FB29F82C360016CFE4 /* DurationCellView.swift */,
+				D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2F19C9B29F5C1D70020A295 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D208872C29E359CD0016F407 /* HealthStatisticsViewController.swift */,
+				D23ED23429E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D2F19C9E29F5CCEC0020A295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2F19C9829F5BDBA0020A295 /* HealthStatisticsSection.swift */,
+				D2F19C9F29F5CD5D0020A295 /* HeartRateVM.swift */,
+				D2F19CA429F6F4420020A295 /* EnergyBurnedVM.swift */,
+				D27A49FD29F82F5C0016CFE4 /* WorkoutDurationVM.swift */,
+				D27A49FF29F836D70016CFE4 /* TimeOfDayVM.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2F19CA129F5D2F70020A295 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				D26C80B329BD053C009393C3 /* UIColor.swift */,
+				D2F19CA229F5D3070020A295 /* Color.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -679,20 +772,26 @@
 				D2F19C7129EB3C690020A295 /* RehAppExercisesFlowCoordinator.swift in Sources */,
 				D2F19C6B29EAF4FC0020A295 /* NumberOfRepetitionsViewController+Picker.swift in Sources */,
 				D2DB99C429DF41F80058A70C /* RemindersDataSource.swift in Sources */,
+				D27A4A0029F836D70016CFE4 /* TimeOfDayVM.swift in Sources */,
 				D256B28129DB5EC700EF79E7 /* RemindersView.swift in Sources */,
 				D256B29729DB800B00EF79E7 /* CDReminder+VM.swift in Sources */,
 				D208872029E335080016F407 /* NSManagedObject.swift in Sources */,
 				D208872529E337450016F407 /* RehAppCache+Container.swift in Sources */,
 				D2EDA9F729C0F7B4001E247F /* UIView.swift in Sources */,
 				D208872729E33B9A0016F407 /* RehAppCache+Reminders.swift in Sources */,
+				D2F19C9D29F5C2010020A295 /* AverageHeartRateCellView.swift in Sources */,
 				D2F19C6F29EB1F6F0020A295 /* GlobalSettings.swift in Sources */,
 				D2ECFBD229D613E9004EAC6E /* StreakCalendarView.swift in Sources */,
 				D270278629E1D80400BB8324 /* UIFont.swift in Sources */,
 				D2F19C8B29EF3A340020A295 /* RehabilitationWorkout.swift in Sources */,
+				D2F19C9729F5BD5E0020A295 /* HealthStatisticsDataSource.swift in Sources */,
+				D27A49FC29F82C360016CFE4 /* DurationCellView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllExercisesView.swift in Sources */,
 				D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
+				D2F19CA329F5D3070020A295 /* Color.swift in Sources */,
 				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
+				D2F19C9529F487D00020A295 /* HKStatisticsOption.swift in Sources */,
 				D208872A29E355CF0016F407 /* RehAppNotifications.swift in Sources */,
 				D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */,
 				D26C80C829BD10C9009393C3 /* ListAllExercisesDataSource.swift in Sources */,
@@ -703,31 +802,40 @@
 				D2F19C7C29EC22A50020A295 /* ExerciseCounterView.swift in Sources */,
 				D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */,
 				D2B5C5E929EAE16500C16EF8 /* UICollectionViewLayout.swift in Sources */,
+				D2F19C9229F4783A0020A295 /* HKUnit.swift in Sources */,
+				D2F19CA029F5CD5D0020A295 /* HeartRateVM.swift in Sources */,
 				D2F19C7E29EC24F10020A295 /* ExerciseCounterCell.swift in Sources */,
 				D2DB99C229DF413C0058A70C /* RemindersViewController+Alert.swift in Sources */,
 				D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */,
 				D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */,
 				D208872F29E455BD0016F407 /* HealthStatisticsView.swift in Sources */,
+				D27A49FE29F82F5C0016CFE4 /* WorkoutDurationVM.swift in Sources */,
 				D2EDAA0429C3AD65001E247F /* ExerciseDetailsVM.swift in Sources */,
+				D2F19CA529F6F4420020A295 /* EnergyBurnedVM.swift in Sources */,
 				D2EDA9FE29C3AC6B001E247F /* ExerciseDetailsViewController.swift in Sources */,
 				D2F19C8D29EF40FC0020A295 /* HealthData+Workout.swift in Sources */,
 				D2EFB9CE29BCFC97009EA5E5 /* AppDelegate.swift in Sources */,
+				D2F19C9929F5BDBA0020A295 /* HealthStatisticsSection.swift in Sources */,
 				D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */,
 				D2B5C5EB29EAE3E000C16EF8 /* NumberOfRepetitionsCollectionViewDataSource.swift in Sources */,
 				D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */,
 				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
+				D217A2E429F727D200330F53 /* GraphHeaderView.swift in Sources */,
+				D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */,
 				D2B5C5E729EADCC000C16EF8 /* NumberOfRepetitionsCell.swift in Sources */,
 				D2F19C8029EC3BE30020A295 /* ExerciseCounterDataSource.swift in Sources */,
 				D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */,
 				D26C80CD29BD112B009393C3 /* ListAllExercisesHeader.swift in Sources */,
 				D256B27F29DB55C500EF79E7 /* RehAppNavigationController.swift in Sources */,
 				D2F19C8429EC6C210020A295 /* SoundPlayer.swift in Sources */,
+				D217A2E629F7480400330F53 /* EnergyBurnedCellView.swift in Sources */,
 				D256B2A429DCD0EA00EF79E7 /* RehAppCache.xcdatamodeld in Sources */,
 				D208873229E46AEE0016F407 /* HealthData.swift in Sources */,
 				D23ED23529E724EC00E2E9A9 /* HealthStatisticsViewController+HealthProperties.swift in Sources */,
 				D208872329E336540016F407 /* RehAppCache.swift in Sources */,
 				D2B5C5C629E9C61C00C16EF8 /* WebModalView.swift in Sources */,
 				D208873529E49E990016F407 /* KeyValueView.swift in Sources */,
+				D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */,
 				D26C80C629BD10AD009393C3 /* ListAllExercisesVM.swift in Sources */,
 				D2B5C5E529EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
