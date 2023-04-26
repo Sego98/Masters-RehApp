@@ -21,7 +21,7 @@ struct PickerVM {
         case list(ListAllExercisesVM?)
     }
 
-    struct PickerItemVM {
+    struct PickerItemVM: Hashable, Equatable {
         let title: String
         let imageName: String
     }

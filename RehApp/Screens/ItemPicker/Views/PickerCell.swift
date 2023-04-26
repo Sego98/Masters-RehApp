@@ -1,5 +1,5 @@
 //
-//  PickerSubview.swift
+//  PickerCell.swift
 //  RehApp
 //
 //  Created by Petar Ljubotina on 11.03.2023..
@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 
-final class PickerSubview: UIView {
+final class PickerCell: UICollectionViewCell {
 
     // MARK: - Properties
 
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(for: .title1, weight: .bold)
         label.textAlignment = .left
         label.adjustsFontForContentSizeCategory = true
+        label.textColor = .secondaryLabel
         return label
     }()
 
@@ -34,13 +35,10 @@ final class PickerSubview: UIView {
         return button
     }()
 
-    private let viewModel: PickerVM.PickerItemVM
-
     // MARK: - Init
 
-    init(viewModel: PickerVM.PickerItemVM) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configure()
     }
 
@@ -49,36 +47,39 @@ final class PickerSubview: UIView {
     }
 
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
-
         backgroundColor = .rehAppBackground
 
-        titleLabel.text = viewModel.title
-        pictureButton.setImage(UIImage(named: viewModel.imageName), for: .normal)
-
-        addSubviews([
+        contentView.addSubviews([
             titleLabel, pictureButton
         ])
 
-        directionalLayoutMargins = .zero
-        let guide = layoutMarginsGuide
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        let guide = contentView.layoutMarginsGuide
 
         let imageDimension = CGFloat(200)
+
+        let bottomConstraint = pictureButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+        bottomConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: guide.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
+            pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             pictureButton.heightAnchor.constraint(equalToConstant: imageDimension),
             pictureButton.widthAnchor.constraint(equalToConstant: imageDimension),
-            pictureButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pictureButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+            pictureButton.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
+            bottomConstraint
         ])
     }
 
     // MARK: - Public methods
+
+    func setValues(with viewModel: PickerVM.PickerItemVM) {
+        titleLabel.text = viewModel.title
+        pictureButton.setImage(UIImage(named: viewModel.imageName), for: .normal)
+    }
 
     func setButtonAction(_ action: UIAction) {
         pictureButton.addAction(action, for: .touchUpInside)
