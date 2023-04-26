@@ -183,6 +183,12 @@ class RehAppExercisesFlowCoordinator {
 #endif
             }
         }
+
+        let endTimeDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: endTime)
+        if let date = Calendar.current.date(from: endTimeDateComponents) {
+            RehAppCache.shared.createCalendarItem(date: date)
+        }
+
     }
 
     private func makeAlert(title: String,

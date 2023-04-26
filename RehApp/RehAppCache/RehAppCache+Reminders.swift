@@ -74,14 +74,4 @@ extension RehAppCache {
         reminder.isRepeating = false
         saveMainContext()
     }
-
-    private func saveMainContext() {
-        do {
-            try mainViewContext.save()
-        } catch {
-#if DEBUG
-            print(error.localizedDescription)
-#endif
-        }
-    }
 }

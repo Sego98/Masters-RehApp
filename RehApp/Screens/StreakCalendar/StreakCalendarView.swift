@@ -30,17 +30,13 @@ final class StreakCalendarView: UIView {
         return label
     }()
 
-    private let testDates = [
-        DateComponents(year: 2023, month: 4, day: 1),
-        DateComponents(year: 2023, month: 4, day: 2),
-        DateComponents(year: 2023, month: 4, day: 5),
-        DateComponents(year: 2023, month: 4, day: 6)
-    ]
+    private var calendarDateComponents = [DateComponents]()
 
     // MARK: - Init
 
     init() {
         super.init(frame: .zero)
+        fetchAllCalendarDates()
         configure()
     }
 
@@ -51,11 +47,13 @@ final class StreakCalendarView: UIView {
     private func configure() {
         backgroundColor = .rehAppBackground
 
-        guard let firstDate = Calendar.current.date(from: testDates[0]) else { return }
-        let startDateComponents = Calendar.current.dateComponents([.month, .year], from: firstDate)
-        guard let startDate = Calendar.current.date(from: startDateComponents) else { return }
+        guard calendarDateComponents.isEmpty == false else { return }
 
-        calendarView.availableDateRange = DateInterval(start: startDate,
+        var firstMonthDateComponents = calendarDateComponents[0]
+        firstMonthDateComponents.day = nil
+        guard let firstMonth = Calendar.current.date(from: firstMonthDateComponents) else { return }
+
+        calendarView.availableDateRange = DateInterval(start: firstMonth,
                                                        end: Date())
 
         addSubviews([
@@ -63,10 +61,10 @@ final class StreakCalendarView: UIView {
         ])
 
         let dateSelection = UICalendarSelectionMultiDate(delegate: self)
-        dateSelection.selectedDates = testDates
+        dateSelection.selectedDates = calendarDateComponents
         calendarView.selectionBehavior = dateSelection
 
-        allDaysLabel.text = "🔥 Ukupan broj dana: \(testDates.count)"
+        allDaysLabel.text = "🔥 Ukupan broj dana: \(calendarDateComponents.count)"
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide
@@ -82,15 +80,28 @@ final class StreakCalendarView: UIView {
             allDaysLabel.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor)
         ])
     }
+
+    private func fetchAllCalendarDates() {
+        guard let coreDataCalendarDates = RehAppCache.shared.getAllCalendarItems() else {
+            return
+        }
+        let calendarDates = coreDataCalendarDates.compactMap({ $0.date }).sorted {
+            $0 < $1
+        }
+
+        calendarDateComponents = calendarDates.map({ Calendar.current.dateComponents([.year, .month, .day],
+                                                                                     from: $0) })
+    }
+
 }
 
 extension StreakCalendarView: UICalendarSelectionMultiDateDelegate {
 
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
-        selection.selectedDates = testDates
+        selection.selectedDates = calendarDateComponents
     }
 
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
-        selection.selectedDates = testDates
+        selection.selectedDates = calendarDateComponents
     }
 }

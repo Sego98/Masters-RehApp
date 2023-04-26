@@ -14,6 +14,9 @@ extension CDReminder {
         guard let id = id,
               let name = name,
               let time = time else { return nil }
-        return ReminderVM(id: id, name: name, time: time, isRepeating: isRepeating)
+        return ReminderVM(id: id,
+                          name: name,
+                          time: time,
+                          isRepeating: isRepeating)
     }
 }
