@@ -96,7 +96,7 @@ final class PickerViewController: RehAppViewController {
                 return
             }
 
-            let index = indexPath.item
+            let index = indexPath.section
             if let action = buttonActions[index] {
                 cell.setButtonAction(action)
             }
