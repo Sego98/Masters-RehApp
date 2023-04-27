@@ -53,7 +53,7 @@ final class PickerCell: UICollectionViewCell {
             titleLabel, pictureButton
         ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
         let guide = contentView.layoutMarginsGuide
 
         let imageDimension = CGFloat(200)
