@@ -56,6 +56,7 @@
 		D2A587FC29F9B626001AD5F8 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */; };
 		D2A5880129FAFC7D001AD5F8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */; };
 		D2A5880329FAFC8F001AD5F8 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */; };
+		D2A5880829FB1FB1001AD5F8 /* HealthStatisticsNoItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5880729FB1FB1001AD5F8 /* HealthStatisticsNoItemsCell.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -166,6 +167,7 @@
 		D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
 		D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		D2A5880729FB1FB1001AD5F8 /* HealthStatisticsNoItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatisticsNoItemsCell.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				D2F19C9B29F5C1D70020A295 /* ViewController */,
 				D2F19C9A29F5C1CA0020A295 /* Views */,
 				D2F19C9629F5BD5E0020A295 /* HealthStatisticsDataSource.swift */,
+				D2A5880729FB1FB1001AD5F8 /* HealthStatisticsNoItemsCell.swift */,
 			);
 			path = HealthStatistics;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				D26C80D229BD11CA009393C3 /* LargeButton.swift in Sources */,
 				D2F19C7C29EC22A50020A295 /* ExerciseCounterView.swift in Sources */,
 				D2B5C5C429E9C55000C16EF8 /* WebModalViewController.swift in Sources */,
+				D2A5880829FB1FB1001AD5F8 /* HealthStatisticsNoItemsCell.swift in Sources */,
 				D2B5C5E929EAE16500C16EF8 /* UICollectionViewLayout.swift in Sources */,
 				D2F19C9229F4783A0020A295 /* HKUnit.swift in Sources */,
 				D2F19CA029F5CD5D0020A295 /* HeartRateVM.swift in Sources */,

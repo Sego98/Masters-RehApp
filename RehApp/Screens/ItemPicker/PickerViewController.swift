@@ -80,7 +80,6 @@ final class PickerViewController: RehAppViewController {
 
         let items = viewModel.subviews.map({ $0.viewModel })
         dataSource.rebuildSnapshot(items: items, animateDifferences: true)
-//        pickerView.setButtonActions(buttonActions)
     }
 
     private func configureDataSourceCellRegistrations() {

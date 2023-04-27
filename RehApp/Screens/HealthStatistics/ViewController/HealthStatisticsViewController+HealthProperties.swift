@@ -19,9 +19,11 @@ extension HealthStatisticsViewController {
 #if DEBUG
                 print("❌ Rehabilitations failed to fetch with error \(error?.localizedDescription ?? "")")
 #endif
+                self?.didFetchRehabilitationWorkouts = true
                 return
             }
             makeViewModels(from: rehabilitations, startDate: date)
+            didFetchRehabilitationWorkouts = true
             configureChartsIfPossible()
         }
     }
@@ -50,6 +52,19 @@ extension HealthStatisticsViewController {
                 return
             }
 
+            guard numberOfElements > 0 else {
+                switch identifier {
+                case .heartRate:
+                    didFetchAverageHeartRates = true
+                case .activeEnergyBurned:
+                    didFetchEnergiesBurned = true
+                default:
+                    return
+                }
+                configureChartsIfPossible()
+                return
+            }
+
             statisticsCollection?.enumerateStatistics(from: date, to: Date(), with: { (statistics, _) in
                 switch identifier {
                 case .heartRate:
@@ -58,7 +73,7 @@ extension HealthStatisticsViewController {
                     }
 
                     if self.averageHeartRates.count == numberOfElements {
-                        self.didSetAverageHeartRates = true
+                        self.didFetchAverageHeartRates = true
                     }
 
                 case .activeEnergyBurned:
@@ -69,7 +84,7 @@ extension HealthStatisticsViewController {
                     }
 
                     if self.energiesBurned.count == numberOfElements {
-                        self.didSetEnergiesBurned = true
+                        self.didFetchEnergiesBurned = true
                     }
 
                 default:
