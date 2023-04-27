@@ -54,6 +54,8 @@
 		D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */; };
 		D27A4A0A29F9A23A0016CFE4 /* RehAppCache+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */; };
 		D2A587FC29F9B626001AD5F8 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */; };
+		D2A5880129FAFC7D001AD5F8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */; };
+		D2A5880329FAFC8F001AD5F8 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -162,6 +164,8 @@
 		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
 		D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Calendar.swift"; sourceTree = "<group>"; };
 		D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
+		D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		D26C80B729BD0E83009393C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D2A587FF29FAFA6F001AD5F8 /* LaunchScreen */,
 				D2F19C7729EB4DC90020A295 /* Exercises */,
 				D208872B29E359B20016F407 /* HealthStatistics */,
 				D256B27B29DB435300EF79E7 /* Reminders */,
@@ -378,6 +383,16 @@
 				D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */,
 			);
 			path = "Reusable components";
+			sourceTree = "<group>";
+		};
+		D2A587FF29FAFA6F001AD5F8 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */,
+				D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */,
+				D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		D2B11D7A29DF4B1E00AD9195 /* DatePicker */ = {
@@ -495,7 +510,6 @@
 				D2F19C8529EC6C8C0020A295 /* Sounds */,
 				D26C80B729BD0E83009393C3 /* Screens */,
 				D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */,
-				D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */,
 				D2EFB9DE29BCFC99009EA5E5 /* Info.plist */,
 			);
 			path = RehApp;
@@ -847,6 +861,7 @@
 				D2B5C5E529EAD83E00C16EF8 /* DefaultCollectionViewWithLargeButton.swift in Sources */,
 				D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */,
 				D256B28329DB644F00EF79E7 /* RehAppTabType.swift in Sources */,
+				D2A5880329FAFC8F001AD5F8 /* LaunchScreenView.swift in Sources */,
 				D256B29129DB6F6C00EF79E7 /* ReminderVM.swift in Sources */,
 				D2EFB9D029BCFC97009EA5E5 /* SceneDelegate.swift in Sources */,
 				D2ECFBD029D6139D004EAC6E /* StreakCalendarViewController.swift in Sources */,
@@ -856,6 +871,7 @@
 				D27A4A0A29F9A23A0016CFE4 /* RehAppCache+Calendar.swift in Sources */,
 				D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */,
 				D26C80CB29BD110D009393C3 /* ListAllExercisesCell.swift in Sources */,
+				D2A5880129FAFC7D001AD5F8 /* LaunchScreenViewController.swift in Sources */,
 				D2EDA9FB29C119D6001E247F /* ListAllExercisesViewController+Navigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
