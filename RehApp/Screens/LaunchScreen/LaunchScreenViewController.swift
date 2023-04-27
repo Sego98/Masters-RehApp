@@ -36,23 +36,20 @@ final class LaunchScreenViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         launchScreenView.setImageViewCenterPoint(to: launchScreenView.center)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.animate()
-        }
+        animate()
     }
 
     private func configure() {
-        launchScreenView.backgroundColor = .systemMint
+        launchScreenView.backgroundColor = .burgundy
     }
 
     private func animate() {
-        UIView.animate(withDuration: 1) { [weak self] in
+        UIView.animate(withDuration: 1.2) { [weak self] in
             guard let self = self else { return }
-            let frame = view.frame
-            let size = frame.size.width * 3
+            let size = view.frame.size.width * 4
 
-            let diffX = size - frame.size.width
-            let diffY = frame.size.height - size
+            let diffX = size - view.frame.size.width
+            let diffY = view.frame.size.height - size
 
             launchScreenView.setImageViewFrame(CGRect(
                 x: -(diffX/2),
@@ -60,20 +57,16 @@ final class LaunchScreenViewController: UIViewController {
                 width: size,
                 height: size
             ))
-        }
 
-        UIView.animate(withDuration: 1.75) { [weak self] in
-            guard let self = self else { return }
             launchScreenView.setImageViewAlpha(0)
-        } completion: {  done in
+
+        } completion: { [weak self] done in
             if done {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) { [weak self] in
-                    guard let self = self else { return }
-                    let tabBarController = RehAppTabBarController()
-                    tabBarController.modalTransitionStyle = .flipHorizontal
-                    tabBarController.modalPresentationStyle = .fullScreen
-                    self.present(tabBarController, animated: true)
-                }
+                guard let self = self else { return }
+                let tabBarController = RehAppTabBarController()
+                tabBarController.modalTransitionStyle = .flipHorizontal
+                tabBarController.modalPresentationStyle = .fullScreen
+                present(tabBarController, animated: true)
             }
         }
     }
