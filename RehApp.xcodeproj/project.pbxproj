@@ -36,7 +36,7 @@
 		D26C80BA29BD0ECA009393C3 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80B929BD0ECA009393C3 /* PickerViewController.swift */; };
 		D26C80BC29BD0EF2009393C3 /* PickerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BB29BD0EF2009393C3 /* PickerVM.swift */; };
 		D26C80BF29BD0F4A009393C3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80BE29BD0F4A009393C3 /* PickerView.swift */; };
-		D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C029BD0F69009393C3 /* PickerSubview.swift */; };
+		D26C80C129BD0F69009393C3 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C029BD0F69009393C3 /* PickerCell.swift */; };
 		D26C80C429BD1056009393C3 /* ListAllItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */; };
 		D26C80C629BD10AD009393C3 /* ListAllExercisesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C529BD10AD009393C3 /* ListAllExercisesVM.swift */; };
 		D26C80C829BD10C9009393C3 /* ListAllExercisesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C80C729BD10C9009393C3 /* ListAllExercisesDataSource.swift */; };
@@ -53,6 +53,7 @@
 		D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */; };
 		D27A4A0429F872C90016CFE4 /* CollectionViewTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */; };
 		D27A4A0A29F9A23A0016CFE4 /* RehAppCache+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */; };
+		D2A587FC29F9B626001AD5F8 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */; };
 		D2B11D7C29DF4B3A00AD9195 /* WheelsTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */; };
 		D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */; };
 		D2B5C5C129E9B62F00C16EF8 /* ExerciseDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */; };
@@ -143,7 +144,7 @@
 		D26C80B929BD0ECA009393C3 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D26C80BB29BD0EF2009393C3 /* PickerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVM.swift; sourceTree = "<group>"; };
 		D26C80BE29BD0F4A009393C3 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
-		D26C80C029BD0F69009393C3 /* PickerSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSubview.swift; sourceTree = "<group>"; };
+		D26C80C029BD0F69009393C3 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		D26C80C329BD1056009393C3 /* ListAllItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllItemsViewController.swift; sourceTree = "<group>"; };
 		D26C80C529BD10AD009393C3 /* ListAllExercisesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllExercisesVM.swift; sourceTree = "<group>"; };
 		D26C80C729BD10C9009393C3 /* ListAllExercisesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllExercisesDataSource.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCellView.swift; sourceTree = "<group>"; };
 		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
 		D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Calendar.swift"; sourceTree = "<group>"; };
+		D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
 		D2B11D7B29DF4B3A00AD9195 /* WheelsTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelsTimePicker.swift; sourceTree = "<group>"; };
 		D2B11D7D29DF4BEF00AD9195 /* DateInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputDelegate.swift; sourceTree = "<group>"; };
 		D2B5C5C029E9B62F00C16EF8 /* ExerciseDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsCell.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				D26C80BD29BD0F39009393C3 /* Views */,
 				D26C80B929BD0ECA009393C3 /* PickerViewController.swift */,
 				D26C80BB29BD0EF2009393C3 /* PickerVM.swift */,
+				D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */,
 			);
 			path = ItemPicker;
 			sourceTree = "<group>";
@@ -333,7 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				D26C80BE29BD0F4A009393C3 /* PickerView.swift */,
-				D26C80C029BD0F69009393C3 /* PickerSubview.swift */,
+				D26C80C029BD0F69009393C3 /* PickerCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				D27A49FC29F82C360016CFE4 /* DurationCellView.swift in Sources */,
 				D26C80CF29BD1149009393C3 /* ListAllExercisesView.swift in Sources */,
 				D208872D29E359CD0016F407 /* HealthStatisticsViewController.swift in Sources */,
+				D2A587FC29F9B626001AD5F8 /* PickerDataSource.swift in Sources */,
 				D2EDA9F929C10FE0001E247F /* UIStackView.swift in Sources */,
 				D2F19CA329F5D3070020A295 /* Color.swift in Sources */,
 				D21EB01F29DF64C10057938B /* ReminderAlertConfiguration.swift in Sources */,
@@ -822,7 +826,7 @@
 				D2EDAA0229C3ACF4001E247F /* OverlayTimerView.swift in Sources */,
 				D2B5C5EB29EAE3E000C16EF8 /* NumberOfRepetitionsCollectionViewDataSource.swift in Sources */,
 				D2B11D7E29DF4BEF00AD9195 /* DateInputDelegate.swift in Sources */,
-				D26C80C129BD0F69009393C3 /* PickerSubview.swift in Sources */,
+				D26C80C129BD0F69009393C3 /* PickerCell.swift in Sources */,
 				D217A2E429F727D200330F53 /* GraphHeaderView.swift in Sources */,
 				D27A4A0229F852990016CFE4 /* TimeOfDayCellView.swift in Sources */,
 				D2B5C5E729EADCC000C16EF8 /* NumberOfRepetitionsCell.swift in Sources */,

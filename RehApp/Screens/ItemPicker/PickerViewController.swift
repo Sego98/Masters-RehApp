@@ -11,9 +11,11 @@ final class PickerViewController: RehAppViewController {
 
     // MARK: - Properties
 
-    private let pickerView: PickerView
+    private let pickerView = PickerView()
 
+    private var dataSource: PickerDataSource?
     private let viewModel: PickerVM
+    private var buttonActions = [UIAction?]()
 
     private let testDates = [
         DateComponents(year: 2023, month: 4, day: 13),
@@ -26,13 +28,6 @@ final class PickerViewController: RehAppViewController {
 
     init(viewModel: PickerVM) {
         self.viewModel = viewModel
-
-        var subviews = [PickerVM.PickerItemVM]()
-        for subview in viewModel.subviews {
-            subviews.append(subview.viewModel)
-        }
-
-        self.pickerView = PickerView(subviewsVM: subviews)
         super.init(screenTitle: viewModel.title, type: .exercises)
     }
 
@@ -78,8 +73,42 @@ final class PickerViewController: RehAppViewController {
 //            RehAppCache.shared.createCalendarItem(date: date)
 //        }
 
-        let buttonActions = makeButtonActions()
-        pickerView.setButtonActions(buttonActions)
+        buttonActions = makeButtonActions()
+        configureDataSourceCellRegistrations()
+
+        guard let dataSource = dataSource else { return }
+
+        let items = viewModel.subviews.map({ $0.viewModel })
+        dataSource.rebuildSnapshot(items: items, animateDifferences: true)
+//        pickerView.setButtonActions(buttonActions)
+    }
+
+    private func configureDataSourceCellRegistrations() {
+        // swiftlint:disable:next line_length
+        let cellRegistration = UICollectionView.CellRegistration<PickerCell, PickerVM.PickerItemVM> { [weak self] (cell, indexPath, item) in
+            guard let self = self else { return }
+            cell.setValues(with: item)
+
+            guard viewModel.subviews.count == buttonActions.count else {
+#if DEBUG
+                print("There should be as many action as subviews. If there is no action, put nil.")
+#endif
+                return
+            }
+
+            let index = indexPath.item
+            if let action = buttonActions[index] {
+                cell.setButtonAction(action)
+            }
+        }
+
+        dataSource = PickerDataSource(collectionView: pickerView.collectionView,
+                                      cellProvider: { collectionView, indexPath, item in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration,
+                                                                for: indexPath,
+                                                                item: item)
+        })
+
     }
 
     // MARK: - Private helper methods
