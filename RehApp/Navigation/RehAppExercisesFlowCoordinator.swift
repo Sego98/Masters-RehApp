@@ -188,27 +188,34 @@ class RehAppExercisesFlowCoordinator {
     private func saveRehabilitation() {
         let endTime = Date()
         let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
-        HealthData.shared.saveRehabilitation(rehabilitation) { [weak self] (success, error) in
-            guard let self = self else { return }
+        HealthData.shared.requestHealthAuthorization { success in
             if success {
+                HealthData.shared.saveRehabilitation(rehabilitation) { [weak self] (success, error) in
+                    guard let self = self else { return }
+                    if success {
+                        let endTimeDateComponents = Calendar.current.dateComponents([.year, .month, .day],
+                                                                                    from: endTime)
+                        if let date = Calendar.current.date(from: endTimeDateComponents) {
+                            RehAppCache.shared.createCalendarItem(date: date)
+                        }
 #if DEBUG
-                print("💾 Workout saved successfully")
+                        print("💾 Workout saved successfully")
 #endif
-            } else {
-                showRehabilitationFailedToSaveAlert()
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            self.navigationController?.dismiss(animated: true) {
+                                self.showRehabilitationFailedToSaveAlert()
+                            }
+                        }
 #if DEBUG
-                if let error = error {
-                    print("❌ Workout failed to save with error \(error.localizedDescription)")
+                        if let error = error {
+                            print("❌ Workout failed to save with error \(error.localizedDescription)")
+                        }
+#endif
+                    }
                 }
-#endif
             }
         }
-
-        let endTimeDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: endTime)
-        if let date = Calendar.current.date(from: endTimeDateComponents) {
-            RehAppCache.shared.createCalendarItem(date: date)
-        }
-
     }
 
     private func makeAlert(title: String,
