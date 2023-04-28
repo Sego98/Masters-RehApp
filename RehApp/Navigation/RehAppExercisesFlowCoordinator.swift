@@ -106,39 +106,31 @@ class RehAppExercisesFlowCoordinator {
         show(viewController)
     }
 
+    // MARK: - Alerts
+
     private func showFinishRehabilitationAlert() {
         let numberOfRemainingExercises = exerciseViewModels.count - selectedIndex - 1
 
-        let message: String
-        let alertAction: UIAlertAction
         if selectedIndex < exerciseViewModels.count - 1 {
             selectedIndex += 1
-            message = """
+            let message = """
             Uspješno si odradio i ovu vježbu. Uzmi kratki predah i nastavi dalje. \
             \n\n⏳ Broj preostalih vježbi: \(numberOfRemainingExercises)
             """
-            alertAction = UIAlertAction(title: "Nastavi",
+            let alertAction = UIAlertAction(title: "Nastavi",
                                         style: .default,
                                         handler: { [weak self] _ in
                 guard let self = self else { return }
                 showExerciseDetailsScreen()
             })
             SoundPlayer.shared.playSound(.singleExerciseFinished)
+            let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+
+            navigationController?.present(alert, animated: true)
         } else {
-            message = "Još jedan dan kada si odradio sve vježbe. Sada je vrijeme da se zasluženo odmoriš! 🏆"
-            alertAction = UIAlertAction(title: "Završi",
-                                        style: .default,
-                                        handler: { [weak self] _ in
-                guard let self = self else { return }
-                navigationController?.popToRootViewController(animated: true)
-            })
             SoundPlayer.shared.playSound(.allExercisesFinished)
             saveRehabilitation()
         }
-
-        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
-
-        navigationController?.present(alert, animated: true)
     }
 
     func showFinishButtonAlert() {
@@ -167,6 +159,18 @@ class RehAppExercisesFlowCoordinator {
         navigationController?.present(alert, animated: true)
     }
 
+    private func showRehabilitationSavedSuccessfullyAlert() {
+        let message = "Uspješno si odradio svoje vježbe i podaci su spremljeni u aplikaciji Zdravlje! 🏆"
+        let alertAction = UIAlertAction(title: "Završi",
+                                    style: .default,
+                                    handler: { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.popToRootViewController(animated: true)
+        })
+        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+        navigationController?.present(alert, animated: true)
+    }
+
     private func showRehabilitationFailedToSaveAlert() {
         let dismissAction = UIAlertAction(title: "Završi", style: .default) { [weak self] _ in
             guard let self = self else { return }
@@ -174,8 +178,9 @@ class RehAppExercisesFlowCoordinator {
         }
         let alert = makeAlert(title: "Rehabilitacija nije spremljena",
                               message: """
-        Nažalost rehabilitacija nije spremljena. Rehabilitacija mora trajati barem jednu minutu kako \
-        bi se spremila i aplikacija mora imati dozvolu da upisuje sadržaj u aplikaciju Zdravlje
+        😕 Odlično si odradio svoju rehabilitaciju, ali nažalost podaci nisu spremljeni u aplikaciju zdravlje. \
+        Rehabilitacija mora trajati barem jednu minutu kako bi se spremila i aplikacija mora imati \
+        dozvolu da upisuje i čita sadržaj svih potrebnih komponenti u aplikaciji Zdravlje
         """,
                               preferredStyle: .alert,
                               actions: [dismissAction])
@@ -198,14 +203,16 @@ class RehAppExercisesFlowCoordinator {
                         if let date = Calendar.current.date(from: endTimeDateComponents) {
                             RehAppCache.shared.createCalendarItem(date: date)
                         }
+
+                        DispatchQueue.main.async {
+                            self.showRehabilitationSavedSuccessfullyAlert()
+                        }
 #if DEBUG
                         print("💾 Workout saved successfully")
 #endif
                     } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                            self.navigationController?.dismiss(animated: true) {
-                                self.showRehabilitationFailedToSaveAlert()
-                            }
+                        DispatchQueue.main.async {
+                            self.showRehabilitationFailedToSaveAlert()
                         }
 #if DEBUG
                         if let error = error {

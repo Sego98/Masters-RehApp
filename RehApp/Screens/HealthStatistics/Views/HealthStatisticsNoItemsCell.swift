@@ -26,8 +26,8 @@ final class HealthStatisticsNoItemsCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .title2)
         label.text = """
-        Čini se kako još nisi odradio niti jednu vježbu rehabilitacije. Vrijeme je da odradiš svoju \
-        prvu vježbu i podaci će se prikazati na ekranu.
+        Čini se kako još nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup podacima iz \
+        Zdravlja.
         """
         return label
     }()

@@ -58,11 +58,11 @@ class HealthData {
 
             if success {
 #if DEBUG
-                print("✅ HealthKit authorization has been successful!")
+                print("✅ HealthKit authorization finished")
 #endif
             } else {
 #if DEBUG
-                print("❌ HealthKit authorization was not successful. :(")
+                print("❌ HealthKit authorization has failed.")
 #endif
             }
             completion(success)
