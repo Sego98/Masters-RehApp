@@ -167,19 +167,39 @@ class RehAppExercisesFlowCoordinator {
         navigationController?.present(alert, animated: true)
     }
 
+    private func showRehabilitationFailedToSaveAlert() {
+        let dismissAction = UIAlertAction(title: "Završi", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.popToRootViewController(animated: true)
+        }
+        let alert = makeAlert(title: "Rehabilitacija nije spremljena",
+                              message: """
+        Nažalost rehabilitacija nije spremljena. Rehabilitacija mora trajati barem jednu minutu kako \
+        bi se spremila i aplikacija mora imati dozvolu da upisuje sadržaj u aplikaciju Zdravlje
+        """,
+                              preferredStyle: .alert,
+                              actions: [dismissAction])
+
+        navigationController?.present(alert, animated: true)
+    }
+
     // MARK: - Helper methods
 
     private func saveRehabilitation() {
         let endTime = Date()
         let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
-        HealthData.shared.saveRehabilitation(rehabilitation) { success, error in
+        HealthData.shared.saveRehabilitation(rehabilitation) { [weak self] (success, error) in
+            guard let self = self else { return }
             if success {
 #if DEBUG
                 print("💾 Workout saved successfully")
 #endif
             } else {
+                showRehabilitationFailedToSaveAlert()
 #if DEBUG
-                print("❌ Workout failed to save with error \(error?.localizedDescription as Any)")
+                if let error = error {
+                    print("❌ Workout failed to save with error \(error.localizedDescription)")
+                }
 #endif
             }
         }

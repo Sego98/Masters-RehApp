@@ -17,6 +17,7 @@ extension HealthData {
 #if DEBUG
             print("⛔️ Didn't save the workout because it isn't valid. It needs to last at least 1 min.")
 #endif
+            completion(false, nil)
             return
         }
 
