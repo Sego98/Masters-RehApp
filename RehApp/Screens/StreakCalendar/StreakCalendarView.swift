@@ -47,10 +47,14 @@ final class StreakCalendarView: UIView {
     private func configure() {
         backgroundColor = .rehAppBackground
 
-        guard calendarDateComponents.isEmpty == false else { return }
+        var firstMonthDateComponents: DateComponents
+        if calendarDateComponents.isEmpty == false {
+            firstMonthDateComponents = calendarDateComponents[0]
+            firstMonthDateComponents.day = nil
+        } else {
+            firstMonthDateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
+        }
 
-        var firstMonthDateComponents = calendarDateComponents[0]
-        firstMonthDateComponents.day = nil
         guard let firstMonth = Calendar.current.date(from: firstMonthDateComponents) else { return }
 
         calendarView.availableDateRange = DateInterval(start: firstMonth,
