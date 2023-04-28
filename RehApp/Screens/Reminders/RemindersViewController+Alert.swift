@@ -93,7 +93,6 @@ extension RemindersViewController {
                 self.updateReminderAndNotification(id: reminder?.id)
             }
             self.presentedAlert = nil
-            self.dismiss(animated: true)
         })
         submitAction.isEnabled = false
         self.submitAction = submitAction
@@ -103,7 +102,6 @@ extension RemindersViewController {
                                       style: .destructive,
                                       handler: { [weak self] _ in
             self?.presentedAlert = nil
-            self?.dismiss(animated: true)
         }))
     }
 
