@@ -4,6 +4,7 @@
 //
 //  Created by Akademija on 12.04.2023..
 //
+// swiftlint:disable function_body_length
 
 import Foundation
 import UIKit
@@ -22,12 +23,13 @@ extension HealthStatisticsViewController {
                 self?.didFetchRehabilitationWorkouts = true
                 return
             }
-            makeViewModels(from: rehabilitations, startDate: date)
+            makeRehabilitationViewModels(from: rehabilitations, startDate: date)
             didFetchRehabilitationWorkouts = true
             configureChartsIfPossible()
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func fetchAverageQuantitiesForRehabilitations(identifier: HKQuantityTypeIdentifier,
                                                   from date: Date) {
         HealthData.shared.fetchDailyStatistics(identifier: identifier,
@@ -65,7 +67,9 @@ extension HealthStatisticsViewController {
                 return
             }
 
-            statisticsCollection?.enumerateStatistics(from: date, to: Date(), with: { (statistics, _) in
+            statisticsCollection?.enumerateStatistics(from: date,
+                                                      to: Date(),
+                                                      with: { (statistics, _) in
                 switch identifier {
                 case .heartRate:
                     if let value = statistics.averageQuantity()?.doubleValue(for: unit) {
@@ -110,16 +114,17 @@ extension HealthStatisticsViewController {
         }
     }
 
-    private func makeViewModels(from rehabilitations: [HKWorkout], startDate: Date) {
+    private func makeRehabilitationViewModels(from rehabilitations: [HKWorkout], startDate: Date) {
         let rehabilitationVMs = rehabilitations.map({ RehabilitationWorkout(start: $0.startDate, end: $0.endDate)})
-        var rehabDurations = rehabilitationVMs.map({ WorkoutDurationVM(valueMinutes: $0.duration / 60,
-                                                                  dayBegin: $0.start)})
+
+        var rehabDurations = rehabilitationVMs.map({
+            WorkoutDurationVM(valueMinutes: $0.duration / 60, dayBegin: $0.start)
+        })
         let now = Date()
-        let rehabStartDateComponents = rehabDurations.map({ Calendar.current.dateComponents([.year, .month, .day],
-                                                                                            from: $0.dayBegin)
+        let rehabStartDateComponents = rehabDurations.map({
+            Calendar.current.dateComponents([.year, .month, .day], from: $0.dayBegin)
         })
         var date = startDate
-
         while date < now {
             let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
             if rehabStartDateComponents.contains(dateComponents) == false {
