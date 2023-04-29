@@ -10,10 +10,11 @@ import UIKit
 
 extension UIFont {
 
-    static func preferredFont(for style: TextStyle, weight: Weight) -> UIFont {
+    static func preferredFont(for style: UIFont.TextStyle, trait: Weight) -> UIFont {
         let metrics = UIFontMetrics(forTextStyle: style)
-        let desc = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
-        let font = UIFont.systemFont(ofSize: desc.pointSize, weight: weight)
+        let description = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
+        let font = UIFont.systemFont(ofSize: description.pointSize,
+                                     weight: trait)
         return metrics.scaledFont(for: font)
     }
 

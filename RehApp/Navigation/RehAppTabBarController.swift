@@ -24,7 +24,7 @@ final class RehAppTabBarController: UITabBarController {
 
         let attributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
             NSAttributedString.Key.kern: NSNumber(value: 1)
         ]
 

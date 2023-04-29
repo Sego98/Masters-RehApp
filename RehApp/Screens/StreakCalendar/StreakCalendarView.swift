@@ -24,8 +24,8 @@ final class StreakCalendarView: UIView {
     private let allDaysLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title2, weight: .bold)
+        label.adjustsFontForContentSizeCategory = false
+        label.font = .preferredFont(for: .title2, trait: .bold)
         label.textAlignment = .natural
         label.numberOfLines = 0
         return label
@@ -69,7 +69,7 @@ final class StreakCalendarView: UIView {
         dateSelection.selectedDates = calendarDateComponents
         calendarView.selectionBehavior = dateSelection
 
-        allDaysLabel.text = "🔥 Ukupan broj dana: \(calendarDateComponents.count)"
+        allDaysLabel.text = "Ukupan broj dana: \(calendarDateComponents.count)"
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide

@@ -18,7 +18,7 @@ final class CollectionViewTitleHeader: UICollectionReusableView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title1, weight: .bold)
+        label.font = .preferredFont(for: .title1, trait: .bold)
         label.numberOfLines = 0
         return label
     }()

@@ -16,7 +16,7 @@ final class ReminderTitleTimeView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title2, weight: .bold)
+        label.font = .preferredFont(for: .title2, trait: .bold)
         label.textAlignment = .natural
         label.numberOfLines = 0
         return label
@@ -26,7 +26,7 @@ final class ReminderTitleTimeView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title2, weight: .bold)
+        label.font = .preferredFont(for: .title2, trait: .bold)
         label.textAlignment = .right
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .horizontal)

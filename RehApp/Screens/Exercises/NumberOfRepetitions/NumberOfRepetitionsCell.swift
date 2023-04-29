@@ -16,7 +16,7 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title1, weight: .bold)
+        label.font = .preferredFont(for: .title1, trait: .bold)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.text = "Odaberi broj ponavljanja:"
