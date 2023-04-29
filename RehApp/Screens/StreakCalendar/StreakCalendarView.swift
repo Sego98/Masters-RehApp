@@ -24,6 +24,7 @@ final class StreakCalendarView: UIView {
     private let allDaysLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(for: .title2, weight: .bold)
         label.textAlignment = .natural
         label.numberOfLines = 0
