@@ -49,6 +49,11 @@ final class ExerciseCounterViewController: RehAppViewController {
         configure()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hidesBottomBarWhenPushed = true
+    }
+
     private func configure() {
         disableGoingBackwards()
         configureDataSourceCellRegistrations()

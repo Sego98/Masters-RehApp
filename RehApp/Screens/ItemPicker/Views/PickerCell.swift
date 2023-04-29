@@ -57,8 +57,6 @@ final class PickerCell: UICollectionViewCell {
         contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 72, bottom: 16, trailing: 72)
         let guide = contentView.layoutMarginsGuide
 
-        let imageDimension = CGFloat(200)
-
         let bottomConstraint = pictureButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
 
@@ -69,8 +67,6 @@ final class PickerCell: UICollectionViewCell {
 
             pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             pictureButton.heightAnchor.constraint(equalTo: pictureButton.widthAnchor),
-//            pictureButton.widthAnchor.constraint(equalToConstant: imageDimension),
-//            pictureButton.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
             pictureButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             pictureButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             bottomConstraint

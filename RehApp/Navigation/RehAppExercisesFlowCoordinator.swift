@@ -134,9 +134,7 @@ class RehAppExercisesFlowCoordinator {
     }
 
     func showFinishButtonAlert() {
-        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-        }
+        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { _ in }
         let finishAndDontSaveAction = UIAlertAction(title: "Završi bez spremanja rehabilitacije",
                                                     style: .destructive) { [weak self] _ in
             guard let self = self else { return }
