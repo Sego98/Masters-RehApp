@@ -50,7 +50,7 @@ final class ExerciseCounterCell: UICollectionViewCell {
             progressBarView
         ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
         let guide = contentView.layoutMarginsGuide
 
         let bottomConstraint = exerciseImageView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)

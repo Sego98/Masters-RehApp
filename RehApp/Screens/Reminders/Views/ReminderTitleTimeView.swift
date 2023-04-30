@@ -75,4 +75,8 @@ final class ReminderTitleTimeView: UIView {
         nameLabel.text = name
         timeLabel.text = Formatters.timeFormatter.string(from: time)
     }
+
+    func setContentSizeCategory(isAccessibility: Bool) {
+        stackView.axis = isAccessibility ? .vertical : .horizontal
+    }
 }

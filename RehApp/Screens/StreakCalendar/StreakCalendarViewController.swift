@@ -50,8 +50,8 @@ final class StreakCalendarViewController: UIViewController {
     private func setPresentationControllerDetents() {
         guard let presentationController = presentationController as? UISheetPresentationController else { return }
 
-        let preferRedContentSizeCategory = UIApplication.shared.preferredContentSizeCategory
-        let isAccessibility = preferRedContentSizeCategory >= .accessibilityMedium
+        let preferredContentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        let isAccessibility = preferredContentSizeCategory >= .accessibilityMedium
 
         presentationController.detents = isAccessibility ? [.large()] : [.medium()]
     }
