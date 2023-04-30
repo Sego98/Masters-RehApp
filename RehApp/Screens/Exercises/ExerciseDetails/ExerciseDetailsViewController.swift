@@ -111,4 +111,8 @@ final class ExerciseDetailsViewController: RehAppViewController {
         return exerciseDetailsView.overlayTimerView.timerLabel
     }
 
+    func hideNavigationBarItems() {
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+    }
 }

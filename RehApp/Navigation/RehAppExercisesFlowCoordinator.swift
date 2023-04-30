@@ -63,6 +63,7 @@ class RehAppExercisesFlowCoordinator {
                                                            isExercisingInProgress: true)
         let action = UIAction { _ in
             self.startOverlayTimer()
+            viewController.hideNavigationBarItems()
         }
 
         let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "stop.circle"),
