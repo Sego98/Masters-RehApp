@@ -35,7 +35,8 @@ final class CircularProgressBarView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0"
         label.backgroundColor = .clear
-        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.font = .preferredFont(for: .largeTitle, trait: .bold)
+        label.textColor = .secondaryLabel
         return label
     }()
 

@@ -24,9 +24,9 @@ final class ExerciseCounterCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = .label
+        label.textColor = .secondaryLabel
         label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(for: .title1, trait: .bold)
         label.numberOfLines = 0
         return label
     }()
@@ -53,21 +53,21 @@ final class ExerciseCounterCell: UICollectionViewCell {
         contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         let guide = contentView.layoutMarginsGuide
 
-        let bottomConstraint = progressBarView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+        let bottomConstraint = exerciseImageView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            exerciseImageView.heightAnchor.constraint(equalToConstant: 200),
-            exerciseImageView.widthAnchor.constraint(equalTo: exerciseImageView.heightAnchor),
-            exerciseImageView.topAnchor.constraint(equalTo: guide.topAnchor),
-            exerciseImageView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
-
-            maxRepetitionsLabel.topAnchor.constraint(equalTo: exerciseImageView.bottomAnchor, constant: 32),
+            maxRepetitionsLabel.topAnchor.constraint(equalTo: guide.topAnchor),
             maxRepetitionsLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             maxRepetitionsLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            progressBarView.topAnchor.constraint(equalTo: maxRepetitionsLabel.bottomAnchor, constant: 32),
+            progressBarView.topAnchor.constraint(equalTo: maxRepetitionsLabel.bottomAnchor, constant: 16),
             progressBarView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
+
+            exerciseImageView.heightAnchor.constraint(equalToConstant: 200),
+            exerciseImageView.widthAnchor.constraint(equalTo: exerciseImageView.heightAnchor),
+            exerciseImageView.topAnchor.constraint(equalTo: progressBarView.bottomAnchor, constant: 16),
+            exerciseImageView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
             bottomConstraint
         ])
     }
