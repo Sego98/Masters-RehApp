@@ -18,9 +18,16 @@ final class CollectionViewTitleHeader: UICollectionReusableView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title1, weight: .bold)
+        label.font = .preferredFont(for: .title1, trait: .bold)
         label.numberOfLines = 0
         return label
+    }()
+
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
     }()
 
     // MARK: - Init
@@ -35,18 +42,19 @@ final class CollectionViewTitleHeader: UICollectionReusableView {
     }
 
     private func configure() {
-        addSubview(headerLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(headerLabel)
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide
 
-        let bottomConstraint = headerLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+        let bottomConstraint = stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: guide.topAnchor),
-            headerLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: guide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             bottomConstraint
         ])
     }
@@ -55,5 +63,9 @@ final class CollectionViewTitleHeader: UICollectionReusableView {
 
     func setHeaderTitle(_ title: String) {
         headerLabel.text = title
+    }
+
+    func hideHeaderTitle(_ isHidden: Bool) {
+        headerLabel.isHidden = isHidden
     }
 }

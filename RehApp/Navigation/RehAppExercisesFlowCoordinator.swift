@@ -63,6 +63,7 @@ class RehAppExercisesFlowCoordinator {
                                                            isExercisingInProgress: true)
         let action = UIAction { _ in
             self.startOverlayTimer()
+            viewController.hideNavigationBarItems()
         }
 
         let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "stop.circle"),
@@ -106,46 +107,35 @@ class RehAppExercisesFlowCoordinator {
         show(viewController)
     }
 
+    // MARK: - Alerts
+
     private func showFinishRehabilitationAlert() {
         let numberOfRemainingExercises = exerciseViewModels.count - selectedIndex - 1
 
-        let message: String
-        let alertAction: UIAlertAction
         if selectedIndex < exerciseViewModels.count - 1 {
             selectedIndex += 1
-            message = """
+            let message = """
             Uspješno si odradio i ovu vježbu. Uzmi kratki predah i nastavi dalje. \
             \n\n⏳ Broj preostalih vježbi: \(numberOfRemainingExercises)
             """
-            alertAction = UIAlertAction(title: "Nastavi",
+            let alertAction = UIAlertAction(title: "Nastavi",
                                         style: .default,
                                         handler: { [weak self] _ in
                 guard let self = self else { return }
                 showExerciseDetailsScreen()
             })
             SoundPlayer.shared.playSound(.singleExerciseFinished)
+            let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+
+            navigationController?.present(alert, animated: true)
         } else {
-            message = "Još jedan dan kada si odradio sve vježbe. Sada je vrijeme da se zasluženo odmoriš! 🏆"
-            alertAction = UIAlertAction(title: "Završi",
-                                        style: .default,
-                                        handler: { [weak self] _ in
-                guard let self = self else { return }
-                navigationController?.popToRootViewController(animated: true)
-            })
             SoundPlayer.shared.playSound(.allExercisesFinished)
             saveRehabilitation()
         }
-
-        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
-
-        navigationController?.present(alert, animated: true)
     }
 
     func showFinishButtonAlert() {
-        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            navigationController?.dismiss(animated: true)
-        }
+        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { _ in }
         let finishAndDontSaveAction = UIAlertAction(title: "Završi bez spremanja rehabilitacije",
                                                     style: .destructive) { [weak self] _ in
             guard let self = self else { return }
@@ -167,28 +157,70 @@ class RehAppExercisesFlowCoordinator {
         navigationController?.present(alert, animated: true)
     }
 
+    private func showRehabilitationSavedSuccessfullyAlert() {
+        let message = "Uspješno si odradio svoje vježbe i podaci su spremljeni u aplikaciji Zdravlje! 🏆"
+        let alertAction = UIAlertAction(title: "Završi",
+                                    style: .default,
+                                    handler: { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.popToRootViewController(animated: true)
+        })
+        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+        navigationController?.present(alert, animated: true)
+    }
+
+    private func showRehabilitationFailedToSaveAlert() {
+        let dismissAction = UIAlertAction(title: "Završi", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            navigationController?.popToRootViewController(animated: true)
+        }
+        let alert = makeAlert(title: "Rehabilitacija nije spremljena",
+                              message: """
+        😕 Odlično si odradio svoju rehabilitaciju, ali nažalost podaci nisu spremljeni u aplikaciju zdravlje. \
+        Rehabilitacija mora trajati barem jednu minutu kako bi se spremila i aplikacija mora imati \
+        dozvolu da upisuje i čita sadržaj svih potrebnih komponenti u aplikaciji Zdravlje
+        """,
+                              preferredStyle: .alert,
+                              actions: [dismissAction])
+
+        navigationController?.present(alert, animated: true)
+    }
+
     // MARK: - Helper methods
 
     private func saveRehabilitation() {
         let endTime = Date()
         let rehabilitation = RehabilitationWorkout(start: startTime, end: endTime)
-        HealthData.shared.saveRehabilitation(rehabilitation) { success, error in
+        HealthData.shared.requestHealthAuthorization { success in
             if success {
+                HealthData.shared.saveRehabilitation(rehabilitation) { [weak self] (success, error) in
+                    guard let self = self else { return }
+                    if success {
+                        let endTimeDateComponents = Calendar.current.dateComponents([.year, .month, .day],
+                                                                                    from: endTime)
+                        if let date = Calendar.current.date(from: endTimeDateComponents) {
+                            RehAppCache.shared.createCalendarItem(date: date)
+                        }
+
+                        DispatchQueue.main.async {
+                            self.showRehabilitationSavedSuccessfullyAlert()
+                        }
 #if DEBUG
-                print("💾 Workout saved successfully")
+                        print("💾 Workout saved successfully")
 #endif
-            } else {
+                    } else {
+                        DispatchQueue.main.async {
+                            self.showRehabilitationFailedToSaveAlert()
+                        }
 #if DEBUG
-                print("❌ Workout failed to save with error \(error?.localizedDescription as Any)")
+                        if let error = error {
+                            print("❌ Workout failed to save with error \(error.localizedDescription)")
+                        }
 #endif
+                    }
+                }
             }
         }
-
-        let endTimeDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: endTime)
-        if let date = Calendar.current.date(from: endTimeDateComponents) {
-            RehAppCache.shared.createCalendarItem(date: date)
-        }
-
     }
 
     private func makeAlert(title: String,

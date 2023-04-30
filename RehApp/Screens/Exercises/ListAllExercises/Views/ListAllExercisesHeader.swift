@@ -45,7 +45,7 @@ final class ListAllExercisesHeader: UICollectionReusableView {
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.textAlignment = .left
-        label.font = .preferredFont(for: .title3, weight: .bold)
+        label.font = .preferredFont(for: .title3, trait: .bold)
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -57,7 +57,7 @@ final class ListAllExercisesHeader: UICollectionReusableView {
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .preferredFont(for: .title3, weight: .bold)
+        label.font = .preferredFont(for: .title3, trait: .bold)
         return label
     }()
 

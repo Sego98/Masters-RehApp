@@ -15,10 +15,11 @@ final class PickerCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(for: .title1, weight: .bold)
-        label.textAlignment = .left
         label.adjustsFontForContentSizeCategory = true
+        label.font = .preferredFont(for: .title1, trait: .bold)
+        label.textAlignment = .left
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
         return label
     }()
 
@@ -28,7 +29,7 @@ final class PickerCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.imageView?.layer.cornerRadius = cornerRadius
         button.imageView?.contentMode = .scaleAspectFill
-        button.imageView?.adjustsImageSizeForAccessibilityContentSizeCategory = true
+//        button.imageView?.adjustsImageSizeForAccessibilityContentSizeCategory = true
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemGray2.cgColor
         button.layer.cornerRadius = cornerRadius
@@ -53,23 +54,21 @@ final class PickerCell: UICollectionViewCell {
             titleLabel, pictureButton
         ])
 
-        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 72, bottom: 16, trailing: 72)
         let guide = contentView.layoutMarginsGuide
-
-        let imageDimension = CGFloat(200)
 
         let bottomConstraint = pictureButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: guide.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             pictureButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            pictureButton.heightAnchor.constraint(equalToConstant: imageDimension),
-            pictureButton.widthAnchor.constraint(equalToConstant: imageDimension),
-            pictureButton.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
+            pictureButton.heightAnchor.constraint(equalTo: pictureButton.widthAnchor),
+            pictureButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            pictureButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             bottomConstraint
         ])
     }

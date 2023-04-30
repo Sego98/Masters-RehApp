@@ -33,7 +33,8 @@ final class ExerciseCounterViewController: RehAppViewController {
         exerciseCounter = Observable<Int>
             .interval(.seconds(Int(exerciseVM.oneRepetitionTime)), scheduler: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
-        super.init(screenTitle: exerciseVM.title, type: .exercises)
+        super.init(screenTitle: exerciseVM.title)
+        hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
@@ -47,6 +48,15 @@ final class ExerciseCounterViewController: RehAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+
+    override var hidesBottomBarWhenPushed: Bool {
+        get {
+            return navigationController?.topViewController == self
+        }
+        set {
+            super.hidesBottomBarWhenPushed = newValue
+        }
     }
 
     private func configure() {

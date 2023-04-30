@@ -15,15 +15,19 @@ final class ListAllExercisesCell: UICollectionViewCell {
     private let numberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(forTextStyle: .title2)
         label.textAlignment = .center
         label.textColor = .label
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(forTextStyle: .title2)
         label.textAlignment = .center
         label.textColor = .label

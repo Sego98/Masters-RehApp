@@ -27,6 +27,10 @@ final class RemindersViewController: RehAppViewController {
         super.init(screenTitle: "Podsjetnici", type: .reminders)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,6 +50,11 @@ final class RemindersViewController: RehAppViewController {
     private func configure() {
         navigationItem.rightBarButtonItem?.action = #selector(plusButtonAction)
         remindersView.tableView.delegate = self
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(contentSizeCategoryChanged),
+                                               name: UIContentSizeCategory.didChangeNotification,
+                                               object: nil)
     }
 
     private func configureDataSource() {
@@ -73,6 +82,10 @@ final class RemindersViewController: RehAppViewController {
 
     @objc private func plusButtonAction() {
         configureReminderAlert(type: .newReminder)
+    }
+
+    @objc func contentSizeCategoryChanged(_ notification: Notification) {
+        rebuildAllRemindersSnapshot(animatingDifferences: true)
     }
 
     func rebuildAllRemindersSnapshot(animatingDifferences: Bool) {

@@ -23,6 +23,25 @@ class LargeButton: UIButton {
         }
     }
 
+    override var intrinsicContentSize: CGSize {
+        let labelSize = titleLabel?.intrinsicContentSize ?? .zero
+
+        let topInset = configuration?.contentInsets.top ?? 0
+        let leadingInset = configuration?.contentInsets.leading ?? 0
+        let trailingInset = configuration?.contentInsets.trailing ?? 0
+        let bottomInset = configuration?.contentInsets.bottom ?? 0
+
+        let width = labelSize.width + leadingInset + trailingInset
+        let height = labelSize.height + topInset + bottomInset
+
+        return CGSize(width: width, height: height)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        titleLabel?.preferredMaxLayoutWidth = titleLabel!.frame.size.width
+    }
+
     // MARK: - Init
 
     init(title: String) {
@@ -43,7 +62,9 @@ class LargeButton: UIButton {
         layer.cornerRadius = 30
         backgroundColor = .lightPurple
 
-        titleLabel?.font = .preferredFont(for: .title2, weight: .bold)
+        titleLabel?.font = .preferredFont(for: .title2, trait: .bold)
+        titleLabel?.adjustsFontForContentSizeCategory = true
+        titleLabel?.numberOfLines = 0
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(greaterThanOrEqualToConstant: 60)

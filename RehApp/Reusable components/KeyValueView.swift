@@ -16,7 +16,7 @@ final class KeyValueView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = .preferredFont(for: .title3, weight: .bold)
+        label.font = .preferredFont(for: .title3, trait: .bold)
         label.textAlignment = .left
         return label
     }()

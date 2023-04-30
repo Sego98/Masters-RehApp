@@ -85,6 +85,10 @@ final class ReminderCell: UITableViewCell {
     func setValues(with viewModel: ReminderVM) {
         reminderTitleTimeView.setValues(name: viewModel.name, time: viewModel.time)
         reminderRepeatingSwitchView.setSwitchState(viewModel.isRepeating)
+
+        let contentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        let isAccessibility = contentSizeCategory >= .accessibilityMedium
+        reminderTitleTimeView.setContentSizeCategory(isAccessibility: isAccessibility)
     }
 
     func setSwitchAction(_ action: UIAction) {

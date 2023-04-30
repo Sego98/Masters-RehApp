@@ -12,6 +12,7 @@ enum HealthStatisticsSection: Equatable, Hashable {
     case activeEnergy([EnergyBurnedVM])
     case duration([WorkoutDurationVM])
     case timesOfDayRehabilitation([TimeOfDayVM])
+    case noItems
 
     // MARK: - Computed stored properties
 

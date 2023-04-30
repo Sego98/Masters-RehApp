@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftUI
 import HealthKit
 
 final class HealthStatisticsViewController: RehAppViewController {
@@ -19,15 +18,19 @@ final class HealthStatisticsViewController: RehAppViewController {
     private var dataSource: HealthStatisticsDataSource?
 
     private var sections = [HealthStatisticsSection]()
+    private var healthStatisticsCellRegistrations = HealthStatisticsCellRegistrations()
 
-    var didSetAverageHeartRates = false
-    var didSetEnergiesBurned = false
+    var didFetchRehabilitationWorkouts = false
+    var didFetchAverageHeartRates = false
+    var didFetchEnergiesBurned = false
 
     var rehabilitations = [RehabilitationWorkout]()
     var durations = [WorkoutDurationVM]()
     var timesOfDay = [TimeOfDayVM]()
     var averageHeartRates = [HeartRateVM]()
     var energiesBurned = [EnergyBurnedVM]()
+
+    private var collectionViewHeader: CollectionViewTitleHeader?
 
     // MARK: - Lifecycle
 
@@ -80,33 +83,11 @@ final class HealthStatisticsViewController: RehAppViewController {
     }
 
     private func configureDataSourceCellRegistrations() {
-        let averageHeartRateCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
-            guard let heartRates = item.averageHeartRates else { return }
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                AverageHeartRateCellView(heartRates: heartRates)
-            })
-        }
-
-        let activeEnergyBurnedCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
-            guard let energiesBurned = item.activeEnergiesBurned else { return }
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                EnergyBurnedCellView(energiesBurned: energiesBurned)
-            })
-        }
-
-        let durationsCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
-            guard let durations = item.durations else { return }
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                DurationCellView(durations: durations)
-            })
-        }
-
-        let timesOfDayCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HealthStatisticsSection> { cell, _, item in
-            guard let timesOfDay = item.timesOfDay else { return }
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                TimeOfDayCellView(timesOfDay: timesOfDay)
-            })
-        }
+        let averageHeartRateCellRegistration = healthStatisticsCellRegistrations.averageHeartRateCellRegistration
+        let activeEnergyBurnedCellRegistration = healthStatisticsCellRegistrations.activeEnergyBurnedCellRegistration
+        let durationsCellRegistration = healthStatisticsCellRegistrations.durationsCellRegistration
+        let timesOfDayCellRegistration = healthStatisticsCellRegistrations.timesOfDayCellRegistration
+        let noItemsCellRegistration = healthStatisticsCellRegistrations.noItemsCellRegistration
 
         dataSource = HealthStatisticsDataSource(collectionView: healthStatisticsView.collectionView, cellProvider: { collectionView, indexPath, item in
             let section = self.sections[indexPath.section]
@@ -127,13 +108,21 @@ final class HealthStatisticsViewController: RehAppViewController {
                 return collectionView.dequeueConfiguredReusableCell(using: timesOfDayCellRegistration,
                                                                     for: indexPath,
                                                                     item: item)
+            case .noItems:
+                return collectionView.dequeueConfiguredReusableCell(using: noItemsCellRegistration,
+                                                                    for: indexPath,
+                                                                    item: item)
             }
         })
     }
 
     private func configureDataSourceSupplementaryViews() {
-        let headerRegistration = UICollectionView.SupplementaryRegistration<CollectionViewTitleHeader>(elementKind: CollectionViewTitleHeader.elementKind) { supplementaryView, _, _ in
-            supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+        let headerRegistration = UICollectionView.SupplementaryRegistration<CollectionViewTitleHeader>(elementKind: CollectionViewTitleHeader.elementKind) { [weak self] (supplementaryView, _, _) in
+            guard let self = self else { return }
+            if rehabilitations.isEmpty == false {
+                supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+            }
+            collectionViewHeader = supplementaryView
         }
 
         guard let dataSource = dataSource else { return }
@@ -164,23 +153,38 @@ final class HealthStatisticsViewController: RehAppViewController {
         collectionViewLayout.configuration = layoutConfiguration
     }
 
+    private func refreshCollectionView() {
+        guard let dataSource = dataSource else { return }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if let collectionViewHeader = collectionViewHeader,
+               sections.contains(.noItems) {
+                collectionViewHeader.hideHeaderTitle(true)
+            } else {
+                collectionViewHeader?.hideHeaderTitle(false)
+            }
+
+            healthStatisticsView.startSpinner()
+            dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
+            healthStatisticsView.stopSpinner()
+        }
+    }
+
     // MARK: - Internal methods
 
     func configureChartsIfPossible() {
-        if durations.isEmpty == false,
-           timesOfDay.isEmpty == false,
-           didSetAverageHeartRates,
-           didSetEnergiesBurned {
-            let newSections = makeSections()
+        if didFetchRehabilitationWorkouts,
+           didFetchEnergiesBurned,
+           didFetchAverageHeartRates {
+            let newSections: [HealthStatisticsSection]
+            if rehabilitations.isEmpty == false {
+                newSections = makeSections()
+            } else {
+                newSections = [.noItems]
+            }
             if newSections != sections {
                 sections = newSections
-                guard let dataSource = dataSource else { return }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    healthStatisticsView.startSpinner()
-                    dataSource.rebuildSnapshot(sections: sections, animateDifferences: true)
-                    healthStatisticsView.stopSpinner()
-                }
+                refreshCollectionView()
             }
         }
     }
@@ -188,8 +192,9 @@ final class HealthStatisticsViewController: RehAppViewController {
     // MARK: - Private helper methods
 
     private func clearAllValues() {
-        didSetAverageHeartRates = false
-        didSetEnergiesBurned = false
+        didFetchRehabilitationWorkouts = false
+        didFetchAverageHeartRates = false
+        didFetchEnergiesBurned = false
 
         rehabilitations = []
         durations = []

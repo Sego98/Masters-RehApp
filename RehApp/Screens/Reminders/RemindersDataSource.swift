@@ -17,6 +17,7 @@ final class RemindersDataSource: UITableViewDiffableDataSource<Int, ReminderVM> 
 
         snapshot.appendSections([0])
         snapshot.appendItems(reminders, toSection: 0)
+        snapshot.reloadItems(reminders)
 
         applyOnMainThread(snapshot: snapshot, animatingDifferences: animatingDifferences)
     }
