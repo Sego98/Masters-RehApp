@@ -119,7 +119,9 @@ final class HealthStatisticsViewController: RehAppViewController {
     private func configureDataSourceSupplementaryViews() {
         let headerRegistration = UICollectionView.SupplementaryRegistration<CollectionViewTitleHeader>(elementKind: CollectionViewTitleHeader.elementKind) { [weak self] (supplementaryView, _, _) in
             guard let self = self else { return }
-            supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+            if rehabilitations.isEmpty == false {
+                supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+            }
             collectionViewHeader = supplementaryView
         }
 

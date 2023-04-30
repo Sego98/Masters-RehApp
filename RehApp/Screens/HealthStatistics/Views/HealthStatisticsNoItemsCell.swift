@@ -23,6 +23,7 @@ final class HealthStatisticsNoItemsCell: UICollectionViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .title2)
         label.text = """
