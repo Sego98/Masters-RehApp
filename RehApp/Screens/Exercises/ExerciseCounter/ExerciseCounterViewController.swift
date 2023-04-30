@@ -33,7 +33,7 @@ final class ExerciseCounterViewController: RehAppViewController {
         exerciseCounter = Observable<Int>
             .interval(.seconds(Int(exerciseVM.oneRepetitionTime)), scheduler: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
-        super.init(screenTitle: exerciseVM.title, type: .exercises)
+        super.init(screenTitle: exerciseVM.title)
     }
 
     required init?(coder: NSCoder) {
