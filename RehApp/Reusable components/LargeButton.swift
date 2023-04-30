@@ -23,12 +23,24 @@ class LargeButton: UIButton {
         }
     }
 
-//    override var intrinsicContentSize: CGSize {
-//        let labelSize = titleLabel?.sizeThatFits(CGSize(width: frame.size.width, height: CGFloat.greatestFiniteMagnitude)) ?? .zero
-//        let desiredButtonSize = CGSize(width: labelSize.width + titleEdgeInsets.left + titleEdgeInsets.right, height: labelSize.height + titleEdgeInsets.top + titleEdgeInsets.bottom)
-//        
-//        return desiredButtonSize
-//    }
+    override var intrinsicContentSize: CGSize {
+        let labelSize = titleLabel?.intrinsicContentSize ?? .zero
+
+        let topInset = configuration?.contentInsets.top ?? 0
+        let leadingInset = configuration?.contentInsets.leading ?? 0
+        let trailingInset = configuration?.contentInsets.trailing ?? 0
+        let bottomInset = configuration?.contentInsets.bottom ?? 0
+
+        let width = labelSize.width + leadingInset + trailingInset
+        let height = labelSize.height + topInset + bottomInset
+
+        return CGSize(width: width, height: height)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        titleLabel?.preferredMaxLayoutWidth = titleLabel!.frame.size.width
+    }
 
     // MARK: - Init
 
