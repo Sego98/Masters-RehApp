@@ -40,3 +40,8 @@
 "ExerciseInAfternoon" = "Više voliš vježbati poslije podne. Pokušaj se ustati ranije i odraditi rehabilitaciju kada imaš više energije, bolje ćeš se osjećati.";
 "ExerciseAnyTime" = "Tebi je potpuno svejedno u koje doba dana vježbaš. Svejedno, pokušaj više trenirati ujutro jer tada imaš više energije.";
 "NoExercises" = "Čini se kako još nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup svim podacima iz aplikacije Zdravlje.";
+"Proceed" = "Nastavi";
+"Description" = "Opis";
+"ShoulderExercises" = "Vježbe ramena";
+"ShoulderNoStickExercisesDescription" = "Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje možete raditi bez bilo kakvih pomagala. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.";
+"ShoulderWithStickExercisesDescription" = "Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje morate raditi sa štapom ili nekim sličnim predmetom. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.";

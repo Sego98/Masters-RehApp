@@ -40,3 +40,8 @@
 "ExerciseInAfternoon" = "You prefer to exercise in the afternoon. Try to get up earlier and do rehabilitation when you have more energy, you will feel better.";
 "ExerciseAnyTime" = "It doesn't matter what time of day you exercise. Anyway, try to train more in the morning because then you have more energy.";
 "NoExercises" = "It seems that you haven't done a single rehabilitation exercise yet, or the app doesn't have access to all the data from the Health app.";
+"Proceed" = "Proceed";
+"Description" = "Description";
+"ShoulderExercises" = "Shoulder exercises";
+"ShoulderNoStickExercisesDescription" = "All shoulder rehabilitation exercises that you can do without any aids are shown on the screen. By clicking on an individual exercise, see the details and performance in the form of a picture and video.";
+"ShoulderWithStickExercisesDescription" = "The screen shows all shoulder rehabilitation exercises that you have to do with a stick or similar object. By clicking on an individual exercise, see the details and performance in the form of a picture and video.";
