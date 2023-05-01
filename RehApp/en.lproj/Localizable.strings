@@ -16,3 +16,12 @@
 "Reminders" = "Reminders";
 "Statistics" = "Statistics";
 "TotalNumberOfDays" = "🔥 Total number of days:";
+"EnterTitle" = "Enter a title";
+"EnterDate" = "Enter a date";
+"NewReminder" = "New reminder";
+"EnterReminderDescription" = "To enter a new reminder, enter a name and time";
+"EditReminder" = "Edit reminder";
+"EditReminderDescription" = "To edit a reminder, enter a new name and time";
+"MakeReminder" = "Make a reminder";
+"EditReminder" = "Edit a reminder";
+"Dismiss" = "Dismiss";

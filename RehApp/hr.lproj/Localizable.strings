@@ -16,3 +16,12 @@
 "Reminders" = "Podsjetnici";
 "Statistics" = "Statistika";
 "TotalNumberOfDays" = "🔥 Ukupan broj dana:";
+"EnterTitle" = "Unesi naslov";
+"EnterDate" = "Unesi vrijeme";
+"NewReminder" = "Novi podsjetnik";
+"EnterReminderDescription" = "Za unos novog podsjetnika unesite naziv i vrijeme";
+"EditReminder" = "Uredi podjsetnik";
+"EditReminderDescription" = "Za uređivanje podsjetnika unesite novi naziv i vrijeme";
+"MakeReminder" = "Napravi podsjetnik";
+"EditReminder" = "Uredi podsjetnik";
+"Dismiss" = "Odustani";
