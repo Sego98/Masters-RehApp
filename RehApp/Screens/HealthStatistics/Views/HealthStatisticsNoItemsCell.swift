@@ -26,10 +26,7 @@ final class HealthStatisticsNoItemsCell: UICollectionViewCell {
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .title2)
-        label.text = """
-        Čini se kako još nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup podacima iz \
-        Zdravlja.
-        """
+        label.text = "NoExercises".localize()
         return label
     }()
 

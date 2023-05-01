@@ -23,23 +23,17 @@ struct TimeOfDayCellView: View {
             }
         }
         if morningExercises > afternoonExercises {
-            return "Bravo, više ti paše jutro za treniranje. Tada je najbolje trenirati jer imaš najviše energije"
+            return "ExerciseInMorning".localize()
         } else if morningExercises < afternoonExercises {
-            return """
-            Više voliš vježbati poslije podne. Pokušaj se ustati ranije i odraditi rehabilitaciju kada imaš više \
-            energije, bolje ćeš se osjećati.
-            """
+            return "ExerciseInAfternoon".localize()
         } else {
-            return """
-            Tebi je potpuno svejedno u koje doba dana vježbaš. Svejedno, pokušaj više trenirati ujutro jer tada \
-            imaš više energije.
-            """
+            return "ExerciseAnyTime".localize()
         }
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("🌗 Vrijeme dana rehabilitacije")
+            Text("TimeOfDay".localize())
                 .foregroundColor(.primary)
                 .font(.title2)
                 .fontWeight(.bold)
@@ -50,7 +44,7 @@ struct TimeOfDayCellView: View {
             Chart {
                 ForEach(timesOfDay) { timeOfDayVM in
                     BarMark(
-                        x: .value("Time of day", timeOfDayVM.timeOfDay.rawValue),
+                        x: .value("Time of day", timeOfDayVM.timeOfDay.name),
                         y: .value("Quantity", timeOfDayVM.numberOfTimesExercised)
                     )
                     .foregroundStyle(Color.orange)

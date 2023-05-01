@@ -26,7 +26,7 @@ struct DurationCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "⌚️ Trajanje", averageValue: averageDuration, unit: "min")
+            GraphHeaderView(title: "DurationInMin".localize(), averageValue: averageDuration, unit: "min")
             Chart {
                 ForEach(durations) { duration in
                     LineMark(

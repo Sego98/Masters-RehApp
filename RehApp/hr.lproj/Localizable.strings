@@ -27,3 +27,16 @@
 "Dismiss" = "Odustani";
 "RepeatEveryDay" = "Ponavljanje svaki dan";
 "Delete" = "Obriši";
+"Morning" = "Prijepodne";
+"Afternoon" = "Poslijepodne";
+"BPM" = "BPM";
+"RehabLastSevenDays" = "Podaci rehabilitacija u proteklih 7 dana";
+"Average" = "Prosječna vrijednost:";
+"HeartRate" = "❤️ Otkucaji srca";
+"EnergyBurned" = "⚡️ Potrošena energija";
+"DurationInMin" = "⌚️ Trajanje";
+"TimeOfDay" = "🌗 Vrijeme dana";
+"ExerciseInMorning" = "Bravo, više ti paše jutro za treniranje. Tada je najbolje trenirati jer imaš najviše energije.";
+"ExerciseInAfternoon" = "Više voliš vježbati poslije podne. Pokušaj se ustati ranije i odraditi rehabilitaciju kada imaš više energije, bolje ćeš se osjećati.";
+"ExerciseAnyTime" = "Tebi je potpuno svejedno u koje doba dana vježbaš. Svejedno, pokušaj više trenirati ujutro jer tada imaš više energije.";
+"NoExercises" = "Čini se kako još nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup svim podacima iz aplikacije Zdravlje.";

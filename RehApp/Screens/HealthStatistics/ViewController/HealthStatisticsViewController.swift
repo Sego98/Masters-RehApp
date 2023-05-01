@@ -35,7 +35,7 @@ final class HealthStatisticsViewController: RehAppViewController {
     // MARK: - Lifecycle
 
     init() {
-        super.init(screenTitle: "Statistika", type: .statistics)
+        super.init(screenTitle: "Statistics".localize(), type: .statistics)
     }
 
     required init?(coder: NSCoder) {
@@ -120,7 +120,7 @@ final class HealthStatisticsViewController: RehAppViewController {
         let headerRegistration = UICollectionView.SupplementaryRegistration<CollectionViewTitleHeader>(elementKind: CollectionViewTitleHeader.elementKind) { [weak self] (supplementaryView, _, _) in
             guard let self = self else { return }
             if rehabilitations.isEmpty == false {
-                supplementaryView.setHeaderTitle("Podaci rehabilitacija u proteklih 7 dana")
+                supplementaryView.setHeaderTitle("RehabLastSevenDays".localize())
             }
             collectionViewHeader = supplementaryView
         }

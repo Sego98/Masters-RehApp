@@ -20,7 +20,7 @@ struct GraphHeaderView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             HStack {
-                Text("Prosječna vrijednost:")
+                Text("Average".localize())
                     .foregroundStyle(.primary)
                     .font(.title3)
                 Spacer()

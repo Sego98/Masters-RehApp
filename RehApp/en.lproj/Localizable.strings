@@ -27,3 +27,16 @@
 "Dismiss" = "Dismiss";
 "RepeatEveryDay" = "Repeat every day";
 "Delete" = "Delete";
+"Morning" = "Morning";
+"Afternoon" = "Afternoon";
+"BPM" = "BPM";
+"RehabLastSevenDays" = "Rehabilitation data in the past 7 days";
+"Average" = "Average";
+"HeartRate" = "❤️ Heart rate";
+"EnergyBurned" = "⚡️ Energy burned";
+"DurationInMin" = "⌚️ Duration";
+"TimeOfDay" = "🌗 Time of day";
+"ExerciseInMorning" = "Well done, morning training suits you better. That's when it's best to train because you have the most energy.";
+"ExerciseInAfternoon" = "You prefer to exercise in the afternoon. Try to get up earlier and do rehabilitation when you have more energy, you will feel better.";
+"ExerciseAnyTime" = "It doesn't matter what time of day you exercise. Anyway, try to train more in the morning because then you have more energy.";
+"NoExercises" = "It seems that you haven't done a single rehabilitation exercise yet, or the app doesn't have access to all the data from the Health app.";
