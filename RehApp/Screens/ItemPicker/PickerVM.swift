@@ -29,11 +29,11 @@ struct PickerVM {
     // MARK: - Custom data
 
     static var pickPartToRehab: PickerVM {
-        let title = "Rehabilitacija"
-        let shoulderSubviewVM = PickerItemVM(title: "Rame", imageName: "Shoulder")
-        let handSubviewVM = PickerItemVM(title: "Šaka", imageName: "Hand")
-        let elbowSubview = PickerItemVM(title: "Lakat", imageName: "Elbow")
-        let kneeSubview = PickerItemVM(title: "Koljeno", imageName: "Knee")
+        let title = "Rehabilitation".localize()
+        let shoulderSubviewVM = PickerItemVM(title: "Shoulder".localize(), imageName: "Shoulder")
+        let handSubviewVM = PickerItemVM(title: "Hand".localize(), imageName: "Hand")
+        let elbowSubview = PickerItemVM(title: "Elbow".localize(), imageName: "Elbow")
+        let kneeSubview = PickerItemVM(title: "Knee".localize(), imageName: "Knee")
 
         let subviews = [
             PickerItem(viewModel: shoulderSubviewVM,
@@ -49,9 +49,9 @@ struct PickerVM {
     }
 
     static var pickShoulderExerciseType: PickerVM {
-        let title = "Rame"
-        let noStickSubviewVM = PickerItemVM(title: "Bez štapa", imageName: "ShoulderNoStick")
-        let stickSubviewVM = PickerItemVM(title: "Sa štapom", imageName: "ShoulderWithStick")
+        let title = "Shoulder".localize()
+        let noStickSubviewVM = PickerItemVM(title: "NoStick".localize(), imageName: "ShoulderNoStick")
+        let stickSubviewVM = PickerItemVM(title: "WithStick".localize(), imageName: "ShoulderWithStick")
         let subviewsVM = [
             PickerItem(viewModel: noStickSubviewVM, nextScreenType: .list(.shoulderNoStick)),
             PickerItem(viewModel: stickSubviewVM, nextScreenType: .list(.shouldersWithStick))

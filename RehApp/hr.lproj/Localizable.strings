@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  RehApp
+
+  Created by Akademija on 01.05.2023..
+  
+*/
+"Rehabilitation" = "Rehabilitacija";
+"Shoulder" = "Rame";
+"Hand" = "Šaka";
+"Elbow"= "Lakat";
+"Knee" = "Koljeno";
+"NoStick" = "Bez štapa";
+"WithStick" = "Sa štapom";
