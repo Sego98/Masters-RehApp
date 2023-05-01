@@ -16,10 +16,14 @@ class RehAppNotifications {
     // MARK: - Request authorization
 
     func requestNotificationsAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-            if let error = error {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
+            if success {
 #if DEBUG
-                print(error.localizedDescription)
+            print("✅ Notifications authorized successfully")
+#endif
+            } else {
+#if DEBUG
+                print("❌ Notification authorization failed, error: \(error?.localizedDescription ?? "❓")")
 #endif
             }
         }

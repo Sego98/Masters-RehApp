@@ -35,7 +35,7 @@ final class SoundPlayer {
     func playSound(_ type: SoundType) {
         guard let path = Bundle.main.path(forResource: type.fileName, ofType: nil) else {
 #if DEBUG
-            print("Couldn't find the wanted sound.")
+            print("🔇🔎 Couldn't find the wanted sound.")
 #endif
             return
         }
@@ -46,7 +46,7 @@ final class SoundPlayer {
             soundToPlay?.play()
         } catch {
 #if DEBUG
-            print("Couldn't make the wanted sound.")
+            print("🔇🤝🏽 Couldn't make the wanted sound.")
 #endif
         }
     }

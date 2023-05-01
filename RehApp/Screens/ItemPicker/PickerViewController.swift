@@ -90,7 +90,7 @@ final class PickerViewController: RehAppViewController {
 
             guard viewModel.subviews.count == buttonActions.count else {
 #if DEBUG
-                print("There should be as many action as subviews. If there is no action, put nil.")
+                print("‼️ There should be as many action as subviews. If there is no action, put nil.")
 #endif
                 return
             }
