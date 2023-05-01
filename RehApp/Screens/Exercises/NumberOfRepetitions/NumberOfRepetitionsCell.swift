@@ -19,7 +19,7 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
         label.font = .preferredFont(for: .title1, trait: .bold)
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = "Odaberi broj ponavljanja:"
+        label.text = "ChooseNumberOfRepetitions".localize()
         return label
     }()
 
@@ -36,13 +36,7 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
         label.font = .preferredFont(forTextStyle: .body)
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = """
-        Nakon odabira željenog broja ponavljanja pokrenut će se proces izrade rehabilitacije. Za svaku vježbu \
-        prikazat će se karatki opis vježbe i slika za bolje razumijevanje. Nakon detalja vježbe, imat će tri sekunde \
-        za odložiti mobitel ispred sebe. Tijekom izvođenja vježbe prikazivat će se ukupan broj ponavljanja i \
-        cirkularni prikaz za mjerenje trenutnog ponavljanja. U sredini se nalazi broj ponavljanja koji se trenutno \
-        izvodi.
-        """
+        label.text = "NumberOfRepetitionsDescription".localize()
         return label
     }()
 
@@ -74,11 +68,11 @@ final class NumberOfRepetitionsCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            pickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            pickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             pickerView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             pickerView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 16),
+            descriptionLabel.topAnchor.constraint(equalTo: pickerView.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             bottomConstraint
