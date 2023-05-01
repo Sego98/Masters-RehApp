@@ -25,3 +25,5 @@
 "MakeReminder" = "Make a reminder";
 "EditReminder" = "Edit a reminder";
 "Dismiss" = "Dismiss";
+"RepeatEveryDay" = "Repeat every day";
+"Delete" = "Delete";

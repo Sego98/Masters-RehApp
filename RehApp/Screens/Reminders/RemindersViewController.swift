@@ -24,7 +24,7 @@ final class RemindersViewController: RehAppViewController {
     // MARK: - Lifecycle
 
     init() {
-        super.init(screenTitle: "Podsjetnici", type: .reminders)
+        super.init(screenTitle: "Reminders".localize(), type: .reminders)
     }
 
     deinit {
@@ -136,7 +136,7 @@ extension RemindersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive,
-                                              title: "Obriši") {[weak self] _, _, _ in
+                                              title: "Delete".localize()) {[weak self] _, _, _ in
             guard let self = self else { return }
             guard let reminder = RehAppCache.shared.getReminder(atIndex: indexPath.row) else { return }
             self.deleteReminderAndNotification(id: reminder.id)
