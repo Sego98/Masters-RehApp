@@ -36,59 +36,41 @@ struct ExerciseDetailsVM: Hashable, Equatable {
     }()
 
     static let shoulderExerciseWithoutStick3: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Kruženje ramenima",
-                                 shortDescription: "Kruženje ramenima prema nazad",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano \
-                kruži. Ramenima kružite prema nazad uz lagano zadržavanje u gornjem položaju.
-                """,
+        return ExerciseDetailsVM(title: "CirclingShoulders".localize(),
+                                 shortDescription: "CirclingShouldersBackwards".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription3".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
 
     static let shoulderExerciseWithoutStick4: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Širenje ruku",
-                                 shortDescription: "Širenje ruku od tijela",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
-                podižu od tijela i skupljaju iznad glave. Potom se ruke vraćaju istim putem nazad.
-                """,
+        return ExerciseDetailsVM(title: "SpreadingHands".localize(),
+                                 shortDescription: "ExtendingArmsFromBody".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription4".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
 
     static let shoulderExerciseWithoutStick5: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Podizanje ruku",
-                                 shortDescription: "Podizanje ruku i spajanje ispred sebe",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
-                podižu od tijela sve dok ne budu u istoj ravnini. Zatim se ruke rotiraju tako da se \
-                zajedno skupe ispred prsa. Nakon toga se vraćaju tako da prvo dođu ispružene u istu \
-                ravninu i potom se spuštaju uz tijelo.
-                """,
+        return ExerciseDetailsVM(title: "LiftingArms".localize(),
+                                 shortDescription: "RaisingHandsJoiningForwards".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription5".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
 
     static let shoulderExerciseWithoutStick6: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Istezanje ruku",
-                                 shortDescription: "Istezanje ruku prema nazad",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke \
-                lagano podižu i spajaju iza leđa. Cilj je istezati ramena tako da se lopatice spajaju.
-                """,
+        return ExerciseDetailsVM(title: "StretchingHands".localize(),
+                                 shortDescription: "StretchingHandsBackwards".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription6".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
 
     static let shoulderExerciseWithoutStick7: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Istezanje ruku",
-                                 shortDescription: "Istezanje ruku prema naprijed",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ruke ispruže \
-                ispred prsa i prsti isprepletu. U tom pložaju potrebno je ruke istegnuti prema naprijed. \
-                Nakon istezanje ruke se tako spojene podižu iznad glave.
-                """,
+        return ExerciseDetailsVM(title: "StretchingHands".localize(),
+                                 shortDescription: "StretchingHandsForwards".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription7".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()

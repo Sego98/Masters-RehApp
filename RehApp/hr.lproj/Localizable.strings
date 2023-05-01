@@ -53,3 +53,16 @@
 "CirclingShoulders" = "Kruženje ramenima";
 "RollingShouldersForward" = "Kruženje ramenima prema naprijed";
 "ShoulderExerciseNoStickDescription2" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano kruži. Ramenima kružite prema naprijed uz lagano zadržavanje u gornjem položaju.";
+"CirclingShouldersBackwards" = "Kruženje ramenima prema nazad";
+"ShoulderExerciseNoStickDescription3" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano kruži. Ramenima kružite prema nazad uz lagano zadržavanje u gornjem položaju.";
+"SpreadingHands" = "Širenje ruku";
+"ExtendingArmsFromBody" = "Širenje ruku od tijela";
+"ShoulderExerciseNoStickDescription4" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke podižu od tijela i skupljaju iznad glave. Potom se ruke vraćaju istim putem nazad.";
+"LiftingArms" = "Podizanje ruku";
+"RaisingHandsJoiningForwards" =  "Podizanje ruku i spajanje ispred sebe";
+"ShoulderExerciseNoStickDescription5" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke podižu od tijela sve dok ne budu u istoj ravnini. Zatim se ruke rotiraju tako da se zajedno skupe ispred prsa. Nakon toga se vraćaju tako da prvo dođu ispružene u istu ravninu i potom se spuštaju uz tijelo.";
+"StretchingHands" = "Istezanje ruku";
+"StretchingHandsBackwards" = "Istezanje ruku prema nazad";
+"ShoulderExerciseNoStickDescription6" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ispružene ruke lagano podižu i spajaju iza leđa. Cilj je istezati ramena tako da se lopatice spajaju.";
+"StretchingHandsForwards" = "Istezanje ruku prema naprijed";
+"ShoulderExerciseNoStickDescription7" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ruke ispruže ispred prsa i prsti isprepletu. U tom pložaju potrebno je ruke istegnuti prema naprijed. Nakon istezanje ruke se tako spojene podižu iznad glave.";
