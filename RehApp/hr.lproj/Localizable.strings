@@ -45,3 +45,11 @@
 "ShoulderExercises" = "Vježbe ramena";
 "ShoulderNoStickExercisesDescription" = "Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje možete raditi bez bilo kakvih pomagala. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.";
 "ShoulderWithStickExercisesDescription" = "Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje morate raditi sa štapom ili nekim sličnim predmetom. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.";
+"Start" = "Pokreni";
+"ExerciseVideo" = "Video vježbe";
+"ShoulderLift" = "Podizanje ramena";
+"ShoulderRaiseUp" = "Podizanje ramena prema gore";
+"ShoulderExerciseNoStickDescription1" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramena lagano podižu prema gore. Kada se dođe u gornju poziciju, potrebno je zadržati položaj dvije sekunde.";
+"CirclingShoulders" = "Kruženje ramenima";
+"RollingShouldersForward" = "Kruženje ramenima prema naprijed";
+"ShoulderExerciseNoStickDescription2" = "Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano kruži. Ramenima kružite prema naprijed uz lagano zadržavanje u gornjem položaju.";

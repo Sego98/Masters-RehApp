@@ -20,23 +20,17 @@ struct ExerciseDetailsVM: Hashable, Equatable {
     // MARK: - Shoulder exercises without stick 
 
     static let shoulderExerciseWithoutStick1: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Podizanje ramena",
-                                 shortDescription: "Podizanje ramena prema gore",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramena lagano podižu \
-                prema gore. Kada se dođe u gornju poziciju, potrebno je zadržati položaj dvije sekunde.
-                """,
+        return ExerciseDetailsVM(title: "ShoulderLift".localize(),
+                                 shortDescription: "ShoulderRaiseUp".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription1".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
 
     static let shoulderExerciseWithoutStick2: ExerciseDetailsVM = {
-        return ExerciseDetailsVM(title: "Kruženje ramenima",
-                                 shortDescription: "Kruženje ramenima prema naprijed",
-                                 longDescription: """
-                Ruke se nalaze potpuno opušteno uz tijelo. Vježba se izvodi tako da se ramenima lagano \
-                kruži. Ramenima kružite prema naprijed uz lagano zadržavanje u gornjem položaju.
-                """,
+        return ExerciseDetailsVM(title: "CirclingShoulders".localize(),
+                                 shortDescription: "RollingShouldersForward".localize(),
+                                 longDescription: "ShoulderExerciseNoStickDescription2".localize(),
                                  oneRepetitionTime: mockOneRepetitionTime,
                                  videoURL: mockURL)
     }()
