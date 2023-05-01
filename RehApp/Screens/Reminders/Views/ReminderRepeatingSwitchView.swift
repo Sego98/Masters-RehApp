@@ -2,7 +2,7 @@
 //  ReminderRepeatingSwitchView.swift
 //  RehApp
 //
-//  Created by Akademija on 08.04.2023..
+//  Created by Petar Ljubotina on 08.04.2023..
 //
 
 import Foundation
@@ -19,7 +19,7 @@ final class ReminderRepeatingSwitchView: UIView {
         label.font = .preferredFont(forTextStyle: .title2)
         label.textAlignment = .natural
         label.numberOfLines = 0
-        label.text = "Ponavljanje svaki dan"
+        label.text = "RepeatEveryDay".localize()
         return label
     }()
 

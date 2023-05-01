@@ -2,7 +2,7 @@
 //  ExerciseCounterCell.swift
 //  RehApp
 //
-//  Created by Akademija on 16.04.2023..
+//  Created by Petar Ljubotina on 16.04.2023..
 //
 
 import Foundation
@@ -77,7 +77,7 @@ final class ExerciseCounterCell: UICollectionViewCell {
     func setValues(with viewModel: ExerciseDetailsVM) {
         // notaTODO: configure image
         let maxRepetitions = UserDefaults.standard.integer(forKey: GlobalSettings.numberOfRepetitionsSelectedKey)
-        maxRepetitionsLabel.text = "🏋🏽 Broj ponavljanja: \(maxRepetitions)"
+        maxRepetitionsLabel.text = "CounterNumberOfRepetitions".localize().appending(" \(maxRepetitions)")
     }
 
     func makeProgressAnimation(_ duration: TimeInterval) {

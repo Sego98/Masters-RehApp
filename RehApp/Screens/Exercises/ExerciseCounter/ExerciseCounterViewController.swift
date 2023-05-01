@@ -2,7 +2,7 @@
 //  ExerciseCounterViewController.swift
 //  RehApp
 //
-//  Created by Akademija on 15.04.2023..
+//  Created by Petar Ljubotina on 15.04.2023..
 //
 // swiftlint:disable line_length
 

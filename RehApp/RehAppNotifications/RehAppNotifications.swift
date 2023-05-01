@@ -2,7 +2,7 @@
 //  RehAppNotifications.swift
 //  RehApp
 //
-//  Created by Akademija on 09.04.2023..
+//  Created by Petar Ljubotina on 09.04.2023..
 //
 
 import Foundation
@@ -16,10 +16,14 @@ class RehAppNotifications {
     // MARK: - Request authorization
 
     func requestNotificationsAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-            if let error = error {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
+            if success {
 #if DEBUG
-                print(error.localizedDescription)
+            print("✅ Notifications authorized successfully")
+#endif
+            } else {
+#if DEBUG
+                print("❌ Notification authorization failed, error: \(error?.localizedDescription ?? "❓")")
 #endif
             }
         }
@@ -36,7 +40,7 @@ class RehAppNotifications {
         let content = UNMutableNotificationContent()
         content.title = name
         content.sound = .default
-        content.body = "Vrijeme je da odradiš svoju zakazanu rehabilitaciju!"
+        content.body = "RehabilitationNotification".localize()
 
         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: reminder.isRepeating)

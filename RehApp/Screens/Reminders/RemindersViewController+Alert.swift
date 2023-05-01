@@ -2,7 +2,7 @@
 //  RemindersViewController+Alert.swift
 //  RehApp
 //
-//  Created by Akademija on 06.04.2023..
+//  Created by Petar Ljubotina on 06.04.2023..
 //
 
 import Foundation
@@ -22,12 +22,12 @@ extension RemindersViewController {
         let alert: UIAlertController
         switch type {
         case .newReminder:
-            alert = UIAlertController(title: "Novi podsjetnik",
-                                      message: "Za unos novog podsjetnika unesi ime i vrijeme",
+            alert = UIAlertController(title: "NewReminder".localize(),
+                                      message: "EnterReminderDescription".localize(),
                                       preferredStyle: .alert)
         case .editingReminder:
-            alert = UIAlertController(title: "Uredi podsjetnik",
-                                      message: "Za uređivanje podsjetnika unesite novo ime i vrijeme",
+            alert = UIAlertController(title: "EditReminder".localize(),
+                                      message: "EditReminderDescription".localize(),
                                       preferredStyle: .alert)
         }
         makeAlertInputFields(alert, type: type, reminder: reminder)
@@ -53,7 +53,7 @@ extension RemindersViewController {
                 alert.addTextField {[weak self] in
                     guard let self = self else { return }
                     $0.delegate = self
-                    $0.placeholder = alertTextField.rawValue
+                    $0.placeholder = alertTextField.placehoderName
                     if let reminder = reminder {
                         $0.text = reminder.name
                     }
@@ -62,7 +62,7 @@ extension RemindersViewController {
                 alert.addTextField {[weak self] in
                     guard let self = self else { return }
                     $0.delegate = self
-                    $0.placeholder = alertTextField.rawValue
+                    $0.placeholder = alertTextField.placehoderName
                     $0.inputView = self.wheelsTimePicker
                     if let reminder = reminder {
                         $0.text = Formatters.timeFormatter.string(from: reminder.time)
@@ -78,9 +78,9 @@ extension RemindersViewController {
         let actionTitle: String
         switch type {
         case .newReminder:
-            actionTitle = "Napravi podsjetnik"
+            actionTitle = "MakeReminder".localize()
         case .editingReminder:
-            actionTitle = "Uredi podsjetnik"
+            actionTitle = "EditReminder".localize()
         }
         let submitAction = UIAlertAction(title: actionTitle,
                                          style: .default,
@@ -98,7 +98,7 @@ extension RemindersViewController {
         self.submitAction = submitAction
         alert.addAction(submitAction)
 
-        alert.addAction(UIAlertAction(title: "Odustani",
+        alert.addAction(UIAlertAction(title: "Dismiss".localize(),
                                       style: .destructive,
                                       handler: { [weak self] _ in
             self?.presentedAlert = nil
@@ -162,7 +162,7 @@ extension RemindersViewController: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.placeholder == ReminderAlertTextFields.date.rawValue {
+        if textField.placeholder == ReminderAlertTextFields.date.placehoderName {
             if textField.text == "" {
                 guard let wheelsTimePicker = wheelsTimePicker else { return }
                 let initialTime = Date()

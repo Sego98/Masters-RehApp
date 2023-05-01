@@ -2,7 +2,7 @@
 //  RehAppTabController.swift
 //  RehApp
 //
-//  Created by Akademija on 03.04.2023..
+//  Created by Petar Ljubotina on 03.04.2023..
 //
 
 import Foundation

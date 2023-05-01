@@ -2,7 +2,7 @@
 //  DurationCellView.swift
 //  RehApp
 //
-//  Created by Akademija on 25.04.2023..
+//  Created by Petar Ljubotina on 25.04.2023..
 //
 
 import Foundation
@@ -26,7 +26,7 @@ struct DurationCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "⌚️ Trajanje", averageValue: averageDuration, unit: "min")
+            GraphHeaderView(title: "DurationInMin".localize(), averageValue: averageDuration, unit: "min")
             Chart {
                 ForEach(durations) { duration in
                     LineMark(

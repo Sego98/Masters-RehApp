@@ -2,7 +2,7 @@
 //  RehAppCache+Container.swift
 //  RehApp
 //
-//  Created by Akademija on 09.04.2023..
+//  Created by Petar Ljubotina on 09.04.2023..
 //
 
 import CoreData
@@ -22,7 +22,7 @@ extension RehAppCache {
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
 #if DEBUG
-                print(error.localizedDescription)
+                print("❌ Container failed to load with error: \(error.localizedDescription)")
 #endif
             }
         })

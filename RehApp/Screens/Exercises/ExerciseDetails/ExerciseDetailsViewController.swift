@@ -26,9 +26,9 @@ final class ExerciseDetailsViewController: RehAppViewController {
         self.viewModel = viewModel
         self.isExercisingInProgress = isExercisingInProgress
         if isExercisingInProgress {
-            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Pokreni".uppercased())
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Start".localize().uppercased())
         } else {
-            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "Video vježbe".uppercased())
+            exerciseDetailsView = DefaultCollectionViewWithLargeButton(largeButtonTitle: "ExerciseVideo".localize().uppercased())
         }
         super.init(screenTitle: viewModel.title, type: .exercises)
     }

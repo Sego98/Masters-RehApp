@@ -2,7 +2,7 @@
 //  RehAppTabType.swift
 //  RehApp
 //
-//  Created by Akademija on 03.04.2023..
+//  Created by Petar Ljubotina on 03.04.2023..
 //
 
 import Foundation
@@ -15,11 +15,11 @@ enum RehAppTabType {
     var title: String {
         switch self {
         case .exercises:
-            return "Vježbe"
+            return "Exercises".localize()
         case .reminders:
-            return "Podsjetnici"
+            return "Reminders".localize()
         case .statistics:
-            return "Statistika"
+            return "Statistics".localize()
         }
     }
 

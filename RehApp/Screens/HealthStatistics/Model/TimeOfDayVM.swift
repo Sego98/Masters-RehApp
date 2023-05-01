@@ -2,16 +2,25 @@
 //  TimeOfDayVM.swift
 //  RehApp
 //
-//  Created by Akademija on 25.04.2023..
+//  Created by Petar Ljubotina on 25.04.2023..
 //
 
 import Foundation
 
 struct TimeOfDayVM: Identifiable, Hashable, Equatable {
 
-    enum TimeOfDay: String {
-        case morning = "Prijepodne"
-        case afternoon = "Poslijepodne"
+    enum TimeOfDay {
+        case morning
+        case afternoon
+
+        var name: String {
+            switch self {
+            case .morning:
+                return "Morning".localize()
+            case .afternoon:
+                return "Afternoon".localize()
+            }
+        }
     }
 
     let numberOfTimesExercised: Int

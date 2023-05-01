@@ -18,9 +18,9 @@ struct ListAllExercisesVM: Hashable, Equatable {
     internal init(screenTitle: String,
                   screenDescription: String,
                   leftHeaderDescription: String = "#",
-                  rightHeaderDescription: String = "Opis",
+                  rightHeaderDescription: String = "Description".localize(),
                   exercises: [ExerciseDetailsVM],
-                  largeButtonTitle: String = "Nastavi") {
+                  largeButtonTitle: String = "Proceed".localize()) {
         self.screenTitle = screenTitle
         self.screenDescription = screenDescription
         self.leftHeaderDescription = leftHeaderDescription
@@ -32,20 +32,17 @@ struct ListAllExercisesVM: Hashable, Equatable {
     // MARK: - Shoulder exercises without a stick
 
     static var shoulderNoStick: ListAllExercisesVM {
-        let screenTitle = "Vježbe ramena"
-        let screenDescription = """
-        Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje možete raditi bez bilo kakvih pomagala. \
-        Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
-        """
+        let screenTitle = "ShoulderExercises".localize()
+        let screenDescription = "ShoulderNoStickExercisesDescription".localize()
 
         let exercises: [ExerciseDetailsVM] = [
             .shoulderExerciseWithoutStick1,
-            .shoulderExerciseWithoutStick2
-//            .shoulderExerciseWithoutStick3,
-//            .shoulderExerciseWithoutStick4,
-//            .shoulderExerciseWithoutStick5,
-//            .shoulderExerciseWithoutStick6,
-//            .shoulderExerciseWithoutStick7
+            .shoulderExerciseWithoutStick2,
+            .shoulderExerciseWithoutStick3,
+            .shoulderExerciseWithoutStick4,
+            .shoulderExerciseWithoutStick5,
+            .shoulderExerciseWithoutStick6,
+            .shoulderExerciseWithoutStick7
         ]
 
         return ListAllExercisesVM(screenTitle: screenTitle,
@@ -56,16 +53,16 @@ struct ListAllExercisesVM: Hashable, Equatable {
     // MARK: - Shoulder exercises with a stick
 
     static var shouldersWithStick: ListAllExercisesVM {
-        let screenTitle = "Vježbe ramena"
-        let screenDescription = """
-        Na ekranu su prikazane sve vježbe za rehabilitaciju ramena koje morate raditi sa štapom ili nekim sličnim \
-        predmetom. Klikom na pojedinu vježbu pogledajte detalje i izvedbu u obliku slike i videa.
-        """
+        let screenTitle = "ShoulderExercises".localize()
+        let screenDescription = "ShoulderWithStickExercisesDescription".localize()
 
         let exercises: [ExerciseDetailsVM]  = [
             .shoulderExerciseWithStick1,
             .shoulderExerciseWithStick2,
-            .shoulderExerciseWithStick3
+            .shoulderExerciseWithStick3,
+            .shoulderExerciseWithStick4,
+            .shoulderExerciseWithStick5,
+            .shoulderExerciseWithStick6
         ]
 
         return ListAllExercisesVM(screenTitle: screenTitle,

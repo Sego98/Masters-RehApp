@@ -2,7 +2,7 @@
 //  GraphHeaderView.swift
 //  RehApp
 //
-//  Created by Akademija on 24.04.2023..
+//  Created by Petar Ljubotina on 24.04.2023..
 //
 
 import Foundation
@@ -20,7 +20,7 @@ struct GraphHeaderView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             HStack {
-                Text("Prosječna vrijednost:")
+                Text("Average".localize())
                     .foregroundStyle(.primary)
                     .font(.title3)
                 Spacer()

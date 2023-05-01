@@ -2,14 +2,23 @@
 //  ReminderAlertConfiguration.swift
 //  RehApp
 //
-//  Created by Akademija on 06.04.2023..
+//  Created by Petar Ljubotina on 06.04.2023..
 //
 
 import Foundation
 
-enum ReminderAlertTextFields: String, CaseIterable {
-    case name = "Unesi naslov"
-    case date = "Unesi vrijeme"
+enum ReminderAlertTextFields: CaseIterable {
+    case name
+    case date
+
+    var placehoderName: String {
+        switch self {
+        case .name:
+            return "EnterTitle".localize()
+        case .date:
+            return "EnterDate".localize()
+        }
+    }
 }
 
 enum ReminderAlertType {

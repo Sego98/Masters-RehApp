@@ -2,7 +2,7 @@
 //  HKUnit.swift
 //  RehApp
 //
-//  Created by Akademija on 22.04.2023..
+//  Created by Petar Ljubotina on 22.04.2023..
 //
 
 import HealthKit

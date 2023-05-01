@@ -2,7 +2,7 @@
 //  EnergyBurnedCellView.swift
 //  RehApp
 //
-//  Created by Akademija on 25.04.2023..
+//  Created by Petar Ljubotina on 25.04.2023..
 //
 
 import Foundation
@@ -26,7 +26,7 @@ struct EnergyBurnedCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "⚡️ Potrošena energija", averageValue: averageEnergyBurned, unit: "kcal")
+            GraphHeaderView(title: "EnergyBurned".localize(), averageValue: averageEnergyBurned, unit: "kcal")
             Chart {
                 ForEach(energiesBurned) { energyBurned in
                     BarMark(

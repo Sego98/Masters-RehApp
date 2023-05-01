@@ -2,7 +2,7 @@
 //  RehAppCache.swift
 //  RehApp
 //
-//  Created by Akademija on 09.04.2023..
+//  Created by Petar Ljubotina on 09.04.2023..
 //
 
 import Foundation
@@ -25,9 +25,12 @@ class RehAppCache {
     func saveMainContext() {
         do {
             try mainViewContext.save()
+#if DEBUG
+            print("✅ Core data saved successfully")
+#endif
         } catch {
 #if DEBUG
-            print(error.localizedDescription)
+            print("❌ Core data failed to save, error: \(error.localizedDescription)")
 #endif
         }
     }

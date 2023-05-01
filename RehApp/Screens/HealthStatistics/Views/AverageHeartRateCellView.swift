@@ -2,7 +2,7 @@
 //  AverageHeartRateCellView.swift
 //  RehApp
 //
-//  Created by Akademija on 23.04.2023..
+//  Created by Petar Ljubotina on 23.04.2023..
 //
 
 import Foundation
@@ -35,7 +35,7 @@ struct AverageHeartRateCellView: View {
 
     var body: some View {
         VStack(alignment: .leading, content: {
-            GraphHeaderView(title: "❤️ Otkucaji srca", averageValue: averageHeartRate, unit: "o/min")
+            GraphHeaderView(title: "HeartRate".localize(), averageValue: averageHeartRate, unit: "BPM".localize())
             Chart {
                 ForEach(heartRates) { heartRate in
                     LineMark(
@@ -60,7 +60,7 @@ struct AverageHeartRateCellView: View {
                 AxisMarks(position: .leading)
             }
             .chartYAxisLabel(position: .leading, alignment: .leadingLastTextBaseline, spacing: 8) {
-                Text("o/min")
+                Text("BPM".localize())
                     .font(.footnote)
             }
             .chartYScale(domain: minHeartRateYValue...maxHeartRateYValue)

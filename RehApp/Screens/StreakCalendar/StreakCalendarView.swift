@@ -2,7 +2,7 @@
 //  StreakCalendarView.swift
 //  RehApp
 //
-//  Created by Akademija on 30.03.2023..
+//  Created by Petar Ljubotina on 30.03.2023..
 //
 
 import Foundation
@@ -69,7 +69,8 @@ final class StreakCalendarView: UIView {
         dateSelection.selectedDates = calendarDateComponents
         calendarView.selectionBehavior = dateSelection
 
-        allDaysLabel.text = "🔥 Ukupan broj dana: \(calendarDateComponents.count)"
+        allDaysLabel.text = "TotalNumberOfDays".localize()
+            .appending(" \(calendarDateComponents.count)")
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         let guide = layoutMarginsGuide
