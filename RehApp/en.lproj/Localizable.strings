@@ -86,3 +86,13 @@
 "ChooseNumberOfRepetitions" = "Choose the number of repetitions:";
 "NumberOfRepetitionsDescription" = "After selecting the desired number of repetitions, the rehabilitation process will start. For each exercise, a card description of the exercise and a picture will be displayed for better understanding. After the details of the exercise, he will have three seconds to put the cell phone in front of him. While performing the exercise, the total number of repetitions and a circular display to measure the current repetition will be displayed. In the middle is the number of repetitions that are currently being performed.";
 "CounterNumberOfRepetitions" = "🏋🏽 Total number of repetitions:";
+"RehabilitationNotification" = "It's time to do your scheduled rehabilitation!";
+"RehabilitaitonNotSaved" = "Rehabilitation is not saved";
+"RehabilitationNotSavedMessage" = "😕 You did a great job with your rehabilitation, but unfortunately the data was not saved in the health application. Rehabilitation must last at least one minute to be saved and the application must have permission to write and read the content of all necessary components in the Health application.";
+"Finish" = "Finish";
+"Bravo" = "Bravo!";
+"RehabilitationSavedSuccessfully" = "You have successfully completed your exercises and the data has been saved in the Health app! 🏆";
+"AreYouSureToFinishRehabilitation" = "Are you sure you want to finish your rehabilitation?";
+"FinishAndSaveRehabilitation" = "Finish and save the rehabilitation";
+"FinishWithoutSavingRehabilitation" = "Finish without saving rehabilitation";
+"ExerciseFinishedMessage" = "You have successfully completed this exercise as well. Take a short break and move on. \n\n⏳ Number of remaining exercises:";

@@ -114,18 +114,17 @@ class RehAppExercisesFlowCoordinator {
 
         if selectedIndex < exerciseViewModels.count - 1 {
             selectedIndex += 1
-            let message = """
-            Uspješno si odradio i ovu vježbu. Uzmi kratki predah i nastavi dalje. \
-            \n\n⏳ Broj preostalih vježbi: \(numberOfRemainingExercises)
-            """
-            let alertAction = UIAlertAction(title: "Nastavi",
+            let message = "ExerciseFinishedMessage".localize().appending(" \(numberOfRemainingExercises)")
+            let alertAction = UIAlertAction(title: "Proceed".localize(),
                                         style: .default,
                                         handler: { [weak self] _ in
                 guard let self = self else { return }
                 showExerciseDetailsScreen()
             })
             SoundPlayer.shared.playSound(.singleExerciseFinished)
-            let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+            let alert = makeAlert(title: "Bravo".localize(),
+                                  message: message, preferredStyle: .alert,
+                                  actions: [alertAction])
 
             navigationController?.present(alert, animated: true)
         } else {
@@ -135,13 +134,13 @@ class RehAppExercisesFlowCoordinator {
     }
 
     func showFinishButtonAlert() {
-        let dismissAction = UIAlertAction(title: "Odustani", style: .default) { _ in }
-        let finishAndDontSaveAction = UIAlertAction(title: "Završi bez spremanja rehabilitacije",
+        let dismissAction = UIAlertAction(title: "Dismiss".localize(), style: .default) { _ in }
+        let finishAndDontSaveAction = UIAlertAction(title: "FinishWithoutSavingRehabilitation".localize(),
                                                     style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             navigationController?.popToRootViewController(animated: true)
         }
-        let finishAndSaveAction = UIAlertAction(title: "Završi i spremi rehabilitaciju",
+        let finishAndSaveAction = UIAlertAction(title: "FinishAndSaveRehabilitation".localize(),
                                                 style: .cancel) { [weak self] _ in
             guard let self = self else { return }
             saveRehabilitation()
@@ -149,8 +148,8 @@ class RehAppExercisesFlowCoordinator {
         }
         let alertActions = [dismissAction, finishAndDontSaveAction, finishAndSaveAction]
 
-        let alert = makeAlert(title: "Završi",
-                              message: "Jesi li siguran da želiš završiti svoju rehabilitaciju?",
+        let alert = makeAlert(title: "Finish".localize(),
+                              message: "AreYouSureToFinishRehabilitation".localize(),
                               preferredStyle: .alert,
                               actions: alertActions)
 
@@ -158,28 +157,26 @@ class RehAppExercisesFlowCoordinator {
     }
 
     private func showRehabilitationSavedSuccessfullyAlert() {
-        let message = "Uspješno si odradio svoje vježbe i podaci su spremljeni u aplikaciji Zdravlje! 🏆"
-        let alertAction = UIAlertAction(title: "Završi",
+        let message = "RehabilitationSavedSuccessfully".localize()
+        let alertAction = UIAlertAction(title: "Finish".localize(),
                                     style: .default,
                                     handler: { [weak self] _ in
             guard let self = self else { return }
             navigationController?.popToRootViewController(animated: true)
         })
-        let alert = makeAlert(title: "Bravo!", message: message, preferredStyle: .alert, actions: [alertAction])
+        let alert = makeAlert(title: "Bravo".localize(),
+                              message: message, preferredStyle: .alert,
+                              actions: [alertAction])
         navigationController?.present(alert, animated: true)
     }
 
     private func showRehabilitationFailedToSaveAlert() {
-        let dismissAction = UIAlertAction(title: "Završi", style: .default) { [weak self] _ in
+        let dismissAction = UIAlertAction(title: "Finish".localize(), style: .default) { [weak self] _ in
             guard let self = self else { return }
             navigationController?.popToRootViewController(animated: true)
         }
-        let alert = makeAlert(title: "Rehabilitacija nije spremljena",
-                              message: """
-        😕 Odlično si odradio svoju rehabilitaciju, ali nažalost podaci nisu spremljeni u aplikaciju zdravlje. \
-        Rehabilitacija mora trajati barem jednu minutu kako bi se spremila i aplikacija mora imati \
-        dozvolu da upisuje i čita sadržaj svih potrebnih komponenti u aplikaciji Zdravlje
-        """,
+        let alert = makeAlert(title: "RehabilitaitonNotSaved".localize(),
+                              message: "RehabilitationNotSavedMessage".localize(),
                               preferredStyle: .alert,
                               actions: [dismissAction])
 

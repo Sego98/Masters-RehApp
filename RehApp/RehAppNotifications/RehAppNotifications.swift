@@ -36,7 +36,7 @@ class RehAppNotifications {
         let content = UNMutableNotificationContent()
         content.title = name
         content.sound = .default
-        content.body = "RehabilitationNotification";
+        content.body = "RehabilitationNotification".localize()
 
         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: reminder.isRepeating)
