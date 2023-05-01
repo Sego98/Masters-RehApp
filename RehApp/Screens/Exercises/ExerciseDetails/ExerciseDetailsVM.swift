@@ -136,4 +136,35 @@ struct ExerciseDetailsVM: Hashable, Equatable {
                                  videoURL: mockURL)
     }()
 
+    static let shoulderExerciseWithStick4: ExerciseDetailsVM = {
+        return ExerciseDetailsVM(title: "Istezanje zasucima",
+                                 shortDescription: "Primiti štap na krajevima i istezati se rotacijama",
+                                 longDescription: """
+                Primite štap na krajeve s ispruženim rukama u visini ramena. Radite zasuke u lijevu i desnu stranu \
+                kako biste istegnuli leđa. Jedan lakat se savija, a drugi se pruža u stranu.
+                """,
+                                 oneRepetitionTime: mockOneRepetitionTime,
+                                 videoURL: mockURL)
+    }()
+
+    static let shoulderExerciseWithStick5: ExerciseDetailsVM = {
+        return ExerciseDetailsVM(title: "Štap iza leđa",
+                                 shortDescription: "Primiti štap iza leđa i odmicati ga",
+                                 longDescription: """
+                Primite štap iza leđa u donjem dijelu i odmičite ga od sebe što je više moguće
+                """,
+                                 oneRepetitionTime: mockOneRepetitionTime,
+                                 videoURL: mockURL)
+    }()
+
+    static let shoulderExerciseWithStick6: ExerciseDetailsVM = {
+        return ExerciseDetailsVM(title: "Štap iza leđa",
+                                 shortDescription: "Primiti štap iza leđa i povlačiti ga",
+                                 longDescription: """
+                Primite štap iza leđa u donjem dijelu i povlačite ga prema lopaticama što je više moguće
+                """,
+                                 oneRepetitionTime: mockOneRepetitionTime,
+                                 videoURL: mockURL)
+    }()
+
 }

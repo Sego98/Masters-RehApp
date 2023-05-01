@@ -165,6 +165,8 @@
 		D27A4A0129F852990016CFE4 /* TimeOfDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCellView.swift; sourceTree = "<group>"; };
 		D27A4A0329F872C90016CFE4 /* CollectionViewTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTitleHeader.swift; sourceTree = "<group>"; };
 		D27A4A0929F9A23A0016CFE4 /* RehAppCache+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RehAppCache+Calendar.swift"; sourceTree = "<group>"; };
+		D2A1D80529FF1D01009E5F2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D2A1D80629FF1D13009E5F2A /* hr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = hr; path = hr.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2A587FB29F9B626001AD5F8 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
 		D2A5880029FAFC7D001AD5F8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		D2A5880229FAFC8F001AD5F8 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -195,7 +197,6 @@
 		D2EFB9CD29BCFC97009EA5E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9CF29BCFC97009EA5E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D2EFB9D929BCFC99009EA5E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D2EFB9DC29BCFC99009EA5E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2EFB9DE29BCFC99009EA5E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2EFB9E329BCFC99009EA5E5 /* RehAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RehAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EFB9E729BCFC99009EA5E5 /* RehAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehAppTests.swift; sourceTree = "<group>"; };
@@ -724,7 +725,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				hr,
 			);
 			mainGroup = D2EFB9C129BCFC97009EA5E5;
 			packageReferences = (
@@ -906,7 +907,8 @@
 		D2EFB9DB29BCFC99009EA5E5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2EFB9DC29BCFC99009EA5E5 /* Base */,
+				D2A1D80529FF1D01009E5F2A /* en */,
+				D2A1D80629FF1D13009E5F2A /* hr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -918,6 +920,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -978,6 +981,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

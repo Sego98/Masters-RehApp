@@ -40,12 +40,12 @@ struct ListAllExercisesVM: Hashable, Equatable {
 
         let exercises: [ExerciseDetailsVM] = [
             .shoulderExerciseWithoutStick1,
-            .shoulderExerciseWithoutStick2
-//            .shoulderExerciseWithoutStick3,
-//            .shoulderExerciseWithoutStick4,
-//            .shoulderExerciseWithoutStick5,
-//            .shoulderExerciseWithoutStick6,
-//            .shoulderExerciseWithoutStick7
+            .shoulderExerciseWithoutStick2,
+            .shoulderExerciseWithoutStick3,
+            .shoulderExerciseWithoutStick4,
+            .shoulderExerciseWithoutStick5,
+            .shoulderExerciseWithoutStick6,
+            .shoulderExerciseWithoutStick7
         ]
 
         return ListAllExercisesVM(screenTitle: screenTitle,
@@ -65,7 +65,10 @@ struct ListAllExercisesVM: Hashable, Equatable {
         let exercises: [ExerciseDetailsVM]  = [
             .shoulderExerciseWithStick1,
             .shoulderExerciseWithStick2,
-            .shoulderExerciseWithStick3
+            .shoulderExerciseWithStick3,
+            .shoulderExerciseWithStick4,
+            .shoulderExerciseWithStick5,
+            .shoulderExerciseWithStick6
         ]
 
         return ListAllExercisesVM(screenTitle: screenTitle,
