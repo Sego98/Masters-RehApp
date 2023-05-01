@@ -86,3 +86,4 @@
 "ChooseNumberOfRepetitions" = "Odaberi broj ponavljanja:";
 "NumberOfRepetitionsDescription" = "Nakon odabira željenog broja ponavljanja pokrenut će se proces izrade rehabilitacije. Za svaku vježbu prikazat će se karatki opis vježbe i slika za bolje razumijevanje. Nakon detalja vježbe, imat će tri sekunde za odložiti mobitel ispred sebe. Tijekom izvođenja vježbe prikazivat će se ukupan broj ponavljanja i cirkularni prikaz za mjerenje trenutnog ponavljanja. U sredini se nalazi broj ponavljanja koji se trenutno izvodi.";
 "CounterNumberOfRepetitions" = "🏋🏽 Ukupan broj ponavljanja:";
+"RehabilitationNotification" = "Vrijeme je da odradiš svoju zakazanu rehabilitaciju!";
