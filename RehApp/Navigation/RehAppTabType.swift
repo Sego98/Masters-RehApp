@@ -15,11 +15,11 @@ enum RehAppTabType {
     var title: String {
         switch self {
         case .exercises:
-            return "Vježbe"
+            return "Exercises".localize()
         case .reminders:
-            return "Podsjetnici"
+            return "Reminders".localize()
         case .statistics:
-            return "Statistika"
+            return "Statistics".localize()
         }
     }
 
