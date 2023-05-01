@@ -2,7 +2,7 @@
 //  StreakCalendarViewController.swift
 //  RehApp
 //
-//  Created by Akademija on 30.03.2023..
+//  Created by Petar Ljubotina on 30.03.2023..
 //
 
 import Foundation

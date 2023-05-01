@@ -2,7 +2,7 @@
 //  String.swift
 //  RehApp
 //
-//  Created by Akademija on 01.05.2023..
+//  Created by Petar Ljubotina on 01.05.2023..
 //
 
 import Foundation

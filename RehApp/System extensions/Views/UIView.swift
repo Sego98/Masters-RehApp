@@ -2,7 +2,7 @@
 //  UIView.swift
 //  RehApp
 //
-//  Created by Akademija on 14.03.2023..
+//  Created by Petar Ljubotina on 14.03.2023..
 //
 
 import UIKit

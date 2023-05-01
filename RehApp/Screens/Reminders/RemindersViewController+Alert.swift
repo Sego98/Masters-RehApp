@@ -2,7 +2,7 @@
 //  RemindersViewController+Alert.swift
 //  RehApp
 //
-//  Created by Akademija on 06.04.2023..
+//  Created by Petar Ljubotina on 06.04.2023..
 //
 
 import Foundation

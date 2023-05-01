@@ -2,7 +2,7 @@
 //  ReminderTitleTimeView.swift
 //  RehApp
 //
-//  Created by Akademija on 08.04.2023..
+//  Created by Petar Ljubotina on 08.04.2023..
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  HeartRateVM.swift
 //  RehApp
 //
-//  Created by Akademija on 23.04.2023..
+//  Created by Petar Ljubotina on 23.04.2023..
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  TimeOfDayVM.swift
 //  RehApp
 //
-//  Created by Akademija on 25.04.2023..
+//  Created by Petar Ljubotina on 25.04.2023..
 //
 
 import Foundation

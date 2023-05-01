@@ -2,7 +2,7 @@
 //  HealthStatisticsCellRegistrations.swift
 //  RehApp
 //
-//  Created by Akademija on 28.04.2023..
+//  Created by Petar Ljubotina on 28.04.2023..
 //
 // swiftlint:disable line_length
 

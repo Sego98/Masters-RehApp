@@ -2,7 +2,7 @@
 //  WebView.swift
 //  RehApp
 //
-//  Created by Akademija on 14.04.2023..
+//  Created by Petar Ljubotina on 14.04.2023..
 //
 
 import Foundation

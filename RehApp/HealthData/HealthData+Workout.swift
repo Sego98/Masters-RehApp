@@ -2,7 +2,7 @@
 //  HealthData+Workout.swift
 //  RehApp
 //
-//  Created by Akademija on 18.04.2023..
+//  Created by Petar Ljubotina on 18.04.2023..
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  EnergyBurnedVM.swift
 //  RehApp
 //
-//  Created by Akademija on 24.04.2023..
+//  Created by Petar Ljubotina on 24.04.2023..
 //
 
 import Foundation

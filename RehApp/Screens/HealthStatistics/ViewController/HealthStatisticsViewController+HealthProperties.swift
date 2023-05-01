@@ -2,7 +2,7 @@
 //  HealthStatisticsViewController+HealthProperties.swift
 //  RehApp
 //
-//  Created by Akademija on 12.04.2023..
+//  Created by Petar Ljubotina on 12.04.2023..
 //
 // swiftlint:disable function_body_length
 
