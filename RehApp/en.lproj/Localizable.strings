@@ -85,3 +85,4 @@
 "NumberOfRepetitions" = "Number of repetitions";
 "ChooseNumberOfRepetitions" = "Choose the number of repetitions:";
 "NumberOfRepetitionsDescription" = "After selecting the desired number of repetitions, the rehabilitation process will start. For each exercise, a card description of the exercise and a picture will be displayed for better understanding. After the details of the exercise, he will have three seconds to put the cell phone in front of him. While performing the exercise, the total number of repetitions and a circular display to measure the current repetition will be displayed. In the middle is the number of repetitions that are currently being performed.";
+"CounterNumberOfRepetitions" = "🏋🏽 Total number of repetitions:";

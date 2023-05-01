@@ -77,7 +77,7 @@ final class ExerciseCounterCell: UICollectionViewCell {
     func setValues(with viewModel: ExerciseDetailsVM) {
         // notaTODO: configure image
         let maxRepetitions = UserDefaults.standard.integer(forKey: GlobalSettings.numberOfRepetitionsSelectedKey)
-        maxRepetitionsLabel.text = "🏋🏽 Broj ponavljanja: \(maxRepetitions)"
+        maxRepetitionsLabel.text = "CounterNumberOfRepetitions".localize().appending(" \(maxRepetitions)")
     }
 
     func makeProgressAnimation(_ duration: TimeInterval) {
