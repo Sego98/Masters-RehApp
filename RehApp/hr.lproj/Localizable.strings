@@ -29,7 +29,7 @@
 "Delete" = "Obriši";
 "Morning" = "Prijepodne";
 "Afternoon" = "Poslijepodne";
-"BPM" = "BPM";
+"BPM" = "o/min";
 "RehabLastSevenDays" = "Podaci rehabilitacija u proteklih 7 dana";
 "Average" = "Prosječna vrijednost:";
 "HeartRate" = "❤️ Otkucaji srca";
@@ -39,7 +39,7 @@
 "ExerciseInMorning" = "Bravo, više ti paše jutro za treniranje. Tada je najbolje trenirati jer imaš najviše energije.";
 "ExerciseInAfternoon" = "Više voliš vježbati poslije podne. Pokušaj se ustati ranije i odraditi rehabilitaciju kada imaš više energije, bolje ćeš se osjećati.";
 "ExerciseAnyTime" = "Tebi je potpuno svejedno u koje doba dana vježbaš. Svejedno, pokušaj više trenirati ujutro jer tada imaš više energije.";
-"NoExercises" = "Čini se kako još nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup svim podacima iz aplikacije Zdravlje.";
+"NoExercises" = "Čini se kako u posljednjih 7 dana nisi odradio niti jednu vježbu rehabilitacije ili aplikacija nema pristup svim podacima iz aplikacije Zdravlje.";
 "Proceed" = "Nastavi";
 "Description" = "Opis";
 "ShoulderExercises" = "Vježbe ramena";
@@ -88,7 +88,7 @@
 "CounterNumberOfRepetitions" = "🏋🏽 Ukupan broj ponavljanja:";
 "RehabilitationNotification" = "Vrijeme je da odradiš svoju zakazanu rehabilitaciju!";
 "RehabilitaitonNotSaved" = "Rehabilitacija nije spremljena";
-"RehabilitationNotSavedMessage" = "😕 Odlično si odradio svoju rehabilitaciju, ali nažalost podaci nisu spremljeni u aplikaciju zdravlje. Rehabilitacija mora trajati barem jednu minutu kako bi se spremila i aplikacija mora imati dozvolu da upisuje i čita sadržaj svih potrebnih komponenti u aplikaciji Zdravlje.";
+"RehabilitationNotSavedMessage" = "😕 Odlično si odradio svoju rehabilitaciju, ali nažalost podaci nisu spremljeni u aplikaciju Zdravlje. Rehabilitacija mora trajati barem jednu minutu kako bi se spremila i aplikacija mora imati dozvolu da upisuje i čita sadržaj svih potrebnih komponenti u aplikaciji Zdravlje.";
 "Finish" = "Završi";
 "Bravo" = "Bravo!";
 "RehabilitationSavedSuccessfully" = "Uspješno si odradio svoje vježbe i podaci su spremljeni u aplikaciji Zdravlje! 🏆";

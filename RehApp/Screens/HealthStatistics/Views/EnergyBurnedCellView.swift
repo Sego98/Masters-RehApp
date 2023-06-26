@@ -17,7 +17,7 @@ struct EnergyBurnedCellView: View {
         return energiesBurned.reduce(0.0) { $0 + $1.value } / Double(elementsWithValues.count)
     }
 
-    var maxHeartRateYValue: Double {
+    var maxEnergyYValue: Double {
         let energyBurnedValues = energiesBurned.map { $0.value }
         let maxValue = energyBurnedValues.max()
         guard let maxValue = maxValue else { return 0.0 }
@@ -48,7 +48,7 @@ struct EnergyBurnedCellView: View {
                 Text("kcal")
                     .font(.footnote)
             }
-            .chartYScale(domain: 0...maxHeartRateYValue)
+            .chartYScale(domain: 0...maxEnergyYValue)
         })
     }
 }

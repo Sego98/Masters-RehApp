@@ -88,7 +88,7 @@
 "CounterNumberOfRepetitions" = "🏋🏽 Total number of repetitions:";
 "RehabilitationNotification" = "It's time to do your scheduled rehabilitation!";
 "RehabilitaitonNotSaved" = "Rehabilitation is not saved";
-"RehabilitationNotSavedMessage" = "😕 You did a great job with your rehabilitation, but unfortunately the data was not saved in the health application. Rehabilitation must last at least one minute to be saved and the application must have permission to write and read the content of all necessary components in the Health application.";
+"RehabilitationNotSavedMessage" = "😕 You did a great job with your rehabilitation, but unfortunately the data was not saved in the Health application. Rehabilitation must last at least one minute to be saved and the application must have permission to write and read the content of all necessary components in the Health application.";
 "Finish" = "Finish";
 "Bravo" = "Bravo!";
 "RehabilitationSavedSuccessfully" = "You have successfully completed your exercises and the data has been saved in the Health app! 🏆";

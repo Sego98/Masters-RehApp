@@ -17,12 +17,13 @@ final class PickerViewController: RehAppViewController {
     private let viewModel: PickerVM
     private var buttonActions = [UIAction?]()
 
-    private let testDates = [
-        DateComponents(year: 2023, month: 4, day: 13),
-        DateComponents(year: 2023, month: 4, day: 14),
-        DateComponents(year: 2023, month: 4, day: 17),
-        DateComponents(year: 2023, month: 4, day: 19)
-    ]
+//    private let testDates = [
+//        DateComponents(year: 2023, month: 5, day: 15),
+//        DateComponents(year: 2023, month: 5, day: 16),
+//        DateComponents(year: 2023, month: 5, day: 17),
+//        DateComponents(year: 2023, month: 5, day: 19),
+//        DateComponents(year: 2023, month: 5, day: 20)
+//    ]
 
     // MARK: - Lifecycle
 
